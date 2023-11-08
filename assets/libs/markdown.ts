@@ -7,7 +7,7 @@ const mdOptions: Markdown.Options = {
     breaks: true,
     langPrefix: "language-",
     // 代码高亮
-    highlight(str, lang) {
+    highlight(str: string, lang: string) {
         if (lang && highlight.getLanguage(lang)) {
             try {
                 return (

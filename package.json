@@ -11,20 +11,19 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "default-passive-events": "^2.0.0",
+    "@amap/amap-jsapi-loader": "^1.0.1",
     "@icon-park/vue-next": "^1.4.2",
     "@tailwindcss/typography": "^0.5.9",
-    "crypto-js": "^4.1.1",
-    "highlight.js": "^11.7.0",
-    "markdown-it": "^13.0.1",
-    "less": "^4.2.0",
-    "swiper": "^9.4.1",
-    "@amap/amap-jsapi-loader": "^1.0.1",
-    "@nuxt/devtools": "latest",
-    "nuxt": "^3.8.1",
-    "vue": "^3.3.8",
-    "vue-router": "^4.2.5",
+    "@types/markdown-it": "^13.0.6",
     "@types/node": "^18",
-    "typescript": "^5.1.6"
+    "crypto-js": "^4.1.1",
+    "default-passive-events": "^2.0.0",
+    "highlight.js": "^11.7.0",
+    "less": "^4.2.0",
+    "markdown-it": "^13.0.1",
+    "nuxt": "^3.8.1",
+    "swiper": "^9.4.1",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5"
   }
 }

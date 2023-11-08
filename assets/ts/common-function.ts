@@ -3,7 +3,7 @@ const scrollToTop = () => {
     const startPosition = window.scrollY;
     const startTime = performance.now();
 
-    const animateScroll = (timestamp) => {
+    const animateScroll = (timestamp: DOMHighResTimeStamp) => {
         const currentTime = timestamp - startTime;
         const progress = Math.min(currentTime / duration, 1);
         const easeProgress = 0.5 - 0.5 * Math.cos(progress * Math.PI);

@@ -31,4 +31,20 @@ export default defineNuxtConfig({
     // automatic transition，转场动画
     pageTransition: { name: 'page', mode: 'out-in' }
   },
+  build: {
+
+  },
+  nitro: {
+    output:  {
+      dir: '../.output',
+      serverDir: '../.output/server',
+      publicDir: '../.output/public'
+    }
+  },
+  plugins: [
+
+  ],
+  modules: [
+
+  ],
 })
