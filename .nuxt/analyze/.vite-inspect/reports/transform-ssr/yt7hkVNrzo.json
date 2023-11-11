@@ -1,0 +1,366 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue?vue&type=style&index=0&scoped=c4f7ba6f&lang.scss",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\r\n.technology {\r\n  background-image: url(\"/technology.jpg\");\r\n\r\n}\r\n\r\n.card {\r\n  @apply col-span-23 col-start-2 mt-2 text-center font-500 md:col-span-7 md:mt-0;\r\n\r\n  &-title {\r\n    @apply text-lg md:text-3xl;\r\n  }\r\n\r\n  &-descript {\r\n    @apply text-primary b-b-2 b-primary text-xl md:text-2xl md:leading-16;\r\n  }\r\n\r\n  &-content {\r\n    @apply text-base mt-2 text-left md:text-lg;\r\n  }\r\n}\r\n",
+      "start": 1699710614028,
+      "end": 1699710614028,
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue"
+        ],
+        "names": [],
+        "mappings": ";AAiFA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;EACV,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;;AAE1C;;AAEA,CAAC,CAAC,CAAC,CAAC,EAAE;EACJ,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;;EAE9E,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACN,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;EAC5B;;EAEA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACT,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;EACvE;;EAEA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE;IACR,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;EAC5C;AACF",
+        "file": "F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue",
+        "sourceRoot": "",
+        "sourcesContent": [
+          "<script setup lang=\"ts\">\r\nimport MarqueeCpn from '@/components/Marquee.vue'\r\nimport type Marquee from '~~/components/Marquee.vue'\r\n\r\ntype MarqueeInstance = InstanceType<typeof Marquee>\r\n\r\nconst batteryRef = ref<MarqueeInstance | null>(null)\r\nconst motorRef = ref<MarqueeInstance | null>(null)\r\nconst parkRef = ref<MarqueeInstance | null>(null)\r\n\r\nconst batteryModuleRef = ref<HTMLElement | null>(null)\r\nconst motorModuleRef = ref<HTMLElement | null>(null)\r\nconst parkModuleRef = ref<HTMLElement | null>(null)\r\n\r\nconst { instance: batteryInstance } = useTranslateX(batteryModuleRef, -600, 0, 0, 600)\r\nconst { instance: motorInstance } = useTranslateY(motorModuleRef, -600, 0, 0, 600)\r\nconst { instance: parkInstance } = useTranslateX(parkModuleRef, 600, 0, 0, 600)\r\n\r\nconst { $on, MITT_KEY } = useMitt()\r\n$on(MITT_KEY.CHANGE_TO_TECHNOLOGY, () => {\r\n  batteryRef.value?.append()\r\n  motorRef.value?.append()\r\n  parkRef.value?.append()\r\n\r\n  batteryInstance.value?.restart()\r\n  motorInstance.value?.restart()\r\n  parkInstance.value?.restart()\r\n})\r\n</script>\r\n\r\n<template>\r\n  <!-- 12行 -->\r\n  <div ref=\"rootRef\" class=\"technology full  text-white pt-19 grid grid-rows-12\">\r\n    <!-- 24列 -->\r\n    <div class=\"grid grid-cols-25 h-full row-span-12 mt-6  justify-around md:row-span-6 md:row-start-4 md:mt-0\">\r\n      <!-- 模块 -->\r\n      <div ref=\"batteryModuleRef\" class=\"card md:!col-start-2\">\r\n        <div class=\"card-title\">\r\n          三元固液混合锂离子电池\r\n        </div>\r\n        <div class=\"card-descript\">\r\n          Battery core technology\r\n        </div>\r\n        <MarqueeCpn\r\n          ref=\"batteryRef\" class=\"card-content\"\r\n          text=\"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp由锂、镍、钴和锰等金属氧化物混合而成的三元材料，具有高能量密度和长循环寿命的特点。而固体电解质层通常由锂离子导电的聚合物或陶瓷材料构成，能够防止电池发生渗漏和爆炸等危险情况\"\r\n        />\r\n      </div>\r\n\r\n      <!-- 模块 -->\r\n      <div ref=\"motorModuleRef\" class=\"card md:!col-start-10\">\r\n        <div class=\"card-title\">\r\n          气门开启的持续期\r\n        </div>\r\n        <div class=\"card-descript\">\r\n          Continuously Variable Valve Duration\r\n        </div>\r\n        <MarqueeCpn\r\n          ref=\"motorRef\" class=\"card-content\"\r\n          text=\"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp CVVD技术是通过改变凸轮触发气门开启的时机与持续时间，从而使发动机提升性能并降低油耗，同时还具备降低排放污染的优势,可以适时根据驾驶场景的需求，在平稳行驶、急加速等过程中合理控制气门开启的时机与持续时间，为发动机提供即时最适合的空燃比，进而实现减排节能和高性能输出的双目标;\"\r\n        />\r\n      </div>\r\n\r\n      <!-- 模块 -->\r\n      <div ref=\"parkModuleRef\" class=\"card md:!col-start-18\">\r\n        <div class=\"card-title\">\r\n          自动泊车\r\n        </div>\r\n        <div class=\"card-descript\">\r\n          Automatic parking\r\n        </div>\r\n        <MarqueeCpn\r\n          ref=\"parkRef\" class=\"card-content\"\r\n          text=\"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp自动泊车系统通过激光雷达、摄像头等多种传感器感知车辆周围的环境，并使用内置的控制算法，生成路线规划，使车辆能够在狭小的空间中进行自主导航和泊车操作;\"\r\n        />\r\n      </div>\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.technology {\r\n  background-image: url(\"/technology.jpg\");\r\n\r\n}\r\n\r\n.card {\r\n  @apply col-span-23 col-start-2 mt-2 text-center font-500 md:col-span-7 md:mt-0;\r\n\r\n  &-title {\r\n    @apply text-lg md:text-3xl;\r\n  }\r\n\r\n  &-descript {\r\n    @apply text-primary b-b-2 b-primary text-xl md:text-2xl md:leading-16;\r\n  }\r\n\r\n  &-content {\r\n    @apply text-base mt-2 text-left md:text-lg;\r\n  }\r\n}\r\n</style>\r\n"
+        ]
+      }
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710614029,
+      "end": 1699710614029,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710614029,
+      "end": 1699710614029,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710614029,
+      "end": 1699710614029,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710614029,
+      "end": 1699710614029,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710614029,
+      "end": 1699710614029,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710614029,
+      "end": 1699710614029,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710614029,
+      "end": 1699710614029,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710614029,
+      "end": 1699710614029,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710614029,
+      "end": 1699710614029,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": ".technology{\n  background-image:url(__VITE_PUBLIC_ASSET__27310b51__);\n}\n\n.card{\n  @apply col-span-23 col-start-2 mt-2 text-center font-500 md:col-span-7 md:mt-0;\n}\n.card-title{\n  @apply text-lg md:text-3xl;\n}\n.card-descript{\n  @apply text-primary b-b-2 b-primary text-xl md:text-2xl md:leading-16;\n}\n.card-content{\n  @apply text-base mt-2 text-left md:text-lg;\n}",
+      "start": 1699710614029,
+      "end": 1699710614042,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": "F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue",
+        "mappings": "AACA;EACE;;;AAIF;EACE;;AAEA;EACE;;AAGF;EACE;;AAGF;EACE",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710614042,
+      "end": 1699710614042,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710614043,
+      "end": 1699710614043,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710614043,
+      "end": 1699710614043,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": ".technology[data-v-c4f7ba6f]{\n  background-image:url(__VITE_PUBLIC_ASSET__27310b51__);\n}\n.card[data-v-c4f7ba6f]{\n@apply col-span-23 col-start-2 mt-2 text-center font-500 md:col-span-7 md:mt-0;\n}\n.card-title[data-v-c4f7ba6f]{\n@apply text-lg md:text-3xl;\n}\n.card-descript[data-v-c4f7ba6f]{\n@apply text-primary b-b-2 b-primary text-xl md:text-2xl md:leading-16;\n}\n.card-content[data-v-c4f7ba6f]{\n@apply text-base mt-2 text-left md:text-lg;\n}",
+      "start": 1699710614044,
+      "end": 1699710614045,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue",
+        "mappings": "AAAA;EACE,qDAAqD;AACvD;AAEA;AACE,8EAA8E;AAChF;AACA;AACE,0BAA0B;AAC5B;AACA;AACE,qEAAqE;AACvE;AACA;AACE,0CAA0C;AAC5C",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue"
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710614045,
+      "end": 1699710614045,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "result": ".technology[data-v-c4f7ba6f]{\n  background-image:url(__VITE_PUBLIC_ASSET__27310b51__);\n}\n.card[data-v-c4f7ba6f]{\ngrid-column:span 23/span 23;grid-column-start:2;margin-top:0.5rem;text-align:center;font-weight:500;\n}@media (min-width: 768px){.card[data-v-c4f7ba6f]{grid-column:span 7/span 7;margin-top:0;}}\n.card-title[data-v-c4f7ba6f]{\nfont-size:1.125rem;line-height:1.75rem;\n}@media (min-width: 768px){.card-title[data-v-c4f7ba6f]{font-size:1.875rem;line-height:2.25rem;}}\n.card-descript[data-v-c4f7ba6f]{\nborder-bottom-width:2px;--un-border-opacity:1;border-color:rgba(0,223,185,var(--un-border-opacity));font-size:1.25rem;line-height:1.75rem;--un-text-opacity:1;color:rgba(0,223,185,var(--un-text-opacity));\n}@media (min-width: 768px){.card-descript[data-v-c4f7ba6f]{font-size:1.5rem;line-height:2rem;line-height:4rem;}}\n.card-content[data-v-c4f7ba6f]{\nmargin-top:0.5rem;text-align:left;font-size:1rem;line-height:1.5rem;\n}@media (min-width: 768px){.card-content[data-v-c4f7ba6f]{font-size:1.125rem;line-height:1.75rem;}}",
+      "start": 1699710614046,
+      "end": 1699710614049,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "mappings": "AAAA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxD,CAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;oGACwD;AAC/E,2FAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;uCACF;AAC3B,iGAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;2MACsC;AACtE,gHAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;oEACY;AAC3C",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue?vue&type=style&index=0&scoped=c4f7ba6f&lang.scss"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "unocss:transformers:default",
+      "result": ".technology[data-v-c4f7ba6f]{\n  background-image:url(__VITE_PUBLIC_ASSET__27310b51__);\n}\n.card[data-v-c4f7ba6f]{\ngrid-column:span 23/span 23;grid-column-start:2;margin-top:0.5rem;text-align:center;font-weight:500;\n}@media (min-width: 768px){.card[data-v-c4f7ba6f]{grid-column:span 7/span 7;margin-top:0;}}\n.card-title[data-v-c4f7ba6f]{\nfont-size:1.125rem;line-height:1.75rem;\n}@media (min-width: 768px){.card-title[data-v-c4f7ba6f]{font-size:1.875rem;line-height:2.25rem;}}\n.card-descript[data-v-c4f7ba6f]{\nborder-bottom-width:2px;--un-border-opacity:1;border-color:rgba(0,223,185,var(--un-border-opacity));font-size:1.25rem;line-height:1.75rem;--un-text-opacity:1;color:rgba(0,223,185,var(--un-text-opacity));\n}@media (min-width: 768px){.card-descript[data-v-c4f7ba6f]{font-size:1.5rem;line-height:2rem;line-height:4rem;}}\n.card-content[data-v-c4f7ba6f]{\nmargin-top:0.5rem;text-align:left;font-size:1rem;line-height:1.5rem;\n}@media (min-width: 768px){.card-content[data-v-c4f7ba6f]{font-size:1.125rem;line-height:1.75rem;}}",
+      "start": 1699710614046,
+      "end": 1699710614049,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "mappings": "AAAA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxD,CAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;oGACwD;AAC/E,2FAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;uCACF;AAC3B,iGAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;2MACsC;AACtE,gHAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;oEACY;AAC3C",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue?vue&type=style&index=0&scoped=c4f7ba6f&lang.scss"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "replace",
+      "start": 1699710614049,
+      "end": 1699710614049,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710614049,
+      "end": 1699710614049,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710614049,
+      "end": 1699710614049,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710614049,
+      "end": 1699710614049,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710614049,
+      "end": 1699710614049,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710614050,
+      "end": 1699710614050,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710614050,
+      "end": 1699710614050,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710614050,
+      "end": 1699710614050,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default ''",
+      "start": 1699710614050,
+      "end": 1699710614050,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710614050,
+      "end": 1699710614050,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710614051,
+      "end": 1699710614051,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710614051,
+      "end": 1699710614051,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710614051,
+      "end": 1699710614051,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710614051,
+      "end": 1699710614051,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710614051,
+      "end": 1699710614051,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710614051,
+      "end": 1699710614051,
+      "order": "post"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710614051,
+      "end": 1699710614051,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710614052,
+      "end": 1699710614052,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710614052,
+      "end": 1699710614052,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710614052,
+      "end": 1699710614052,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710614052,
+      "end": 1699710614052,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710614052,
+      "end": 1699710614052,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710614052,
+      "end": 1699710614052,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710614052,
+      "end": 1699710614052,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710614052,
+      "end": 1699710614052,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710614053,
+      "end": 1699710614053,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1699710614053,
+      "end": 1699710614053,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710614053,
+      "end": 1699710614053,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710614053,
+      "end": 1699710614053,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710614053,
+      "end": 1699710614053,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710614054,
+      "end": 1699710614054,
+      "order": "normal"
+    }
+  ]
+}

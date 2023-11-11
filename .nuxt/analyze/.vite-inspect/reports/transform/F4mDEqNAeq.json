@@ -1,0 +1,256 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/components/Home/About/index.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script setup lang=\"ts\">\r\nimport MarqueeCpn from '~~/components/Marquee.vue'\r\nimport type Marquee from '~~/components/Marquee.vue'\r\nimport { COMPANY } from '~~/enums/appEnum'\r\n\r\ntype MarqueeInstance = InstanceType<typeof Marquee>\r\n\r\nconst descriptRef = ref<MarqueeInstance | null>(null)\r\nconst { $on, MITT_KEY } = useMitt()\r\nconst descript = ref<string>('是全球最大的汽车制造商之一，其业务涵盖了汽车、商用车、摩托车等多个领域，拥有众多知名品牌;一直以来都在汽车技术创新方面处于领先地位。它不断推出新型车型和先进技术，例如燃油汽车、电动汽车、混合动力车型、自动驾驶技术等，带动了整个汽车行业的发展。同时，在环保和可持续发展方面也有着较高的投入和意识;除了产品本身，也致力于提高客户服务和体验。公司在全球范围内建立了广泛的销售和服务网络，为客户提供高效、便捷的服务。此外，还致力于发展智能汽车技术，如自动驾驶技术、智能互联等领域，积极推进智能出行的发展;')\r\n$on(MITT_KEY.CHANGE_TO_ABOUT, () => {\r\n  descriptRef.value?.append()\r\n})\r\n</script>\r\n\r\n<template>\r\n  <div ref=\"rootRef\" class=\"about full  text-white text-xl font-500 grid grid-cols-12 items-center\">\r\n    <MarqueeCpn\r\n      ref=\"descriptRef\" class=\"card-content text-lg leading-8!  col-span-10 col-start-2 md:(col-span-6 col-start-2 text-xl leading-10!)\" :time=\"0.1\"\r\n      :text=\"`&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${COMPANY}${descript}`\"\r\n    />\r\n  </div>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.about {\r\n  // background-image: url(\"/about.jpg\");\r\n  background-image: url(\"/about.jpg\");\r\n  .Marquee{\r\n  }\r\n}\r\n</style>\r\n",
+      "start": 1699710598003,
+      "end": 1699710598156,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "result": "<script setup lang=\"ts\">\r\nimport MarqueeCpn from '~~/components/Marquee.vue'\r\nimport type Marquee from '~~/components/Marquee.vue'\r\nimport { COMPANY } from '~~/enums/appEnum'\r\n\r\ntype MarqueeInstance = InstanceType<typeof Marquee>\r\n\r\nconst descriptRef = ref<MarqueeInstance | null>(null)\r\nconst { $on, MITT_KEY } = useMitt()\r\nconst descript = ref<string>('是全球最大的汽车制造商之一，其业务涵盖了汽车、商用车、摩托车等多个领域，拥有众多知名品牌;一直以来都在汽车技术创新方面处于领先地位。它不断推出新型车型和先进技术，例如燃油汽车、电动汽车、混合动力车型、自动驾驶技术等，带动了整个汽车行业的发展。同时，在环保和可持续发展方面也有着较高的投入和意识;除了产品本身，也致力于提高客户服务和体验。公司在全球范围内建立了广泛的销售和服务网络，为客户提供高效、便捷的服务。此外，还致力于发展智能汽车技术，如自动驾驶技术、智能互联等领域，积极推进智能出行的发展;')\r\n$on(MITT_KEY.CHANGE_TO_ABOUT, () => {\r\n  descriptRef.value?.append()\r\n})\r\n</script>\r\n\r\n<template>\r\n  <div ref=\"rootRef\" class=\"about full  text-white text-xl font-500 grid grid-cols-12 items-center\">\r\n    <MarqueeCpn\r\n      ref=\"descriptRef\" class=\"card-content text-lg leading-8!  col-span-10 col-start-2 md:col-span-6 md:col-start-2 md:text-xl md:leading-10!\" :time=\"0.1\"\r\n      :text=\"`&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${COMPANY}${descript}`\"\r\n    />\r\n  </div>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.about {\r\n  // background-image: url(\"/about.jpg\");\r\n  background-image: url(\"/about.jpg\");\r\n  .Marquee{\r\n  }\r\n}\r\n</style>\r\n",
+      "start": 1699710598156,
+      "end": 1699710598156,
+      "order": "pre",
+      "sourcemaps": {
+        "version": 3,
+        "mappings": "AAAA",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/About/index.vue"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710598156,
+      "end": 1699710598157,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710598157,
+      "end": 1699710598157,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710598157,
+      "end": 1699710598157,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710598157,
+      "end": 1699710598157,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710598157,
+      "end": 1699710598157,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710598157,
+      "end": 1699710598157,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710598157,
+      "end": 1699710598157,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710598157,
+      "end": 1699710598157,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"F:/workSpace2024/knowledge-nuxt3/components/Home/About/index.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"F:/workSpace2024/knowledge-nuxt3/components/Home/About/index.vue?vue&type=script&setup=true&lang.ts\";\nimport \"F:/workSpace2024/knowledge-nuxt3/components/Home/About/index.vue?vue&type=style&index=0&scoped=54fbe222&lang.scss\";\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__scopeId\", \"data-v-54fbe222\"]]);\n",
+      "start": 1699710598157,
+      "end": 1699710598228,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710598228,
+      "end": 1699710598228,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710598229,
+      "end": 1699710598229,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710598229,
+      "end": 1699710598229,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710598229,
+      "end": 1699710598229,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699710598229,
+      "end": 1699710598229,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710598230,
+      "end": 1699710598230,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710598230,
+      "end": 1699710598230,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710598230,
+      "end": 1699710598230,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710598231,
+      "end": 1699710598231,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710598231,
+      "end": 1699710598231,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710598231,
+      "end": 1699710598231,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710598232,
+      "end": 1699710598232,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710598232,
+      "end": 1699710598232,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710598232,
+      "end": 1699710598232,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710598232,
+      "end": 1699710598232,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710598233,
+      "end": 1699710598233,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710598233,
+      "end": 1699710598233,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710598233,
+      "end": 1699710598233,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710598234,
+      "end": 1699710598234,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710598235,
+      "end": 1699710598235,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710598235,
+      "end": 1699710598235,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699710598236,
+      "end": 1699710598236,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710598236,
+      "end": 1699710598236,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699710598236,
+      "end": 1699710598237,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710598237,
+      "end": 1699710598237,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710598237,
+      "end": 1699710598237,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710598238,
+      "end": 1699710598238,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710598238,
+      "end": 1699710598238,
+      "order": "normal"
+    }
+  ]
+}

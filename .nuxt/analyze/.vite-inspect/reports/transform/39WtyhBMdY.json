@@ -4,93 +4,111 @@
     {
       "name": "vite:load-fallback",
       "result": "import { createHead as createClientHead, setHeadInjectionHandler } from \"@unhead/vue\";\nimport { renderDOMHead } from \"@unhead/dom\";\nimport { defineNuxtPlugin, useNuxtApp } from \"#app/nuxt\";\nimport unheadPlugins from \"#build/unhead-plugins.mjs\";\nexport default defineNuxtPlugin({\n  name: \"nuxt:head\",\n  enforce: \"pre\",\n  setup(nuxtApp) {\n    const head = import.meta.server ? nuxtApp.ssrContext.head : createClientHead({\n      plugins: unheadPlugins\n    });\n    setHeadInjectionHandler(\n      // need a fresh instance of the nuxt app to avoid parallel requests interfering with each other\n      () => useNuxtApp().vueApp._context.provides.usehead\n    );\n    nuxtApp.vueApp.use(head);\n    if (import.meta.client) {\n      let pauseDOMUpdates = true;\n      const syncHead = async () => {\n        pauseDOMUpdates = false;\n        await renderDOMHead(head);\n      };\n      head.hooks.hook(\"dom:beforeRender\", (context) => {\n        context.shouldRender = !pauseDOMUpdates;\n      });\n      nuxtApp.hooks.hook(\"page:start\", () => {\n        pauseDOMUpdates = true;\n      });\n      nuxtApp.hooks.hook(\"page:finish\", () => {\n        if (!nuxtApp.isHydrating) {\n          syncHead();\n        }\n      });\n      nuxtApp.hooks.hook(\"app:error\", syncHead);\n      nuxtApp.hooks.hook(\"app:suspense:resolve\", syncHead);\n    }\n  }\n});\n",
-      "start": 1699633498581,
-      "end": 1699633498715,
+      "start": 1699710589696,
+      "end": 1699710589791,
       "sourcemaps": null
     },
     {
+      "name": "unocss:transformers:pre",
+      "start": 1699710589791,
+      "end": 1699710589791,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710589791,
+      "end": 1699710589791,
+      "order": "pre"
+    },
+    {
       "name": "nuxt:layer-aliasing",
-      "start": 1699633498715,
-      "end": 1699633498715,
+      "start": 1699710589791,
+      "end": 1699710589791,
       "order": "pre"
     },
     {
       "name": "nuxt:server-devonly:transform",
-      "start": 1699633498715,
-      "end": 1699633498715,
+      "start": 1699710589791,
+      "end": 1699710589791,
       "order": "pre"
     },
     {
       "name": "nuxt:client-fallback-auto-id",
-      "start": 1699633498715,
-      "end": 1699633498715,
+      "start": 1699710589791,
+      "end": 1699710589791,
       "order": "pre"
     },
     {
       "name": "vite:css",
-      "start": 1699633498715,
-      "end": 1699633498715,
+      "start": 1699710589791,
+      "end": 1699710589791,
       "order": "normal"
     },
     {
       "name": "vite:esbuild",
-      "start": 1699633498715,
-      "end": 1699633498715,
+      "start": 1699710589791,
+      "end": 1699710589791,
       "order": "normal"
     },
     {
       "name": "vite:json",
-      "start": 1699633498715,
-      "end": 1699633498715,
+      "start": 1699710589792,
+      "end": 1699710589792,
       "order": "normal"
     },
     {
       "name": "vite:worker",
-      "start": 1699633498715,
-      "end": 1699633498716,
+      "start": 1699710589792,
+      "end": 1699710589792,
       "order": "normal"
     },
     {
       "name": "vite:vue",
-      "start": 1699633498716,
-      "end": 1699633498716,
+      "start": 1699710589792,
+      "end": 1699710589792,
       "order": "normal"
     },
     {
       "name": "vite:vue-jsx",
-      "start": 1699633498716,
-      "end": 1699633498716,
+      "start": 1699710589792,
+      "end": 1699710589792,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710589792,
+      "end": 1699710589792,
       "order": "normal"
     },
     {
       "name": "replace",
-      "start": 1699633498716,
-      "end": 1699633498716,
+      "start": 1699710589792,
+      "end": 1699710589792,
       "order": "normal"
     },
     {
       "name": "nuxt:remove-plugin-metadata",
-      "start": 1699633498716,
-      "end": 1699633498716,
+      "start": 1699710589792,
+      "end": 1699710589793,
       "order": "normal"
     },
     {
       "name": "nuxt:chunk-error",
-      "start": 1699633498716,
-      "end": 1699633498716,
+      "start": 1699710589793,
+      "end": 1699710589793,
       "order": "normal"
     },
     {
       "name": "nuxt:components:imports",
-      "start": 1699633498716,
-      "end": 1699633498717,
+      "start": 1699710589793,
+      "end": 1699710589793,
       "order": "normal"
     },
     {
       "name": "replace",
       "result": "import { createHead as createClientHead, setHeadInjectionHandler } from \"@unhead/vue\";\nimport { renderDOMHead } from \"@unhead/dom\";\nimport { defineNuxtPlugin, useNuxtApp } from \"#app/nuxt\";\nimport unheadPlugins from \"#build/unhead-plugins.mjs\";\nexport default defineNuxtPlugin({\n  name: \"nuxt:head\",\n  enforce: \"pre\",\n  setup(nuxtApp) {\n    const head = false ? nuxtApp.ssrContext.head : createClientHead({\n      plugins: unheadPlugins\n    });\n    setHeadInjectionHandler(\n      // need a fresh instance of the nuxt app to avoid parallel requests interfering with each other\n      () => useNuxtApp().vueApp._context.provides.usehead\n    );\n    nuxtApp.vueApp.use(head);\n    if (true) {\n      let pauseDOMUpdates = true;\n      const syncHead = async () => {\n        pauseDOMUpdates = false;\n        await renderDOMHead(head);\n      };\n      head.hooks.hook(\"dom:beforeRender\", (context) => {\n        context.shouldRender = !pauseDOMUpdates;\n      });\n      nuxtApp.hooks.hook(\"page:start\", () => {\n        pauseDOMUpdates = true;\n      });\n      nuxtApp.hooks.hook(\"page:finish\", () => {\n        if (!nuxtApp.isHydrating) {\n          syncHead();\n        }\n      });\n      nuxtApp.hooks.hook(\"app:error\", syncHead);\n      nuxtApp.hooks.hook(\"app:suspense:resolve\", syncHead);\n    }\n  }\n});\n",
-      "start": 1699633498717,
-      "end": 1699633498717,
+      "start": 1699710589793,
+      "end": 1699710589793,
       "order": "normal",
       "sourcemaps": {
         "version": 3,
@@ -103,116 +121,128 @@
     },
     {
       "name": "ssr-styles",
-      "start": 1699633498717,
-      "end": 1699633498717,
+      "start": 1699710589793,
+      "end": 1699710589793,
       "order": "normal"
     },
     {
       "name": "vite:define",
-      "start": 1699633498717,
-      "end": 1699633498717,
+      "start": 1699710589793,
+      "end": 1699710589793,
       "order": "normal"
     },
     {
       "name": "vite:css-post",
-      "start": 1699633498717,
-      "end": 1699633498717,
+      "start": 1699710589793,
+      "end": 1699710589793,
       "order": "normal"
     },
     {
       "name": "vite:build-html",
-      "start": 1699633498717,
-      "end": 1699633498717,
+      "start": 1699710589793,
+      "end": 1699710589793,
       "order": "normal"
     },
     {
       "name": "vite:worker-import-meta-url",
-      "start": 1699633498717,
-      "end": 1699633498717,
+      "start": 1699710589793,
+      "end": 1699710589793,
       "order": "normal"
     },
     {
       "name": "vite:asset-import-meta-url",
-      "start": 1699633498717,
-      "end": 1699633498717,
+      "start": 1699710589793,
+      "end": 1699710589793,
       "order": "normal"
     },
     {
       "name": "commonjs",
-      "start": 1699633498717,
-      "end": 1699633498717,
+      "start": 1699710589793,
+      "end": 1699710589794,
       "order": "normal"
     },
     {
       "name": "vite:dynamic-import-vars",
-      "start": 1699633498717,
-      "end": 1699633498717,
+      "start": 1699710589794,
+      "end": 1699710589794,
       "order": "normal"
     },
     {
       "name": "vite:import-glob",
-      "start": 1699633498717,
-      "end": 1699633498717,
+      "start": 1699710589794,
+      "end": 1699710589794,
       "order": "normal"
     },
     {
+      "name": "unocss:transformers:post",
+      "start": 1699710589794,
+      "end": 1699710589794,
+      "order": "post"
+    },
+    {
       "name": "nuxt:composable-keys",
-      "start": 1699633498717,
-      "end": 1699633498717,
+      "start": 1699710589794,
+      "end": 1699710589794,
       "order": "post"
     },
     {
       "name": "nuxt:imports-transform",
-      "start": 1699633498717,
-      "end": 1699633498717,
+      "start": 1699710589794,
+      "end": 1699710589794,
       "order": "post"
     },
     {
       "name": "unctx:transform",
-      "start": 1699633498718,
-      "end": 1699633498718,
+      "start": 1699710589794,
+      "end": 1699710589795,
       "order": "post"
     },
     {
       "name": "nuxt:pages-macros-transform",
-      "start": 1699633498718,
-      "end": 1699633498718,
+      "start": 1699710589795,
+      "end": 1699710589795,
       "order": "post"
     },
     {
       "name": "nuxt:runtime-paths-dep",
-      "start": 1699633498718,
-      "end": 1699633498718,
+      "start": 1699710589795,
+      "end": 1699710589795,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710589795,
+      "end": 1699710589795,
       "order": "post"
     },
     {
       "name": "nuxt:route-injection-plugin",
-      "start": 1699633498718,
-      "end": 1699633498718,
+      "start": 1699710589795,
+      "end": 1699710589795,
       "order": "post"
     },
     {
       "name": "nuxt:components-loader",
-      "start": 1699633498718,
-      "end": 1699633498719,
+      "start": 1699710589795,
+      "end": 1699710589795,
       "order": "post"
     },
     {
       "name": "nuxt:tree-shake-composables:transform",
-      "start": 1699633498719,
-      "end": 1699633498719,
+      "start": 1699710589795,
+      "end": 1699710589795,
       "order": "post"
     },
     {
       "name": "vite:build-import-analysis",
-      "start": 1699633498719,
-      "end": 1699633498719,
+      "start": 1699710589795,
+      "end": 1699710589795,
       "order": "normal"
     },
     {
       "name": "vite:reporter",
-      "start": 1699633498719,
-      "end": 1699633498719,
+      "start": 1699710589795,
+      "end": 1699710589795,
       "order": "normal"
     }
   ]

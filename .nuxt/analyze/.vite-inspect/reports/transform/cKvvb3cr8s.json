@@ -1,0 +1,240 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/element-plus/es/components/table-v2/src/renderers/header-cell.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { createVNode, mergeProps } from 'vue';\nimport '../components/index.mjs';\nimport { oppositeOrderMap, SortOrder, Alignment } from '../constants.mjs';\nimport { placeholderSign } from '../private.mjs';\nimport { enforceUnit, componentToSlot, tryCall } from '../utils.mjs';\nimport HeaderCell from '../components/header-cell.mjs';\nimport SortIcon from '../components/sort-icon.mjs';\n\nconst HeaderCellRenderer = (props, {\n  slots\n}) => {\n  const {\n    column,\n    ns,\n    style,\n    onColumnSorted\n  } = props;\n  const cellStyle = enforceUnit(style);\n  if (column.placeholderSign === placeholderSign) {\n    return createVNode(\"div\", {\n      \"class\": ns.em(\"header-row-cell\", \"placeholder\"),\n      \"style\": cellStyle\n    }, null);\n  }\n  const {\n    headerCellRenderer,\n    headerClass,\n    sortable\n  } = column;\n  const cellProps = {\n    ...props,\n    class: ns.e(\"header-cell-text\")\n  };\n  const cellRenderer = componentToSlot(headerCellRenderer) || slots.default || ((props2) => createVNode(HeaderCell, props2, null));\n  const Cell = cellRenderer(cellProps);\n  const {\n    sortBy,\n    sortState,\n    headerCellProps\n  } = props;\n  let sorting, sortOrder;\n  if (sortState) {\n    const order = sortState[column.key];\n    sorting = Boolean(oppositeOrderMap[order]);\n    sortOrder = sorting ? order : SortOrder.ASC;\n  } else {\n    sorting = column.key === sortBy.key;\n    sortOrder = sorting ? sortBy.order : SortOrder.ASC;\n  }\n  const cellKls = [ns.e(\"header-cell\"), tryCall(headerClass, props, \"\"), column.align === Alignment.CENTER && ns.is(\"align-center\"), column.align === Alignment.RIGHT && ns.is(\"align-right\"), sortable && ns.is(\"sortable\")];\n  const cellWrapperProps = {\n    ...tryCall(headerCellProps, props),\n    onClick: column.sortable ? onColumnSorted : void 0,\n    class: cellKls,\n    style: cellStyle,\n    [\"data-key\"]: column.key\n  };\n  return createVNode(\"div\", mergeProps(cellWrapperProps, {\n    \"role\": \"columnheader\"\n  }), [Cell, sortable && createVNode(SortIcon, {\n    \"class\": [ns.e(\"sort-icon\"), sorting && ns.is(\"sorting\")],\n    \"sortOrder\": sortOrder\n  }, null)]);\n};\n\nexport { HeaderCellRenderer as default };\n//# sourceMappingURL=header-cell.mjs.map\n",
+      "start": 1699710594999,
+      "end": 1699710595214,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710595214,
+      "end": 1699710595214,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710595214,
+      "end": 1699710595214,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710595214,
+      "end": 1699710595214,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710595214,
+      "end": 1699710595214,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710595214,
+      "end": 1699710595214,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710595215,
+      "end": 1699710595215,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710595215,
+      "end": 1699710595215,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710595215,
+      "end": 1699710595215,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710595215,
+      "end": 1699710595215,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699710595215,
+      "end": 1699710595215,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710595215,
+      "end": 1699710595215,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710595215,
+      "end": 1699710595215,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710595215,
+      "end": 1699710595215,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710595215,
+      "end": 1699710595215,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699710595215,
+      "end": 1699710595215,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710595215,
+      "end": 1699710595215,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710595215,
+      "end": 1699710595215,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710595215,
+      "end": 1699710595216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710595216,
+      "end": 1699710595216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710595216,
+      "end": 1699710595217,
+      "order": "normal"
+    }
+  ]
+}

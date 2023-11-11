@@ -1,0 +1,240 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/element-plus/es/components/checkbox/src/composables/use-checkbox-event.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { inject, getCurrentInstance, nextTick, computed, watch } from 'vue';\nimport '../../../form/index.mjs';\nimport '../../../../utils/index.mjs';\nimport { checkboxGroupContextKey } from '../constants.mjs';\nimport { useFormItem } from '../../../form/src/hooks/use-form-item.mjs';\nimport { debugWarn } from '../../../../utils/error.mjs';\n\nconst useCheckboxEvent = (props, {\n  model,\n  isLimitExceeded,\n  hasOwnLabel,\n  isDisabled,\n  isLabeledByFormItem\n}) => {\n  const checkboxGroup = inject(checkboxGroupContextKey, void 0);\n  const { formItem } = useFormItem();\n  const { emit } = getCurrentInstance();\n  function getLabeledValue(value) {\n    var _a, _b;\n    return value === props.trueLabel || value === true ? (_a = props.trueLabel) != null ? _a : true : (_b = props.falseLabel) != null ? _b : false;\n  }\n  function emitChangeEvent(checked, e) {\n    emit(\"change\", getLabeledValue(checked), e);\n  }\n  function handleChange(e) {\n    if (isLimitExceeded.value)\n      return;\n    const target = e.target;\n    emit(\"change\", getLabeledValue(target.checked), e);\n  }\n  async function onClickRoot(e) {\n    if (isLimitExceeded.value)\n      return;\n    if (!hasOwnLabel.value && !isDisabled.value && isLabeledByFormItem.value) {\n      const eventTargets = e.composedPath();\n      const hasLabel = eventTargets.some((item) => item.tagName === \"LABEL\");\n      if (!hasLabel) {\n        model.value = getLabeledValue([false, props.falseLabel].includes(model.value));\n        await nextTick();\n        emitChangeEvent(model.value, e);\n      }\n    }\n  }\n  const validateEvent = computed(() => (checkboxGroup == null ? void 0 : checkboxGroup.validateEvent) || props.validateEvent);\n  watch(() => props.modelValue, () => {\n    if (validateEvent.value) {\n      formItem == null ? void 0 : formItem.validate(\"change\").catch((err) => debugWarn(err));\n    }\n  });\n  return {\n    handleChange,\n    onClickRoot\n  };\n};\n\nexport { useCheckboxEvent };\n//# sourceMappingURL=use-checkbox-event.mjs.map\n",
+      "start": 1699710598021,
+      "end": 1699710598167,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710598168,
+      "end": 1699710598168,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710598168,
+      "end": 1699710598168,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710598168,
+      "end": 1699710598168,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710598168,
+      "end": 1699710598168,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710598168,
+      "end": 1699710598168,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710598168,
+      "end": 1699710598168,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710598168,
+      "end": 1699710598168,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710598169,
+      "end": 1699710598169,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710598170,
+      "end": 1699710598170,
+      "order": "normal"
+    }
+  ]
+}

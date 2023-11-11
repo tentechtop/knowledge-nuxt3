@@ -1,0 +1,252 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/components/Home/Business/index.vue?vue&type=script&setup=true&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref, resolveComponent as _resolveComponent, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, createElementVNode as _createElementVNode, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-3973ac42\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = {\n  ref: \"rootRef\",\n  class: \"business full grid grid-cols-12 items-center justify-center\"\n}\nconst _hoisted_2 = { class: \"col-span-10 col-start-2 md:col-span-8 md:col-start-3 grid grid-cols-12 gap-x-6\" }\n\nimport { MITT_KEY_ENUM } from '@/enums/mittEnum'\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'index',\n  setup(__props) {\n\r\n// const rootRef = ref<HTMLElement | null>(null)\r\n// defineExpose({ $el: rootRef })\r\nconst cardList = [\r\n  {\r\n    color: '#2ecc71',\r\n    icon: 'i-carbon-car-front',\r\n    name: '汽车制造',\r\n    text: '发动机技术|车身结构设计|悬挂系统|新能源技术',\r\n    link: '/docs/nav/frontEndCollect',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n  {\r\n    color: '#8e44ad',\r\n    icon: 'i-carbon-mobility-services',\r\n    name: '汽车服务',\r\n    text: '保养服务|维修服务|保险服务|道路救援服务',\r\n    link: '/docs/nav/frontEndCommon',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n  {\r\n    color: '#d35400',\r\n    icon: 'i-carbon-ibm-z-cloud-mod-stack',\r\n    name: '二手汽车销售',\r\n    text: '车辆评估|车辆展示|车辆交易|贷款服务|过户服务|售后服务',\r\n    link: '/docs/tools/docker',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  }, {\r\n    color: '#c0392b',\r\n    icon: 'i-carbon-airline-passenger-care',\r\n    name: '高级定制化',\r\n    text: '外观定制|内饰定制|功能定制|独特定制',\r\n    link: '/docs/nav/document',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n]\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_Mask = _resolveComponent(\"Mask\")!\n  const _component_Card = _resolveComponent(\"Card\")!\n\n  return (_openBlock(), _createElementBlock(_Fragment, null, [\n    _createVNode(_component_Mask, {\n      \"event-key\": _unref(MITT_KEY_ENUM).CHANGE_TO_BUSINESS\n    }, null, 8, [\"event-key\"]),\n    _createElementVNode(\"div\", _hoisted_1, [\n      _createElementVNode(\"div\", _hoisted_2, [\n        (_openBlock(), _createElementBlock(_Fragment, null, _renderList(cardList, (item, index) => {\n          return _createVNode(_component_Card, {\n            key: index,\n            class: \"col-span-6 md:col-span-3\",\n            name: item.name,\n            text: item.text,\n            icon: item.icon,\n            color: item.color,\n            link: item.link,\n            \"event-key\": item.eventKey,\n            delay: (index + 1) * 200\n          }, null, 8, [\"name\", \"text\", \"icon\", \"color\", \"link\", \"event-key\", \"delay\"])\n        }), 64))\n      ])\n    ], 512)\n  ], 64))\n}\n}\n\n})",
+      "start": 1699710600661,
+      "end": 1699710600662
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710600662,
+      "end": 1699710600662,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710600662,
+      "end": 1699710600662,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710600662,
+      "end": 1699710600662,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710600663,
+      "end": 1699710600663,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710600663,
+      "end": 1699710600663,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710600663,
+      "end": 1699710600663,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, resolveComponent as _resolveComponent, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, createElementVNode as _createElementVNode, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\";\nconst _withScopeId = (n) => (_pushScopeId(\"data-v-3973ac42\"), n = n(), _popScopeId(), n);\nconst _hoisted_1 = {\n  ref: \"rootRef\",\n  class: \"business full grid grid-cols-12 items-center justify-center\"\n};\nconst _hoisted_2 = { class: \"col-span-10 col-start-2 md:col-span-8 md:col-start-3 grid grid-cols-12 gap-x-6\" };\nimport { MITT_KEY_ENUM } from \"@/enums/mittEnum\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"index\",\n  setup(__props) {\n    const cardList = [\n      {\n        color: \"#2ecc71\",\n        icon: \"i-carbon-car-front\",\n        name: \"汽车制造\",\n        text: \"发动机技术|车身结构设计|悬挂系统|新能源技术\",\n        link: \"/docs/nav/frontEndCollect\",\n        eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS\n      },\n      {\n        color: \"#8e44ad\",\n        icon: \"i-carbon-mobility-services\",\n        name: \"汽车服务\",\n        text: \"保养服务|维修服务|保险服务|道路救援服务\",\n        link: \"/docs/nav/frontEndCommon\",\n        eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS\n      },\n      {\n        color: \"#d35400\",\n        icon: \"i-carbon-ibm-z-cloud-mod-stack\",\n        name: \"二手汽车销售\",\n        text: \"车辆评估|车辆展示|车辆交易|贷款服务|过户服务|售后服务\",\n        link: \"/docs/tools/docker\",\n        eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS\n      },\n      {\n        color: \"#c0392b\",\n        icon: \"i-carbon-airline-passenger-care\",\n        name: \"高级定制化\",\n        text: \"外观定制|内饰定制|功能定制|独特定制\",\n        link: \"/docs/nav/document\",\n        eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS\n      }\n    ];\n    return (_ctx, _cache) => {\n      const _component_Mask = _resolveComponent(\"Mask\");\n      const _component_Card = _resolveComponent(\"Card\");\n      return _openBlock(), _createElementBlock(_Fragment, null, [\n        _createVNode(_component_Mask, {\n          \"event-key\": _unref(MITT_KEY_ENUM).CHANGE_TO_BUSINESS\n        }, null, 8, [\"event-key\"]),\n        _createElementVNode(\"div\", _hoisted_1, [\n          _createElementVNode(\"div\", _hoisted_2, [\n            (_openBlock(), _createElementBlock(_Fragment, null, _renderList(cardList, (item, index) => {\n              return _createVNode(_component_Card, {\n                key: index,\n                class: \"col-span-6 md:col-span-3\",\n                name: item.name,\n                text: item.text,\n                icon: item.icon,\n                color: item.color,\n                link: item.link,\n                \"event-key\": item.eventKey,\n                delay: (index + 1) * 200\n              }, null, 8, [\"name\", \"text\", \"icon\", \"color\", \"link\", \"event-key\", \"delay\"]);\n            }), 64))\n          ])\n        ], 512)\n      ], 64);\n    };\n  }\n});\n",
+      "start": 1699710600663,
+      "end": 1699710600823,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/Business/index.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref, resolveComponent as _resolveComponent, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, createElementVNode as _createElementVNode, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-3973ac42\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = {\n  ref: \"rootRef\",\n  class: \"business full grid grid-cols-12 items-center justify-center\"\n}\nconst _hoisted_2 = { class: \"col-span-10 col-start-2 md:col-span-8 md:col-start-3 grid grid-cols-12 gap-x-6\" }\n\nimport { MITT_KEY_ENUM } from '@/enums/mittEnum'\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'index',\n  setup(__props) {\n\r\n// const rootRef = ref<HTMLElement | null>(null)\r\n// defineExpose({ $el: rootRef })\r\nconst cardList = [\r\n  {\r\n    color: '#2ecc71',\r\n    icon: 'i-carbon-car-front',\r\n    name: '汽车制造',\r\n    text: '发动机技术|车身结构设计|悬挂系统|新能源技术',\r\n    link: '/docs/nav/frontEndCollect',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n  {\r\n    color: '#8e44ad',\r\n    icon: 'i-carbon-mobility-services',\r\n    name: '汽车服务',\r\n    text: '保养服务|维修服务|保险服务|道路救援服务',\r\n    link: '/docs/nav/frontEndCommon',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n  {\r\n    color: '#d35400',\r\n    icon: 'i-carbon-ibm-z-cloud-mod-stack',\r\n    name: '二手汽车销售',\r\n    text: '车辆评估|车辆展示|车辆交易|贷款服务|过户服务|售后服务',\r\n    link: '/docs/tools/docker',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  }, {\r\n    color: '#c0392b',\r\n    icon: 'i-carbon-airline-passenger-care',\r\n    name: '高级定制化',\r\n    text: '外观定制|内饰定制|功能定制|独特定制',\r\n    link: '/docs/nav/document',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n]\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_Mask = _resolveComponent(\"Mask\")!\n  const _component_Card = _resolveComponent(\"Card\")!\n\n  return (_openBlock(), _createElementBlock(_Fragment, null, [\n    _createVNode(_component_Mask, {\n      \"event-key\": _unref(MITT_KEY_ENUM).CHANGE_TO_BUSINESS\n    }, null, 8, [\"event-key\"]),\n    _createElementVNode(\"div\", _hoisted_1, [\n      _createElementVNode(\"div\", _hoisted_2, [\n        (_openBlock(), _createElementBlock(_Fragment, null, _renderList(cardList, (item, index) => {\n          return _createVNode(_component_Card, {\n            key: index,\n            class: \"col-span-6 md:col-span-3\",\n            name: item.name,\n            text: item.text,\n            icon: item.icon,\n            color: item.color,\n            link: item.link,\n            \"event-key\": item.eventKey,\n            delay: (index + 1) * 200\n          }, null, 8, [\"name\", \"text\", \"icon\", \"color\", \"link\", \"event-key\", \"delay\"])\n        }), 64))\n      ])\n    ], 512)\n  ], 64))\n}\n}\n\n})"
+        ],
+        "mappings": "AAAA,SAAS,mBAAmB,wBAAwB;AACpD,SAAS,SAAS,QAAQ,oBAAoB,mBAAmB,eAAe,cAAc,cAAc,aAAa,YAAY,WAAW,aAAa,YAAY,sBAAsB,qBAAqB,sBAAsB,qBAAqB,eAAe,cAAc,cAAc,mBAAmB;AAE7T,MAAM,eAAe,QAAM,aAAa,iBAAiB,GAAE,IAAE,EAAE,GAAE,YAAY,GAAE;AAC/E,MAAM,aAAa;AAAA,EACjB,KAAK;AAAA,EACL,OAAO;AACT;AACA,MAAM,aAAa,EAAE,OAAO,iFAAiF;AAE7G,SAAS,qBAAqB;AAG9B,eAA4B,iCAAiB;AAAA,EAC3C,QAAQ;AAAA,EACR,MAAM,SAAS;AAIjB,UAAM,WAAW;AAAA,MACf;AAAA,QACE,OAAO;AAAA,QACP,MAAM;AAAA,QACN,MAAM;AAAA,QACN,MAAM;AAAA,QACN,MAAM;AAAA,QACN,UAAU,cAAc;AAAA,MAC1B;AAAA,MACA;AAAA,QACE,OAAO;AAAA,QACP,MAAM;AAAA,QACN,MAAM;AAAA,QACN,MAAM;AAAA,QACN,MAAM;AAAA,QACN,UAAU,cAAc;AAAA,MAC1B;AAAA,MACA;AAAA,QACE,OAAO;AAAA,QACP,MAAM;AAAA,QACN,MAAM;AAAA,QACN,MAAM;AAAA,QACN,MAAM;AAAA,QACN,UAAU,cAAc;AAAA,MAC1B;AAAA,MAAG;AAAA,QACD,OAAO;AAAA,QACP,MAAM;AAAA,QACN,MAAM;AAAA,QACN,MAAM;AAAA,QACN,MAAM;AAAA,QACN,UAAU,cAAc;AAAA,MAC1B;AAAA,IACF;AAEA,WAAO,CAAC,MAAU,WAAgB;AAChC,YAAM,kBAAkB,kBAAkB,MAAM;AAChD,YAAM,kBAAkB,kBAAkB,MAAM;AAEhD,aAAQ,WAAW,GAAG,oBAAoB,WAAW,MAAM;AAAA,QACzD,aAAa,iBAAiB;AAAA,UAC5B,aAAa,OAAO,aAAa,EAAE;AAAA,QACrC,GAAG,MAAM,GAAG,CAAC,WAAW,CAAC;AAAA,QACzB,oBAAoB,OAAO,YAAY;AAAA,UACrC,oBAAoB,OAAO,YAAY;AAAA,aACpC,WAAW,GAAG,oBAAoB,WAAW,MAAM,YAAY,UAAU,CAAC,MAAM,UAAU;AACzF,qBAAO,aAAa,iBAAiB;AAAA,gBACnC,KAAK;AAAA,gBACL,OAAO;AAAA,gBACP,MAAM,KAAK;AAAA,gBACX,MAAM,KAAK;AAAA,gBACX,MAAM,KAAK;AAAA,gBACX,OAAO,KAAK;AAAA,gBACZ,MAAM,KAAK;AAAA,gBACX,aAAa,KAAK;AAAA,gBAClB,QAAQ,QAAQ,KAAK;AAAA,cACvB,GAAG,MAAM,GAAG,CAAC,QAAQ,QAAQ,QAAQ,SAAS,QAAQ,aAAa,OAAO,CAAC;AAAA,YAC7E,CAAC,GAAG,EAAE;AAAA,UACR,CAAC;AAAA,QACH,GAAG,GAAG;AAAA,MACR,GAAG,EAAE;AAAA,IACP;AAAA,EACA;AAEA,CAAC;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710600824,
+      "end": 1699710600824,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710600824,
+      "end": 1699710600824,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699710600824,
+      "end": 1699710600824,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710600824,
+      "end": 1699710600824,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710600825,
+      "end": 1699710600825,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710600825,
+      "end": 1699710600825,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710600825,
+      "end": 1699710600825,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699710600825,
+      "end": 1699710600826,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710600826,
+      "end": 1699710600826,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710600826,
+      "end": 1699710600826,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710600826,
+      "end": 1699710600826,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710600827,
+      "end": 1699710600827,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710600827,
+      "end": 1699710600827,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710600827,
+      "end": 1699710600827,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710600827,
+      "end": 1699710600827,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710600828,
+      "end": 1699710600828,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710600828,
+      "end": 1699710600828,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710600828,
+      "end": 1699710600828,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710600828,
+      "end": 1699710600828,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710600829,
+      "end": 1699710600829,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710600829,
+      "end": 1699710600829,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710600829,
+      "end": 1699710600832,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710600833,
+      "end": 1699710600833,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710600833,
+      "end": 1699710600833,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699710600833,
+      "end": 1699710600833,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710600834,
+      "end": 1699710600834,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699710600834,
+      "end": 1699710600834,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "result": "import { default as __nuxt_component_0 } from \"F:/workSpace2024/knowledge-nuxt3/components/Mask.vue\";\nimport { default as __nuxt_component_1 } from \"F:/workSpace2024/knowledge-nuxt3/components/Card.vue\";\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, resolveComponent as _resolveComponent, createVNode as _createVNode, renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, createElementVNode as _createElementVNode, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\";\nconst _withScopeId = (n) => (_pushScopeId(\"data-v-3973ac42\"), n = n(), _popScopeId(), n);\nconst _hoisted_1 = {\n  ref: \"rootRef\",\n  class: \"business full grid grid-cols-12 items-center justify-center\"\n};\nconst _hoisted_2 = { class: \"col-span-10 col-start-2 md:col-span-8 md:col-start-3 grid grid-cols-12 gap-x-6\" };\nimport { MITT_KEY_ENUM } from \"@/enums/mittEnum\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"index\",\n  setup(__props) {\n    const cardList = [\n      {\n        color: \"#2ecc71\",\n        icon: \"i-carbon-car-front\",\n        name: \"汽车制造\",\n        text: \"发动机技术|车身结构设计|悬挂系统|新能源技术\",\n        link: \"/docs/nav/frontEndCollect\",\n        eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS\n      },\n      {\n        color: \"#8e44ad\",\n        icon: \"i-carbon-mobility-services\",\n        name: \"汽车服务\",\n        text: \"保养服务|维修服务|保险服务|道路救援服务\",\n        link: \"/docs/nav/frontEndCommon\",\n        eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS\n      },\n      {\n        color: \"#d35400\",\n        icon: \"i-carbon-ibm-z-cloud-mod-stack\",\n        name: \"二手汽车销售\",\n        text: \"车辆评估|车辆展示|车辆交易|贷款服务|过户服务|售后服务\",\n        link: \"/docs/tools/docker\",\n        eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS\n      },\n      {\n        color: \"#c0392b\",\n        icon: \"i-carbon-airline-passenger-care\",\n        name: \"高级定制化\",\n        text: \"外观定制|内饰定制|功能定制|独特定制\",\n        link: \"/docs/nav/document\",\n        eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS\n      }\n    ];\n    return (_ctx, _cache) => {\n      const _component_Mask = __nuxt_component_0;\n      const _component_Card = __nuxt_component_1;\n      return _openBlock(), _createElementBlock(_Fragment, null, [\n        _createVNode(_component_Mask, {\n          \"event-key\": _unref(MITT_KEY_ENUM).CHANGE_TO_BUSINESS\n        }, null, 8, [\"event-key\"]),\n        _createElementVNode(\"div\", _hoisted_1, [\n          _createElementVNode(\"div\", _hoisted_2, [\n            (_openBlock(), _createElementBlock(_Fragment, null, _renderList(cardList, (item, index) => {\n              return _createVNode(_component_Card, {\n                key: index,\n                class: \"col-span-6 md:col-span-3\",\n                name: item.name,\n                text: item.text,\n                icon: item.icon,\n                color: item.color,\n                link: item.link,\n                \"event-key\": item.eventKey,\n                delay: (index + 1) * 200\n              }, null, 8, [\"name\", \"text\", \"icon\", \"color\", \"link\", \"event-key\", \"delay\"]);\n            }), 64))\n          ])\n        ], 512)\n      ], 64);\n    };\n  }\n});\n",
+      "start": 1699710600835,
+      "end": 1699710600835,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710600835,
+      "end": 1699710600835,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710600835,
+      "end": 1699710600836,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710600837,
+      "end": 1699710600837,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+import r from"./HeaderCpn.5a9e4a73.js";import{c as t,e as o,i as a,o as n}from"./entry.7fd5626f.js";import"./useHeader.a920990b.js";import"./_plugin-vue_export-helper.c27b6911.js";const u={__name:"default",setup(s){return(e,l)=>(n(),t("main",null,[o(r),a(e.$slots,"default")]))}};export{u as default};

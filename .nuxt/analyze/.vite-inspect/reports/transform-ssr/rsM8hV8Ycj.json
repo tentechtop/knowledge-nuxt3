@@ -1,0 +1,328 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script setup lang=\"ts\">\r\nimport MarqueeCpn from '@/components/Marquee.vue'\r\nimport type Marquee from '~~/components/Marquee.vue'\r\n\r\ntype MarqueeInstance = InstanceType<typeof Marquee>\r\n\r\nconst batteryRef = ref<MarqueeInstance | null>(null)\r\nconst motorRef = ref<MarqueeInstance | null>(null)\r\nconst parkRef = ref<MarqueeInstance | null>(null)\r\n\r\nconst batteryModuleRef = ref<HTMLElement | null>(null)\r\nconst motorModuleRef = ref<HTMLElement | null>(null)\r\nconst parkModuleRef = ref<HTMLElement | null>(null)\r\n\r\nconst { instance: batteryInstance } = useTranslateX(batteryModuleRef, -600, 0, 0, 600)\r\nconst { instance: motorInstance } = useTranslateY(motorModuleRef, -600, 0, 0, 600)\r\nconst { instance: parkInstance } = useTranslateX(parkModuleRef, 600, 0, 0, 600)\r\n\r\nconst { $on, MITT_KEY } = useMitt()\r\n$on(MITT_KEY.CHANGE_TO_TECHNOLOGY, () => {\r\n  batteryRef.value?.append()\r\n  motorRef.value?.append()\r\n  parkRef.value?.append()\r\n\r\n  batteryInstance.value?.restart()\r\n  motorInstance.value?.restart()\r\n  parkInstance.value?.restart()\r\n})\r\n</script>\r\n\r\n<template>\r\n  <!-- 12行 -->\r\n  <div ref=\"rootRef\" class=\"technology full  text-white pt-19 grid grid-rows-12\">\r\n    <!-- 24列 -->\r\n    <div class=\"grid grid-cols-25 h-full row-span-12 mt-6  justify-around md:(row-span-6 row-start-4 mt-0)\">\r\n      <!-- 模块 -->\r\n      <div ref=\"batteryModuleRef\" class=\"card md:!col-start-2\">\r\n        <div class=\"card-title\">\r\n          三元固液混合锂离子电池\r\n        </div>\r\n        <div class=\"card-descript\">\r\n          Battery core technology\r\n        </div>\r\n        <MarqueeCpn\r\n          ref=\"batteryRef\" class=\"card-content\"\r\n          text=\"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp由锂、镍、钴和锰等金属氧化物混合而成的三元材料，具有高能量密度和长循环寿命的特点。而固体电解质层通常由锂离子导电的聚合物或陶瓷材料构成，能够防止电池发生渗漏和爆炸等危险情况\"\r\n        />\r\n      </div>\r\n\r\n      <!-- 模块 -->\r\n      <div ref=\"motorModuleRef\" class=\"card md:!col-start-10\">\r\n        <div class=\"card-title\">\r\n          气门开启的持续期\r\n        </div>\r\n        <div class=\"card-descript\">\r\n          Continuously Variable Valve Duration\r\n        </div>\r\n        <MarqueeCpn\r\n          ref=\"motorRef\" class=\"card-content\"\r\n          text=\"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp CVVD技术是通过改变凸轮触发气门开启的时机与持续时间，从而使发动机提升性能并降低油耗，同时还具备降低排放污染的优势,可以适时根据驾驶场景的需求，在平稳行驶、急加速等过程中合理控制气门开启的时机与持续时间，为发动机提供即时最适合的空燃比，进而实现减排节能和高性能输出的双目标;\"\r\n        />\r\n      </div>\r\n\r\n      <!-- 模块 -->\r\n      <div ref=\"parkModuleRef\" class=\"card md:!col-start-18\">\r\n        <div class=\"card-title\">\r\n          自动泊车\r\n        </div>\r\n        <div class=\"card-descript\">\r\n          Automatic parking\r\n        </div>\r\n        <MarqueeCpn\r\n          ref=\"parkRef\" class=\"card-content\"\r\n          text=\"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp自动泊车系统通过激光雷达、摄像头等多种传感器感知车辆周围的环境，并使用内置的控制算法，生成路线规划，使车辆能够在狭小的空间中进行自主导航和泊车操作;\"\r\n        />\r\n      </div>\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.technology {\r\n  background-image: url(\"/technology.jpg\");\r\n\r\n}\r\n\r\n.card {\r\n  @apply col-span-23 col-start-2 mt-2 text-center font-500 md:(col-span-7 mt-0);\r\n\r\n  &-title {\r\n    @apply text-lg md:text-3xl;\r\n  }\r\n\r\n  &-descript {\r\n    @apply text-primary b-b-2 b-primary text-xl md:(text-2xl leading-16);\r\n  }\r\n\r\n  &-content {\r\n    @apply text-base mt-2 text-left md:text-lg;\r\n  }\r\n}\r\n</style>\r\n",
+      "start": 1699710613398,
+      "end": 1699710613531,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "result": "<script setup lang=\"ts\">\r\nimport MarqueeCpn from '@/components/Marquee.vue'\r\nimport type Marquee from '~~/components/Marquee.vue'\r\n\r\ntype MarqueeInstance = InstanceType<typeof Marquee>\r\n\r\nconst batteryRef = ref<MarqueeInstance | null>(null)\r\nconst motorRef = ref<MarqueeInstance | null>(null)\r\nconst parkRef = ref<MarqueeInstance | null>(null)\r\n\r\nconst batteryModuleRef = ref<HTMLElement | null>(null)\r\nconst motorModuleRef = ref<HTMLElement | null>(null)\r\nconst parkModuleRef = ref<HTMLElement | null>(null)\r\n\r\nconst { instance: batteryInstance } = useTranslateX(batteryModuleRef, -600, 0, 0, 600)\r\nconst { instance: motorInstance } = useTranslateY(motorModuleRef, -600, 0, 0, 600)\r\nconst { instance: parkInstance } = useTranslateX(parkModuleRef, 600, 0, 0, 600)\r\n\r\nconst { $on, MITT_KEY } = useMitt()\r\n$on(MITT_KEY.CHANGE_TO_TECHNOLOGY, () => {\r\n  batteryRef.value?.append()\r\n  motorRef.value?.append()\r\n  parkRef.value?.append()\r\n\r\n  batteryInstance.value?.restart()\r\n  motorInstance.value?.restart()\r\n  parkInstance.value?.restart()\r\n})\r\n</script>\r\n\r\n<template>\r\n  <!-- 12行 -->\r\n  <div ref=\"rootRef\" class=\"technology full  text-white pt-19 grid grid-rows-12\">\r\n    <!-- 24列 -->\r\n    <div class=\"grid grid-cols-25 h-full row-span-12 mt-6  justify-around md:row-span-6 md:row-start-4 md:mt-0\">\r\n      <!-- 模块 -->\r\n      <div ref=\"batteryModuleRef\" class=\"card md:!col-start-2\">\r\n        <div class=\"card-title\">\r\n          三元固液混合锂离子电池\r\n        </div>\r\n        <div class=\"card-descript\">\r\n          Battery core technology\r\n        </div>\r\n        <MarqueeCpn\r\n          ref=\"batteryRef\" class=\"card-content\"\r\n          text=\"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp由锂、镍、钴和锰等金属氧化物混合而成的三元材料，具有高能量密度和长循环寿命的特点。而固体电解质层通常由锂离子导电的聚合物或陶瓷材料构成，能够防止电池发生渗漏和爆炸等危险情况\"\r\n        />\r\n      </div>\r\n\r\n      <!-- 模块 -->\r\n      <div ref=\"motorModuleRef\" class=\"card md:!col-start-10\">\r\n        <div class=\"card-title\">\r\n          气门开启的持续期\r\n        </div>\r\n        <div class=\"card-descript\">\r\n          Continuously Variable Valve Duration\r\n        </div>\r\n        <MarqueeCpn\r\n          ref=\"motorRef\" class=\"card-content\"\r\n          text=\"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp CVVD技术是通过改变凸轮触发气门开启的时机与持续时间，从而使发动机提升性能并降低油耗，同时还具备降低排放污染的优势,可以适时根据驾驶场景的需求，在平稳行驶、急加速等过程中合理控制气门开启的时机与持续时间，为发动机提供即时最适合的空燃比，进而实现减排节能和高性能输出的双目标;\"\r\n        />\r\n      </div>\r\n\r\n      <!-- 模块 -->\r\n      <div ref=\"parkModuleRef\" class=\"card md:!col-start-18\">\r\n        <div class=\"card-title\">\r\n          自动泊车\r\n        </div>\r\n        <div class=\"card-descript\">\r\n          Automatic parking\r\n        </div>\r\n        <MarqueeCpn\r\n          ref=\"parkRef\" class=\"card-content\"\r\n          text=\"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp自动泊车系统通过激光雷达、摄像头等多种传感器感知车辆周围的环境，并使用内置的控制算法，生成路线规划，使车辆能够在狭小的空间中进行自主导航和泊车操作;\"\r\n        />\r\n      </div>\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.technology {\r\n  background-image: url(\"/technology.jpg\");\r\n\r\n}\r\n\r\n.card {\r\n  @apply col-span-23 col-start-2 mt-2 text-center font-500 md:col-span-7 md:mt-0;\r\n\r\n  &-title {\r\n    @apply text-lg md:text-3xl;\r\n  }\r\n\r\n  &-descript {\r\n    @apply text-primary b-b-2 b-primary text-xl md:text-2xl md:leading-16;\r\n  }\r\n\r\n  &-content {\r\n    @apply text-base mt-2 text-left md:text-lg;\r\n  }\r\n}\r\n</style>\r\n",
+      "start": 1699710613532,
+      "end": 1699710613532,
+      "order": "pre",
+      "sourcemaps": {
+        "version": 3,
+        "mappings": "AAAA",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "result": "<script setup lang=\"ts\">\r\nimport MarqueeCpn from '@/components/Marquee.vue'\r\nimport type Marquee from '~~/components/Marquee.vue'\r\n\r\ntype MarqueeInstance = InstanceType<typeof Marquee>\r\n\r\nconst batteryRef = ref<MarqueeInstance | null>(null)\r\nconst motorRef = ref<MarqueeInstance | null>(null)\r\nconst parkRef = ref<MarqueeInstance | null>(null)\r\n\r\nconst batteryModuleRef = ref<HTMLElement | null>(null)\r\nconst motorModuleRef = ref<HTMLElement | null>(null)\r\nconst parkModuleRef = ref<HTMLElement | null>(null)\r\n\r\nconst { instance: batteryInstance } = useTranslateX(batteryModuleRef, -600, 0, 0, 600)\r\nconst { instance: motorInstance } = useTranslateY(motorModuleRef, -600, 0, 0, 600)\r\nconst { instance: parkInstance } = useTranslateX(parkModuleRef, 600, 0, 0, 600)\r\n\r\nconst { $on, MITT_KEY } = useMitt()\r\n$on(MITT_KEY.CHANGE_TO_TECHNOLOGY, () => {\r\n  batteryRef.value?.append()\r\n  motorRef.value?.append()\r\n  parkRef.value?.append()\r\n\r\n  batteryInstance.value?.restart()\r\n  motorInstance.value?.restart()\r\n  parkInstance.value?.restart()\r\n})\r\n</script>\r\n\r\n<template>\r\n  <!-- 12行 -->\r\n  <div ref=\"rootRef\" class=\"technology full  text-white pt-19 grid grid-rows-12\">\r\n    <!-- 24列 -->\r\n    <div class=\"grid grid-cols-25 h-full row-span-12 mt-6  justify-around md:row-span-6 md:row-start-4 md:mt-0\">\r\n      <!-- 模块 -->\r\n      <div ref=\"batteryModuleRef\" class=\"card md:!col-start-2\">\r\n        <div class=\"card-title\">\r\n          三元固液混合锂离子电池\r\n        </div>\r\n        <div class=\"card-descript\">\r\n          Battery core technology\r\n        </div>\r\n        <MarqueeCpn\r\n          ref=\"batteryRef\" class=\"card-content\"\r\n          text=\"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp由锂、镍、钴和锰等金属氧化物混合而成的三元材料，具有高能量密度和长循环寿命的特点。而固体电解质层通常由锂离子导电的聚合物或陶瓷材料构成，能够防止电池发生渗漏和爆炸等危险情况\"\r\n        />\r\n      </div>\r\n\r\n      <!-- 模块 -->\r\n      <div ref=\"motorModuleRef\" class=\"card md:!col-start-10\">\r\n        <div class=\"card-title\">\r\n          气门开启的持续期\r\n        </div>\r\n        <div class=\"card-descript\">\r\n          Continuously Variable Valve Duration\r\n        </div>\r\n        <MarqueeCpn\r\n          ref=\"motorRef\" class=\"card-content\"\r\n          text=\"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp CVVD技术是通过改变凸轮触发气门开启的时机与持续时间，从而使发动机提升性能并降低油耗，同时还具备降低排放污染的优势,可以适时根据驾驶场景的需求，在平稳行驶、急加速等过程中合理控制气门开启的时机与持续时间，为发动机提供即时最适合的空燃比，进而实现减排节能和高性能输出的双目标;\"\r\n        />\r\n      </div>\r\n\r\n      <!-- 模块 -->\r\n      <div ref=\"parkModuleRef\" class=\"card md:!col-start-18\">\r\n        <div class=\"card-title\">\r\n          自动泊车\r\n        </div>\r\n        <div class=\"card-descript\">\r\n          Automatic parking\r\n        </div>\r\n        <MarqueeCpn\r\n          ref=\"parkRef\" class=\"card-content\"\r\n          text=\"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp自动泊车系统通过激光雷达、摄像头等多种传感器感知车辆周围的环境，并使用内置的控制算法，生成路线规划，使车辆能够在狭小的空间中进行自主导航和泊车操作;\"\r\n        />\r\n      </div>\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.technology {\r\n  background-image: url(\"/technology.jpg\");\r\n\r\n}\r\n\r\n.card {\r\n  @apply col-span-23 col-start-2 mt-2 text-center font-500 md:col-span-7 md:mt-0;\r\n\r\n  &-title {\r\n    @apply text-lg md:text-3xl;\r\n  }\r\n\r\n  &-descript {\r\n    @apply text-primary b-b-2 b-primary text-xl md:text-2xl md:leading-16;\r\n  }\r\n\r\n  &-content {\r\n    @apply text-base mt-2 text-left md:text-lg;\r\n  }\r\n}\r\n</style>\r\n",
+      "start": 1699710613532,
+      "end": 1699710613532,
+      "order": "pre",
+      "sourcemaps": {
+        "version": 3,
+        "mappings": "AAAA",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710613532,
+      "end": 1699710613533,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710613532,
+      "end": 1699710613533,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710613533,
+      "end": 1699710613533,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710613533,
+      "end": 1699710613533,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710613533,
+      "end": 1699710613533,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710613533,
+      "end": 1699710613533,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710613533,
+      "end": 1699710613533,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710613533,
+      "end": 1699710613533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710613533,
+      "end": 1699710613533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710613533,
+      "end": 1699710613533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710613533,
+      "end": 1699710613533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue?vue&type=script&setup=true&lang.ts\";\nimport \"F:/workSpace2024/knowledge-nuxt3/components/Home/Technology/index.vue?vue&type=style&index=0&scoped=c4f7ba6f&lang.scss\";\nimport { useSSRContext as __vite_useSSRContext } from \"vue\";\nconst _sfc_setup = _sfc_main.setup;\n_sfc_main.setup = (props, ctx) => {\n  const ssrContext = __vite_useSSRContext();\n  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add(\"components/Home/Technology/index.vue\");\n  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;\n};\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__scopeId\", \"data-v-c4f7ba6f\"]]);\n",
+      "start": 1699710613533,
+      "end": 1699710613568,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710613568,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "post"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710613569,
+      "end": 1699710613569,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710613569,
+      "end": 1699710613570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710613570,
+      "end": 1699710613570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710613570,
+      "end": 1699710613570,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710613570,
+      "end": 1699710613570,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710613570,
+      "end": 1699710613570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710613570,
+      "end": 1699710613570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710613570,
+      "end": 1699710613570,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710613570,
+      "end": 1699710613570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1699710613570,
+      "end": 1699710613572,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710613572,
+      "end": 1699710613572,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710613572,
+      "end": 1699710613572,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710613572,
+      "end": 1699710613572,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710613572,
+      "end": 1699710613572,
+      "order": "normal"
+    }
+  ]
+}

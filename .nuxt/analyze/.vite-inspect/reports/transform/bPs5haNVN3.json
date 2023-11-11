@@ -1,0 +1,253 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/pages/[...all].vue?macro=true",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script setup lang=\"ts\">\r\nconst router = useRouter()\r\n</script>\r\n\r\n<template>\r\n  <main p=\"x4 y10\" text=\"center teal-700 dark:gray-200\">\r\n    <div text-4xl>\r\n      <div i-carbon-warning inline-block />\r\n    </div>\r\n    <div>Not found</div>\r\n    <div>\r\n      <button btn text-sm m=\"3 t8\" @click=\"router.back()\">\r\n        Back\r\n      </button>\r\n    </div>\r\n  </main>\r\n</template>\r\n",
+      "start": 1699710590604,
+      "end": 1699710590886,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710590886,
+      "end": 1699710590886,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710590886,
+      "end": 1699710590886,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710590886,
+      "end": 1699710590886,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710590886,
+      "end": 1699710590887,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710590887,
+      "end": 1699710590887,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710590887,
+      "end": 1699710590887,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710590887,
+      "end": 1699710590887,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710590887,
+      "end": 1699710590887,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710590887,
+      "end": 1699710590887,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"F:/workSpace2024/knowledge-nuxt3/pages/[...all].vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"F:/workSpace2024/knowledge-nuxt3/pages/[...all].vue?vue&type=script&setup=true&lang.ts\";\nexport default _sfc_main;\n",
+      "start": 1699710590887,
+      "end": 1699710591541,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710591541,
+      "end": 1699710591541,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710591541,
+      "end": 1699710591541,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710591541,
+      "end": 1699710591541,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710591541,
+      "end": 1699710591541,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699710591541,
+      "end": 1699710591541,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710591542,
+      "end": 1699710591542,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710591542,
+      "end": 1699710591543,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710591543,
+      "end": 1699710591543,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "result": "export { default } from \"F:/workSpace2024/knowledge-nuxt3/pages/[...all].vue?macro=true&vue&type=script&setup=true&lang.ts\"",
+      "start": 1699710591543,
+      "end": 1699710591543,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "AAAA"
+      }
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699710591543,
+      "end": 1699710591543,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710591543,
+      "end": 1699710591543,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699710591543,
+      "end": 1699710591544,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710591544,
+      "end": 1699710591544,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710591544,
+      "end": 1699710591544,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710591544,
+      "end": 1699710591544,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710591544,
+      "end": 1699710591544,
+      "order": "normal"
+    }
+  ]
+}

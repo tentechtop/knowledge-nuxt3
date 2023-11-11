@@ -1,0 +1,1 @@
+import{_ as t}from"./_plugin-vue_export-helper.c27b6911.js";import{c as o,i as r,o as s}from"./entry.7fd5626f.js";const c={},n={class:"py-20 px-10 text-center"};function a(e,_){return s(),o("main",n,[r(e.$slots,"default")])}const m=t(c,[["render",a]]);export{m as default};

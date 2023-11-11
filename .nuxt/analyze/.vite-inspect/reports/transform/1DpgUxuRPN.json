@@ -1,0 +1,240 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/swiper/modules/keyboard/keyboard.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/* eslint-disable consistent-return */\nimport { getWindow, getDocument } from 'ssr-window';\nimport { elementOffset, elementParents } from '../../shared/utils.js';\nexport default function Keyboard({\n  swiper,\n  extendParams,\n  on,\n  emit\n}) {\n  const document = getDocument();\n  const window = getWindow();\n  swiper.keyboard = {\n    enabled: false\n  };\n  extendParams({\n    keyboard: {\n      enabled: false,\n      onlyInViewport: true,\n      pageUpDown: true\n    }\n  });\n  function handle(event) {\n    if (!swiper.enabled) return;\n    const {\n      rtlTranslate: rtl\n    } = swiper;\n    let e = event;\n    if (e.originalEvent) e = e.originalEvent; // jquery fix\n    const kc = e.keyCode || e.charCode;\n    const pageUpDown = swiper.params.keyboard.pageUpDown;\n    const isPageUp = pageUpDown && kc === 33;\n    const isPageDown = pageUpDown && kc === 34;\n    const isArrowLeft = kc === 37;\n    const isArrowRight = kc === 39;\n    const isArrowUp = kc === 38;\n    const isArrowDown = kc === 40;\n    // Directions locks\n    if (!swiper.allowSlideNext && (swiper.isHorizontal() && isArrowRight || swiper.isVertical() && isArrowDown || isPageDown)) {\n      return false;\n    }\n    if (!swiper.allowSlidePrev && (swiper.isHorizontal() && isArrowLeft || swiper.isVertical() && isArrowUp || isPageUp)) {\n      return false;\n    }\n    if (e.shiftKey || e.altKey || e.ctrlKey || e.metaKey) {\n      return undefined;\n    }\n    if (document.activeElement && document.activeElement.nodeName && (document.activeElement.nodeName.toLowerCase() === 'input' || document.activeElement.nodeName.toLowerCase() === 'textarea')) {\n      return undefined;\n    }\n    if (swiper.params.keyboard.onlyInViewport && (isPageUp || isPageDown || isArrowLeft || isArrowRight || isArrowUp || isArrowDown)) {\n      let inView = false;\n      // Check that swiper should be inside of visible area of window\n      if (elementParents(swiper.el, `.${swiper.params.slideClass}, swiper-slide`).length > 0 && elementParents(swiper.el, `.${swiper.params.slideActiveClass}`).length === 0) {\n        return undefined;\n      }\n      const el = swiper.el;\n      const swiperWidth = el.clientWidth;\n      const swiperHeight = el.clientHeight;\n      const windowWidth = window.innerWidth;\n      const windowHeight = window.innerHeight;\n      const swiperOffset = elementOffset(el);\n      if (rtl) swiperOffset.left -= el.scrollLeft;\n      const swiperCoord = [[swiperOffset.left, swiperOffset.top], [swiperOffset.left + swiperWidth, swiperOffset.top], [swiperOffset.left, swiperOffset.top + swiperHeight], [swiperOffset.left + swiperWidth, swiperOffset.top + swiperHeight]];\n      for (let i = 0; i < swiperCoord.length; i += 1) {\n        const point = swiperCoord[i];\n        if (point[0] >= 0 && point[0] <= windowWidth && point[1] >= 0 && point[1] <= windowHeight) {\n          if (point[0] === 0 && point[1] === 0) continue; // eslint-disable-line\n          inView = true;\n        }\n      }\n      if (!inView) return undefined;\n    }\n    if (swiper.isHorizontal()) {\n      if (isPageUp || isPageDown || isArrowLeft || isArrowRight) {\n        if (e.preventDefault) e.preventDefault();else e.returnValue = false;\n      }\n      if ((isPageDown || isArrowRight) && !rtl || (isPageUp || isArrowLeft) && rtl) swiper.slideNext();\n      if ((isPageUp || isArrowLeft) && !rtl || (isPageDown || isArrowRight) && rtl) swiper.slidePrev();\n    } else {\n      if (isPageUp || isPageDown || isArrowUp || isArrowDown) {\n        if (e.preventDefault) e.preventDefault();else e.returnValue = false;\n      }\n      if (isPageDown || isArrowDown) swiper.slideNext();\n      if (isPageUp || isArrowUp) swiper.slidePrev();\n    }\n    emit('keyPress', kc);\n    return undefined;\n  }\n  function enable() {\n    if (swiper.keyboard.enabled) return;\n    document.addEventListener('keydown', handle);\n    swiper.keyboard.enabled = true;\n  }\n  function disable() {\n    if (!swiper.keyboard.enabled) return;\n    document.removeEventListener('keydown', handle);\n    swiper.keyboard.enabled = false;\n  }\n  on('init', () => {\n    if (swiper.params.keyboard.enabled) {\n      enable();\n    }\n  });\n  on('destroy', () => {\n    if (swiper.keyboard.enabled) {\n      disable();\n    }\n  });\n  Object.assign(swiper.keyboard, {\n    enable,\n    disable\n  });\n}",
+      "start": 1699710597695,
+      "end": 1699710597880,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710597881,
+      "end": 1699710597881,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710597881,
+      "end": 1699710597881,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710597881,
+      "end": 1699710597881,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710597881,
+      "end": 1699710597881,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710597881,
+      "end": 1699710597881,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710597881,
+      "end": 1699710597881,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710597881,
+      "end": 1699710597881,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710597881,
+      "end": 1699710597881,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710597881,
+      "end": 1699710597881,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710597882,
+      "end": 1699710597882,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710597882,
+      "end": 1699710597883,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710597883,
+      "end": 1699710597883,
+      "order": "normal"
+    }
+  ]
+}

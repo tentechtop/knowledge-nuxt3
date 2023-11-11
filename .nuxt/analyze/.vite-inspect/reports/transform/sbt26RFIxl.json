@@ -1,0 +1,256 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/layouts/components/HeaderCpn.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script setup lang=\"ts\">\r\nimport { breakpointsTailwind, useBreakpoints } from '@vueuse/core'\r\nimport { THEME } from '@/constants/unocss'\r\nimport { COMPANY } from '~~/enums/appEnum'\r\nconst isMd = useBreakpoints(breakpointsTailwind).md\r\nconst { $emit, MITT_KEY } = useMitt()\r\nconst { headerList, activeIndex } = useHeader()\r\nconst drawer = ref(false)\r\nconst openDrawer = () => {\r\n  drawer.value = true\r\n}\r\nconst handleSelect = (key: string) => {\r\n  // currentIndex.value = key\r\n  $emit(MITT_KEY.HEADER_SELECT_EVENT, key)\r\n}\r\n\r\nconst drawerSize = computed(() => {\r\n  return isMd.value ? '16%' : '80%'\r\n})\r\n</script>\r\n\r\n<template>\r\n  <div class=\"relative\">\r\n    <div\r\n      class=\"grid grid-cols-12 h-19 text-white items-center absolute w-screen z-9999\"\r\n      style=\"background:rgba(0,0,0,.5)\"\r\n    >\r\n      <!-- 左侧部分 -->\r\n      <div col-span-9 md:col-span-3 text-lg md:text-xl p-6 font-500 flex items-center>\r\n        <i class=\"i-carbon-asset-view\" />\r\n        <span ml-3>{{ COMPANY }}</span>\r\n      </div>\r\n      <!-- 中间部分 -->\r\n      <div hidden h-19 class=\"md:(col-span-6 block)\">\r\n        <el-menu\r\n          :default-active=\"activeIndex\" mode=\"horizontal\" background-color=\"#cccccc\"\r\n          :active-text-color=\"THEME.PRIMARY\" text-color=\"#0f766e\" style=\"height: calc(100% - 0px);\"\r\n          @select=\"handleSelect\"\r\n        >\r\n          <el-menu-item\r\n            v-for=\"(item, index) in headerList\" :key=\"index\" :index=\"item.href\"\r\n            class=\"!text-lg !text-gray-100\"\r\n          >\r\n            {{ item.title }}\r\n          </el-menu-item>\r\n        </el-menu>\r\n      </div>\r\n      <!-- 右侧部分 -->\r\n      <div col-span-3 flex justify-end mr-8>\r\n        <div class=\"i-carbon-grid text-primary text-2xl\" @click=\"openDrawer\" />\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <el-drawer v-model=\"drawer\" :with-header=\"false\" append-to-body :z-index=\"10000\" direction=\"ltr\" :size=\"drawerSize\">\r\n    <div class=\"flex items-center flex-col text-gray-6\">\r\n      <div class=\"my-0 md:(my-2)\">\r\n        {{ COMPANY }}\r\n      </div>\r\n\r\n\r\n\r\n\r\n\r\n    </div>\r\n  </el-drawer>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.el-menu {\r\n  background-color: unset !important;\r\n  ;\r\n}\r\n\r\n:deep(.el-menu--horizontal) {\r\n  justify-content: center;\r\n  border-bottom: unset !important;\r\n\r\n  .el-menu-item {\r\n    transition: unset !important;\r\n\r\n    &:hover {\r\n      background-color: unset;\r\n    }\r\n\r\n    &:focus {\r\n      background-color: unset;\r\n    }\r\n  }\r\n\r\n  .el-menu-item.is-active {\r\n    border-bottom: unset;\r\n    border-top: 3px solid var(--el-menu-active-color)\r\n  }\r\n}\r\n</style>\r\n",
+      "start": 1699710589988,
+      "end": 1699710590760,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "result": "<script setup lang=\"ts\">\r\nimport { breakpointsTailwind, useBreakpoints } from '@vueuse/core'\r\nimport { THEME } from '@/constants/unocss'\r\nimport { COMPANY } from '~~/enums/appEnum'\r\nconst isMd = useBreakpoints(breakpointsTailwind).md\r\nconst { $emit, MITT_KEY } = useMitt()\r\nconst { headerList, activeIndex } = useHeader()\r\nconst drawer = ref(false)\r\nconst openDrawer = () => {\r\n  drawer.value = true\r\n}\r\nconst handleSelect = (key: string) => {\r\n  // currentIndex.value = key\r\n  $emit(MITT_KEY.HEADER_SELECT_EVENT, key)\r\n}\r\n\r\nconst drawerSize = computed(() => {\r\n  return isMd.value ? '16%' : '80%'\r\n})\r\n</script>\r\n\r\n<template>\r\n  <div class=\"relative\">\r\n    <div\r\n      class=\"grid grid-cols-12 h-19 text-white items-center absolute w-screen z-9999\"\r\n      style=\"background:rgba(0,0,0,.5)\"\r\n    >\r\n      <!-- 左侧部分 -->\r\n      <div col-span-9 md:col-span-3 text-lg md:text-xl p-6 font-500 flex items-center>\r\n        <i class=\"i-carbon-asset-view\" />\r\n        <span ml-3>{{ COMPANY }}</span>\r\n      </div>\r\n      <!-- 中间部分 -->\r\n      <div hidden h-19 class=\"md:col-span-6 md:block\">\r\n        <el-menu\r\n          :default-active=\"activeIndex\" mode=\"horizontal\" background-color=\"#cccccc\"\r\n          :active-text-color=\"THEME.PRIMARY\" text-color=\"#0f766e\" style=\"height: calc(100% - 0px);\"\r\n          @select=\"handleSelect\"\r\n        >\r\n          <el-menu-item\r\n            v-for=\"(item, index) in headerList\" :key=\"index\" :index=\"item.href\"\r\n            class=\"!text-lg !text-gray-100\"\r\n          >\r\n            {{ item.title }}\r\n          </el-menu-item>\r\n        </el-menu>\r\n      </div>\r\n      <!-- 右侧部分 -->\r\n      <div col-span-3 flex justify-end mr-8>\r\n        <div class=\"i-carbon-grid text-primary text-2xl\" @click=\"openDrawer\" />\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <el-drawer v-model=\"drawer\" :with-header=\"false\" append-to-body :z-index=\"10000\" direction=\"ltr\" :size=\"drawerSize\">\r\n    <div class=\"flex items-center flex-col text-gray-6\">\r\n      <div class=\"my-0 md:my-2\">\r\n        {{ COMPANY }}\r\n      </div>\r\n\r\n\r\n\r\n\r\n\r\n    </div>\r\n  </el-drawer>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.el-menu {\r\n  background-color: unset !important;\r\n  ;\r\n}\r\n\r\n:deep(.el-menu--horizontal) {\r\n  justify-content: center;\r\n  border-bottom: unset !important;\r\n\r\n  .el-menu-item {\r\n    transition: unset !important;\r\n\r\n    &:hover {\r\n      background-color: unset;\r\n    }\r\n\r\n    &:focus {\r\n      background-color: unset;\r\n    }\r\n  }\r\n\r\n  .el-menu-item.is-active {\r\n    border-bottom: unset;\r\n    border-top: 3px solid var(--el-menu-active-color)\r\n  }\r\n}\r\n</style>\r\n",
+      "start": 1699710590760,
+      "end": 1699710590762,
+      "order": "pre",
+      "sourcemaps": {
+        "version": 3,
+        "mappings": "AAAA",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/layouts/components/HeaderCpn.vue"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710590762,
+      "end": 1699710590763,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710590763,
+      "end": 1699710590763,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710590763,
+      "end": 1699710590763,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710590763,
+      "end": 1699710590763,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710590764,
+      "end": 1699710590764,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710590764,
+      "end": 1699710590764,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710590764,
+      "end": 1699710590764,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710590764,
+      "end": 1699710590764,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"F:/workSpace2024/knowledge-nuxt3/layouts/components/HeaderCpn.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"F:/workSpace2024/knowledge-nuxt3/layouts/components/HeaderCpn.vue?vue&type=script&setup=true&lang.ts\";\nimport \"F:/workSpace2024/knowledge-nuxt3/layouts/components/HeaderCpn.vue?vue&type=style&index=0&scoped=84b23199&lang.scss\";\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__scopeId\", \"data-v-84b23199\"]]);\n",
+      "start": 1699710590765,
+      "end": 1699710591390,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710591391,
+      "end": 1699710591391,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710591392,
+      "end": 1699710591392,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710591392,
+      "end": 1699710591392,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710591392,
+      "end": 1699710591392,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710591392,
+      "end": 1699710591392,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699710591392,
+      "end": 1699710591392,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710591392,
+      "end": 1699710591392,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699710591393,
+      "end": 1699710591393,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710591393,
+      "end": 1699710591393,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710591393,
+      "end": 1699710591393,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710591393,
+      "end": 1699710591393,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710591393,
+      "end": 1699710591393,
+      "order": "normal"
+    }
+  ]
+}

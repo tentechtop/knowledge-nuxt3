@@ -1,0 +1,328 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/components/Home/Business/index.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script setup lang=\"ts\">\r\n// const rootRef = ref<HTMLElement | null>(null)\r\n// defineExpose({ $el: rootRef })\r\nimport { MITT_KEY_ENUM } from '@/enums/mittEnum'\r\n\r\nconst cardList = [\r\n  {\r\n    color: '#2ecc71',\r\n    icon: 'i-carbon-car-front',\r\n    name: '汽车制造',\r\n    text: '发动机技术|车身结构设计|悬挂系统|新能源技术',\r\n    link: '/docs/nav/frontEndCollect',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n  {\r\n    color: '#8e44ad',\r\n    icon: 'i-carbon-mobility-services',\r\n    name: '汽车服务',\r\n    text: '保养服务|维修服务|保险服务|道路救援服务',\r\n    link: '/docs/nav/frontEndCommon',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n  {\r\n    color: '#d35400',\r\n    icon: 'i-carbon-ibm-z-cloud-mod-stack',\r\n    name: '二手汽车销售',\r\n    text: '车辆评估|车辆展示|车辆交易|贷款服务|过户服务|售后服务',\r\n    link: '/docs/tools/docker',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  }, {\r\n    color: '#c0392b',\r\n    icon: 'i-carbon-airline-passenger-care',\r\n    name: '高级定制化',\r\n    text: '外观定制|内饰定制|功能定制|独特定制',\r\n    link: '/docs/nav/document',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n]\r\n</script>\r\n\r\n<template>\r\n  <Mask :event-key=\"MITT_KEY_ENUM.CHANGE_TO_BUSINESS\" />\r\n  <div ref=\"rootRef\" class=\"business full grid grid-cols-12 items-center justify-center \">\r\n    <div class=\"col-span-10 col-start-2 md:(col-span-8 col-start-3) grid grid-cols-12 gap-x-6\">\r\n      <Card\r\n        v-for=\"(item, index) in cardList\"\r\n        :key=\"index\" class=\"col-span-6 md:col-span-3  \" :name=\"item.name\" :text=\"item.text\"\r\n        :icon=\"item.icon\" :color=\"item.color\" :link=\"item.link\" :event-key=\"item.eventKey\" :delay=\"(index + 1) * 200\"\r\n      />\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.business {\r\n  background-image: url(\"/business.jpg\");\r\n\r\n}\r\n</style>\r\n",
+      "start": 1699710613321,
+      "end": 1699710613507,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "result": "<script setup lang=\"ts\">\r\n// const rootRef = ref<HTMLElement | null>(null)\r\n// defineExpose({ $el: rootRef })\r\nimport { MITT_KEY_ENUM } from '@/enums/mittEnum'\r\n\r\nconst cardList = [\r\n  {\r\n    color: '#2ecc71',\r\n    icon: 'i-carbon-car-front',\r\n    name: '汽车制造',\r\n    text: '发动机技术|车身结构设计|悬挂系统|新能源技术',\r\n    link: '/docs/nav/frontEndCollect',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n  {\r\n    color: '#8e44ad',\r\n    icon: 'i-carbon-mobility-services',\r\n    name: '汽车服务',\r\n    text: '保养服务|维修服务|保险服务|道路救援服务',\r\n    link: '/docs/nav/frontEndCommon',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n  {\r\n    color: '#d35400',\r\n    icon: 'i-carbon-ibm-z-cloud-mod-stack',\r\n    name: '二手汽车销售',\r\n    text: '车辆评估|车辆展示|车辆交易|贷款服务|过户服务|售后服务',\r\n    link: '/docs/tools/docker',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  }, {\r\n    color: '#c0392b',\r\n    icon: 'i-carbon-airline-passenger-care',\r\n    name: '高级定制化',\r\n    text: '外观定制|内饰定制|功能定制|独特定制',\r\n    link: '/docs/nav/document',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n]\r\n</script>\r\n\r\n<template>\r\n  <Mask :event-key=\"MITT_KEY_ENUM.CHANGE_TO_BUSINESS\" />\r\n  <div ref=\"rootRef\" class=\"business full grid grid-cols-12 items-center justify-center \">\r\n    <div class=\"col-span-10 col-start-2 md:col-span-8 md:col-start-3 grid grid-cols-12 gap-x-6\">\r\n      <Card\r\n        v-for=\"(item, index) in cardList\"\r\n        :key=\"index\" class=\"col-span-6 md:col-span-3  \" :name=\"item.name\" :text=\"item.text\"\r\n        :icon=\"item.icon\" :color=\"item.color\" :link=\"item.link\" :event-key=\"item.eventKey\" :delay=\"(index + 1) * 200\"\r\n      />\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.business {\r\n  background-image: url(\"/business.jpg\");\r\n\r\n}\r\n</style>\r\n",
+      "start": 1699710613507,
+      "end": 1699710613508,
+      "order": "pre",
+      "sourcemaps": {
+        "version": 3,
+        "mappings": "AAAA",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/Business/index.vue"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "result": "<script setup lang=\"ts\">\r\n// const rootRef = ref<HTMLElement | null>(null)\r\n// defineExpose({ $el: rootRef })\r\nimport { MITT_KEY_ENUM } from '@/enums/mittEnum'\r\n\r\nconst cardList = [\r\n  {\r\n    color: '#2ecc71',\r\n    icon: 'i-carbon-car-front',\r\n    name: '汽车制造',\r\n    text: '发动机技术|车身结构设计|悬挂系统|新能源技术',\r\n    link: '/docs/nav/frontEndCollect',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n  {\r\n    color: '#8e44ad',\r\n    icon: 'i-carbon-mobility-services',\r\n    name: '汽车服务',\r\n    text: '保养服务|维修服务|保险服务|道路救援服务',\r\n    link: '/docs/nav/frontEndCommon',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n  {\r\n    color: '#d35400',\r\n    icon: 'i-carbon-ibm-z-cloud-mod-stack',\r\n    name: '二手汽车销售',\r\n    text: '车辆评估|车辆展示|车辆交易|贷款服务|过户服务|售后服务',\r\n    link: '/docs/tools/docker',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  }, {\r\n    color: '#c0392b',\r\n    icon: 'i-carbon-airline-passenger-care',\r\n    name: '高级定制化',\r\n    text: '外观定制|内饰定制|功能定制|独特定制',\r\n    link: '/docs/nav/document',\r\n    eventKey: MITT_KEY_ENUM.CHANGE_TO_BUSINESS,\r\n  },\r\n]\r\n</script>\r\n\r\n<template>\r\n  <Mask :event-key=\"MITT_KEY_ENUM.CHANGE_TO_BUSINESS\" />\r\n  <div ref=\"rootRef\" class=\"business full grid grid-cols-12 items-center justify-center \">\r\n    <div class=\"col-span-10 col-start-2 md:col-span-8 md:col-start-3 grid grid-cols-12 gap-x-6\">\r\n      <Card\r\n        v-for=\"(item, index) in cardList\"\r\n        :key=\"index\" class=\"col-span-6 md:col-span-3  \" :name=\"item.name\" :text=\"item.text\"\r\n        :icon=\"item.icon\" :color=\"item.color\" :link=\"item.link\" :event-key=\"item.eventKey\" :delay=\"(index + 1) * 200\"\r\n      />\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.business {\r\n  background-image: url(\"/business.jpg\");\r\n\r\n}\r\n</style>\r\n",
+      "start": 1699710613507,
+      "end": 1699710613508,
+      "order": "pre",
+      "sourcemaps": {
+        "version": 3,
+        "mappings": "AAAA",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/Business/index.vue"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710613508,
+      "end": 1699710613508,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710613508,
+      "end": 1699710613508,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710613508,
+      "end": 1699710613508,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710613508,
+      "end": 1699710613508,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710613508,
+      "end": 1699710613508,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710613508,
+      "end": 1699710613508,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710613508,
+      "end": 1699710613508,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710613508,
+      "end": 1699710613508,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710613508,
+      "end": 1699710613508,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710613508,
+      "end": 1699710613508,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710613508,
+      "end": 1699710613509,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"F:/workSpace2024/knowledge-nuxt3/components/Home/Business/index.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"F:/workSpace2024/knowledge-nuxt3/components/Home/Business/index.vue?vue&type=script&setup=true&lang.ts\";\nimport \"F:/workSpace2024/knowledge-nuxt3/components/Home/Business/index.vue?vue&type=style&index=0&scoped=3973ac42&lang.scss\";\nimport { useSSRContext as __vite_useSSRContext } from \"vue\";\nconst _sfc_setup = _sfc_main.setup;\n_sfc_main.setup = (props, ctx) => {\n  const ssrContext = __vite_useSSRContext();\n  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add(\"components/Home/Business/index.vue\");\n  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;\n};\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__scopeId\", \"data-v-3973ac42\"]]);\n",
+      "start": 1699710613509,
+      "end": 1699710613538,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710613538,
+      "end": 1699710613538,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710613538,
+      "end": 1699710613538,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710613538,
+      "end": 1699710613538,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710613539,
+      "end": 1699710613539,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710613539,
+      "end": 1699710613539,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710613539,
+      "end": 1699710613539,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710613539,
+      "end": 1699710613539,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710613539,
+      "end": 1699710613539,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710613540,
+      "end": 1699710613540,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710613540,
+      "end": 1699710613540,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710613540,
+      "end": 1699710613540,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710613540,
+      "end": 1699710613541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710613541,
+      "end": 1699710613541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710613541,
+      "end": 1699710613541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710613541,
+      "end": 1699710613541,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710613542,
+      "end": 1699710613542,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710613542,
+      "end": 1699710613542,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710613542,
+      "end": 1699710613542,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710613542,
+      "end": 1699710613542,
+      "order": "post"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710613542,
+      "end": 1699710613542,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710613543,
+      "end": 1699710613543,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710613543,
+      "end": 1699710613543,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710613543,
+      "end": 1699710613544,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710613543,
+      "end": 1699710613544,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710613544,
+      "end": 1699710613545,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710613544,
+      "end": 1699710613545,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710613545,
+      "end": 1699710613545,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710613545,
+      "end": 1699710613545,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710613545,
+      "end": 1699710613545,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1699710613546,
+      "end": 1699710613546,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710613546,
+      "end": 1699710613546,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710613547,
+      "end": 1699710613547,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710613547,
+      "end": 1699710613548,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710613549,
+      "end": 1699710613549,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,1 +1,0 @@
-import{d as a,u as s,a as t,r as n,o,c as r,b as u,t as c,e as l}from"./entry.ebc74ad1.js";const f=a({__name:"index",setup(i){s(),t();const e=n(1);return(p,_)=>(o(),r("div",null,[u("h1",null,"您好 "+c(l(e)),1)]))}});export{f as default};

@@ -6,6 +6,12 @@ import { renderSSRHead } from '@unhead/ssr';
 import { version, unref } from 'vue';
 import { createServerHead as createServerHead$1 } from 'unhead';
 import { defineHeadPlugin } from '@unhead/shared';
+import 'node:http';
+import 'node:https';
+import 'fs';
+import 'path';
+import 'node:fs';
+import 'node:url';
 
 function defineRenderHandler(handler) {
   return eventHandler(async (event) => {
@@ -93,7 +99,7 @@ function createServerHead(options = {}) {
 
 const unheadPlugins = [];
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"keywords","name":"keywords","content":""},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.ico"}],"style":[],"script":[],"noscript":[],"title":"紫光毕设-官方网站","htmlAttrs":{}};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"keywords","name":"keywords","content":""},{"hid":"description","name":"description","content":""},{"name":"format-detection","content":"telephone=no"}],"link":[{"rel":"icon","type":"image/x-icon","href":"/favicon.ico"}],"style":[],"script":[],"noscript":[],"title":"奥恩毕设 aecode-官方网站","htmlAttrs":{}};
 
 const appRootId = "__nuxt";
 
@@ -113,12 +119,6 @@ function publicAssetsURL(...path) {
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
 const getClientManifest = () => import('../app/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
-const getEntryIds = () => getClientManifest().then((r) => Object.values(r).filter(
-  (r2) => (
-    // @ts-expect-error internal key set by CSS inlining configuration
-    r2._globalCSS
-  )
-).map((r2) => r2.src));
 const getServerEntry = () => import('../app/server.mjs').then((r) => r.default || r);
 const getSSRStyles = lazyCachedFunction(() => import('../app/styles.mjs').then((r) => r.default || r));
 const getSSRRenderer = lazyCachedFunction(async () => {
@@ -233,15 +233,7 @@ const renderer = defineRenderHandler(async (event) => {
     const response2 = renderPayloadResponse(ssrContext);
     return response2;
   }
-  {
-    const source = ssrContext.modules ?? ssrContext._registeredComponents;
-    if (source) {
-      for (const id of await getEntryIds()) {
-        source.add(id);
-      }
-    }
-  }
-  const inlinedStyles = await renderInlineStyles(ssrContext.modules ?? ssrContext._registeredComponents ?? []) ;
+  const inlinedStyles = Boolean(islandContext) ? await renderInlineStyles(ssrContext.modules ?? ssrContext._registeredComponents ?? []) : [];
   const NO_SCRIPTS = routeOptions.experimentalNoScripts;
   const { styles, scripts } = getRequestDependencies(ssrContext, renderer.rendererContext);
   head.push({ style: inlinedStyles });
@@ -375,10 +367,5 @@ function splitPayload(ssrContext) {
   };
 }
 
-const renderer$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  default: renderer
-});
-
-export { buildAssetsURL as b, renderer$1 as r };
+export { renderer as default };
 //# sourceMappingURL=renderer.mjs.map

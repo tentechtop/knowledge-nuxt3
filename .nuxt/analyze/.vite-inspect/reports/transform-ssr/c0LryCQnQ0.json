@@ -1,0 +1,300 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/element-plus/es/components/table/src/store/current.mjs",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import { getCurrentInstance, ref, unref } from 'vue';\nimport { getRowIdentity } from '../util.mjs';\n\nfunction useCurrent(watcherData) {\n  const instance = getCurrentInstance();\n  const _currentRowKey = ref(null);\n  const currentRow = ref(null);\n  const setCurrentRowKey = (key) => {\n    instance.store.assertRowKey();\n    _currentRowKey.value = key;\n    setCurrentRowByKey(key);\n  };\n  const restoreCurrentRowKey = () => {\n    _currentRowKey.value = null;\n  };\n  const setCurrentRowByKey = (key) => {\n    const { data, rowKey } = watcherData;\n    let _currentRow = null;\n    if (rowKey.value) {\n      _currentRow = (unref(data) || []).find((item) => getRowIdentity(item, rowKey.value) === key);\n    }\n    currentRow.value = _currentRow;\n    instance.emit(\"current-change\", currentRow.value, null);\n  };\n  const updateCurrentRow = (_currentRow) => {\n    const oldCurrentRow = currentRow.value;\n    if (_currentRow && _currentRow !== oldCurrentRow) {\n      currentRow.value = _currentRow;\n      instance.emit(\"current-change\", currentRow.value, oldCurrentRow);\n      return;\n    }\n    if (!_currentRow && oldCurrentRow) {\n      currentRow.value = null;\n      instance.emit(\"current-change\", null, oldCurrentRow);\n    }\n  };\n  const updateCurrentRowData = () => {\n    const rowKey = watcherData.rowKey.value;\n    const data = watcherData.data.value || [];\n    const oldCurrentRow = currentRow.value;\n    if (!data.includes(oldCurrentRow) && oldCurrentRow) {\n      if (rowKey) {\n        const currentRowKey = getRowIdentity(oldCurrentRow, rowKey);\n        setCurrentRowByKey(currentRowKey);\n      } else {\n        currentRow.value = null;\n      }\n      if (currentRow.value === null) {\n        instance.emit(\"current-change\", null, oldCurrentRow);\n      }\n    } else if (_currentRowKey.value) {\n      setCurrentRowByKey(_currentRowKey.value);\n      restoreCurrentRowKey();\n    }\n  };\n  return {\n    setCurrentRowKey,\n    restoreCurrentRowKey,\n    setCurrentRowByKey,\n    updateCurrentRow,\n    updateCurrentRowData,\n    states: {\n      _currentRowKey,\n      currentRow\n    }\n  };\n}\n\nexport { useCurrent as default };\n//# sourceMappingURL=current.mjs.map\n",
+      "start": 1699710614497,
+      "end": 1699710614779,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710614780,
+      "end": 1699710614780,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710614781,
+      "end": 1699710614781,
+      "order": "normal"
+    }
+  ]
+}

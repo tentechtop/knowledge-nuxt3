@@ -1,0 +1,328 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/components/DataCard.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script lang=\"ts\" setup>\r\nconst props = withDefaults(defineProps<Props>(), {\r\n  delay: 500,\r\n})\r\nconst { $on } = useMitt()\r\ninterface Props {\r\n  delay?: number\r\n  eventKey: string\r\n}\r\nconst cardRef = ref<HTMLElement | null>(null)\r\nconst { instance: cardInstance } = useTranslateY(cardRef, -600, 0, props.delay, 600)\r\nconst restart = () => {\r\n  cardInstance.value?.restart()\r\n}\r\n\r\n$on(props.eventKey, () => {\r\n  cardInstance.value?.restart()\r\n})\r\ndefineExpose({ restart })\r\n</script>\r\n\r\n<template>\r\n  <div ref=\"cardRef\" class=\"card hvr-buzz-out text-white p-6 md:(px-10 py-16)\">\r\n    <div class=\"flex justify-center text-6xl\">\r\n      <slot name=\"icon\" />\r\n    </div>\r\n    <div class=\"text-2xl mt-2 md:(mt-8 text-5xl) text-primary \">\r\n      <slot name=\"data\" />\r\n    </div>\r\n    <div class=\"text-sm  mt-1 md:(mt-3 text-lg) tracking-wider text-gray-3\">\r\n      <slot name=\"descript\" />\r\n    </div>\r\n    <div class=\"text-sm  mt-2 md:(mt-6 text-lg) tracking-wider\">\r\n      <slot name=\"subscript\" />\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<style lang='scss' scoped>\r\n.card {\r\n  background: rgba(255, 255, 255, 0.06);\r\n  backdrop-filter: blur(30px);\r\n  border-radius: 10px;\r\n  box-shadow: rgba(0, 0, 0, 0.4) 1px 2px 6px, rgba(0, 0, 0, 0.3) 10px 7px 13px 1px, rgba(0, 0, 0, 0.2) 1px -3px 3px inset;\r\n  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n  text-align: center;\r\n  z-index: 20;\r\n\r\n}\r\n</style>\r\n",
+      "start": 1699710614284,
+      "end": 1699710614524,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "result": "<script lang=\"ts\" setup>\r\nconst props = withDefaults(defineProps<Props>(), {\r\n  delay: 500,\r\n})\r\nconst { $on } = useMitt()\r\ninterface Props {\r\n  delay?: number\r\n  eventKey: string\r\n}\r\nconst cardRef = ref<HTMLElement | null>(null)\r\nconst { instance: cardInstance } = useTranslateY(cardRef, -600, 0, props.delay, 600)\r\nconst restart = () => {\r\n  cardInstance.value?.restart()\r\n}\r\n\r\n$on(props.eventKey, () => {\r\n  cardInstance.value?.restart()\r\n})\r\ndefineExpose({ restart })\r\n</script>\r\n\r\n<template>\r\n  <div ref=\"cardRef\" class=\"card hvr-buzz-out text-white p-6 md:px-10 md:py-16\">\r\n    <div class=\"flex justify-center text-6xl\">\r\n      <slot name=\"icon\" />\r\n    </div>\r\n    <div class=\"text-2xl mt-2 md:mt-8 md:text-5xl text-primary \">\r\n      <slot name=\"data\" />\r\n    </div>\r\n    <div class=\"text-sm  mt-1 md:mt-3 md:text-lg tracking-wider text-gray-3\">\r\n      <slot name=\"descript\" />\r\n    </div>\r\n    <div class=\"text-sm  mt-2 md:mt-6 md:text-lg tracking-wider\">\r\n      <slot name=\"subscript\" />\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<style lang='scss' scoped>\r\n.card {\r\n  background: rgba(255, 255, 255, 0.06);\r\n  backdrop-filter: blur(30px);\r\n  border-radius: 10px;\r\n  box-shadow: rgba(0, 0, 0, 0.4) 1px 2px 6px, rgba(0, 0, 0, 0.3) 10px 7px 13px 1px, rgba(0, 0, 0, 0.2) 1px -3px 3px inset;\r\n  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n  text-align: center;\r\n  z-index: 20;\r\n\r\n}\r\n</style>\r\n",
+      "start": 1699710614524,
+      "end": 1699710614524,
+      "order": "pre",
+      "sourcemaps": {
+        "version": 3,
+        "mappings": "AAAA",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/DataCard.vue"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "result": "<script lang=\"ts\" setup>\r\nconst props = withDefaults(defineProps<Props>(), {\r\n  delay: 500,\r\n})\r\nconst { $on } = useMitt()\r\ninterface Props {\r\n  delay?: number\r\n  eventKey: string\r\n}\r\nconst cardRef = ref<HTMLElement | null>(null)\r\nconst { instance: cardInstance } = useTranslateY(cardRef, -600, 0, props.delay, 600)\r\nconst restart = () => {\r\n  cardInstance.value?.restart()\r\n}\r\n\r\n$on(props.eventKey, () => {\r\n  cardInstance.value?.restart()\r\n})\r\ndefineExpose({ restart })\r\n</script>\r\n\r\n<template>\r\n  <div ref=\"cardRef\" class=\"card hvr-buzz-out text-white p-6 md:px-10 md:py-16\">\r\n    <div class=\"flex justify-center text-6xl\">\r\n      <slot name=\"icon\" />\r\n    </div>\r\n    <div class=\"text-2xl mt-2 md:mt-8 md:text-5xl text-primary \">\r\n      <slot name=\"data\" />\r\n    </div>\r\n    <div class=\"text-sm  mt-1 md:mt-3 md:text-lg tracking-wider text-gray-3\">\r\n      <slot name=\"descript\" />\r\n    </div>\r\n    <div class=\"text-sm  mt-2 md:mt-6 md:text-lg tracking-wider\">\r\n      <slot name=\"subscript\" />\r\n    </div>\r\n  </div>\r\n</template>\r\n\r\n<style lang='scss' scoped>\r\n.card {\r\n  background: rgba(255, 255, 255, 0.06);\r\n  backdrop-filter: blur(30px);\r\n  border-radius: 10px;\r\n  box-shadow: rgba(0, 0, 0, 0.4) 1px 2px 6px, rgba(0, 0, 0, 0.3) 10px 7px 13px 1px, rgba(0, 0, 0, 0.2) 1px -3px 3px inset;\r\n  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;\r\n  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;\r\n  text-align: center;\r\n  z-index: 20;\r\n\r\n}\r\n</style>\r\n",
+      "start": 1699710614524,
+      "end": 1699710614524,
+      "order": "pre",
+      "sourcemaps": {
+        "version": 3,
+        "mappings": "AAAA",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/DataCard.vue"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710614524,
+      "end": 1699710614525,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710614524,
+      "end": 1699710614525,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710614525,
+      "end": 1699710614525,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710614525,
+      "end": 1699710614525,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710614525,
+      "end": 1699710614525,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710614525,
+      "end": 1699710614525,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710614525,
+      "end": 1699710614525,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710614525,
+      "end": 1699710614525,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710614525,
+      "end": 1699710614526,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710614526,
+      "end": 1699710614526,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710614526,
+      "end": 1699710614526,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"F:/workSpace2024/knowledge-nuxt3/components/DataCard.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"F:/workSpace2024/knowledge-nuxt3/components/DataCard.vue?vue&type=script&setup=true&lang.ts\";\nimport \"F:/workSpace2024/knowledge-nuxt3/components/DataCard.vue?vue&type=style&index=0&scoped=dc9dd425&lang.scss\";\nimport { useSSRContext as __vite_useSSRContext } from \"vue\";\nconst _sfc_setup = _sfc_main.setup;\n_sfc_main.setup = (props, ctx) => {\n  const ssrContext = __vite_useSSRContext();\n  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add(\"components/DataCard.vue\");\n  return _sfc_setup ? _sfc_setup(props, ctx) : void 0;\n};\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__scopeId\", \"data-v-dc9dd425\"]]);\n",
+      "start": 1699710614526,
+      "end": 1699710614559,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710614559,
+      "end": 1699710614560,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710614560,
+      "end": 1699710614560,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710614560,
+      "end": 1699710614560,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710614560,
+      "end": 1699710614560,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710614560,
+      "end": 1699710614560,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710614561,
+      "end": 1699710614561,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710614561,
+      "end": 1699710614561,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710614561,
+      "end": 1699710614561,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710614561,
+      "end": 1699710614561,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710614562,
+      "end": 1699710614562,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710614562,
+      "end": 1699710614562,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710614562,
+      "end": 1699710614563,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710614563,
+      "end": 1699710614563,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710614563,
+      "end": 1699710614563,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710614563,
+      "end": 1699710614563,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710614564,
+      "end": 1699710614564,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710614565,
+      "end": 1699710614565,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710614565,
+      "end": 1699710614565,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710614565,
+      "end": 1699710614565,
+      "order": "post"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710614565,
+      "end": 1699710614565,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710614565,
+      "end": 1699710614566,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710614565,
+      "end": 1699710614566,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710614566,
+      "end": 1699710614570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710614566,
+      "end": 1699710614570,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710614570,
+      "end": 1699710614570,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710614570,
+      "end": 1699710614570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710614571,
+      "end": 1699710614571,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710614571,
+      "end": 1699710614571,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710614571,
+      "end": 1699710614571,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1699710614571,
+      "end": 1699710614572,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710614572,
+      "end": 1699710614572,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710614572,
+      "end": 1699710614572,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710614572,
+      "end": 1699710614573,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710614573,
+      "end": 1699710614573,
+      "order": "normal"
+    }
+  ]
+}

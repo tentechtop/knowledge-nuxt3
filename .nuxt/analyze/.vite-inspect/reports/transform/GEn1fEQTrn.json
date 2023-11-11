@@ -1,0 +1,261 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/components/Home/First/CarouselVertical.vue?vue&type=script&setup=true&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, normalizeStyle as _normalizeStyle, Fragment as _Fragment, createElementBlock as _createElementBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-a46a0bfb\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"div\", {\n  \"col-span-1\": \"\",\n  \"md:col-span-3\": \"\"\n}, null, -1))\nconst _hoisted_2 = {\n  \"text-center\": \"\",\n  \"col-span-10\": \"\",\n  \"md:col-span-6\": \"\",\n  flex: \"\",\n  \"flex-col\": \"\",\n  \"items-center\": \"\",\n  \"justify-center\": \"\",\n  \"text-white\": \"\",\n  \"z-3\": \"\"\n}\nconst _hoisted_3 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"div\", {\n  \"col-span-1\": \"\",\n  \"md:col-span-3\": \"\"\n}, null, -1))\n\nimport { useTranslateX, useTranslateY } from '@/composables/useAnime'\r\ninterface Props {\r\n  topText: string\r\n  middleText: string\r\n  bottomText: string\r\n  backgroundUrl: string\r\n  mask?: boolean\r\n}\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'CarouselVertical',\n  props: {\n    topText: {},\n    middleText: {},\n    bottomText: {},\n    backgroundUrl: {},\n    mask: { type: Boolean, default: true }\n  },\n  setup(__props: any, { expose: __expose }) {\n\r\nconst props = __props\r\nconst top = ref<HTMLElement | null>(null)\r\nconst middle = ref<HTMLElement | null>(null)\r\nconst bottom = ref<HTMLElement | null>(null)\r\nconst { instance: middleInstance } = useTranslateX(middle, -600, 0, 0, 600)\r\nconst { instance: topInstance } = useTranslateY(top, -60, 0, 600, 200)\r\nconst { instance: bottomInstance } = useTranslateY(bottom, 60, 0, 600, 200)\r\nconst restart = () => {\r\n  middleInstance.value?.restart()\r\n  topInstance.value?.restart()\r\n  bottomInstance.value?.restart()\r\n}\r\n\r\n__expose({ restart })\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_Mask = _resolveComponent(\"Mask\")!\n\n  return (_openBlock(), _createElementBlock(_Fragment, null, [\n    (props.mask)\n      ? (_openBlock(), _createBlock(_component_Mask, { key: 0 }))\n      : _createCommentVNode(\"\", true),\n    _createElementVNode(\"div\", {\n      class: \"full CarouselOne relative grid grid-cols-12\",\n      style: _normalizeStyle({ backgroundImage: `url(${props.backgroundUrl})` })\n    }, [\n      _hoisted_1,\n      _createElementVNode(\"div\", _hoisted_2, [\n        _createElementVNode(\"div\", {\n          ref_key: \"top\",\n          ref: top,\n          \"font-500\": \"\",\n          \"text-xl\": \"\",\n          \"md:text-4xl\": \"\"\n        }, _toDisplayString(props.topText), 513),\n        _createElementVNode(\"div\", {\n          ref_key: \"middle\",\n          ref: middle,\n          \"text-primary\": \"\",\n          \"text-5xl\": \"\",\n          \"md:text-8xl\": \"\",\n          \"font-500\": \"\",\n          \"b-b-2\": \"\",\n          \"b-primary\": \"\"\n        }, _toDisplayString(props.middleText), 513),\n        _createElementVNode(\"div\", {\n          ref_key: \"bottom\",\n          ref: bottom,\n          \"text-lg\": \"\",\n          \"md:text-xl\": \"\",\n          \"font-500\": \"\",\n          \"mt-2\": \"\",\n          \"md:mt-6\": \"\"\n        }, _toDisplayString(props.bottomText), 513)\n      ]),\n      _hoisted_3\n    ], 4)\n  ], 64))\n}\n}\n\n})",
+      "start": 1699710603226,
+      "end": 1699710603226
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710603226,
+      "end": 1699710603226,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710603227,
+      "end": 1699710603227,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710603227,
+      "end": 1699710603227,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710603227,
+      "end": 1699710603227,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710603228,
+      "end": 1699710603228,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710603228,
+      "end": 1699710603228,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, normalizeStyle as _normalizeStyle, Fragment as _Fragment, createElementBlock as _createElementBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\";\nconst _withScopeId = (n) => (_pushScopeId(\"data-v-a46a0bfb\"), n = n(), _popScopeId(), n);\nconst _hoisted_1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ _createElementVNode(\"div\", {\n  \"col-span-1\": \"\",\n  \"md:col-span-3\": \"\"\n}, null, -1));\nconst _hoisted_2 = {\n  \"text-center\": \"\",\n  \"col-span-10\": \"\",\n  \"md:col-span-6\": \"\",\n  flex: \"\",\n  \"flex-col\": \"\",\n  \"items-center\": \"\",\n  \"justify-center\": \"\",\n  \"text-white\": \"\",\n  \"z-3\": \"\"\n};\nconst _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ _createElementVNode(\"div\", {\n  \"col-span-1\": \"\",\n  \"md:col-span-3\": \"\"\n}, null, -1));\nimport { useTranslateX, useTranslateY } from \"@/composables/useAnime\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"CarouselVertical\",\n  props: {\n    topText: {},\n    middleText: {},\n    bottomText: {},\n    backgroundUrl: {},\n    mask: { type: Boolean, default: true }\n  },\n  setup(__props, { expose: __expose }) {\n    const props = __props;\n    const top = ref(null);\n    const middle = ref(null);\n    const bottom = ref(null);\n    const { instance: middleInstance } = useTranslateX(middle, -600, 0, 0, 600);\n    const { instance: topInstance } = useTranslateY(top, -60, 0, 600, 200);\n    const { instance: bottomInstance } = useTranslateY(bottom, 60, 0, 600, 200);\n    const restart = () => {\n      middleInstance.value?.restart();\n      topInstance.value?.restart();\n      bottomInstance.value?.restart();\n    };\n    __expose({ restart });\n    return (_ctx, _cache) => {\n      const _component_Mask = _resolveComponent(\"Mask\");\n      return _openBlock(), _createElementBlock(_Fragment, null, [\n        props.mask ? (_openBlock(), _createBlock(_component_Mask, { key: 0 })) : _createCommentVNode(\"\", true),\n        _createElementVNode(\"div\", {\n          class: \"full CarouselOne relative grid grid-cols-12\",\n          style: _normalizeStyle({ backgroundImage: `url(${props.backgroundUrl})` })\n        }, [\n          _hoisted_1,\n          _createElementVNode(\"div\", _hoisted_2, [\n            _createElementVNode(\"div\", {\n              ref_key: \"top\",\n              ref: top,\n              \"font-500\": \"\",\n              \"text-xl\": \"\",\n              \"md:text-4xl\": \"\"\n            }, _toDisplayString(props.topText), 513),\n            _createElementVNode(\"div\", {\n              ref_key: \"middle\",\n              ref: middle,\n              \"text-primary\": \"\",\n              \"text-5xl\": \"\",\n              \"md:text-8xl\": \"\",\n              \"font-500\": \"\",\n              \"b-b-2\": \"\",\n              \"b-primary\": \"\"\n            }, _toDisplayString(props.middleText), 513),\n            _createElementVNode(\"div\", {\n              ref_key: \"bottom\",\n              ref: bottom,\n              \"text-lg\": \"\",\n              \"md:text-xl\": \"\",\n              \"font-500\": \"\",\n              \"mt-2\": \"\",\n              \"md:mt-6\": \"\"\n            }, _toDisplayString(props.bottomText), 513)\n          ]),\n          _hoisted_3\n        ], 4)\n      ], 64);\n    };\n  }\n});\n",
+      "start": 1699710603228,
+      "end": 1699710603403,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/First/CarouselVertical.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, normalizeStyle as _normalizeStyle, Fragment as _Fragment, createElementBlock as _createElementBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-a46a0bfb\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"div\", {\n  \"col-span-1\": \"\",\n  \"md:col-span-3\": \"\"\n}, null, -1))\nconst _hoisted_2 = {\n  \"text-center\": \"\",\n  \"col-span-10\": \"\",\n  \"md:col-span-6\": \"\",\n  flex: \"\",\n  \"flex-col\": \"\",\n  \"items-center\": \"\",\n  \"justify-center\": \"\",\n  \"text-white\": \"\",\n  \"z-3\": \"\"\n}\nconst _hoisted_3 = /*#__PURE__*/ _withScopeId(() => /*#__PURE__*/_createElementVNode(\"div\", {\n  \"col-span-1\": \"\",\n  \"md:col-span-3\": \"\"\n}, null, -1))\n\nimport { useTranslateX, useTranslateY } from '@/composables/useAnime'\r\ninterface Props {\r\n  topText: string\r\n  middleText: string\r\n  bottomText: string\r\n  backgroundUrl: string\r\n  mask?: boolean\r\n}\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'CarouselVertical',\n  props: {\n    topText: {},\n    middleText: {},\n    bottomText: {},\n    backgroundUrl: {},\n    mask: { type: Boolean, default: true }\n  },\n  setup(__props: any, { expose: __expose }) {\n\r\nconst props = __props\r\nconst top = ref<HTMLElement | null>(null)\r\nconst middle = ref<HTMLElement | null>(null)\r\nconst bottom = ref<HTMLElement | null>(null)\r\nconst { instance: middleInstance } = useTranslateX(middle, -600, 0, 0, 600)\r\nconst { instance: topInstance } = useTranslateY(top, -60, 0, 600, 200)\r\nconst { instance: bottomInstance } = useTranslateY(bottom, 60, 0, 600, 200)\r\nconst restart = () => {\r\n  middleInstance.value?.restart()\r\n  topInstance.value?.restart()\r\n  bottomInstance.value?.restart()\r\n}\r\n\r\n__expose({ restart })\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_Mask = _resolveComponent(\"Mask\")!\n\n  return (_openBlock(), _createElementBlock(_Fragment, null, [\n    (props.mask)\n      ? (_openBlock(), _createBlock(_component_Mask, { key: 0 }))\n      : _createCommentVNode(\"\", true),\n    _createElementVNode(\"div\", {\n      class: \"full CarouselOne relative grid grid-cols-12\",\n      style: _normalizeStyle({ backgroundImage: `url(${props.backgroundUrl})` })\n    }, [\n      _hoisted_1,\n      _createElementVNode(\"div\", _hoisted_2, [\n        _createElementVNode(\"div\", {\n          ref_key: \"top\",\n          ref: top,\n          \"font-500\": \"\",\n          \"text-xl\": \"\",\n          \"md:text-4xl\": \"\"\n        }, _toDisplayString(props.topText), 513),\n        _createElementVNode(\"div\", {\n          ref_key: \"middle\",\n          ref: middle,\n          \"text-primary\": \"\",\n          \"text-5xl\": \"\",\n          \"md:text-8xl\": \"\",\n          \"font-500\": \"\",\n          \"b-b-2\": \"\",\n          \"b-primary\": \"\"\n        }, _toDisplayString(props.middleText), 513),\n        _createElementVNode(\"div\", {\n          ref_key: \"bottom\",\n          ref: bottom,\n          \"text-lg\": \"\",\n          \"md:text-xl\": \"\",\n          \"font-500\": \"\",\n          \"mt-2\": \"\",\n          \"md:mt-6\": \"\"\n        }, _toDisplayString(props.bottomText), 513)\n      ]),\n      _hoisted_3\n    ], 4)\n  ], 64))\n}\n}\n\n})"
+        ],
+        "mappings": "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",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710603403,
+      "end": 1699710603403,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710603403,
+      "end": 1699710603403,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699710603403,
+      "end": 1699710603403,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710603403,
+      "end": 1699710603404,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710603405,
+      "end": 1699710603405,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710603405,
+      "end": 1699710603405,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710603406,
+      "end": 1699710603406,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699710603406,
+      "end": 1699710603406,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710603406,
+      "end": 1699710603406,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710603406,
+      "end": 1699710603407,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710603407,
+      "end": 1699710603407,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710603407,
+      "end": 1699710603407,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710603407,
+      "end": 1699710603407,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710603407,
+      "end": 1699710603407,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710603408,
+      "end": 1699710603408,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710603408,
+      "end": 1699710603409,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710603409,
+      "end": 1699710603409,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710603409,
+      "end": 1699710603409,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710603409,
+      "end": 1699710603409,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710603410,
+      "end": 1699710603410,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710603410,
+      "end": 1699710603410,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "result": "import { ref } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, normalizeStyle as _normalizeStyle, Fragment as _Fragment, createElementBlock as _createElementBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\";\nconst _withScopeId = (n) => (_pushScopeId(\"data-v-a46a0bfb\"), n = n(), _popScopeId(), n);\nconst _hoisted_1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ _createElementVNode(\"div\", {\n  \"col-span-1\": \"\",\n  \"md:col-span-3\": \"\"\n}, null, -1));\nconst _hoisted_2 = {\n  \"text-center\": \"\",\n  \"col-span-10\": \"\",\n  \"md:col-span-6\": \"\",\n  flex: \"\",\n  \"flex-col\": \"\",\n  \"items-center\": \"\",\n  \"justify-center\": \"\",\n  \"text-white\": \"\",\n  \"z-3\": \"\"\n};\nconst _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ _createElementVNode(\"div\", {\n  \"col-span-1\": \"\",\n  \"md:col-span-3\": \"\"\n}, null, -1));\nimport { useTranslateX, useTranslateY } from \"@/composables/useAnime\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"CarouselVertical\",\n  props: {\n    topText: {},\n    middleText: {},\n    bottomText: {},\n    backgroundUrl: {},\n    mask: { type: Boolean, default: true }\n  },\n  setup(__props, { expose: __expose }) {\n    const props = __props;\n    const top = ref(null);\n    const middle = ref(null);\n    const bottom = ref(null);\n    const { instance: middleInstance } = useTranslateX(middle, -600, 0, 0, 600);\n    const { instance: topInstance } = useTranslateY(top, -60, 0, 600, 200);\n    const { instance: bottomInstance } = useTranslateY(bottom, 60, 0, 600, 200);\n    const restart = () => {\n      middleInstance.value?.restart();\n      topInstance.value?.restart();\n      bottomInstance.value?.restart();\n    };\n    __expose({ restart });\n    return (_ctx, _cache) => {\n      const _component_Mask = _resolveComponent(\"Mask\");\n      return _openBlock(), _createElementBlock(_Fragment, null, [\n        props.mask ? (_openBlock(), _createBlock(_component_Mask, { key: 0 })) : _createCommentVNode(\"\", true),\n        _createElementVNode(\"div\", {\n          class: \"full CarouselOne relative grid grid-cols-12\",\n          style: _normalizeStyle({ backgroundImage: `url(${props.backgroundUrl})` })\n        }, [\n          _hoisted_1,\n          _createElementVNode(\"div\", _hoisted_2, [\n            _createElementVNode(\"div\", {\n              ref_key: \"top\",\n              ref: top,\n              \"font-500\": \"\",\n              \"text-xl\": \"\",\n              \"md:text-4xl\": \"\"\n            }, _toDisplayString(props.topText), 513),\n            _createElementVNode(\"div\", {\n              ref_key: \"middle\",\n              ref: middle,\n              \"text-primary\": \"\",\n              \"text-5xl\": \"\",\n              \"md:text-8xl\": \"\",\n              \"font-500\": \"\",\n              \"b-b-2\": \"\",\n              \"b-primary\": \"\"\n            }, _toDisplayString(props.middleText), 513),\n            _createElementVNode(\"div\", {\n              ref_key: \"bottom\",\n              ref: bottom,\n              \"text-lg\": \"\",\n              \"md:text-xl\": \"\",\n              \"font-500\": \"\",\n              \"mt-2\": \"\",\n              \"md:mt-6\": \"\"\n            }, _toDisplayString(props.bottomText), 513)\n          ]),\n          _hoisted_3\n        ], 4)\n      ], 64);\n    };\n  }\n});\n",
+      "start": 1699710603410,
+      "end": 1699710603414,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";AAAA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1D,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1Y,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAClG,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACd,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACX,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACjB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACvB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACX,CAAC,CAAC;AACF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAClG,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACd,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACjD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACV,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1C,CAAC,CAAC,CAAC,CAAC;AACJ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3E,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACN,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC9B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACjE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/G,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/D,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAClD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACvB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC5B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACjC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC5B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACvD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACb,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACb,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACb,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACN,CAAC,CAAC,CAAC;AACH,CAAC,CAAC,CAAC;"
+      }
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710603414,
+      "end": 1699710603415,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710603415,
+      "end": 1699710603415,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699710603416,
+      "end": 1699710603416,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710603416,
+      "end": 1699710603416,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699710603416,
+      "end": 1699710603416,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "result": "import { default as __nuxt_component_0 } from \"F:/workSpace2024/knowledge-nuxt3/components/Mask.vue\";\nimport { ref } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, createElementVNode as _createElementVNode, toDisplayString as _toDisplayString, normalizeStyle as _normalizeStyle, Fragment as _Fragment, createElementBlock as _createElementBlock, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\";\nconst _withScopeId = (n) => (_pushScopeId(\"data-v-a46a0bfb\"), n = n(), _popScopeId(), n);\nconst _hoisted_1 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ _createElementVNode(\"div\", {\n  \"col-span-1\": \"\",\n  \"md:col-span-3\": \"\"\n}, null, -1));\nconst _hoisted_2 = {\n  \"text-center\": \"\",\n  \"col-span-10\": \"\",\n  \"md:col-span-6\": \"\",\n  flex: \"\",\n  \"flex-col\": \"\",\n  \"items-center\": \"\",\n  \"justify-center\": \"\",\n  \"text-white\": \"\",\n  \"z-3\": \"\"\n};\nconst _hoisted_3 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ _createElementVNode(\"div\", {\n  \"col-span-1\": \"\",\n  \"md:col-span-3\": \"\"\n}, null, -1));\nimport { useTranslateX, useTranslateY } from \"@/composables/useAnime\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"CarouselVertical\",\n  props: {\n    topText: {},\n    middleText: {},\n    bottomText: {},\n    backgroundUrl: {},\n    mask: { type: Boolean, default: true }\n  },\n  setup(__props, { expose: __expose }) {\n    const props = __props;\n    const top = ref(null);\n    const middle = ref(null);\n    const bottom = ref(null);\n    const { instance: middleInstance } = useTranslateX(middle, -600, 0, 0, 600);\n    const { instance: topInstance } = useTranslateY(top, -60, 0, 600, 200);\n    const { instance: bottomInstance } = useTranslateY(bottom, 60, 0, 600, 200);\n    const restart = () => {\n      middleInstance.value?.restart();\n      topInstance.value?.restart();\n      bottomInstance.value?.restart();\n    };\n    __expose({ restart });\n    return (_ctx, _cache) => {\n      const _component_Mask = __nuxt_component_0;\n      return _openBlock(), _createElementBlock(_Fragment, null, [\n        props.mask ? (_openBlock(), _createBlock(_component_Mask, { key: 0 })) : _createCommentVNode(\"\", true),\n        _createElementVNode(\"div\", {\n          class: \"full CarouselOne relative grid grid-cols-12\",\n          style: _normalizeStyle({ backgroundImage: `url(${props.backgroundUrl})` })\n        }, [\n          _hoisted_1,\n          _createElementVNode(\"div\", _hoisted_2, [\n            _createElementVNode(\"div\", {\n              ref_key: \"top\",\n              ref: top,\n              \"font-500\": \"\",\n              \"text-xl\": \"\",\n              \"md:text-4xl\": \"\"\n            }, _toDisplayString(props.topText), 513),\n            _createElementVNode(\"div\", {\n              ref_key: \"middle\",\n              ref: middle,\n              \"text-primary\": \"\",\n              \"text-5xl\": \"\",\n              \"md:text-8xl\": \"\",\n              \"font-500\": \"\",\n              \"b-b-2\": \"\",\n              \"b-primary\": \"\"\n            }, _toDisplayString(props.middleText), 513),\n            _createElementVNode(\"div\", {\n              ref_key: \"bottom\",\n              ref: bottom,\n              \"text-lg\": \"\",\n              \"md:text-xl\": \"\",\n              \"font-500\": \"\",\n              \"mt-2\": \"\",\n              \"md:mt-6\": \"\"\n            }, _toDisplayString(props.bottomText), 513)\n          ]),\n          _hoisted_3\n        ], 4)\n      ], 64);\n    };\n  }\n});\n",
+      "start": 1699710603417,
+      "end": 1699710603417,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710603417,
+      "end": 1699710603417,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710603417,
+      "end": 1699710603418,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710603418,
+      "end": 1699710603418,
+      "order": "normal"
+    }
+  ]
+}

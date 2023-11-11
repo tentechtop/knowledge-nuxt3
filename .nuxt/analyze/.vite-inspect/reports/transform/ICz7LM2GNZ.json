@@ -1,0 +1,244 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/components/Home/First/CarouselVertical.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script setup lang=\"ts\">\r\nimport { useTranslateX, useTranslateY } from '@/composables/useAnime'\r\ninterface Props {\r\n  topText: string\r\n  middleText: string\r\n  bottomText: string\r\n  backgroundUrl: string\r\n  mask?: boolean\r\n}\r\nconst props = withDefaults(defineProps<Props>(), {\r\n  mask: true,\r\n})\r\nconst top = ref<HTMLElement | null>(null)\r\nconst middle = ref<HTMLElement | null>(null)\r\nconst bottom = ref<HTMLElement | null>(null)\r\nconst { instance: middleInstance } = useTranslateX(middle, -600, 0, 0, 600)\r\nconst { instance: topInstance } = useTranslateY(top, -60, 0, 600, 200)\r\nconst { instance: bottomInstance } = useTranslateY(bottom, 60, 0, 600, 200)\r\nconst restart = () => {\r\n  middleInstance.value?.restart()\r\n  topInstance.value?.restart()\r\n  bottomInstance.value?.restart()\r\n}\r\n\r\ndefineExpose({ restart })\r\n</script>\r\n\r\n<template>\r\n  <Mask v-if=\"props.mask\" />\r\n  <div class=\"full CarouselOne relative grid grid-cols-12\" :style=\"{ backgroundImage: `url(${props.backgroundUrl})` }\">\r\n    <div col-span-1 md:col-span-3 />\r\n    <div text-center col-span-10 md:col-span-6 flex flex-col items-center justify-center text-white z-3>\r\n      <div ref=\"top\" font-500 text-xl md:text-4xl>\r\n        {{ props.topText }}\r\n      </div>\r\n      <div ref=\"middle\" text-primary text-5xl md:text-8xl font-500 b-b-2 b-primary>\r\n        {{ props.middleText }}\r\n      </div>\r\n      <div ref=\"bottom\" text-lg md:text-xl font-500 mt-2 md:mt-6>\r\n        {{ props.bottomText }}\r\n      </div>\r\n    </div>\r\n    <div col-span-1 md:col-span-3 />\r\n  </div>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.CarouselOne {\r\n  // background-image: url(\"/carousel1.jpg\");\r\n}\r\n</style>\r\n",
+      "start": 1699710602415,
+      "end": 1699710602499,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710602499,
+      "end": 1699710602499,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710602499,
+      "end": 1699710602500,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710602500,
+      "end": 1699710602500,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710602500,
+      "end": 1699710602500,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710602500,
+      "end": 1699710602500,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710602500,
+      "end": 1699710602500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710602500,
+      "end": 1699710602500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710602500,
+      "end": 1699710602500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710602500,
+      "end": 1699710602500,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"F:/workSpace2024/knowledge-nuxt3/components/Home/First/CarouselVertical.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"F:/workSpace2024/knowledge-nuxt3/components/Home/First/CarouselVertical.vue?vue&type=script&setup=true&lang.ts\";\nimport \"F:/workSpace2024/knowledge-nuxt3/components/Home/First/CarouselVertical.vue?vue&type=style&index=0&scoped=a46a0bfb&lang.scss\";\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__scopeId\", \"data-v-a46a0bfb\"]]);\n",
+      "start": 1699710602500,
+      "end": 1699710602554,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710602554,
+      "end": 1699710602554,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710602554,
+      "end": 1699710602555,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710602555,
+      "end": 1699710602555,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710602555,
+      "end": 1699710602555,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699710602555,
+      "end": 1699710602555,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710602556,
+      "end": 1699710602556,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710602556,
+      "end": 1699710602556,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710602556,
+      "end": 1699710602556,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710602556,
+      "end": 1699710602556,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710602557,
+      "end": 1699710602557,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710602557,
+      "end": 1699710602557,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710602557,
+      "end": 1699710602557,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710602557,
+      "end": 1699710602557,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710602558,
+      "end": 1699710602558,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710602558,
+      "end": 1699710602558,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710602558,
+      "end": 1699710602558,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710602558,
+      "end": 1699710602559,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710602559,
+      "end": 1699710602559,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710602559,
+      "end": 1699710602560,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710602560,
+      "end": 1699710602560,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710602561,
+      "end": 1699710602561,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699710602561,
+      "end": 1699710602561,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710602561,
+      "end": 1699710602562,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699710602562,
+      "end": 1699710602562,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710602563,
+      "end": 1699710602563,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710602563,
+      "end": 1699710602563,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710602563,
+      "end": 1699710602564,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710602564,
+      "end": 1699710602564,
+      "order": "normal"
+    }
+  ]
+}

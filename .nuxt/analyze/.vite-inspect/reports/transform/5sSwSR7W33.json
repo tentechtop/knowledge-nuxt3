@@ -1,0 +1,240 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/ssr-window/ssr-window.esm.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/**\n * SSR Window 4.0.2\n * Better handling for window object in SSR environment\n * https://github.com/nolimits4web/ssr-window\n *\n * Copyright 2021, Vladimir Kharlampidi\n *\n * Licensed under MIT\n *\n * Released on: December 13, 2021\n */\n/* eslint-disable no-param-reassign */\nfunction isObject(obj) {\n    return (obj !== null &&\n        typeof obj === 'object' &&\n        'constructor' in obj &&\n        obj.constructor === Object);\n}\nfunction extend(target = {}, src = {}) {\n    Object.keys(src).forEach((key) => {\n        if (typeof target[key] === 'undefined')\n            target[key] = src[key];\n        else if (isObject(src[key]) &&\n            isObject(target[key]) &&\n            Object.keys(src[key]).length > 0) {\n            extend(target[key], src[key]);\n        }\n    });\n}\n\nconst ssrDocument = {\n    body: {},\n    addEventListener() { },\n    removeEventListener() { },\n    activeElement: {\n        blur() { },\n        nodeName: '',\n    },\n    querySelector() {\n        return null;\n    },\n    querySelectorAll() {\n        return [];\n    },\n    getElementById() {\n        return null;\n    },\n    createEvent() {\n        return {\n            initEvent() { },\n        };\n    },\n    createElement() {\n        return {\n            children: [],\n            childNodes: [],\n            style: {},\n            setAttribute() { },\n            getElementsByTagName() {\n                return [];\n            },\n        };\n    },\n    createElementNS() {\n        return {};\n    },\n    importNode() {\n        return null;\n    },\n    location: {\n        hash: '',\n        host: '',\n        hostname: '',\n        href: '',\n        origin: '',\n        pathname: '',\n        protocol: '',\n        search: '',\n    },\n};\nfunction getDocument() {\n    const doc = typeof document !== 'undefined' ? document : {};\n    extend(doc, ssrDocument);\n    return doc;\n}\n\nconst ssrWindow = {\n    document: ssrDocument,\n    navigator: {\n        userAgent: '',\n    },\n    location: {\n        hash: '',\n        host: '',\n        hostname: '',\n        href: '',\n        origin: '',\n        pathname: '',\n        protocol: '',\n        search: '',\n    },\n    history: {\n        replaceState() { },\n        pushState() { },\n        go() { },\n        back() { },\n    },\n    CustomEvent: function CustomEvent() {\n        return this;\n    },\n    addEventListener() { },\n    removeEventListener() { },\n    getComputedStyle() {\n        return {\n            getPropertyValue() {\n                return '';\n            },\n        };\n    },\n    Image() { },\n    Date() { },\n    screen: {},\n    setTimeout() { },\n    clearTimeout() { },\n    matchMedia() {\n        return {};\n    },\n    requestAnimationFrame(callback) {\n        if (typeof setTimeout === 'undefined') {\n            callback();\n            return null;\n        }\n        return setTimeout(callback, 0);\n    },\n    cancelAnimationFrame(id) {\n        if (typeof setTimeout === 'undefined') {\n            return;\n        }\n        clearTimeout(id);\n    },\n};\nfunction getWindow() {\n    const win = typeof window !== 'undefined' ? window : {};\n    extend(win, ssrWindow);\n    return win;\n}\n\nexport { extend, getDocument, getWindow, ssrDocument, ssrWindow };\n",
+      "start": 1699710600309,
+      "end": 1699710600455,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710600455,
+      "end": 1699710600455,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710600455,
+      "end": 1699710600455,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710600455,
+      "end": 1699710600456,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710600456,
+      "end": 1699710600456,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710600456,
+      "end": 1699710600456,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710600456,
+      "end": 1699710600456,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710600456,
+      "end": 1699710600456,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710600456,
+      "end": 1699710600456,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710600456,
+      "end": 1699710600456,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699710600456,
+      "end": 1699710600456,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710600456,
+      "end": 1699710600456,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710600456,
+      "end": 1699710600456,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710600456,
+      "end": 1699710600456,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710600456,
+      "end": 1699710600456,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710600457,
+      "end": 1699710600457,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710600457,
+      "end": 1699710600458,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699710600458,
+      "end": 1699710600458,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710600458,
+      "end": 1699710600458,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699710600458,
+      "end": 1699710600458,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710600458,
+      "end": 1699710600458,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710600458,
+      "end": 1699710600458,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710600458,
+      "end": 1699710600458,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710600458,
+      "end": 1699710600458,
+      "order": "normal"
+    }
+  ]
+}

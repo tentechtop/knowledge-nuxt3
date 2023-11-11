@@ -1,0 +1,317 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/styles/anime.css",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/* Buzz Out */\r\n@-webkit-keyframes hvr-buzz-out {\r\n    10% {\r\n      -webkit-transform: translateX(3px) rotate(2deg);\r\n      transform: translateX(3px) rotate(2deg);\r\n    }\r\n    20% {\r\n      -webkit-transform: translateX(-3px) rotate(-2deg);\r\n      transform: translateX(-3px) rotate(-2deg);\r\n    }\r\n    30% {\r\n      -webkit-transform: translateX(3px) rotate(2deg);\r\n      transform: translateX(3px) rotate(2deg);\r\n    }\r\n    40% {\r\n      -webkit-transform: translateX(-3px) rotate(-2deg);\r\n      transform: translateX(-3px) rotate(-2deg);\r\n    }\r\n    50% {\r\n      -webkit-transform: translateX(2px) rotate(1deg);\r\n      transform: translateX(2px) rotate(1deg);\r\n    }\r\n    60% {\r\n      -webkit-transform: translateX(-2px) rotate(-1deg);\r\n      transform: translateX(-2px) rotate(-1deg);\r\n    }\r\n    70% {\r\n      -webkit-transform: translateX(2px) rotate(1deg);\r\n      transform: translateX(2px) rotate(1deg);\r\n    }\r\n    80% {\r\n      -webkit-transform: translateX(-2px) rotate(-1deg);\r\n      transform: translateX(-2px) rotate(-1deg);\r\n    }\r\n    90% {\r\n      -webkit-transform: translateX(1px) rotate(0);\r\n      transform: translateX(1px) rotate(0);\r\n    }\r\n    100% {\r\n      -webkit-transform: translateX(-1px) rotate(0);\r\n      transform: translateX(-1px) rotate(0);\r\n    }\r\n  }\r\n  @keyframes hvr-buzz-out {\r\n    10% {\r\n      -webkit-transform: translateX(3px) rotate(2deg);\r\n      transform: translateX(3px) rotate(2deg);\r\n    }\r\n    20% {\r\n      -webkit-transform: translateX(-3px) rotate(-2deg);\r\n      transform: translateX(-3px) rotate(-2deg);\r\n    }\r\n    30% {\r\n      -webkit-transform: translateX(3px) rotate(2deg);\r\n      transform: translateX(3px) rotate(2deg);\r\n    }\r\n    40% {\r\n      -webkit-transform: translateX(-3px) rotate(-2deg);\r\n      transform: translateX(-3px) rotate(-2deg);\r\n    }\r\n    50% {\r\n      -webkit-transform: translateX(2px) rotate(1deg);\r\n      transform: translateX(2px) rotate(1deg);\r\n    }\r\n    60% {\r\n      -webkit-transform: translateX(-2px) rotate(-1deg);\r\n      transform: translateX(-2px) rotate(-1deg);\r\n    }\r\n    70% {\r\n      -webkit-transform: translateX(2px) rotate(1deg);\r\n      transform: translateX(2px) rotate(1deg);\r\n    }\r\n    80% {\r\n      -webkit-transform: translateX(-2px) rotate(-1deg);\r\n      transform: translateX(-2px) rotate(-1deg);\r\n    }\r\n    90% {\r\n      -webkit-transform: translateX(1px) rotate(0);\r\n      transform: translateX(1px) rotate(0);\r\n    }\r\n    100% {\r\n      -webkit-transform: translateX(-1px) rotate(0);\r\n      transform: translateX(-1px) rotate(0);\r\n    }\r\n  }\r\n  .hvr-buzz-out {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    -webkit-transform: perspective(1px) translateZ(0);\r\n    transform: perspective(1px) translateZ(0);\r\n    box-shadow: 0 0 1px rgba(0, 0, 0, 0);\r\n  }\r\n  .hvr-buzz-out:hover, .hvr-buzz-out:focus, .hvr-buzz-out:active {\r\n    -webkit-animation-name: hvr-buzz-out;\r\n    animation-name: hvr-buzz-out;\r\n    -webkit-animation-duration: 0.75s;\r\n    animation-duration: 0.75s;\r\n    -webkit-animation-timing-function: linear;\r\n    animation-timing-function: linear;\r\n    -webkit-animation-iteration-count: 1;\r\n    animation-iteration-count: 1;\r\n  }\r\n  ",
+      "start": 1699710605713,
+      "end": 1699710605936,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710605936,
+      "end": 1699710605936,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699710605936,
+      "end": 1699710605936,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710605936,
+      "end": 1699710605936,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710605936,
+      "end": 1699710605936,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710605936,
+      "end": 1699710605936,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710605936,
+      "end": 1699710605936,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710605936,
+      "end": 1699710605936,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710605936,
+      "end": 1699710605936,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710605936,
+      "end": 1699710605937,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "@keyframes hvr-buzz-out{\r\n    10%{\r\n      transform:translateX(3px) rotate(2deg);\r\n    }\r\n    20%{\r\n      transform:translateX(-3px) rotate(-2deg);\r\n    }\r\n    30%{\r\n      transform:translateX(3px) rotate(2deg);\r\n    }\r\n    40%{\r\n      transform:translateX(-3px) rotate(-2deg);\r\n    }\r\n    50%{\r\n      transform:translateX(2px) rotate(1deg);\r\n    }\r\n    60%{\r\n      transform:translateX(-2px) rotate(-1deg);\r\n    }\r\n    70%{\r\n      transform:translateX(2px) rotate(1deg);\r\n    }\r\n    80%{\r\n      transform:translateX(-2px) rotate(-1deg);\r\n    }\r\n    90%{\r\n      transform:translateX(1px) rotate(0);\r\n    }\r\n    to{\r\n      transform:translateX(-1px) rotate(0);\r\n    }\r\n  }\r\n  .hvr-buzz-out{\r\n    box-shadow:0 0 1px transparent;\r\n    display:inline-block;\r\n    transform:perspective(1px) translateZ(0);\r\n    vertical-align:middle;\r\n  }\r\n  .hvr-buzz-out:active,.hvr-buzz-out:focus,.hvr-buzz-out:hover{\r\n    animation-duration:.75s;\r\n    animation-iteration-count:1;\r\n    animation-name:hvr-buzz-out;\r\n    animation-timing-function:linear;\r\n  }\r\n  ",
+      "start": 1699710605937,
+      "end": 1699710605948,
+      "order": "normal",
+      "sourcemaps": {
+        "file": "F:/workSpace2024/knowledge-nuxt3/styles/anime.css",
+        "mappings": "AA2CE;IACE;MAEE,sCAAuC;IACzC;IACA;MAEE,wCAAyC;IAC3C;IACA;MAEE,sCAAuC;IACzC;IACA;MAEE,wCAAyC;IAC3C;IACA;MAEE,sCAAuC;IACzC;IACA;MAEE,wCAAyC;IAC3C;IACA;MAEE,sCAAuC;IACzC;IACA;MAEE,wCAAyC;IAC3C;IACA;MAEE,mCAAoC;IACtC;IACA;MAEE,oCAAqC;IACvC;EACF;EACA;IAKE,8BAAoC;IAJpC,oBAAqB;IAGrB,wCAAyC;IAFzC,qBAAsB;EAIxB;EACA;IAIE,uBAAyB;IAIzB,2BAA4B;IAN5B,2BAA4B;IAI5B,gCAAiC;EAGnC",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/styles/anime.css"
+        ],
+        "sourcesContent": [
+          "/* Buzz Out */\r\n@-webkit-keyframes hvr-buzz-out {\r\n    10% {\r\n      -webkit-transform: translateX(3px) rotate(2deg);\r\n      transform: translateX(3px) rotate(2deg);\r\n    }\r\n    20% {\r\n      -webkit-transform: translateX(-3px) rotate(-2deg);\r\n      transform: translateX(-3px) rotate(-2deg);\r\n    }\r\n    30% {\r\n      -webkit-transform: translateX(3px) rotate(2deg);\r\n      transform: translateX(3px) rotate(2deg);\r\n    }\r\n    40% {\r\n      -webkit-transform: translateX(-3px) rotate(-2deg);\r\n      transform: translateX(-3px) rotate(-2deg);\r\n    }\r\n    50% {\r\n      -webkit-transform: translateX(2px) rotate(1deg);\r\n      transform: translateX(2px) rotate(1deg);\r\n    }\r\n    60% {\r\n      -webkit-transform: translateX(-2px) rotate(-1deg);\r\n      transform: translateX(-2px) rotate(-1deg);\r\n    }\r\n    70% {\r\n      -webkit-transform: translateX(2px) rotate(1deg);\r\n      transform: translateX(2px) rotate(1deg);\r\n    }\r\n    80% {\r\n      -webkit-transform: translateX(-2px) rotate(-1deg);\r\n      transform: translateX(-2px) rotate(-1deg);\r\n    }\r\n    90% {\r\n      -webkit-transform: translateX(1px) rotate(0);\r\n      transform: translateX(1px) rotate(0);\r\n    }\r\n    100% {\r\n      -webkit-transform: translateX(-1px) rotate(0);\r\n      transform: translateX(-1px) rotate(0);\r\n    }\r\n  }\r\n  @keyframes hvr-buzz-out {\r\n    10% {\r\n      -webkit-transform: translateX(3px) rotate(2deg);\r\n      transform: translateX(3px) rotate(2deg);\r\n    }\r\n    20% {\r\n      -webkit-transform: translateX(-3px) rotate(-2deg);\r\n      transform: translateX(-3px) rotate(-2deg);\r\n    }\r\n    30% {\r\n      -webkit-transform: translateX(3px) rotate(2deg);\r\n      transform: translateX(3px) rotate(2deg);\r\n    }\r\n    40% {\r\n      -webkit-transform: translateX(-3px) rotate(-2deg);\r\n      transform: translateX(-3px) rotate(-2deg);\r\n    }\r\n    50% {\r\n      -webkit-transform: translateX(2px) rotate(1deg);\r\n      transform: translateX(2px) rotate(1deg);\r\n    }\r\n    60% {\r\n      -webkit-transform: translateX(-2px) rotate(-1deg);\r\n      transform: translateX(-2px) rotate(-1deg);\r\n    }\r\n    70% {\r\n      -webkit-transform: translateX(2px) rotate(1deg);\r\n      transform: translateX(2px) rotate(1deg);\r\n    }\r\n    80% {\r\n      -webkit-transform: translateX(-2px) rotate(-1deg);\r\n      transform: translateX(-2px) rotate(-1deg);\r\n    }\r\n    90% {\r\n      -webkit-transform: translateX(1px) rotate(0);\r\n      transform: translateX(1px) rotate(0);\r\n    }\r\n    100% {\r\n      -webkit-transform: translateX(-1px) rotate(0);\r\n      transform: translateX(-1px) rotate(0);\r\n    }\r\n  }\r\n  .hvr-buzz-out {\r\n    display: inline-block;\r\n    vertical-align: middle;\r\n    -webkit-transform: perspective(1px) translateZ(0);\r\n    transform: perspective(1px) translateZ(0);\r\n    box-shadow: 0 0 1px rgba(0, 0, 0, 0);\r\n  }\r\n  .hvr-buzz-out:hover, .hvr-buzz-out:focus, .hvr-buzz-out:active {\r\n    -webkit-animation-name: hvr-buzz-out;\r\n    animation-name: hvr-buzz-out;\r\n    -webkit-animation-duration: 0.75s;\r\n    animation-duration: 0.75s;\r\n    -webkit-animation-timing-function: linear;\r\n    animation-timing-function: linear;\r\n    -webkit-animation-iteration-count: 1;\r\n    animation-iteration-count: 1;\r\n  }\r\n  "
+        ],
+        "version": 3
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710605949,
+      "end": 1699710605949,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710605951,
+      "end": 1699710605951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710605951,
+      "end": 1699710605951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699710605951,
+      "end": 1699710605951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710605951,
+      "end": 1699710605951,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710605952,
+      "end": 1699710605952,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710605952,
+      "end": 1699710605952,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710605952,
+      "end": 1699710605952,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710605952,
+      "end": 1699710605952,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710605952,
+      "end": 1699710605952,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710605952,
+      "end": 1699710605952,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710605953,
+      "end": 1699710605953,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710605953,
+      "end": 1699710605953,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710605953,
+      "end": 1699710605953,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710605953,
+      "end": 1699710605953,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default ''",
+      "start": 1699710605953,
+      "end": 1699710605953,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710605953,
+      "end": 1699710605953,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710605954,
+      "end": 1699710605955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710605955,
+      "end": 1699710605955,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710605955,
+      "end": 1699710605955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710605955,
+      "end": 1699710605955,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710605956,
+      "end": 1699710605956,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710605956,
+      "end": 1699710605956,
+      "order": "post"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710605956,
+      "end": 1699710605956,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710605956,
+      "end": 1699710605956,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710605956,
+      "end": 1699710605956,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710605957,
+      "end": 1699710605957,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710605957,
+      "end": 1699710605957,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710605957,
+      "end": 1699710605957,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710605957,
+      "end": 1699710605957,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710605957,
+      "end": 1699710605957,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710605957,
+      "end": 1699710605957,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710605957,
+      "end": 1699710605957,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-template",
+      "start": 1699710605957,
+      "end": 1699710605957,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710605958,
+      "end": 1699710605958,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710605959,
+      "end": 1699710605959,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710605959,
+      "end": 1699710605959,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710605959,
+      "end": 1699710605960,
+      "order": "normal"
+    }
+  ]
+}

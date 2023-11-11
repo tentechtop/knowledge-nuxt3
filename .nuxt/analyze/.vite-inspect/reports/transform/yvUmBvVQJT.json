@@ -1,0 +1,256 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/components/Home/Data/index.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script setup lang=\"ts\">\r\nimport type Marquee from '~~/components/Marquee.vue'\r\ntype MarqueeInstance = InstanceType<typeof Marquee>\r\nconst addressRef = ref<MarqueeInstance | null>(null)\r\nconst { $on, MITT_KEY } = useMitt()\r\n$on(MITT_KEY.CHANGE_TO_DATA, () => {\r\n  addressRef.value?.append()\r\n  // securityRef.value?.append()\r\n  // leftInstance.value?.restart()\r\n  // rightInstance.value?.restart()\r\n})\r\n// import { COMPANY } from '~~/enums/appEnum'\r\n// const rootRef = ref<HTMLElement | null>(null)\r\n// defineExpose({ $el: rootRef })\r\n</script>\r\n\r\n<template>\r\n  <div ref=\"rootRef\" class=\"contact full pt-19 text-white text-base grid grid-cols-12 items-center justify-between gap-x-6 px-4 md:px-0\">\r\n    <DataCard :event-key=\"MITT_KEY.CHANGE_TO_DATA\" class=\" col-span-12 col-start-1  md:(col-start-2 col-span-2)\">\r\n      <template #icon>\r\n        <div class=\"icon-rounded  bg-blue-1\">\r\n          <div class=\"i-carbon-ibm-cloud-pak-watson-aiops icon-rounded__content   bg-blue-5\" />\r\n        </div>\r\n      </template>\r\n      <template #data>\r\n        182.6k\r\n      </template>\r\n      <template #descript>\r\n        Total sales\r\n      </template>\r\n      <template #subscript>\r\n        <div class=\"subscript\">\r\n          <span class=\"i-carbon-caret-up subscript__icon\" />\r\n          <span>8.3%</span>\r\n        </div>\r\n      </template>\r\n    </DataCard>\r\n    <DataCard :event-key=\"MITT_KEY.CHANGE_TO_DATA\" class=\"dataCard\">\r\n      <template #icon>\r\n        <div class=\"icon-rounded  bg-green-1\">\r\n          <div class=\"i-carbon-chart-column icon-rounded__content   bg-green-5\" />\r\n        </div>\r\n      </template>\r\n      <template #data>\r\n        38.6k\r\n      </template>\r\n      <template #descript>\r\n        Number of sales\r\n      </template>\r\n      <template #subscript>\r\n        <div class=\"subscript\">\r\n          <span class=\"i-carbon-caret-up subscript__icon\" />\r\n          <span>12.3%</span>\r\n        </div>\r\n      </template>\r\n    </DataCard>\r\n    <DataCard :event-key=\"MITT_KEY.CHANGE_TO_DATA\" class=\"dataCard\">\r\n      <template #icon>\r\n        <div class=\"icon-rounded  bg-yellow-1\">\r\n          <div class=\"i-carbon-person icon-rounded__content   bg-yellow-5\" />\r\n        </div>\r\n      </template>\r\n      <template #data>\r\n        12000+\r\n      </template>\r\n      <template #descript>\r\n        Company size\r\n      </template>\r\n      <template #subscript>\r\n        <div class=\"subscript\">\r\n          <span class=\"i-carbon-caret-down subscript__icon bg-red-5!\" />\r\n          <span class=\"text-red-5!\">300+</span>\r\n        </div>\r\n      </template>\r\n    </DataCard>\r\n    <DataCard :event-key=\"MITT_KEY.CHANGE_TO_DATA\" class=\"dataCard\">\r\n      <template #icon>\r\n        <div class=\"icon-rounded  bg-red-1\">\r\n          <div class=\"i-carbon-data-vis-1 icon-rounded__content   bg-red-5\" />\r\n        </div>\r\n      </template>\r\n      <template #data>\r\n        192\r\n      </template>\r\n      <template #descript>\r\n        Number of patents\r\n      </template>\r\n      <template #subscript>\r\n        <div class=\"subscript\">\r\n          <span class=\"i-carbon-caret-up subscript__icon\" />\r\n          <span>16</span>\r\n        </div>\r\n      </template>\r\n    </DataCard>\r\n    <DataCard :event-key=\"MITT_KEY.CHANGE_TO_DATA\" class=\"dataCard\">\r\n      <template #icon>\r\n        <div class=\"icon-rounded  bg-pink-1\">\r\n          <div class=\"i-carbon-earth-filled icon-rounded__content   bg-pink-5\" />\r\n        </div>\r\n      </template>\r\n      <template #data>\r\n        8.3%\r\n      </template>\r\n      <template #descript>\r\n        Market share\r\n      </template>\r\n      <template #subscript>\r\n        <div class=\"subscript\">\r\n          <span class=\"i-carbon-caret-up subscript__icon\" />\r\n          <span>2%</span>\r\n        </div>\r\n      </template>\r\n    </DataCard>\r\n  </div>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.contact {\r\n  background-image: url(\"/data.jpg\");\r\n  .dataCard{\r\n    @apply col-span-6 md:(col-span-2);\r\n  }\r\n  .icon-rounded{\r\n    @apply: rounded-50% opacity-50 w-16 h-16 relative ;\r\n\r\n    &__content{\r\n      @apply opacity-100 position-center w-10;\r\n    }\r\n  }\r\n\r\n  .subscript{\r\n    @apply flex items-center md:items-start justify-center text-green-5;\r\n    &__icon{\r\n      @apply inline-block w-8 h-8;\r\n      }\r\n  }\r\n}\r\n</style>\r\n",
+      "start": 1699710597986,
+      "end": 1699710598134,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "result": "<script setup lang=\"ts\">\r\nimport type Marquee from '~~/components/Marquee.vue'\r\ntype MarqueeInstance = InstanceType<typeof Marquee>\r\nconst addressRef = ref<MarqueeInstance | null>(null)\r\nconst { $on, MITT_KEY } = useMitt()\r\n$on(MITT_KEY.CHANGE_TO_DATA, () => {\r\n  addressRef.value?.append()\r\n  // securityRef.value?.append()\r\n  // leftInstance.value?.restart()\r\n  // rightInstance.value?.restart()\r\n})\r\n// import { COMPANY } from '~~/enums/appEnum'\r\n// const rootRef = ref<HTMLElement | null>(null)\r\n// defineExpose({ $el: rootRef })\r\n</script>\r\n\r\n<template>\r\n  <div ref=\"rootRef\" class=\"contact full pt-19 text-white text-base grid grid-cols-12 items-center justify-between gap-x-6 px-4 md:px-0\">\r\n    <DataCard :event-key=\"MITT_KEY.CHANGE_TO_DATA\" class=\" col-span-12 col-start-1  md:col-start-2 md:col-span-2\">\r\n      <template #icon>\r\n        <div class=\"icon-rounded  bg-blue-1\">\r\n          <div class=\"i-carbon-ibm-cloud-pak-watson-aiops icon-rounded__content   bg-blue-5\" />\r\n        </div>\r\n      </template>\r\n      <template #data>\r\n        182.6k\r\n      </template>\r\n      <template #descript>\r\n        Total sales\r\n      </template>\r\n      <template #subscript>\r\n        <div class=\"subscript\">\r\n          <span class=\"i-carbon-caret-up subscript__icon\" />\r\n          <span>8.3%</span>\r\n        </div>\r\n      </template>\r\n    </DataCard>\r\n    <DataCard :event-key=\"MITT_KEY.CHANGE_TO_DATA\" class=\"dataCard\">\r\n      <template #icon>\r\n        <div class=\"icon-rounded  bg-green-1\">\r\n          <div class=\"i-carbon-chart-column icon-rounded__content   bg-green-5\" />\r\n        </div>\r\n      </template>\r\n      <template #data>\r\n        38.6k\r\n      </template>\r\n      <template #descript>\r\n        Number of sales\r\n      </template>\r\n      <template #subscript>\r\n        <div class=\"subscript\">\r\n          <span class=\"i-carbon-caret-up subscript__icon\" />\r\n          <span>12.3%</span>\r\n        </div>\r\n      </template>\r\n    </DataCard>\r\n    <DataCard :event-key=\"MITT_KEY.CHANGE_TO_DATA\" class=\"dataCard\">\r\n      <template #icon>\r\n        <div class=\"icon-rounded  bg-yellow-1\">\r\n          <div class=\"i-carbon-person icon-rounded__content   bg-yellow-5\" />\r\n        </div>\r\n      </template>\r\n      <template #data>\r\n        12000+\r\n      </template>\r\n      <template #descript>\r\n        Company size\r\n      </template>\r\n      <template #subscript>\r\n        <div class=\"subscript\">\r\n          <span class=\"i-carbon-caret-down subscript__icon bg-red-5!\" />\r\n          <span class=\"text-red-5!\">300+</span>\r\n        </div>\r\n      </template>\r\n    </DataCard>\r\n    <DataCard :event-key=\"MITT_KEY.CHANGE_TO_DATA\" class=\"dataCard\">\r\n      <template #icon>\r\n        <div class=\"icon-rounded  bg-red-1\">\r\n          <div class=\"i-carbon-data-vis-1 icon-rounded__content   bg-red-5\" />\r\n        </div>\r\n      </template>\r\n      <template #data>\r\n        192\r\n      </template>\r\n      <template #descript>\r\n        Number of patents\r\n      </template>\r\n      <template #subscript>\r\n        <div class=\"subscript\">\r\n          <span class=\"i-carbon-caret-up subscript__icon\" />\r\n          <span>16</span>\r\n        </div>\r\n      </template>\r\n    </DataCard>\r\n    <DataCard :event-key=\"MITT_KEY.CHANGE_TO_DATA\" class=\"dataCard\">\r\n      <template #icon>\r\n        <div class=\"icon-rounded  bg-pink-1\">\r\n          <div class=\"i-carbon-earth-filled icon-rounded__content   bg-pink-5\" />\r\n        </div>\r\n      </template>\r\n      <template #data>\r\n        8.3%\r\n      </template>\r\n      <template #descript>\r\n        Market share\r\n      </template>\r\n      <template #subscript>\r\n        <div class=\"subscript\">\r\n          <span class=\"i-carbon-caret-up subscript__icon\" />\r\n          <span>2%</span>\r\n        </div>\r\n      </template>\r\n    </DataCard>\r\n  </div>\r\n</template>\r\n\r\n<style scoped lang='scss'>\r\n.contact {\r\n  background-image: url(\"/data.jpg\");\r\n  .dataCard{\r\n    @apply col-span-6 md:col-span-2;\r\n  }\r\n  .icon-rounded{\r\n    @apply: rounded-50% opacity-50 w-16 h-16 relative ;\r\n\r\n    &__content{\r\n      @apply opacity-100 position-center w-10;\r\n    }\r\n  }\r\n\r\n  .subscript{\r\n    @apply flex items-center md:items-start justify-center text-green-5;\r\n    &__icon{\r\n      @apply inline-block w-8 h-8;\r\n      }\r\n  }\r\n}\r\n</style>\r\n",
+      "start": 1699710598135,
+      "end": 1699710598135,
+      "order": "pre",
+      "sourcemaps": {
+        "version": 3,
+        "mappings": "AAAA",
+        "names": [],
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/components/Home/Data/index.vue"
+        ],
+        "sourcesContent": [
+          null
+        ]
+      }
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699710598135,
+      "end": 1699710598135,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699710598135,
+      "end": 1699710598135,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699710598135,
+      "end": 1699710598135,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699710598136,
+      "end": 1699710598136,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699710598136,
+      "end": 1699710598136,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699710598136,
+      "end": 1699710598136,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699710598136,
+      "end": 1699710598136,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699710598136,
+      "end": 1699710598136,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"F:/workSpace2024/knowledge-nuxt3/components/Home/Data/index.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"F:/workSpace2024/knowledge-nuxt3/components/Home/Data/index.vue?vue&type=script&setup=true&lang.ts\";\nimport \"F:/workSpace2024/knowledge-nuxt3/components/Home/Data/index.vue?vue&type=style&index=0&scoped=bc2bc0c8&lang.scss\";\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__scopeId\", \"data-v-bc2bc0c8\"]]);\n",
+      "start": 1699710598136,
+      "end": 1699710598228,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699710598228,
+      "end": 1699710598228,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699710598228,
+      "end": 1699710598229,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710598229,
+      "end": 1699710598229,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699710598229,
+      "end": 1699710598229,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699710598229,
+      "end": 1699710598229,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699710598230,
+      "end": 1699710598230,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699710598230,
+      "end": 1699710598230,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699710598230,
+      "end": 1699710598230,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699710598231,
+      "end": 1699710598231,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699710598231,
+      "end": 1699710598231,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699710598231,
+      "end": 1699710598231,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699710598231,
+      "end": 1699710598232,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699710598232,
+      "end": 1699710598232,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699710598232,
+      "end": 1699710598232,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699710598232,
+      "end": 1699710598232,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699710598233,
+      "end": 1699710598233,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699710598233,
+      "end": 1699710598233,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699710598233,
+      "end": 1699710598233,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699710598233,
+      "end": 1699710598234,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699710598235,
+      "end": 1699710598235,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699710598235,
+      "end": 1699710598235,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699710598235,
+      "end": 1699710598236,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699710598236,
+      "end": 1699710598236,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699710598236,
+      "end": 1699710598237,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699710598237,
+      "end": 1699710598237,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699710598237,
+      "end": 1699710598237,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699710598237,
+      "end": 1699710598238,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699710598238,
+      "end": 1699710598238,
+      "order": "normal"
+    }
+  ]
+}
