@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/gradle.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Gradle\nDescription: Gradle is an open-source build automation tool focused on flexibility and performance.\nWebsite: https://gradle.org\nAuthor: Damian Mee <mee.damian@gmail.com>\n*/\n\nfunction gradle(hljs) {\n  const KEYWORDS = [\n    \"task\",\n    \"project\",\n    \"allprojects\",\n    \"subprojects\",\n    \"artifacts\",\n    \"buildscript\",\n    \"configurations\",\n    \"dependencies\",\n    \"repositories\",\n    \"sourceSets\",\n    \"description\",\n    \"delete\",\n    \"from\",\n    \"into\",\n    \"include\",\n    \"exclude\",\n    \"source\",\n    \"classpath\",\n    \"destinationDir\",\n    \"includes\",\n    \"options\",\n    \"sourceCompatibility\",\n    \"targetCompatibility\",\n    \"group\",\n    \"flatDir\",\n    \"doLast\",\n    \"doFirst\",\n    \"flatten\",\n    \"todir\",\n    \"fromdir\",\n    \"ant\",\n    \"def\",\n    \"abstract\",\n    \"break\",\n    \"case\",\n    \"catch\",\n    \"continue\",\n    \"default\",\n    \"do\",\n    \"else\",\n    \"extends\",\n    \"final\",\n    \"finally\",\n    \"for\",\n    \"if\",\n    \"implements\",\n    \"instanceof\",\n    \"native\",\n    \"new\",\n    \"private\",\n    \"protected\",\n    \"public\",\n    \"return\",\n    \"static\",\n    \"switch\",\n    \"synchronized\",\n    \"throw\",\n    \"throws\",\n    \"transient\",\n    \"try\",\n    \"volatile\",\n    \"while\",\n    \"strictfp\",\n    \"package\",\n    \"import\",\n    \"false\",\n    \"null\",\n    \"super\",\n    \"this\",\n    \"true\",\n    \"antlrtask\",\n    \"checkstyle\",\n    \"codenarc\",\n    \"copy\",\n    \"boolean\",\n    \"byte\",\n    \"char\",\n    \"class\",\n    \"double\",\n    \"float\",\n    \"int\",\n    \"interface\",\n    \"long\",\n    \"short\",\n    \"void\",\n    \"compile\",\n    \"runTime\",\n    \"file\",\n    \"fileTree\",\n    \"abs\",\n    \"any\",\n    \"append\",\n    \"asList\",\n    \"asWritable\",\n    \"call\",\n    \"collect\",\n    \"compareTo\",\n    \"count\",\n    \"div\",\n    \"dump\",\n    \"each\",\n    \"eachByte\",\n    \"eachFile\",\n    \"eachLine\",\n    \"every\",\n    \"find\",\n    \"findAll\",\n    \"flatten\",\n    \"getAt\",\n    \"getErr\",\n    \"getIn\",\n    \"getOut\",\n    \"getText\",\n    \"grep\",\n    \"immutable\",\n    \"inject\",\n    \"inspect\",\n    \"intersect\",\n    \"invokeMethods\",\n    \"isCase\",\n    \"join\",\n    \"leftShift\",\n    \"minus\",\n    \"multiply\",\n    \"newInputStream\",\n    \"newOutputStream\",\n    \"newPrintWriter\",\n    \"newReader\",\n    \"newWriter\",\n    \"next\",\n    \"plus\",\n    \"pop\",\n    \"power\",\n    \"previous\",\n    \"print\",\n    \"println\",\n    \"push\",\n    \"putAt\",\n    \"read\",\n    \"readBytes\",\n    \"readLines\",\n    \"reverse\",\n    \"reverseEach\",\n    \"round\",\n    \"size\",\n    \"sort\",\n    \"splitEachLine\",\n    \"step\",\n    \"subMap\",\n    \"times\",\n    \"toInteger\",\n    \"toList\",\n    \"tokenize\",\n    \"upto\",\n    \"waitForOrKill\",\n    \"withPrintWriter\",\n    \"withReader\",\n    \"withStream\",\n    \"withWriter\",\n    \"withWriterAppend\",\n    \"write\",\n    \"writeLine\"\n  ];\n  return {\n    name: 'Gradle',\n    case_insensitive: true,\n    keywords: KEYWORDS,\n    contains: [\n      hljs.C_LINE_COMMENT_MODE,\n      hljs.C_BLOCK_COMMENT_MODE,\n      hljs.APOS_STRING_MODE,\n      hljs.QUOTE_STRING_MODE,\n      hljs.NUMBER_MODE,\n      hljs.REGEXP_MODE\n\n    ]\n  };\n}\n\nmodule.exports = gradle;\n",
+      "start": 1699633500853,
+      "end": 1699633500951,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500951,
+      "end": 1699633500951,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500951,
+      "end": 1699633500951,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500951,
+      "end": 1699633500951,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500951,
+      "end": 1699633500951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500951,
+      "end": 1699633500951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500951,
+      "end": 1699633500951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500951,
+      "end": 1699633500951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500951,
+      "end": 1699633500951,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500952,
+      "end": 1699633500952,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500952,
+      "end": 1699633500952,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500952,
+      "end": 1699633500952,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500952,
+      "end": 1699633500952,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500952,
+      "end": 1699633500952,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500952,
+      "end": 1699633500952,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500952,
+      "end": 1699633500952,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500952,
+      "end": 1699633500952,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500952,
+      "end": 1699633500952,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500952,
+      "end": 1699633500952,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500952,
+      "end": 1699633500952,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500952,
+      "end": 1699633500952,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Gradle\nDescription: Gradle is an open-source build automation tool focused on flexibility and performance.\nWebsite: https://gradle.org\nAuthor: Damian Mee <mee.damian@gmail.com>\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar gradle_1;\nvar hasRequiredGradle;\n\nfunction requireGradle () {\n\tif (hasRequiredGradle) return gradle_1;\n\thasRequiredGradle = 1;\n\tfunction gradle(hljs) {\n\t  const KEYWORDS = [\n\t    \"task\",\n\t    \"project\",\n\t    \"allprojects\",\n\t    \"subprojects\",\n\t    \"artifacts\",\n\t    \"buildscript\",\n\t    \"configurations\",\n\t    \"dependencies\",\n\t    \"repositories\",\n\t    \"sourceSets\",\n\t    \"description\",\n\t    \"delete\",\n\t    \"from\",\n\t    \"into\",\n\t    \"include\",\n\t    \"exclude\",\n\t    \"source\",\n\t    \"classpath\",\n\t    \"destinationDir\",\n\t    \"includes\",\n\t    \"options\",\n\t    \"sourceCompatibility\",\n\t    \"targetCompatibility\",\n\t    \"group\",\n\t    \"flatDir\",\n\t    \"doLast\",\n\t    \"doFirst\",\n\t    \"flatten\",\n\t    \"todir\",\n\t    \"fromdir\",\n\t    \"ant\",\n\t    \"def\",\n\t    \"abstract\",\n\t    \"break\",\n\t    \"case\",\n\t    \"catch\",\n\t    \"continue\",\n\t    \"default\",\n\t    \"do\",\n\t    \"else\",\n\t    \"extends\",\n\t    \"final\",\n\t    \"finally\",\n\t    \"for\",\n\t    \"if\",\n\t    \"implements\",\n\t    \"instanceof\",\n\t    \"native\",\n\t    \"new\",\n\t    \"private\",\n\t    \"protected\",\n\t    \"public\",\n\t    \"return\",\n\t    \"static\",\n\t    \"switch\",\n\t    \"synchronized\",\n\t    \"throw\",\n\t    \"throws\",\n\t    \"transient\",\n\t    \"try\",\n\t    \"volatile\",\n\t    \"while\",\n\t    \"strictfp\",\n\t    \"package\",\n\t    \"import\",\n\t    \"false\",\n\t    \"null\",\n\t    \"super\",\n\t    \"this\",\n\t    \"true\",\n\t    \"antlrtask\",\n\t    \"checkstyle\",\n\t    \"codenarc\",\n\t    \"copy\",\n\t    \"boolean\",\n\t    \"byte\",\n\t    \"char\",\n\t    \"class\",\n\t    \"double\",\n\t    \"float\",\n\t    \"int\",\n\t    \"interface\",\n\t    \"long\",\n\t    \"short\",\n\t    \"void\",\n\t    \"compile\",\n\t    \"runTime\",\n\t    \"file\",\n\t    \"fileTree\",\n\t    \"abs\",\n\t    \"any\",\n\t    \"append\",\n\t    \"asList\",\n\t    \"asWritable\",\n\t    \"call\",\n\t    \"collect\",\n\t    \"compareTo\",\n\t    \"count\",\n\t    \"div\",\n\t    \"dump\",\n\t    \"each\",\n\t    \"eachByte\",\n\t    \"eachFile\",\n\t    \"eachLine\",\n\t    \"every\",\n\t    \"find\",\n\t    \"findAll\",\n\t    \"flatten\",\n\t    \"getAt\",\n\t    \"getErr\",\n\t    \"getIn\",\n\t    \"getOut\",\n\t    \"getText\",\n\t    \"grep\",\n\t    \"immutable\",\n\t    \"inject\",\n\t    \"inspect\",\n\t    \"intersect\",\n\t    \"invokeMethods\",\n\t    \"isCase\",\n\t    \"join\",\n\t    \"leftShift\",\n\t    \"minus\",\n\t    \"multiply\",\n\t    \"newInputStream\",\n\t    \"newOutputStream\",\n\t    \"newPrintWriter\",\n\t    \"newReader\",\n\t    \"newWriter\",\n\t    \"next\",\n\t    \"plus\",\n\t    \"pop\",\n\t    \"power\",\n\t    \"previous\",\n\t    \"print\",\n\t    \"println\",\n\t    \"push\",\n\t    \"putAt\",\n\t    \"read\",\n\t    \"readBytes\",\n\t    \"readLines\",\n\t    \"reverse\",\n\t    \"reverseEach\",\n\t    \"round\",\n\t    \"size\",\n\t    \"sort\",\n\t    \"splitEachLine\",\n\t    \"step\",\n\t    \"subMap\",\n\t    \"times\",\n\t    \"toInteger\",\n\t    \"toList\",\n\t    \"tokenize\",\n\t    \"upto\",\n\t    \"waitForOrKill\",\n\t    \"withPrintWriter\",\n\t    \"withReader\",\n\t    \"withStream\",\n\t    \"withWriter\",\n\t    \"withWriterAppend\",\n\t    \"write\",\n\t    \"writeLine\"\n\t  ];\n\t  return {\n\t    name: 'Gradle',\n\t    case_insensitive: true,\n\t    keywords: KEYWORDS,\n\t    contains: [\n\t      hljs.C_LINE_COMMENT_MODE,\n\t      hljs.C_BLOCK_COMMENT_MODE,\n\t      hljs.APOS_STRING_MODE,\n\t      hljs.QUOTE_STRING_MODE,\n\t      hljs.NUMBER_MODE,\n\t      hljs.REGEXP_MODE\n\n\t    ]\n\t  };\n\t}\n\n\tgradle_1 = gradle;\n\treturn gradle_1;\n}\n\nexport { requireGradle as __require };",
+      "start": 1699633500952,
+      "end": 1699633500953,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;CAOA,SAAS,MAAM,CAAC,IAAI,EAAE;CACtB,EAAE,MAAM,QAAQ,GAAG;CACnB,IAAI,MAAM;CACV,IAAI,SAAS;CACb,IAAI,aAAa;CACjB,IAAI,aAAa;CACjB,IAAI,WAAW;CACf,IAAI,aAAa;CACjB,IAAI,gBAAgB;CACpB,IAAI,cAAc;CAClB,IAAI,cAAc;CAClB,IAAI,YAAY;CAChB,IAAI,aAAa;CACjB,IAAI,QAAQ;CACZ,IAAI,MAAM;CACV,IAAI,MAAM;CACV,IAAI,SAAS;CACb,IAAI,SAAS;CACb,IAAI,QAAQ;CACZ,IAAI,WAAW;CACf,IAAI,gBAAgB;CACpB,IAAI,UAAU;CACd,IAAI,SAAS;CACb,IAAI,qBAAqB;CACzB,IAAI,qBAAqB;CACzB,IAAI,OAAO;CACX,IAAI,SAAS;CACb,IAAI,QAAQ;CACZ,IAAI,SAAS;CACb,IAAI,SAAS;CACb,IAAI,OAAO;CACX,IAAI,SAAS;CACb,IAAI,KAAK;CACT,IAAI,KAAK;CACT,IAAI,UAAU;CACd,IAAI,OAAO;CACX,IAAI,MAAM;CACV,IAAI,OAAO;CACX,IAAI,UAAU;CACd,IAAI,SAAS;CACb,IAAI,IAAI;CACR,IAAI,MAAM;CACV,IAAI,SAAS;CACb,IAAI,OAAO;CACX,IAAI,SAAS;CACb,IAAI,KAAK;CACT,IAAI,IAAI;CACR,IAAI,YAAY;CAChB,IAAI,YAAY;CAChB,IAAI,QAAQ;CACZ,IAAI,KAAK;CACT,IAAI,SAAS;CACb,IAAI,WAAW;CACf,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,IAAI,cAAc;CAClB,IAAI,OAAO;CACX,IAAI,QAAQ;CACZ,IAAI,WAAW;CACf,IAAI,KAAK;CACT,IAAI,UAAU;CACd,IAAI,OAAO;CACX,IAAI,UAAU;CACd,IAAI,SAAS;CACb,IAAI,QAAQ;CACZ,IAAI,OAAO;CACX,IAAI,MAAM;CACV,IAAI,OAAO;CACX,IAAI,MAAM;CACV,IAAI,MAAM;CACV,IAAI,WAAW;CACf,IAAI,YAAY;CAChB,IAAI,UAAU;CACd,IAAI,MAAM;CACV,IAAI,SAAS;CACb,IAAI,MAAM;CACV,IAAI,MAAM;CACV,IAAI,OAAO;CACX,IAAI,QAAQ;CACZ,IAAI,OAAO;CACX,IAAI,KAAK;CACT,IAAI,WAAW;CACf,IAAI,MAAM;CACV,IAAI,OAAO;CACX,IAAI,MAAM;CACV,IAAI,SAAS;CACb,IAAI,SAAS;CACb,IAAI,MAAM;CACV,IAAI,UAAU;CACd,IAAI,KAAK;CACT,IAAI,KAAK;CACT,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,IAAI,YAAY;CAChB,IAAI,MAAM;CACV,IAAI,SAAS;CACb,IAAI,WAAW;CACf,IAAI,OAAO;CACX,IAAI,KAAK;CACT,IAAI,MAAM;CACV,IAAI,MAAM;CACV,IAAI,UAAU;CACd,IAAI,UAAU;CACd,IAAI,UAAU;CACd,IAAI,OAAO;CACX,IAAI,MAAM;CACV,IAAI,SAAS;CACb,IAAI,SAAS;CACb,IAAI,OAAO;CACX,IAAI,QAAQ;CACZ,IAAI,OAAO;CACX,IAAI,QAAQ;CACZ,IAAI,SAAS;CACb,IAAI,MAAM;CACV,IAAI,WAAW;CACf,IAAI,QAAQ;CACZ,IAAI,SAAS;CACb,IAAI,WAAW;CACf,IAAI,eAAe;CACnB,IAAI,QAAQ;CACZ,IAAI,MAAM;CACV,IAAI,WAAW;CACf,IAAI,OAAO;CACX,IAAI,UAAU;CACd,IAAI,gBAAgB;CACpB,IAAI,iBAAiB;CACrB,IAAI,gBAAgB;CACpB,IAAI,WAAW;CACf,IAAI,WAAW;CACf,IAAI,MAAM;CACV,IAAI,MAAM;CACV,IAAI,KAAK;CACT,IAAI,OAAO;CACX,IAAI,UAAU;CACd,IAAI,OAAO;CACX,IAAI,SAAS;CACb,IAAI,MAAM;CACV,IAAI,OAAO;CACX,IAAI,MAAM;CACV,IAAI,WAAW;CACf,IAAI,WAAW;CACf,IAAI,SAAS;CACb,IAAI,aAAa;CACjB,IAAI,OAAO;CACX,IAAI,MAAM;CACV,IAAI,MAAM;CACV,IAAI,eAAe;CACnB,IAAI,MAAM;CACV,IAAI,QAAQ;CACZ,IAAI,OAAO;CACX,IAAI,WAAW;CACf,IAAI,QAAQ;CACZ,IAAI,UAAU;CACd,IAAI,MAAM;CACV,IAAI,eAAe;CACnB,IAAI,iBAAiB;CACrB,IAAI,YAAY;CAChB,IAAI,YAAY;CAChB,IAAI,YAAY;CAChB,IAAI,kBAAkB;CACtB,IAAI,OAAO;CACX,IAAI,WAAW;CACf,GAAG,CAAC;CACJ,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,QAAQ;CAClB,IAAI,gBAAgB,EAAE,IAAI;CAC1B,IAAI,QAAQ,EAAE,QAAQ;CACtB,IAAI,QAAQ,EAAE;CACd,MAAM,IAAI,CAAC,mBAAmB;CAC9B,MAAM,IAAI,CAAC,oBAAoB;CAC/B,MAAM,IAAI,CAAC,gBAAgB;CAC3B,MAAM,IAAI,CAAC,iBAAiB;CAC5B,MAAM,IAAI,CAAC,WAAW;CACtB,MAAM,IAAI,CAAC,WAAW;AACtB;CACA,KAAK;CACL,GAAG,CAAC;CACJ,CAAC;AACD;AACA,SAAc,GAAG,MAAM"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500953,
+      "end": 1699633500953,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500953,
+      "end": 1699633500953,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500953,
+      "end": 1699633500953,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500953,
+      "end": 1699633500953,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500953,
+      "end": 1699633500953,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500953,
+      "end": 1699633500953,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500953,
+      "end": 1699633500953,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500953,
+      "end": 1699633500953,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500953,
+      "end": 1699633500953,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500953,
+      "end": 1699633500953,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500953,
+      "end": 1699633500953,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500953,
+      "end": 1699633500954,
+      "order": "normal"
+    }
+  ]
+}

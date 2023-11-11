@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/http.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: HTTP\nDescription: HTTP request and response headers with automatic body highlighting\nAuthor: Ivan Sagalaev <maniac@softwaremaniacs.org>\nCategory: protocols, web\nWebsite: https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview\n*/\n\nfunction http(hljs) {\n  const regex = hljs.regex;\n  const VERSION = 'HTTP/([32]|1\\\\.[01])';\n  const HEADER_NAME = /[A-Za-z][A-Za-z0-9-]*/;\n  const HEADER = {\n    className: 'attribute',\n    begin: regex.concat('^', HEADER_NAME, '(?=\\\\:\\\\s)'),\n    starts: { contains: [\n      {\n        className: \"punctuation\",\n        begin: /: /,\n        relevance: 0,\n        starts: {\n          end: '$',\n          relevance: 0\n        }\n      }\n    ] }\n  };\n  const HEADERS_AND_BODY = [\n    HEADER,\n    {\n      begin: '\\\\n\\\\n',\n      starts: {\n        subLanguage: [],\n        endsWithParent: true\n      }\n    }\n  ];\n\n  return {\n    name: 'HTTP',\n    aliases: [ 'https' ],\n    illegal: /\\S/,\n    contains: [\n      // response\n      {\n        begin: '^(?=' + VERSION + \" \\\\d{3})\",\n        end: /$/,\n        contains: [\n          {\n            className: \"meta\",\n            begin: VERSION\n          },\n          {\n            className: 'number',\n            begin: '\\\\b\\\\d{3}\\\\b'\n          }\n        ],\n        starts: {\n          end: /\\b\\B/,\n          illegal: /\\S/,\n          contains: HEADERS_AND_BODY\n        }\n      },\n      // request\n      {\n        begin: '(?=^[A-Z]+ (.*?) ' + VERSION + '$)',\n        end: /$/,\n        contains: [\n          {\n            className: 'string',\n            begin: ' ',\n            end: ' ',\n            excludeBegin: true,\n            excludeEnd: true\n          },\n          {\n            className: \"meta\",\n            begin: VERSION\n          },\n          {\n            className: 'keyword',\n            begin: '[A-Z]+'\n          }\n        ],\n        starts: {\n          end: /\\b\\B/,\n          illegal: /\\S/,\n          contains: HEADERS_AND_BODY\n        }\n      },\n      // to allow headers to work even without a preamble\n      hljs.inherit(HEADER, { relevance: 0 })\n    ]\n  };\n}\n\nmodule.exports = http;\n",
+      "start": 1699633500892,
+      "end": 1699633500994,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500995,
+      "end": 1699633500995,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500995,
+      "end": 1699633500995,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500995,
+      "end": 1699633500995,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500995,
+      "end": 1699633500995,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500995,
+      "end": 1699633500995,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500995,
+      "end": 1699633500995,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500995,
+      "end": 1699633500995,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500995,
+      "end": 1699633500995,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500995,
+      "end": 1699633500995,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500995,
+      "end": 1699633500995,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500996,
+      "end": 1699633500996,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500996,
+      "end": 1699633500996,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500996,
+      "end": 1699633500996,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500996,
+      "end": 1699633500996,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500996,
+      "end": 1699633500996,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500996,
+      "end": 1699633500996,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500996,
+      "end": 1699633500996,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500996,
+      "end": 1699633500996,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500996,
+      "end": 1699633500996,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500996,
+      "end": 1699633500996,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: HTTP\nDescription: HTTP request and response headers with automatic body highlighting\nAuthor: Ivan Sagalaev <maniac@softwaremaniacs.org>\nCategory: protocols, web\nWebsite: https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar http_1;\nvar hasRequiredHttp;\n\nfunction requireHttp () {\n\tif (hasRequiredHttp) return http_1;\n\thasRequiredHttp = 1;\n\tfunction http(hljs) {\n\t  const regex = hljs.regex;\n\t  const VERSION = 'HTTP/([32]|1\\\\.[01])';\n\t  const HEADER_NAME = /[A-Za-z][A-Za-z0-9-]*/;\n\t  const HEADER = {\n\t    className: 'attribute',\n\t    begin: regex.concat('^', HEADER_NAME, '(?=\\\\:\\\\s)'),\n\t    starts: { contains: [\n\t      {\n\t        className: \"punctuation\",\n\t        begin: /: /,\n\t        relevance: 0,\n\t        starts: {\n\t          end: '$',\n\t          relevance: 0\n\t        }\n\t      }\n\t    ] }\n\t  };\n\t  const HEADERS_AND_BODY = [\n\t    HEADER,\n\t    {\n\t      begin: '\\\\n\\\\n',\n\t      starts: {\n\t        subLanguage: [],\n\t        endsWithParent: true\n\t      }\n\t    }\n\t  ];\n\n\t  return {\n\t    name: 'HTTP',\n\t    aliases: [ 'https' ],\n\t    illegal: /\\S/,\n\t    contains: [\n\t      // response\n\t      {\n\t        begin: '^(?=' + VERSION + \" \\\\d{3})\",\n\t        end: /$/,\n\t        contains: [\n\t          {\n\t            className: \"meta\",\n\t            begin: VERSION\n\t          },\n\t          {\n\t            className: 'number',\n\t            begin: '\\\\b\\\\d{3}\\\\b'\n\t          }\n\t        ],\n\t        starts: {\n\t          end: /\\b\\B/,\n\t          illegal: /\\S/,\n\t          contains: HEADERS_AND_BODY\n\t        }\n\t      },\n\t      // request\n\t      {\n\t        begin: '(?=^[A-Z]+ (.*?) ' + VERSION + '$)',\n\t        end: /$/,\n\t        contains: [\n\t          {\n\t            className: 'string',\n\t            begin: ' ',\n\t            end: ' ',\n\t            excludeBegin: true,\n\t            excludeEnd: true\n\t          },\n\t          {\n\t            className: \"meta\",\n\t            begin: VERSION\n\t          },\n\t          {\n\t            className: 'keyword',\n\t            begin: '[A-Z]+'\n\t          }\n\t        ],\n\t        starts: {\n\t          end: /\\b\\B/,\n\t          illegal: /\\S/,\n\t          contains: HEADERS_AND_BODY\n\t        }\n\t      },\n\t      // to allow headers to work even without a preamble\n\t      hljs.inherit(HEADER, { relevance: 0 })\n\t    ]\n\t  };\n\t}\n\n\thttp_1 = http;\n\treturn http_1;\n}\n\nexport { requireHttp as __require };",
+      "start": 1699633500996,
+      "end": 1699633500997,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;;CAQA,SAAS,IAAI,CAAC,IAAI,EAAE;CACpB,EAAE,MAAM,KAAK,GAAG,IAAI,CAAC,KAAK,CAAC;CAC3B,EAAE,MAAM,OAAO,GAAG,sBAAsB,CAAC;CACzC,EAAE,MAAM,WAAW,GAAG,uBAAuB,CAAC;CAC9C,EAAE,MAAM,MAAM,GAAG;CACjB,IAAI,SAAS,EAAE,WAAW;CAC1B,IAAI,KAAK,EAAE,KAAK,CAAC,MAAM,CAAC,GAAG,EAAE,WAAW,EAAE,YAAY,CAAC;CACvD,IAAI,MAAM,EAAE,EAAE,QAAQ,EAAE;CACxB,MAAM;CACN,QAAQ,SAAS,EAAE,aAAa;CAChC,QAAQ,KAAK,EAAE,IAAI;CACnB,QAAQ,SAAS,EAAE,CAAC;CACpB,QAAQ,MAAM,EAAE;CAChB,UAAU,GAAG,EAAE,GAAG;CAClB,UAAU,SAAS,EAAE,CAAC;CACtB,SAAS;CACT,OAAO;CACP,KAAK,EAAE;CACP,GAAG,CAAC;CACJ,EAAE,MAAM,gBAAgB,GAAG;CAC3B,IAAI,MAAM;CACV,IAAI;CACJ,MAAM,KAAK,EAAE,QAAQ;CACrB,MAAM,MAAM,EAAE;CACd,QAAQ,WAAW,EAAE,EAAE;CACvB,QAAQ,cAAc,EAAE,IAAI;CAC5B,OAAO;CACP,KAAK;CACL,GAAG,CAAC;AACJ;CACA,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,MAAM;CAChB,IAAI,OAAO,EAAE,EAAE,OAAO,EAAE;CACxB,IAAI,OAAO,EAAE,IAAI;CACjB,IAAI,QAAQ,EAAE;CACd;CACA,MAAM;CACN,QAAQ,KAAK,EAAE,MAAM,GAAG,OAAO,GAAG,UAAU;CAC5C,QAAQ,GAAG,EAAE,GAAG;CAChB,QAAQ,QAAQ,EAAE;CAClB,UAAU;CACV,YAAY,SAAS,EAAE,MAAM;CAC7B,YAAY,KAAK,EAAE,OAAO;CAC1B,WAAW;CACX,UAAU;CACV,YAAY,SAAS,EAAE,QAAQ;CAC/B,YAAY,KAAK,EAAE,cAAc;CACjC,WAAW;CACX,SAAS;CACT,QAAQ,MAAM,EAAE;CAChB,UAAU,GAAG,EAAE,MAAM;CACrB,UAAU,OAAO,EAAE,IAAI;CACvB,UAAU,QAAQ,EAAE,gBAAgB;CACpC,SAAS;CACT,OAAO;CACP;CACA,MAAM;CACN,QAAQ,KAAK,EAAE,mBAAmB,GAAG,OAAO,GAAG,IAAI;CACnD,QAAQ,GAAG,EAAE,GAAG;CAChB,QAAQ,QAAQ,EAAE;CAClB,UAAU;CACV,YAAY,SAAS,EAAE,QAAQ;CAC/B,YAAY,KAAK,EAAE,GAAG;CACtB,YAAY,GAAG,EAAE,GAAG;CACpB,YAAY,YAAY,EAAE,IAAI;CAC9B,YAAY,UAAU,EAAE,IAAI;CAC5B,WAAW;CACX,UAAU;CACV,YAAY,SAAS,EAAE,MAAM;CAC7B,YAAY,KAAK,EAAE,OAAO;CAC1B,WAAW;CACX,UAAU;CACV,YAAY,SAAS,EAAE,SAAS;CAChC,YAAY,KAAK,EAAE,QAAQ;CAC3B,WAAW;CACX,SAAS;CACT,QAAQ,MAAM,EAAE;CAChB,UAAU,GAAG,EAAE,MAAM;CACrB,UAAU,OAAO,EAAE,IAAI;CACvB,UAAU,QAAQ,EAAE,gBAAgB;CACpC,SAAS;CACT,OAAO;CACP;CACA,MAAM,IAAI,CAAC,OAAO,CAAC,MAAM,EAAE,EAAE,SAAS,EAAE,CAAC,EAAE,CAAC;CAC5C,KAAK;CACL,GAAG,CAAC;CACJ,CAAC;AACD;AACA,OAAc,GAAG,IAAI"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500997,
+      "end": 1699633500997,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500997,
+      "end": 1699633500997,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500997,
+      "end": 1699633500997,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500997,
+      "end": 1699633500997,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500997,
+      "end": 1699633500997,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500997,
+      "end": 1699633500997,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500997,
+      "end": 1699633500997,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500997,
+      "end": 1699633500997,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500997,
+      "end": 1699633500997,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500997,
+      "end": 1699633500997,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500997,
+      "end": 1699633500997,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500997,
+      "end": 1699633500997,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/helpers/parse_link_label.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Parse link label\n//\n// this function assumes that first character (\"[\") already matches;\n// returns the end of the label\n//\n'use strict';\n\nmodule.exports = function parseLinkLabel(state, start, disableNested) {\n  var level, found, marker, prevPos,\n      labelEnd = -1,\n      max = state.posMax,\n      oldPos = state.pos;\n\n  state.pos = start + 1;\n  level = 1;\n\n  while (state.pos < max) {\n    marker = state.src.charCodeAt(state.pos);\n    if (marker === 0x5D /* ] */) {\n      level--;\n      if (level === 0) {\n        found = true;\n        break;\n      }\n    }\n\n    prevPos = state.pos;\n    state.md.inline.skipToken(state);\n    if (marker === 0x5B /* [ */) {\n      if (prevPos === state.pos - 1) {\n        // increase level if we find text `[`, which is not a part of any token\n        level++;\n      } else if (disableNested) {\n        state.pos = oldPos;\n        return -1;\n      }\n    }\n  }\n\n  if (found) {\n    labelEnd = state.pos;\n  }\n\n  // restore old state\n  state.pos = oldPos;\n\n  return labelEnd;\n};\n",
+      "start": 1699633501583,
+      "end": 1699633501749,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501750,
+      "end": 1699633501750,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501750,
+      "end": 1699633501750,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501750,
+      "end": 1699633501750,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501750,
+      "end": 1699633501750,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501750,
+      "end": 1699633501750,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501750,
+      "end": 1699633501750,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501750,
+      "end": 1699633501751,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501751,
+      "end": 1699633501751,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501751,
+      "end": 1699633501751,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501751,
+      "end": 1699633501751,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501751,
+      "end": 1699633501751,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501751,
+      "end": 1699633501751,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501751,
+      "end": 1699633501751,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501751,
+      "end": 1699633501751,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501751,
+      "end": 1699633501751,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501751,
+      "end": 1699633501751,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501751,
+      "end": 1699633501752,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501752,
+      "end": 1699633501752,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501752,
+      "end": 1699633501752,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501752,
+      "end": 1699633501752,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\n// Parse link label\n//\n// this function assumes that first character (\"[\") already matches;\n// returns the end of the label\n//\n'use strict';\n\nvar parse_link_label = function parseLinkLabel(state, start, disableNested) {\n  var level, found, marker, prevPos,\n      labelEnd = -1,\n      max = state.posMax,\n      oldPos = state.pos;\n\n  state.pos = start + 1;\n  level = 1;\n\n  while (state.pos < max) {\n    marker = state.src.charCodeAt(state.pos);\n    if (marker === 0x5D /* ] */) {\n      level--;\n      if (level === 0) {\n        found = true;\n        break;\n      }\n    }\n\n    prevPos = state.pos;\n    state.md.inline.skipToken(state);\n    if (marker === 0x5B /* [ */) {\n      if (prevPos === state.pos - 1) {\n        // increase level if we find text `[`, which is not a part of any token\n        level++;\n      } else if (disableNested) {\n        state.pos = oldPos;\n        return -1;\n      }\n    }\n  }\n\n  if (found) {\n    labelEnd = state.pos;\n  }\n\n  // restore old state\n  state.pos = oldPos;\n\n  return labelEnd;\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(parse_link_label);\nexport { parse_link_label as __moduleExports };",
+      "start": 1699633501752,
+      "end": 1699633501752,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;AAAA;AACA;AACA;AACA;AACA;AACA,YAAY,CAAC;AACb;IACA,gBAAc,GAAG,SAAS,cAAc,CAAC,KAAK,EAAE,KAAK,EAAE,aAAa,EAAE;AACtE,EAAE,IAAI,KAAK,EAAE,KAAK,EAAE,MAAM,EAAE,OAAO;AACnC,MAAM,QAAQ,GAAG,CAAC,CAAC;AACnB,MAAM,GAAG,GAAG,KAAK,CAAC,MAAM;AACxB,MAAM,MAAM,GAAG,KAAK,CAAC,GAAG,CAAC;AACzB;AACA,EAAE,KAAK,CAAC,GAAG,GAAG,KAAK,GAAG,CAAC,CAAC;AACxB,EAAE,KAAK,GAAG,CAAC,CAAC;AACZ;AACA,EAAE,OAAO,KAAK,CAAC,GAAG,GAAG,GAAG,EAAE;AAC1B,IAAI,MAAM,GAAG,KAAK,CAAC,GAAG,CAAC,UAAU,CAAC,KAAK,CAAC,GAAG,CAAC,CAAC;AAC7C,IAAI,IAAI,MAAM,KAAK,IAAI,UAAU;AACjC,MAAM,KAAK,EAAE,CAAC;AACd,MAAM,IAAI,KAAK,KAAK,CAAC,EAAE;AACvB,QAAQ,KAAK,GAAG,IAAI,CAAC;AACrB,QAAQ,MAAM;AACd,OAAO;AACP,KAAK;AACL;AACA,IAAI,OAAO,GAAG,KAAK,CAAC,GAAG,CAAC;AACxB,IAAI,KAAK,CAAC,EAAE,CAAC,MAAM,CAAC,SAAS,CAAC,KAAK,CAAC,CAAC;AACrC,IAAI,IAAI,MAAM,KAAK,IAAI,UAAU;AACjC,MAAM,IAAI,OAAO,KAAK,KAAK,CAAC,GAAG,GAAG,CAAC,EAAE;AACrC;AACA,QAAQ,KAAK,EAAE,CAAC;AAChB,OAAO,MAAM,IAAI,aAAa,EAAE;AAChC,QAAQ,KAAK,CAAC,GAAG,GAAG,MAAM,CAAC;AAC3B,QAAQ,OAAO,CAAC,CAAC,CAAC;AAClB,OAAO;AACP,KAAK;AACL,GAAG;AACH;AACA,EAAE,IAAI,KAAK,EAAE;AACb,IAAI,QAAQ,GAAG,KAAK,CAAC,GAAG,CAAC;AACzB,GAAG;AACH;AACA;AACA,EAAE,KAAK,CAAC,GAAG,GAAG,MAAM,CAAC;AACrB;AACA,EAAE,OAAO,QAAQ,CAAC;AAClB,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501752,
+      "end": 1699633501752,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501752,
+      "end": 1699633501752,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501752,
+      "end": 1699633501752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501752,
+      "end": 1699633501752,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501752,
+      "end": 1699633501752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501752,
+      "end": 1699633501752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501752,
+      "end": 1699633501752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501753,
+      "end": 1699633501753,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501753,
+      "end": 1699633501753,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501753,
+      "end": 1699633501753,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501753,
+      "end": 1699633501753,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501753,
+      "end": 1699633501753,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/rules_block/paragraph.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Paragraph\n\n'use strict';\n\n\nmodule.exports = function paragraph(state, startLine, endLine) {\n  var content, terminate, i, l, token, oldParentType,\n      nextLine = startLine + 1,\n      terminatorRules = state.md.block.ruler.getRules('paragraph');\n\n  oldParentType = state.parentType;\n  state.parentType = 'paragraph';\n\n  // jump line-by-line until empty one or EOF\n  for (; nextLine < endLine && !state.isEmpty(nextLine); nextLine++) {\n    // this would be a code block normally, but after paragraph\n    // it's considered a lazy continuation regardless of what's there\n    if (state.sCount[nextLine] - state.blkIndent > 3) { continue; }\n\n    // quirk for blockquotes, this line should already be checked by that rule\n    if (state.sCount[nextLine] < 0) { continue; }\n\n    // Some tags can terminate paragraph without empty line.\n    terminate = false;\n    for (i = 0, l = terminatorRules.length; i < l; i++) {\n      if (terminatorRules[i](state, nextLine, endLine, true)) {\n        terminate = true;\n        break;\n      }\n    }\n    if (terminate) { break; }\n  }\n\n  content = state.getLines(startLine, nextLine, state.blkIndent, false).trim();\n\n  state.line = nextLine;\n\n  token          = state.push('paragraph_open', 'p', 1);\n  token.map      = [ startLine, state.line ];\n\n  token          = state.push('inline', '', 0);\n  token.content  = content;\n  token.map      = [ startLine, state.line ];\n  token.children = [];\n\n  token          = state.push('paragraph_close', 'p', -1);\n\n  state.parentType = oldParentType;\n\n  return true;\n};\n",
+      "start": 1699633501734,
+      "end": 1699633501817,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501817,
+      "end": 1699633501817,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501818,
+      "end": 1699633501818,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501818,
+      "end": 1699633501818,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501818,
+      "end": 1699633501818,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501818,
+      "end": 1699633501818,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501818,
+      "end": 1699633501818,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501818,
+      "end": 1699633501818,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501818,
+      "end": 1699633501818,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501818,
+      "end": 1699633501818,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501818,
+      "end": 1699633501818,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501818,
+      "end": 1699633501818,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501818,
+      "end": 1699633501819,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501819,
+      "end": 1699633501819,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501819,
+      "end": 1699633501819,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501819,
+      "end": 1699633501819,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501819,
+      "end": 1699633501819,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501819,
+      "end": 1699633501819,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501819,
+      "end": 1699633501819,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501819,
+      "end": 1699633501819,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501819,
+      "end": 1699633501819,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\n// Paragraph\n\n'use strict';\n\n\nvar paragraph = function paragraph(state, startLine, endLine) {\n  var content, terminate, i, l, token, oldParentType,\n      nextLine = startLine + 1,\n      terminatorRules = state.md.block.ruler.getRules('paragraph');\n\n  oldParentType = state.parentType;\n  state.parentType = 'paragraph';\n\n  // jump line-by-line until empty one or EOF\n  for (; nextLine < endLine && !state.isEmpty(nextLine); nextLine++) {\n    // this would be a code block normally, but after paragraph\n    // it's considered a lazy continuation regardless of what's there\n    if (state.sCount[nextLine] - state.blkIndent > 3) { continue; }\n\n    // quirk for blockquotes, this line should already be checked by that rule\n    if (state.sCount[nextLine] < 0) { continue; }\n\n    // Some tags can terminate paragraph without empty line.\n    terminate = false;\n    for (i = 0, l = terminatorRules.length; i < l; i++) {\n      if (terminatorRules[i](state, nextLine, endLine, true)) {\n        terminate = true;\n        break;\n      }\n    }\n    if (terminate) { break; }\n  }\n\n  content = state.getLines(startLine, nextLine, state.blkIndent, false).trim();\n\n  state.line = nextLine;\n\n  token          = state.push('paragraph_open', 'p', 1);\n  token.map      = [ startLine, state.line ];\n\n  token          = state.push('inline', '', 0);\n  token.content  = content;\n  token.map      = [ startLine, state.line ];\n  token.children = [];\n\n  token          = state.push('paragraph_close', 'p', -1);\n\n  state.parentType = oldParentType;\n\n  return true;\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(paragraph);\nexport { paragraph as __moduleExports };",
+      "start": 1699633501819,
+      "end": 1699633501820,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;AAAA;AACA;AACA,YAAY,CAAC;AACb;AACA;IACA,SAAc,GAAG,SAAS,SAAS,CAAC,KAAK,EAAE,SAAS,EAAE,OAAO,EAAE;AAC/D,EAAE,IAAI,OAAO,EAAE,SAAS,EAAE,CAAC,EAAE,CAAC,EAAE,KAAK,EAAE,aAAa;AACpD,MAAM,QAAQ,GAAG,SAAS,GAAG,CAAC;AAC9B,MAAM,eAAe,GAAG,KAAK,CAAC,EAAE,CAAC,KAAK,CAAC,KAAK,CAAC,QAAQ,CAAC,WAAW,CAAC,CAAC;AACnE;AACA,EAAE,aAAa,GAAG,KAAK,CAAC,UAAU,CAAC;AACnC,EAAE,KAAK,CAAC,UAAU,GAAG,WAAW,CAAC;AACjC;AACA;AACA,EAAE,OAAO,QAAQ,GAAG,OAAO,IAAI,CAAC,KAAK,CAAC,OAAO,CAAC,QAAQ,CAAC,EAAE,QAAQ,EAAE,EAAE;AACrE;AACA;AACA,IAAI,IAAI,KAAK,CAAC,MAAM,CAAC,QAAQ,CAAC,GAAG,KAAK,CAAC,SAAS,GAAG,CAAC,EAAE,EAAE,SAAS,EAAE;AACnE;AACA;AACA,IAAI,IAAI,KAAK,CAAC,MAAM,CAAC,QAAQ,CAAC,GAAG,CAAC,EAAE,EAAE,SAAS,EAAE;AACjD;AACA;AACA,IAAI,SAAS,GAAG,KAAK,CAAC;AACtB,IAAI,KAAK,CAAC,GAAG,CAAC,EAAE,CAAC,GAAG,eAAe,CAAC,MAAM,EAAE,CAAC,GAAG,CAAC,EAAE,CAAC,EAAE,EAAE;AACxD,MAAM,IAAI,eAAe,CAAC,CAAC,CAAC,CAAC,KAAK,EAAE,QAAQ,EAAE,OAAO,EAAE,IAAI,CAAC,EAAE;AAC9D,QAAQ,SAAS,GAAG,IAAI,CAAC;AACzB,QAAQ,MAAM;AACd,OAAO;AACP,KAAK;AACL,IAAI,IAAI,SAAS,EAAE,EAAE,MAAM,EAAE;AAC7B,GAAG;AACH;AACA,EAAE,OAAO,GAAG,KAAK,CAAC,QAAQ,CAAC,SAAS,EAAE,QAAQ,EAAE,KAAK,CAAC,SAAS,EAAE,KAAK,CAAC,CAAC,IAAI,EAAE,CAAC;AAC/E;AACA,EAAE,KAAK,CAAC,IAAI,GAAG,QAAQ,CAAC;AACxB;AACA,EAAE,KAAK,YAAY,KAAK,CAAC,IAAI,CAAC,gBAAgB,EAAE,GAAG,EAAE,CAAC,CAAC,CAAC;AACxD,EAAE,KAAK,CAAC,GAAG,QAAQ,EAAE,SAAS,EAAE,KAAK,CAAC,IAAI,EAAE,CAAC;AAC7C;AACA,EAAE,KAAK,YAAY,KAAK,CAAC,IAAI,CAAC,QAAQ,EAAE,EAAE,EAAE,CAAC,CAAC,CAAC;AAC/C,EAAE,KAAK,CAAC,OAAO,IAAI,OAAO,CAAC;AAC3B,EAAE,KAAK,CAAC,GAAG,QAAQ,EAAE,SAAS,EAAE,KAAK,CAAC,IAAI,EAAE,CAAC;AAC7C,EAAE,KAAK,CAAC,QAAQ,GAAG,EAAE,CAAC;AACtB;AACA,EAAE,KAAK,YAAY,KAAK,CAAC,IAAI,CAAC,iBAAiB,EAAE,GAAG,EAAE,CAAC,CAAC,CAAC,CAAC;AAC1D;AACA,EAAE,KAAK,CAAC,UAAU,GAAG,aAAa,CAAC;AACnC;AACA,EAAE,OAAO,IAAI,CAAC;AACd,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501820,
+      "end": 1699633501820,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501820,
+      "end": 1699633501820,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501820,
+      "end": 1699633501820,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501820,
+      "end": 1699633501820,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501820,
+      "end": 1699633501820,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501820,
+      "end": 1699633501820,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501820,
+      "end": 1699633501820,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501820,
+      "end": 1699633501820,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501820,
+      "end": 1699633501820,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501820,
+      "end": 1699633501820,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501820,
+      "end": 1699633501820,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501820,
+      "end": 1699633501820,
+      "order": "normal"
+    }
+  ]
+}

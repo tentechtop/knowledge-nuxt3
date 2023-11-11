@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/monkey.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Monkey\nDescription: Monkey2 is an easy to use, cross platform, games oriented programming language from Blitz Research.\nAuthor: Arthur Bikmullin <devolonter@gmail.com>\nWebsite: https://blitzresearch.itch.io/monkey2\n*/\n\nfunction monkey(hljs) {\n  const NUMBER = {\n    className: 'number',\n    relevance: 0,\n    variants: [\n      { begin: '[$][a-fA-F0-9]+' },\n      hljs.NUMBER_MODE\n    ]\n  };\n  const FUNC_DEFINITION = {\n    variants: [\n      { match: [\n        /(function|method)/,\n        /\\s+/,\n        hljs.UNDERSCORE_IDENT_RE,\n      ] },\n    ],\n    scope: {\n      1: \"keyword\",\n      3: \"title.function\"\n    }\n  };\n  const CLASS_DEFINITION = {\n    variants: [\n      { match: [\n        /(class|interface|extends|implements)/,\n        /\\s+/,\n        hljs.UNDERSCORE_IDENT_RE,\n      ] },\n    ],\n    scope: {\n      1: \"keyword\",\n      3: \"title.class\"\n    }\n  };\n  const BUILT_INS = [\n    \"DebugLog\",\n    \"DebugStop\",\n    \"Error\",\n    \"Print\",\n    \"ACos\",\n    \"ACosr\",\n    \"ASin\",\n    \"ASinr\",\n    \"ATan\",\n    \"ATan2\",\n    \"ATan2r\",\n    \"ATanr\",\n    \"Abs\",\n    \"Abs\",\n    \"Ceil\",\n    \"Clamp\",\n    \"Clamp\",\n    \"Cos\",\n    \"Cosr\",\n    \"Exp\",\n    \"Floor\",\n    \"Log\",\n    \"Max\",\n    \"Max\",\n    \"Min\",\n    \"Min\",\n    \"Pow\",\n    \"Sgn\",\n    \"Sgn\",\n    \"Sin\",\n    \"Sinr\",\n    \"Sqrt\",\n    \"Tan\",\n    \"Tanr\",\n    \"Seed\",\n    \"PI\",\n    \"HALFPI\",\n    \"TWOPI\"\n  ];\n  const LITERALS = [\n    \"true\",\n    \"false\",\n    \"null\"\n  ];\n  const KEYWORDS = [\n    \"public\",\n    \"private\",\n    \"property\",\n    \"continue\",\n    \"exit\",\n    \"extern\",\n    \"new\",\n    \"try\",\n    \"catch\",\n    \"eachin\",\n    \"not\",\n    \"abstract\",\n    \"final\",\n    \"select\",\n    \"case\",\n    \"default\",\n    \"const\",\n    \"local\",\n    \"global\",\n    \"field\",\n    \"end\",\n    \"if\",\n    \"then\",\n    \"else\",\n    \"elseif\",\n    \"endif\",\n    \"while\",\n    \"wend\",\n    \"repeat\",\n    \"until\",\n    \"forever\",\n    \"for\",\n    \"to\",\n    \"step\",\n    \"next\",\n    \"return\",\n    \"module\",\n    \"inline\",\n    \"throw\",\n    \"import\",\n    // not positive, but these are not literals\n    \"and\",\n    \"or\",\n    \"shl\",\n    \"shr\",\n    \"mod\"\n  ];\n\n  return {\n    name: 'Monkey',\n    case_insensitive: true,\n    keywords: {\n      keyword: KEYWORDS,\n      built_in: BUILT_INS,\n      literal: LITERALS\n    },\n    illegal: /\\/\\*/,\n    contains: [\n      hljs.COMMENT('#rem', '#end'),\n      hljs.COMMENT(\n        \"'\",\n        '$',\n        { relevance: 0 }\n      ),\n      FUNC_DEFINITION,\n      CLASS_DEFINITION,\n      {\n        className: 'variable.language',\n        begin: /\\b(self|super)\\b/\n      },\n      {\n        className: 'meta',\n        begin: /\\s*#/,\n        end: '$',\n        keywords: { keyword: 'if else elseif endif end then' }\n      },\n      {\n        match: [\n          /^\\s*/,\n          /strict\\b/\n        ],\n        scope: { 2: \"meta\" }\n      },\n      {\n        beginKeywords: 'alias',\n        end: '=',\n        contains: [ hljs.UNDERSCORE_TITLE_MODE ]\n      },\n      hljs.QUOTE_STRING_MODE,\n      NUMBER\n    ]\n  };\n}\n\nmodule.exports = monkey;\n",
+      "start": 1699633501106,
+      "end": 1699633501221,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501221,
+      "end": 1699633501221,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501221,
+      "end": 1699633501221,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501221,
+      "end": 1699633501222,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501222,
+      "end": 1699633501222,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501222,
+      "end": 1699633501222,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501222,
+      "end": 1699633501222,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501222,
+      "end": 1699633501222,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501222,
+      "end": 1699633501222,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501222,
+      "end": 1699633501222,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501222,
+      "end": 1699633501222,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501222,
+      "end": 1699633501222,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501222,
+      "end": 1699633501222,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501222,
+      "end": 1699633501222,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501222,
+      "end": 1699633501222,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501223,
+      "end": 1699633501223,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501223,
+      "end": 1699633501223,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501223,
+      "end": 1699633501223,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501223,
+      "end": 1699633501223,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501223,
+      "end": 1699633501223,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501223,
+      "end": 1699633501223,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Monkey\nDescription: Monkey2 is an easy to use, cross platform, games oriented programming language from Blitz Research.\nAuthor: Arthur Bikmullin <devolonter@gmail.com>\nWebsite: https://blitzresearch.itch.io/monkey2\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar monkey_1;\nvar hasRequiredMonkey;\n\nfunction requireMonkey () {\n\tif (hasRequiredMonkey) return monkey_1;\n\thasRequiredMonkey = 1;\n\tfunction monkey(hljs) {\n\t  const NUMBER = {\n\t    className: 'number',\n\t    relevance: 0,\n\t    variants: [\n\t      { begin: '[$][a-fA-F0-9]+' },\n\t      hljs.NUMBER_MODE\n\t    ]\n\t  };\n\t  const FUNC_DEFINITION = {\n\t    variants: [\n\t      { match: [\n\t        /(function|method)/,\n\t        /\\s+/,\n\t        hljs.UNDERSCORE_IDENT_RE,\n\t      ] },\n\t    ],\n\t    scope: {\n\t      1: \"keyword\",\n\t      3: \"title.function\"\n\t    }\n\t  };\n\t  const CLASS_DEFINITION = {\n\t    variants: [\n\t      { match: [\n\t        /(class|interface|extends|implements)/,\n\t        /\\s+/,\n\t        hljs.UNDERSCORE_IDENT_RE,\n\t      ] },\n\t    ],\n\t    scope: {\n\t      1: \"keyword\",\n\t      3: \"title.class\"\n\t    }\n\t  };\n\t  const BUILT_INS = [\n\t    \"DebugLog\",\n\t    \"DebugStop\",\n\t    \"Error\",\n\t    \"Print\",\n\t    \"ACos\",\n\t    \"ACosr\",\n\t    \"ASin\",\n\t    \"ASinr\",\n\t    \"ATan\",\n\t    \"ATan2\",\n\t    \"ATan2r\",\n\t    \"ATanr\",\n\t    \"Abs\",\n\t    \"Abs\",\n\t    \"Ceil\",\n\t    \"Clamp\",\n\t    \"Clamp\",\n\t    \"Cos\",\n\t    \"Cosr\",\n\t    \"Exp\",\n\t    \"Floor\",\n\t    \"Log\",\n\t    \"Max\",\n\t    \"Max\",\n\t    \"Min\",\n\t    \"Min\",\n\t    \"Pow\",\n\t    \"Sgn\",\n\t    \"Sgn\",\n\t    \"Sin\",\n\t    \"Sinr\",\n\t    \"Sqrt\",\n\t    \"Tan\",\n\t    \"Tanr\",\n\t    \"Seed\",\n\t    \"PI\",\n\t    \"HALFPI\",\n\t    \"TWOPI\"\n\t  ];\n\t  const LITERALS = [\n\t    \"true\",\n\t    \"false\",\n\t    \"null\"\n\t  ];\n\t  const KEYWORDS = [\n\t    \"public\",\n\t    \"private\",\n\t    \"property\",\n\t    \"continue\",\n\t    \"exit\",\n\t    \"extern\",\n\t    \"new\",\n\t    \"try\",\n\t    \"catch\",\n\t    \"eachin\",\n\t    \"not\",\n\t    \"abstract\",\n\t    \"final\",\n\t    \"select\",\n\t    \"case\",\n\t    \"default\",\n\t    \"const\",\n\t    \"local\",\n\t    \"global\",\n\t    \"field\",\n\t    \"end\",\n\t    \"if\",\n\t    \"then\",\n\t    \"else\",\n\t    \"elseif\",\n\t    \"endif\",\n\t    \"while\",\n\t    \"wend\",\n\t    \"repeat\",\n\t    \"until\",\n\t    \"forever\",\n\t    \"for\",\n\t    \"to\",\n\t    \"step\",\n\t    \"next\",\n\t    \"return\",\n\t    \"module\",\n\t    \"inline\",\n\t    \"throw\",\n\t    \"import\",\n\t    // not positive, but these are not literals\n\t    \"and\",\n\t    \"or\",\n\t    \"shl\",\n\t    \"shr\",\n\t    \"mod\"\n\t  ];\n\n\t  return {\n\t    name: 'Monkey',\n\t    case_insensitive: true,\n\t    keywords: {\n\t      keyword: KEYWORDS,\n\t      built_in: BUILT_INS,\n\t      literal: LITERALS\n\t    },\n\t    illegal: /\\/\\*/,\n\t    contains: [\n\t      hljs.COMMENT('#rem', '#end'),\n\t      hljs.COMMENT(\n\t        \"'\",\n\t        '$',\n\t        { relevance: 0 }\n\t      ),\n\t      FUNC_DEFINITION,\n\t      CLASS_DEFINITION,\n\t      {\n\t        className: 'variable.language',\n\t        begin: /\\b(self|super)\\b/\n\t      },\n\t      {\n\t        className: 'meta',\n\t        begin: /\\s*#/,\n\t        end: '$',\n\t        keywords: { keyword: 'if else elseif endif end then' }\n\t      },\n\t      {\n\t        match: [\n\t          /^\\s*/,\n\t          /strict\\b/\n\t        ],\n\t        scope: { 2: \"meta\" }\n\t      },\n\t      {\n\t        beginKeywords: 'alias',\n\t        end: '=',\n\t        contains: [ hljs.UNDERSCORE_TITLE_MODE ]\n\t      },\n\t      hljs.QUOTE_STRING_MODE,\n\t      NUMBER\n\t    ]\n\t  };\n\t}\n\n\tmonkey_1 = monkey;\n\treturn monkey_1;\n}\n\nexport { requireMonkey as __require };",
+      "start": 1699633501223,
+      "end": 1699633501223,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501223,
+      "end": 1699633501223,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501223,
+      "end": 1699633501223,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501224,
+      "end": 1699633501224,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501224,
+      "end": 1699633501224,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501224,
+      "end": 1699633501224,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501224,
+      "end": 1699633501224,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501224,
+      "end": 1699633501224,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501224,
+      "end": 1699633501224,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501224,
+      "end": 1699633501224,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501224,
+      "end": 1699633501224,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501224,
+      "end": 1699633501224,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501224,
+      "end": 1699633501224,
+      "order": "normal"
+    }
+  ]
+}

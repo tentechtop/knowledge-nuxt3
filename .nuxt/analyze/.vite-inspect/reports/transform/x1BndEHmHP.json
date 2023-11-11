@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/rules_inline/image.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Process ![image](<src> \"title\")\n\n'use strict';\n\nvar normalizeReference   = require('../common/utils').normalizeReference;\nvar isSpace              = require('../common/utils').isSpace;\n\n\nmodule.exports = function image(state, silent) {\n  var attrs,\n      code,\n      content,\n      label,\n      labelEnd,\n      labelStart,\n      pos,\n      ref,\n      res,\n      title,\n      token,\n      tokens,\n      start,\n      href = '',\n      oldPos = state.pos,\n      max = state.posMax;\n\n  if (state.src.charCodeAt(state.pos) !== 0x21/* ! */) { return false; }\n  if (state.src.charCodeAt(state.pos + 1) !== 0x5B/* [ */) { return false; }\n\n  labelStart = state.pos + 2;\n  labelEnd = state.md.helpers.parseLinkLabel(state, state.pos + 1, false);\n\n  // parser failed to find ']', so it's not a valid link\n  if (labelEnd < 0) { return false; }\n\n  pos = labelEnd + 1;\n  if (pos < max && state.src.charCodeAt(pos) === 0x28/* ( */) {\n    //\n    // Inline link\n    //\n\n    // [link](  <href>  \"title\"  )\n    //        ^^ skipping these spaces\n    pos++;\n    for (; pos < max; pos++) {\n      code = state.src.charCodeAt(pos);\n      if (!isSpace(code) && code !== 0x0A) { break; }\n    }\n    if (pos >= max) { return false; }\n\n    // [link](  <href>  \"title\"  )\n    //          ^^^^^^ parsing link destination\n    start = pos;\n    res = state.md.helpers.parseLinkDestination(state.src, pos, state.posMax);\n    if (res.ok) {\n      href = state.md.normalizeLink(res.str);\n      if (state.md.validateLink(href)) {\n        pos = res.pos;\n      } else {\n        href = '';\n      }\n    }\n\n    // [link](  <href>  \"title\"  )\n    //                ^^ skipping these spaces\n    start = pos;\n    for (; pos < max; pos++) {\n      code = state.src.charCodeAt(pos);\n      if (!isSpace(code) && code !== 0x0A) { break; }\n    }\n\n    // [link](  <href>  \"title\"  )\n    //                  ^^^^^^^ parsing link title\n    res = state.md.helpers.parseLinkTitle(state.src, pos, state.posMax);\n    if (pos < max && start !== pos && res.ok) {\n      title = res.str;\n      pos = res.pos;\n\n      // [link](  <href>  \"title\"  )\n      //                         ^^ skipping these spaces\n      for (; pos < max; pos++) {\n        code = state.src.charCodeAt(pos);\n        if (!isSpace(code) && code !== 0x0A) { break; }\n      }\n    } else {\n      title = '';\n    }\n\n    if (pos >= max || state.src.charCodeAt(pos) !== 0x29/* ) */) {\n      state.pos = oldPos;\n      return false;\n    }\n    pos++;\n  } else {\n    //\n    // Link reference\n    //\n    if (typeof state.env.references === 'undefined') { return false; }\n\n    if (pos < max && state.src.charCodeAt(pos) === 0x5B/* [ */) {\n      start = pos + 1;\n      pos = state.md.helpers.parseLinkLabel(state, pos);\n      if (pos >= 0) {\n        label = state.src.slice(start, pos++);\n      } else {\n        pos = labelEnd + 1;\n      }\n    } else {\n      pos = labelEnd + 1;\n    }\n\n    // covers label === '' and label === undefined\n    // (collapsed reference link and shortcut reference link respectively)\n    if (!label) { label = state.src.slice(labelStart, labelEnd); }\n\n    ref = state.env.references[normalizeReference(label)];\n    if (!ref) {\n      state.pos = oldPos;\n      return false;\n    }\n    href = ref.href;\n    title = ref.title;\n  }\n\n  //\n  // We found the end of the link, and know for a fact it's a valid link;\n  // so all that's left to do is to call tokenizer.\n  //\n  if (!silent) {\n    content = state.src.slice(labelStart, labelEnd);\n\n    state.md.inline.parse(\n      content,\n      state.md,\n      state.env,\n      tokens = []\n    );\n\n    token          = state.push('image', 'img', 0);\n    token.attrs    = attrs = [ [ 'src', href ], [ 'alt', '' ] ];\n    token.children = tokens;\n    token.content  = content;\n\n    if (title) {\n      attrs.push([ 'title', title ]);\n    }\n  }\n\n  state.pos = pos;\n  state.posMax = max;\n  return true;\n};\n",
+      "start": 1699633501812,
+      "end": 1699633501907,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501907,
+      "end": 1699633501907,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501907,
+      "end": 1699633501907,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501907,
+      "end": 1699633501907,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501907,
+      "end": 1699633501907,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501907,
+      "end": 1699633501907,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501907,
+      "end": 1699633501907,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501907,
+      "end": 1699633501907,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501907,
+      "end": 1699633501907,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501907,
+      "end": 1699633501907,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501908,
+      "end": 1699633501908,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501908,
+      "end": 1699633501908,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501908,
+      "end": 1699633501908,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501908,
+      "end": 1699633501908,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501908,
+      "end": 1699633501908,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501908,
+      "end": 1699633501908,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501908,
+      "end": 1699633501908,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501908,
+      "end": 1699633501908,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501909,
+      "end": 1699633501909,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501909,
+      "end": 1699633501909,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501909,
+      "end": 1699633501909,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/common/utils.js?commonjs-proxy\";\n\n// Process ![image](<src> \"title\")\n\n'use strict';\n\nvar normalizeReference   = require$$0.normalizeReference;\nvar isSpace              = require$$0.isSpace;\n\n\nvar image = function image(state, silent) {\n  var attrs,\n      code,\n      content,\n      label,\n      labelEnd,\n      labelStart,\n      pos,\n      ref,\n      res,\n      title,\n      token,\n      tokens,\n      start,\n      href = '',\n      oldPos = state.pos,\n      max = state.posMax;\n\n  if (state.src.charCodeAt(state.pos) !== 0x21/* ! */) { return false; }\n  if (state.src.charCodeAt(state.pos + 1) !== 0x5B/* [ */) { return false; }\n\n  labelStart = state.pos + 2;\n  labelEnd = state.md.helpers.parseLinkLabel(state, state.pos + 1, false);\n\n  // parser failed to find ']', so it's not a valid link\n  if (labelEnd < 0) { return false; }\n\n  pos = labelEnd + 1;\n  if (pos < max && state.src.charCodeAt(pos) === 0x28/* ( */) {\n    //\n    // Inline link\n    //\n\n    // [link](  <href>  \"title\"  )\n    //        ^^ skipping these spaces\n    pos++;\n    for (; pos < max; pos++) {\n      code = state.src.charCodeAt(pos);\n      if (!isSpace(code) && code !== 0x0A) { break; }\n    }\n    if (pos >= max) { return false; }\n\n    // [link](  <href>  \"title\"  )\n    //          ^^^^^^ parsing link destination\n    start = pos;\n    res = state.md.helpers.parseLinkDestination(state.src, pos, state.posMax);\n    if (res.ok) {\n      href = state.md.normalizeLink(res.str);\n      if (state.md.validateLink(href)) {\n        pos = res.pos;\n      } else {\n        href = '';\n      }\n    }\n\n    // [link](  <href>  \"title\"  )\n    //                ^^ skipping these spaces\n    start = pos;\n    for (; pos < max; pos++) {\n      code = state.src.charCodeAt(pos);\n      if (!isSpace(code) && code !== 0x0A) { break; }\n    }\n\n    // [link](  <href>  \"title\"  )\n    //                  ^^^^^^^ parsing link title\n    res = state.md.helpers.parseLinkTitle(state.src, pos, state.posMax);\n    if (pos < max && start !== pos && res.ok) {\n      title = res.str;\n      pos = res.pos;\n\n      // [link](  <href>  \"title\"  )\n      //                         ^^ skipping these spaces\n      for (; pos < max; pos++) {\n        code = state.src.charCodeAt(pos);\n        if (!isSpace(code) && code !== 0x0A) { break; }\n      }\n    } else {\n      title = '';\n    }\n\n    if (pos >= max || state.src.charCodeAt(pos) !== 0x29/* ) */) {\n      state.pos = oldPos;\n      return false;\n    }\n    pos++;\n  } else {\n    //\n    // Link reference\n    //\n    if (typeof state.env.references === 'undefined') { return false; }\n\n    if (pos < max && state.src.charCodeAt(pos) === 0x5B/* [ */) {\n      start = pos + 1;\n      pos = state.md.helpers.parseLinkLabel(state, pos);\n      if (pos >= 0) {\n        label = state.src.slice(start, pos++);\n      } else {\n        pos = labelEnd + 1;\n      }\n    } else {\n      pos = labelEnd + 1;\n    }\n\n    // covers label === '' and label === undefined\n    // (collapsed reference link and shortcut reference link respectively)\n    if (!label) { label = state.src.slice(labelStart, labelEnd); }\n\n    ref = state.env.references[normalizeReference(label)];\n    if (!ref) {\n      state.pos = oldPos;\n      return false;\n    }\n    href = ref.href;\n    title = ref.title;\n  }\n\n  //\n  // We found the end of the link, and know for a fact it's a valid link;\n  // so all that's left to do is to call tokenizer.\n  //\n  if (!silent) {\n    content = state.src.slice(labelStart, labelEnd);\n\n    state.md.inline.parse(\n      content,\n      state.md,\n      state.env,\n      tokens = []\n    );\n\n    token          = state.push('image', 'img', 0);\n    token.attrs    = attrs = [ [ 'src', href ], [ 'alt', '' ] ];\n    token.children = tokens;\n    token.content  = content;\n\n    if (title) {\n      attrs.push([ 'title', title ]);\n    }\n  }\n\n  state.pos = pos;\n  state.posMax = max;\n  return true;\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(image);\nexport { image as __moduleExports };",
+      "start": 1699633501909,
+      "end": 1699633502024,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633502025,
+      "end": 1699633502025,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633502026,
+      "end": 1699633502026,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633502026,
+      "end": 1699633502027,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633502027,
+      "end": 1699633502027,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633502028,
+      "end": 1699633502029,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633502029,
+      "end": 1699633502029,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633502031,
+      "end": 1699633502031,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633502032,
+      "end": 1699633502032,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633502032,
+      "end": 1699633502032,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633502033,
+      "end": 1699633502033,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633502034,
+      "end": 1699633502034,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633502034,
+      "end": 1699633502034,
+      "order": "normal"
+    }
+  ]
+}

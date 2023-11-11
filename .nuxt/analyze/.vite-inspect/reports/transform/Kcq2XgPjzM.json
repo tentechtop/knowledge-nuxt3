@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/rules_inline/emphasis.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Process *this* and _that_\n//\n'use strict';\n\n\n// Insert each marker as a separate text token, and add it to delimiter list\n//\nmodule.exports.tokenize = function emphasis(state, silent) {\n  var i, scanned, token,\n      start = state.pos,\n      marker = state.src.charCodeAt(start);\n\n  if (silent) { return false; }\n\n  if (marker !== 0x5F /* _ */ && marker !== 0x2A /* * */) { return false; }\n\n  scanned = state.scanDelims(state.pos, marker === 0x2A);\n\n  for (i = 0; i < scanned.length; i++) {\n    token         = state.push('text', '', 0);\n    token.content = String.fromCharCode(marker);\n\n    state.delimiters.push({\n      // Char code of the starting marker (number).\n      //\n      marker: marker,\n\n      // Total length of these series of delimiters.\n      //\n      length: scanned.length,\n\n      // A position of the token this delimiter corresponds to.\n      //\n      token:  state.tokens.length - 1,\n\n      // If this delimiter is matched as a valid opener, `end` will be\n      // equal to its position, otherwise it's `-1`.\n      //\n      end:    -1,\n\n      // Boolean flags that determine if this delimiter could open or close\n      // an emphasis.\n      //\n      open:   scanned.can_open,\n      close:  scanned.can_close\n    });\n  }\n\n  state.pos += scanned.length;\n\n  return true;\n};\n\n\nfunction postProcess(state, delimiters) {\n  var i,\n      startDelim,\n      endDelim,\n      token,\n      ch,\n      isStrong,\n      max = delimiters.length;\n\n  for (i = max - 1; i >= 0; i--) {\n    startDelim = delimiters[i];\n\n    if (startDelim.marker !== 0x5F/* _ */ && startDelim.marker !== 0x2A/* * */) {\n      continue;\n    }\n\n    // Process only opening markers\n    if (startDelim.end === -1) {\n      continue;\n    }\n\n    endDelim = delimiters[startDelim.end];\n\n    // If the previous delimiter has the same marker and is adjacent to this one,\n    // merge those into one strong delimiter.\n    //\n    // `<em><em>whatever</em></em>` -> `<strong>whatever</strong>`\n    //\n    isStrong = i > 0 &&\n               delimiters[i - 1].end === startDelim.end + 1 &&\n               // check that first two markers match and adjacent\n               delimiters[i - 1].marker === startDelim.marker &&\n               delimiters[i - 1].token === startDelim.token - 1 &&\n               // check that last two markers are adjacent (we can safely assume they match)\n               delimiters[startDelim.end + 1].token === endDelim.token + 1;\n\n    ch = String.fromCharCode(startDelim.marker);\n\n    token         = state.tokens[startDelim.token];\n    token.type    = isStrong ? 'strong_open' : 'em_open';\n    token.tag     = isStrong ? 'strong' : 'em';\n    token.nesting = 1;\n    token.markup  = isStrong ? ch + ch : ch;\n    token.content = '';\n\n    token         = state.tokens[endDelim.token];\n    token.type    = isStrong ? 'strong_close' : 'em_close';\n    token.tag     = isStrong ? 'strong' : 'em';\n    token.nesting = -1;\n    token.markup  = isStrong ? ch + ch : ch;\n    token.content = '';\n\n    if (isStrong) {\n      state.tokens[delimiters[i - 1].token].content = '';\n      state.tokens[delimiters[startDelim.end + 1].token].content = '';\n      i--;\n    }\n  }\n}\n\n\n// Walk through delimiter list and replace text tokens with tags\n//\nmodule.exports.postProcess = function emphasis(state) {\n  var curr,\n      tokens_meta = state.tokens_meta,\n      max = state.tokens_meta.length;\n\n  postProcess(state, state.delimiters);\n\n  for (curr = 0; curr < max; curr++) {\n    if (tokens_meta[curr] && tokens_meta[curr].delimiters) {\n      postProcess(state, tokens_meta[curr].delimiters);\n    }\n  }\n};\n",
+      "start": 1699633501805,
+      "end": 1699633501893,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501894,
+      "end": 1699633501894,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501894,
+      "end": 1699633501894,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501894,
+      "end": 1699633501894,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501894,
+      "end": 1699633501894,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501894,
+      "end": 1699633501894,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501894,
+      "end": 1699633501894,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501894,
+      "end": 1699633501894,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501894,
+      "end": 1699633501894,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501894,
+      "end": 1699633501894,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501894,
+      "end": 1699633501894,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501894,
+      "end": 1699633501894,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501894,
+      "end": 1699633501895,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501895,
+      "end": 1699633501895,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501895,
+      "end": 1699633501895,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501895,
+      "end": 1699633501895,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501895,
+      "end": 1699633501895,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501895,
+      "end": 1699633501895,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501895,
+      "end": 1699633501895,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501895,
+      "end": 1699633501895,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501895,
+      "end": 1699633501895,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as emphasis } from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/rules_inline/emphasis.js?commonjs-exports\";\n\n// Process *this* and _that_\n//\n'use strict';\n\n\n// Insert each marker as a separate text token, and add it to delimiter list\n//\nvar tokenize = emphasis.tokenize = function emphasis(state, silent) {\n  var i, scanned, token,\n      start = state.pos,\n      marker = state.src.charCodeAt(start);\n\n  if (silent) { return false; }\n\n  if (marker !== 0x5F /* _ */ && marker !== 0x2A /* * */) { return false; }\n\n  scanned = state.scanDelims(state.pos, marker === 0x2A);\n\n  for (i = 0; i < scanned.length; i++) {\n    token         = state.push('text', '', 0);\n    token.content = String.fromCharCode(marker);\n\n    state.delimiters.push({\n      // Char code of the starting marker (number).\n      //\n      marker: marker,\n\n      // Total length of these series of delimiters.\n      //\n      length: scanned.length,\n\n      // A position of the token this delimiter corresponds to.\n      //\n      token:  state.tokens.length - 1,\n\n      // If this delimiter is matched as a valid opener, `end` will be\n      // equal to its position, otherwise it's `-1`.\n      //\n      end:    -1,\n\n      // Boolean flags that determine if this delimiter could open or close\n      // an emphasis.\n      //\n      open:   scanned.can_open,\n      close:  scanned.can_close\n    });\n  }\n\n  state.pos += scanned.length;\n\n  return true;\n};\n\n\nfunction postProcess(state, delimiters) {\n  var i,\n      startDelim,\n      endDelim,\n      token,\n      ch,\n      isStrong,\n      max = delimiters.length;\n\n  for (i = max - 1; i >= 0; i--) {\n    startDelim = delimiters[i];\n\n    if (startDelim.marker !== 0x5F/* _ */ && startDelim.marker !== 0x2A/* * */) {\n      continue;\n    }\n\n    // Process only opening markers\n    if (startDelim.end === -1) {\n      continue;\n    }\n\n    endDelim = delimiters[startDelim.end];\n\n    // If the previous delimiter has the same marker and is adjacent to this one,\n    // merge those into one strong delimiter.\n    //\n    // `<em><em>whatever</em></em>` -> `<strong>whatever</strong>`\n    //\n    isStrong = i > 0 &&\n               delimiters[i - 1].end === startDelim.end + 1 &&\n               // check that first two markers match and adjacent\n               delimiters[i - 1].marker === startDelim.marker &&\n               delimiters[i - 1].token === startDelim.token - 1 &&\n               // check that last two markers are adjacent (we can safely assume they match)\n               delimiters[startDelim.end + 1].token === endDelim.token + 1;\n\n    ch = String.fromCharCode(startDelim.marker);\n\n    token         = state.tokens[startDelim.token];\n    token.type    = isStrong ? 'strong_open' : 'em_open';\n    token.tag     = isStrong ? 'strong' : 'em';\n    token.nesting = 1;\n    token.markup  = isStrong ? ch + ch : ch;\n    token.content = '';\n\n    token         = state.tokens[endDelim.token];\n    token.type    = isStrong ? 'strong_close' : 'em_close';\n    token.tag     = isStrong ? 'strong' : 'em';\n    token.nesting = -1;\n    token.markup  = isStrong ? ch + ch : ch;\n    token.content = '';\n\n    if (isStrong) {\n      state.tokens[delimiters[i - 1].token].content = '';\n      state.tokens[delimiters[startDelim.end + 1].token].content = '';\n      i--;\n    }\n  }\n}\n\n\n// Walk through delimiter list and replace text tokens with tags\n//\nvar postProcess_1 = emphasis.postProcess = function emphasis(state) {\n  var curr,\n      tokens_meta = state.tokens_meta,\n      max = state.tokens_meta.length;\n\n  postProcess(state, state.delimiters);\n\n  for (curr = 0; curr < max; curr++) {\n    if (tokens_meta[curr] && tokens_meta[curr].delimiters) {\n      postProcess(state, tokens_meta[curr].delimiters);\n    }\n  }\n};\n\nexport { emphasis as __moduleExports, tokenize, postProcess_1 as postProcess, emphasis as default };",
+      "start": 1699633501895,
+      "end": 1699633501896,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501896,
+      "end": 1699633501896,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501896,
+      "end": 1699633501896,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501896,
+      "end": 1699633501896,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501896,
+      "end": 1699633501896,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501896,
+      "end": 1699633501896,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501896,
+      "end": 1699633501896,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501896,
+      "end": 1699633501896,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501896,
+      "end": 1699633501896,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501896,
+      "end": 1699633501896,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501896,
+      "end": 1699633501896,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501896,
+      "end": 1699633501896,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501896,
+      "end": 1699633501896,
+      "order": "normal"
+    }
+  ]
+}

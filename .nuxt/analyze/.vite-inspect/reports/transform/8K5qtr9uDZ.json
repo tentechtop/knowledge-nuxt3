@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/ruby.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Ruby\nDescription: Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.\nWebsite: https://www.ruby-lang.org/\nAuthor: Anton Kovalyov <anton@kovalyov.net>\nContributors: Peter Leonov <gojpeg@yandex.ru>, Vasily Polovnyov <vast@whiteants.net>, Loren Segal <lsegal@soen.ca>, Pascal Hurni <phi@ruby-reactive.org>, Cedric Sohrauer <sohrauer@googlemail.com>\nCategory: common\n*/\n\nfunction ruby(hljs) {\n  const regex = hljs.regex;\n  const RUBY_METHOD_RE = '([a-zA-Z_]\\\\w*[!?=]?|[-+~]@|<<|>>|=~|===?|<=>|[<>]=?|\\\\*\\\\*|[-/+%^&*~`|]|\\\\[\\\\]=?)';\n  // TODO: move concepts like CAMEL_CASE into `modes.js`\n  const CLASS_NAME_RE = regex.either(\n    /\\b([A-Z]+[a-z0-9]+)+/,\n    // ends in caps\n    /\\b([A-Z]+[a-z0-9]+)+[A-Z]+/,\n  )\n  ;\n  const CLASS_NAME_WITH_NAMESPACE_RE = regex.concat(CLASS_NAME_RE, /(::\\w+)*/);\n  // very popular ruby built-ins that one might even assume\n  // are actual keywords (despite that not being the case)\n  const PSEUDO_KWS = [\n    \"include\",\n    \"extend\",\n    \"prepend\",\n    \"public\",\n    \"private\",\n    \"protected\",\n    \"raise\",\n    \"throw\"\n  ];\n  const RUBY_KEYWORDS = {\n    \"variable.constant\": [\n      \"__FILE__\",\n      \"__LINE__\",\n      \"__ENCODING__\"\n    ],\n    \"variable.language\": [\n      \"self\",\n      \"super\",\n    ],\n    keyword: [\n      \"alias\",\n      \"and\",\n      \"begin\",\n      \"BEGIN\",\n      \"break\",\n      \"case\",\n      \"class\",\n      \"defined\",\n      \"do\",\n      \"else\",\n      \"elsif\",\n      \"end\",\n      \"END\",\n      \"ensure\",\n      \"for\",\n      \"if\",\n      \"in\",\n      \"module\",\n      \"next\",\n      \"not\",\n      \"or\",\n      \"redo\",\n      \"require\",\n      \"rescue\",\n      \"retry\",\n      \"return\",\n      \"then\",\n      \"undef\",\n      \"unless\",\n      \"until\",\n      \"when\",\n      \"while\",\n      \"yield\",\n      ...PSEUDO_KWS\n    ],\n    built_in: [\n      \"proc\",\n      \"lambda\",\n      \"attr_accessor\",\n      \"attr_reader\",\n      \"attr_writer\",\n      \"define_method\",\n      \"private_constant\",\n      \"module_function\"\n    ],\n    literal: [\n      \"true\",\n      \"false\",\n      \"nil\"\n    ]\n  };\n  const YARDOCTAG = {\n    className: 'doctag',\n    begin: '@[A-Za-z]+'\n  };\n  const IRB_OBJECT = {\n    begin: '#<',\n    end: '>'\n  };\n  const COMMENT_MODES = [\n    hljs.COMMENT(\n      '#',\n      '$',\n      { contains: [ YARDOCTAG ] }\n    ),\n    hljs.COMMENT(\n      '^=begin',\n      '^=end',\n      {\n        contains: [ YARDOCTAG ],\n        relevance: 10\n      }\n    ),\n    hljs.COMMENT('^__END__', hljs.MATCH_NOTHING_RE)\n  ];\n  const SUBST = {\n    className: 'subst',\n    begin: /#\\{/,\n    end: /\\}/,\n    keywords: RUBY_KEYWORDS\n  };\n  const STRING = {\n    className: 'string',\n    contains: [\n      hljs.BACKSLASH_ESCAPE,\n      SUBST\n    ],\n    variants: [\n      {\n        begin: /'/,\n        end: /'/\n      },\n      {\n        begin: /\"/,\n        end: /\"/\n      },\n      {\n        begin: /`/,\n        end: /`/\n      },\n      {\n        begin: /%[qQwWx]?\\(/,\n        end: /\\)/\n      },\n      {\n        begin: /%[qQwWx]?\\[/,\n        end: /\\]/\n      },\n      {\n        begin: /%[qQwWx]?\\{/,\n        end: /\\}/\n      },\n      {\n        begin: /%[qQwWx]?</,\n        end: />/\n      },\n      {\n        begin: /%[qQwWx]?\\//,\n        end: /\\//\n      },\n      {\n        begin: /%[qQwWx]?%/,\n        end: /%/\n      },\n      {\n        begin: /%[qQwWx]?-/,\n        end: /-/\n      },\n      {\n        begin: /%[qQwWx]?\\|/,\n        end: /\\|/\n      },\n      // in the following expressions, \\B in the beginning suppresses recognition of ?-sequences\n      // where ? is the last character of a preceding identifier, as in: `func?4`\n      { begin: /\\B\\?(\\\\\\d{1,3})/ },\n      { begin: /\\B\\?(\\\\x[A-Fa-f0-9]{1,2})/ },\n      { begin: /\\B\\?(\\\\u\\{?[A-Fa-f0-9]{1,6}\\}?)/ },\n      { begin: /\\B\\?(\\\\M-\\\\C-|\\\\M-\\\\c|\\\\c\\\\M-|\\\\M-|\\\\C-\\\\M-)[\\x20-\\x7e]/ },\n      { begin: /\\B\\?\\\\(c|C-)[\\x20-\\x7e]/ },\n      { begin: /\\B\\?\\\\?\\S/ },\n      // heredocs\n      {\n        // this guard makes sure that we have an entire heredoc and not a false\n        // positive (auto-detect, etc.)\n        begin: regex.concat(\n          /<<[-~]?'?/,\n          regex.lookahead(/(\\w+)(?=\\W)[^\\n]*\\n(?:[^\\n]*\\n)*?\\s*\\1\\b/)\n        ),\n        contains: [\n          hljs.END_SAME_AS_BEGIN({\n            begin: /(\\w+)/,\n            end: /(\\w+)/,\n            contains: [\n              hljs.BACKSLASH_ESCAPE,\n              SUBST\n            ]\n          })\n        ]\n      }\n    ]\n  };\n\n  // Ruby syntax is underdocumented, but this grammar seems to be accurate\n  // as of version 2.7.2 (confirmed with (irb and `Ripper.sexp(...)`)\n  // https://docs.ruby-lang.org/en/2.7.0/doc/syntax/literals_rdoc.html#label-Numbers\n  const decimal = '[1-9](_?[0-9])*|0';\n  const digits = '[0-9](_?[0-9])*';\n  const NUMBER = {\n    className: 'number',\n    relevance: 0,\n    variants: [\n      // decimal integer/float, optionally exponential or rational, optionally imaginary\n      { begin: `\\\\b(${decimal})(\\\\.(${digits}))?([eE][+-]?(${digits})|r)?i?\\\\b` },\n\n      // explicit decimal/binary/octal/hexadecimal integer,\n      // optionally rational and/or imaginary\n      { begin: \"\\\\b0[dD][0-9](_?[0-9])*r?i?\\\\b\" },\n      { begin: \"\\\\b0[bB][0-1](_?[0-1])*r?i?\\\\b\" },\n      { begin: \"\\\\b0[oO][0-7](_?[0-7])*r?i?\\\\b\" },\n      { begin: \"\\\\b0[xX][0-9a-fA-F](_?[0-9a-fA-F])*r?i?\\\\b\" },\n\n      // 0-prefixed implicit octal integer, optionally rational and/or imaginary\n      { begin: \"\\\\b0(_?[0-7])+r?i?\\\\b\" }\n    ]\n  };\n\n  const PARAMS = {\n    variants: [\n      {\n        match: /\\(\\)/,\n      },\n      {\n        className: 'params',\n        begin: /\\(/,\n        end: /(?=\\))/,\n        excludeBegin: true,\n        endsParent: true,\n        keywords: RUBY_KEYWORDS,\n      }\n    ]\n  };\n\n  const INCLUDE_EXTEND = {\n    match: [\n      /(include|extend)\\s+/,\n      CLASS_NAME_WITH_NAMESPACE_RE\n    ],\n    scope: {\n      2: \"title.class\"\n    },\n    keywords: RUBY_KEYWORDS\n  };\n\n  const CLASS_DEFINITION = {\n    variants: [\n      {\n        match: [\n          /class\\s+/,\n          CLASS_NAME_WITH_NAMESPACE_RE,\n          /\\s+<\\s+/,\n          CLASS_NAME_WITH_NAMESPACE_RE\n        ]\n      },\n      {\n        match: [\n          /\\b(class|module)\\s+/,\n          CLASS_NAME_WITH_NAMESPACE_RE\n        ]\n      }\n    ],\n    scope: {\n      2: \"title.class\",\n      4: \"title.class.inherited\"\n    },\n    keywords: RUBY_KEYWORDS\n  };\n\n  const UPPER_CASE_CONSTANT = {\n    relevance: 0,\n    match: /\\b[A-Z][A-Z_0-9]+\\b/,\n    className: \"variable.constant\"\n  };\n\n  const METHOD_DEFINITION = {\n    match: [\n      /def/, /\\s+/,\n      RUBY_METHOD_RE\n    ],\n    scope: {\n      1: \"keyword\",\n      3: \"title.function\"\n    },\n    contains: [\n      PARAMS\n    ]\n  };\n\n  const OBJECT_CREATION = {\n    relevance: 0,\n    match: [\n      CLASS_NAME_WITH_NAMESPACE_RE,\n      /\\.new[. (]/\n    ],\n    scope: {\n      1: \"title.class\"\n    }\n  };\n\n  // CamelCase\n  const CLASS_REFERENCE = {\n    relevance: 0,\n    match: CLASS_NAME_RE,\n    scope: \"title.class\"\n  };\n\n  const RUBY_DEFAULT_CONTAINS = [\n    STRING,\n    CLASS_DEFINITION,\n    INCLUDE_EXTEND,\n    OBJECT_CREATION,\n    UPPER_CASE_CONSTANT,\n    CLASS_REFERENCE,\n    METHOD_DEFINITION,\n    {\n      // swallow namespace qualifiers before symbols\n      begin: hljs.IDENT_RE + '::' },\n    {\n      className: 'symbol',\n      begin: hljs.UNDERSCORE_IDENT_RE + '(!|\\\\?)?:',\n      relevance: 0\n    },\n    {\n      className: 'symbol',\n      begin: ':(?!\\\\s)',\n      contains: [\n        STRING,\n        { begin: RUBY_METHOD_RE }\n      ],\n      relevance: 0\n    },\n    NUMBER,\n    {\n      // negative-look forward attempts to prevent false matches like:\n      // @ident@ or $ident$ that might indicate this is not ruby at all\n      className: \"variable\",\n      begin: '(\\\\$\\\\W)|((\\\\$|@@?)(\\\\w+))(?=[^@$?])' + `(?![A-Za-z])(?![@$?'])`\n    },\n    {\n      className: 'params',\n      begin: /\\|/,\n      end: /\\|/,\n      excludeBegin: true,\n      excludeEnd: true,\n      relevance: 0, // this could be a lot of things (in other languages) other than params\n      keywords: RUBY_KEYWORDS\n    },\n    { // regexp container\n      begin: '(' + hljs.RE_STARTERS_RE + '|unless)\\\\s*',\n      keywords: 'unless',\n      contains: [\n        {\n          className: 'regexp',\n          contains: [\n            hljs.BACKSLASH_ESCAPE,\n            SUBST\n          ],\n          illegal: /\\n/,\n          variants: [\n            {\n              begin: '/',\n              end: '/[a-z]*'\n            },\n            {\n              begin: /%r\\{/,\n              end: /\\}[a-z]*/\n            },\n            {\n              begin: '%r\\\\(',\n              end: '\\\\)[a-z]*'\n            },\n            {\n              begin: '%r!',\n              end: '![a-z]*'\n            },\n            {\n              begin: '%r\\\\[',\n              end: '\\\\][a-z]*'\n            }\n          ]\n        }\n      ].concat(IRB_OBJECT, COMMENT_MODES),\n      relevance: 0\n    }\n  ].concat(IRB_OBJECT, COMMENT_MODES);\n\n  SUBST.contains = RUBY_DEFAULT_CONTAINS;\n  PARAMS.contains = RUBY_DEFAULT_CONTAINS;\n\n  // >>\n  // ?>\n  const SIMPLE_PROMPT = \"[>?]>\";\n  // irb(main):001:0>\n  const DEFAULT_PROMPT = \"[\\\\w#]+\\\\(\\\\w+\\\\):\\\\d+:\\\\d+[>*]\";\n  const RVM_PROMPT = \"(\\\\w+-)?\\\\d+\\\\.\\\\d+\\\\.\\\\d+(p\\\\d+)?[^\\\\d][^>]+>\";\n\n  const IRB_DEFAULT = [\n    {\n      begin: /^\\s*=>/,\n      starts: {\n        end: '$',\n        contains: RUBY_DEFAULT_CONTAINS\n      }\n    },\n    {\n      className: 'meta.prompt',\n      begin: '^(' + SIMPLE_PROMPT + \"|\" + DEFAULT_PROMPT + '|' + RVM_PROMPT + ')(?=[ ])',\n      starts: {\n        end: '$',\n        keywords: RUBY_KEYWORDS,\n        contains: RUBY_DEFAULT_CONTAINS\n      }\n    }\n  ];\n\n  COMMENT_MODES.unshift(IRB_OBJECT);\n\n  return {\n    name: 'Ruby',\n    aliases: [\n      'rb',\n      'gemspec',\n      'podspec',\n      'thor',\n      'irb'\n    ],\n    keywords: RUBY_KEYWORDS,\n    illegal: /\\/\\*/,\n    contains: [ hljs.SHEBANG({ binary: \"ruby\" }) ]\n      .concat(IRB_DEFAULT)\n      .concat(COMMENT_MODES)\n      .concat(RUBY_DEFAULT_CONTAINS)\n  };\n}\n\nmodule.exports = ruby;\n",
+      "start": 1699633500775,
+      "end": 1699633500868,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500869,
+      "end": 1699633500869,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500869,
+      "end": 1699633500869,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500869,
+      "end": 1699633500869,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500869,
+      "end": 1699633500869,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500869,
+      "end": 1699633500869,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500869,
+      "end": 1699633500869,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500869,
+      "end": 1699633500869,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500869,
+      "end": 1699633500869,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500869,
+      "end": 1699633500869,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500869,
+      "end": 1699633500869,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500869,
+      "end": 1699633500869,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500870,
+      "end": 1699633500870,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500870,
+      "end": 1699633500870,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500870,
+      "end": 1699633500870,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500870,
+      "end": 1699633500870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500870,
+      "end": 1699633500870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500870,
+      "end": 1699633500870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500870,
+      "end": 1699633500870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500870,
+      "end": 1699633500870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500870,
+      "end": 1699633500870,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Ruby\nDescription: Ruby is a dynamic, open source programming language with a focus on simplicity and productivity.\nWebsite: https://www.ruby-lang.org/\nAuthor: Anton Kovalyov <anton@kovalyov.net>\nContributors: Peter Leonov <gojpeg@yandex.ru>, Vasily Polovnyov <vast@whiteants.net>, Loren Segal <lsegal@soen.ca>, Pascal Hurni <phi@ruby-reactive.org>, Cedric Sohrauer <sohrauer@googlemail.com>\nCategory: common\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar ruby_1;\nvar hasRequiredRuby;\n\nfunction requireRuby () {\n\tif (hasRequiredRuby) return ruby_1;\n\thasRequiredRuby = 1;\n\tfunction ruby(hljs) {\n\t  const regex = hljs.regex;\n\t  const RUBY_METHOD_RE = '([a-zA-Z_]\\\\w*[!?=]?|[-+~]@|<<|>>|=~|===?|<=>|[<>]=?|\\\\*\\\\*|[-/+%^&*~`|]|\\\\[\\\\]=?)';\n\t  // TODO: move concepts like CAMEL_CASE into `modes.js`\n\t  const CLASS_NAME_RE = regex.either(\n\t    /\\b([A-Z]+[a-z0-9]+)+/,\n\t    // ends in caps\n\t    /\\b([A-Z]+[a-z0-9]+)+[A-Z]+/,\n\t  )\n\t  ;\n\t  const CLASS_NAME_WITH_NAMESPACE_RE = regex.concat(CLASS_NAME_RE, /(::\\w+)*/);\n\t  // very popular ruby built-ins that one might even assume\n\t  // are actual keywords (despite that not being the case)\n\t  const PSEUDO_KWS = [\n\t    \"include\",\n\t    \"extend\",\n\t    \"prepend\",\n\t    \"public\",\n\t    \"private\",\n\t    \"protected\",\n\t    \"raise\",\n\t    \"throw\"\n\t  ];\n\t  const RUBY_KEYWORDS = {\n\t    \"variable.constant\": [\n\t      \"__FILE__\",\n\t      \"__LINE__\",\n\t      \"__ENCODING__\"\n\t    ],\n\t    \"variable.language\": [\n\t      \"self\",\n\t      \"super\",\n\t    ],\n\t    keyword: [\n\t      \"alias\",\n\t      \"and\",\n\t      \"begin\",\n\t      \"BEGIN\",\n\t      \"break\",\n\t      \"case\",\n\t      \"class\",\n\t      \"defined\",\n\t      \"do\",\n\t      \"else\",\n\t      \"elsif\",\n\t      \"end\",\n\t      \"END\",\n\t      \"ensure\",\n\t      \"for\",\n\t      \"if\",\n\t      \"in\",\n\t      \"module\",\n\t      \"next\",\n\t      \"not\",\n\t      \"or\",\n\t      \"redo\",\n\t      \"require\",\n\t      \"rescue\",\n\t      \"retry\",\n\t      \"return\",\n\t      \"then\",\n\t      \"undef\",\n\t      \"unless\",\n\t      \"until\",\n\t      \"when\",\n\t      \"while\",\n\t      \"yield\",\n\t      ...PSEUDO_KWS\n\t    ],\n\t    built_in: [\n\t      \"proc\",\n\t      \"lambda\",\n\t      \"attr_accessor\",\n\t      \"attr_reader\",\n\t      \"attr_writer\",\n\t      \"define_method\",\n\t      \"private_constant\",\n\t      \"module_function\"\n\t    ],\n\t    literal: [\n\t      \"true\",\n\t      \"false\",\n\t      \"nil\"\n\t    ]\n\t  };\n\t  const YARDOCTAG = {\n\t    className: 'doctag',\n\t    begin: '@[A-Za-z]+'\n\t  };\n\t  const IRB_OBJECT = {\n\t    begin: '#<',\n\t    end: '>'\n\t  };\n\t  const COMMENT_MODES = [\n\t    hljs.COMMENT(\n\t      '#',\n\t      '$',\n\t      { contains: [ YARDOCTAG ] }\n\t    ),\n\t    hljs.COMMENT(\n\t      '^=begin',\n\t      '^=end',\n\t      {\n\t        contains: [ YARDOCTAG ],\n\t        relevance: 10\n\t      }\n\t    ),\n\t    hljs.COMMENT('^__END__', hljs.MATCH_NOTHING_RE)\n\t  ];\n\t  const SUBST = {\n\t    className: 'subst',\n\t    begin: /#\\{/,\n\t    end: /\\}/,\n\t    keywords: RUBY_KEYWORDS\n\t  };\n\t  const STRING = {\n\t    className: 'string',\n\t    contains: [\n\t      hljs.BACKSLASH_ESCAPE,\n\t      SUBST\n\t    ],\n\t    variants: [\n\t      {\n\t        begin: /'/,\n\t        end: /'/\n\t      },\n\t      {\n\t        begin: /\"/,\n\t        end: /\"/\n\t      },\n\t      {\n\t        begin: /`/,\n\t        end: /`/\n\t      },\n\t      {\n\t        begin: /%[qQwWx]?\\(/,\n\t        end: /\\)/\n\t      },\n\t      {\n\t        begin: /%[qQwWx]?\\[/,\n\t        end: /\\]/\n\t      },\n\t      {\n\t        begin: /%[qQwWx]?\\{/,\n\t        end: /\\}/\n\t      },\n\t      {\n\t        begin: /%[qQwWx]?</,\n\t        end: />/\n\t      },\n\t      {\n\t        begin: /%[qQwWx]?\\//,\n\t        end: /\\//\n\t      },\n\t      {\n\t        begin: /%[qQwWx]?%/,\n\t        end: /%/\n\t      },\n\t      {\n\t        begin: /%[qQwWx]?-/,\n\t        end: /-/\n\t      },\n\t      {\n\t        begin: /%[qQwWx]?\\|/,\n\t        end: /\\|/\n\t      },\n\t      // in the following expressions, \\B in the beginning suppresses recognition of ?-sequences\n\t      // where ? is the last character of a preceding identifier, as in: `func?4`\n\t      { begin: /\\B\\?(\\\\\\d{1,3})/ },\n\t      { begin: /\\B\\?(\\\\x[A-Fa-f0-9]{1,2})/ },\n\t      { begin: /\\B\\?(\\\\u\\{?[A-Fa-f0-9]{1,6}\\}?)/ },\n\t      { begin: /\\B\\?(\\\\M-\\\\C-|\\\\M-\\\\c|\\\\c\\\\M-|\\\\M-|\\\\C-\\\\M-)[\\x20-\\x7e]/ },\n\t      { begin: /\\B\\?\\\\(c|C-)[\\x20-\\x7e]/ },\n\t      { begin: /\\B\\?\\\\?\\S/ },\n\t      // heredocs\n\t      {\n\t        // this guard makes sure that we have an entire heredoc and not a false\n\t        // positive (auto-detect, etc.)\n\t        begin: regex.concat(\n\t          /<<[-~]?'?/,\n\t          regex.lookahead(/(\\w+)(?=\\W)[^\\n]*\\n(?:[^\\n]*\\n)*?\\s*\\1\\b/)\n\t        ),\n\t        contains: [\n\t          hljs.END_SAME_AS_BEGIN({\n\t            begin: /(\\w+)/,\n\t            end: /(\\w+)/,\n\t            contains: [\n\t              hljs.BACKSLASH_ESCAPE,\n\t              SUBST\n\t            ]\n\t          })\n\t        ]\n\t      }\n\t    ]\n\t  };\n\n\t  // Ruby syntax is underdocumented, but this grammar seems to be accurate\n\t  // as of version 2.7.2 (confirmed with (irb and `Ripper.sexp(...)`)\n\t  // https://docs.ruby-lang.org/en/2.7.0/doc/syntax/literals_rdoc.html#label-Numbers\n\t  const decimal = '[1-9](_?[0-9])*|0';\n\t  const digits = '[0-9](_?[0-9])*';\n\t  const NUMBER = {\n\t    className: 'number',\n\t    relevance: 0,\n\t    variants: [\n\t      // decimal integer/float, optionally exponential or rational, optionally imaginary\n\t      { begin: `\\\\b(${decimal})(\\\\.(${digits}))?([eE][+-]?(${digits})|r)?i?\\\\b` },\n\n\t      // explicit decimal/binary/octal/hexadecimal integer,\n\t      // optionally rational and/or imaginary\n\t      { begin: \"\\\\b0[dD][0-9](_?[0-9])*r?i?\\\\b\" },\n\t      { begin: \"\\\\b0[bB][0-1](_?[0-1])*r?i?\\\\b\" },\n\t      { begin: \"\\\\b0[oO][0-7](_?[0-7])*r?i?\\\\b\" },\n\t      { begin: \"\\\\b0[xX][0-9a-fA-F](_?[0-9a-fA-F])*r?i?\\\\b\" },\n\n\t      // 0-prefixed implicit octal integer, optionally rational and/or imaginary\n\t      { begin: \"\\\\b0(_?[0-7])+r?i?\\\\b\" }\n\t    ]\n\t  };\n\n\t  const PARAMS = {\n\t    variants: [\n\t      {\n\t        match: /\\(\\)/,\n\t      },\n\t      {\n\t        className: 'params',\n\t        begin: /\\(/,\n\t        end: /(?=\\))/,\n\t        excludeBegin: true,\n\t        endsParent: true,\n\t        keywords: RUBY_KEYWORDS,\n\t      }\n\t    ]\n\t  };\n\n\t  const INCLUDE_EXTEND = {\n\t    match: [\n\t      /(include|extend)\\s+/,\n\t      CLASS_NAME_WITH_NAMESPACE_RE\n\t    ],\n\t    scope: {\n\t      2: \"title.class\"\n\t    },\n\t    keywords: RUBY_KEYWORDS\n\t  };\n\n\t  const CLASS_DEFINITION = {\n\t    variants: [\n\t      {\n\t        match: [\n\t          /class\\s+/,\n\t          CLASS_NAME_WITH_NAMESPACE_RE,\n\t          /\\s+<\\s+/,\n\t          CLASS_NAME_WITH_NAMESPACE_RE\n\t        ]\n\t      },\n\t      {\n\t        match: [\n\t          /\\b(class|module)\\s+/,\n\t          CLASS_NAME_WITH_NAMESPACE_RE\n\t        ]\n\t      }\n\t    ],\n\t    scope: {\n\t      2: \"title.class\",\n\t      4: \"title.class.inherited\"\n\t    },\n\t    keywords: RUBY_KEYWORDS\n\t  };\n\n\t  const UPPER_CASE_CONSTANT = {\n\t    relevance: 0,\n\t    match: /\\b[A-Z][A-Z_0-9]+\\b/,\n\t    className: \"variable.constant\"\n\t  };\n\n\t  const METHOD_DEFINITION = {\n\t    match: [\n\t      /def/, /\\s+/,\n\t      RUBY_METHOD_RE\n\t    ],\n\t    scope: {\n\t      1: \"keyword\",\n\t      3: \"title.function\"\n\t    },\n\t    contains: [\n\t      PARAMS\n\t    ]\n\t  };\n\n\t  const OBJECT_CREATION = {\n\t    relevance: 0,\n\t    match: [\n\t      CLASS_NAME_WITH_NAMESPACE_RE,\n\t      /\\.new[. (]/\n\t    ],\n\t    scope: {\n\t      1: \"title.class\"\n\t    }\n\t  };\n\n\t  // CamelCase\n\t  const CLASS_REFERENCE = {\n\t    relevance: 0,\n\t    match: CLASS_NAME_RE,\n\t    scope: \"title.class\"\n\t  };\n\n\t  const RUBY_DEFAULT_CONTAINS = [\n\t    STRING,\n\t    CLASS_DEFINITION,\n\t    INCLUDE_EXTEND,\n\t    OBJECT_CREATION,\n\t    UPPER_CASE_CONSTANT,\n\t    CLASS_REFERENCE,\n\t    METHOD_DEFINITION,\n\t    {\n\t      // swallow namespace qualifiers before symbols\n\t      begin: hljs.IDENT_RE + '::' },\n\t    {\n\t      className: 'symbol',\n\t      begin: hljs.UNDERSCORE_IDENT_RE + '(!|\\\\?)?:',\n\t      relevance: 0\n\t    },\n\t    {\n\t      className: 'symbol',\n\t      begin: ':(?!\\\\s)',\n\t      contains: [\n\t        STRING,\n\t        { begin: RUBY_METHOD_RE }\n\t      ],\n\t      relevance: 0\n\t    },\n\t    NUMBER,\n\t    {\n\t      // negative-look forward attempts to prevent false matches like:\n\t      // @ident@ or $ident$ that might indicate this is not ruby at all\n\t      className: \"variable\",\n\t      begin: '(\\\\$\\\\W)|((\\\\$|@@?)(\\\\w+))(?=[^@$?])' + `(?![A-Za-z])(?![@$?'])`\n\t    },\n\t    {\n\t      className: 'params',\n\t      begin: /\\|/,\n\t      end: /\\|/,\n\t      excludeBegin: true,\n\t      excludeEnd: true,\n\t      relevance: 0, // this could be a lot of things (in other languages) other than params\n\t      keywords: RUBY_KEYWORDS\n\t    },\n\t    { // regexp container\n\t      begin: '(' + hljs.RE_STARTERS_RE + '|unless)\\\\s*',\n\t      keywords: 'unless',\n\t      contains: [\n\t        {\n\t          className: 'regexp',\n\t          contains: [\n\t            hljs.BACKSLASH_ESCAPE,\n\t            SUBST\n\t          ],\n\t          illegal: /\\n/,\n\t          variants: [\n\t            {\n\t              begin: '/',\n\t              end: '/[a-z]*'\n\t            },\n\t            {\n\t              begin: /%r\\{/,\n\t              end: /\\}[a-z]*/\n\t            },\n\t            {\n\t              begin: '%r\\\\(',\n\t              end: '\\\\)[a-z]*'\n\t            },\n\t            {\n\t              begin: '%r!',\n\t              end: '![a-z]*'\n\t            },\n\t            {\n\t              begin: '%r\\\\[',\n\t              end: '\\\\][a-z]*'\n\t            }\n\t          ]\n\t        }\n\t      ].concat(IRB_OBJECT, COMMENT_MODES),\n\t      relevance: 0\n\t    }\n\t  ].concat(IRB_OBJECT, COMMENT_MODES);\n\n\t  SUBST.contains = RUBY_DEFAULT_CONTAINS;\n\t  PARAMS.contains = RUBY_DEFAULT_CONTAINS;\n\n\t  // >>\n\t  // ?>\n\t  const SIMPLE_PROMPT = \"[>?]>\";\n\t  // irb(main):001:0>\n\t  const DEFAULT_PROMPT = \"[\\\\w#]+\\\\(\\\\w+\\\\):\\\\d+:\\\\d+[>*]\";\n\t  const RVM_PROMPT = \"(\\\\w+-)?\\\\d+\\\\.\\\\d+\\\\.\\\\d+(p\\\\d+)?[^\\\\d][^>]+>\";\n\n\t  const IRB_DEFAULT = [\n\t    {\n\t      begin: /^\\s*=>/,\n\t      starts: {\n\t        end: '$',\n\t        contains: RUBY_DEFAULT_CONTAINS\n\t      }\n\t    },\n\t    {\n\t      className: 'meta.prompt',\n\t      begin: '^(' + SIMPLE_PROMPT + \"|\" + DEFAULT_PROMPT + '|' + RVM_PROMPT + ')(?=[ ])',\n\t      starts: {\n\t        end: '$',\n\t        keywords: RUBY_KEYWORDS,\n\t        contains: RUBY_DEFAULT_CONTAINS\n\t      }\n\t    }\n\t  ];\n\n\t  COMMENT_MODES.unshift(IRB_OBJECT);\n\n\t  return {\n\t    name: 'Ruby',\n\t    aliases: [\n\t      'rb',\n\t      'gemspec',\n\t      'podspec',\n\t      'thor',\n\t      'irb'\n\t    ],\n\t    keywords: RUBY_KEYWORDS,\n\t    illegal: /\\/\\*/,\n\t    contains: [ hljs.SHEBANG({ binary: \"ruby\" }) ]\n\t      .concat(IRB_DEFAULT)\n\t      .concat(COMMENT_MODES)\n\t      .concat(RUBY_DEFAULT_CONTAINS)\n\t  };\n\t}\n\n\truby_1 = ruby;\n\treturn ruby_1;\n}\n\nexport { requireRuby as __require };",
+      "start": 1699633500870,
+      "end": 1699633500871,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500871,
+      "end": 1699633500871,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500871,
+      "end": 1699633500871,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500871,
+      "end": 1699633500871,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500872,
+      "end": 1699633500872,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500872,
+      "end": 1699633500872,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500872,
+      "end": 1699633500872,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500872,
+      "end": 1699633500872,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500872,
+      "end": 1699633500872,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500872,
+      "end": 1699633500872,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500872,
+      "end": 1699633500872,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500872,
+      "end": 1699633500872,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500872,
+      "end": 1699633500872,
+      "order": "normal"
+    }
+  ]
+}

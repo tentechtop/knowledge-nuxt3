@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/rules_block/code.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Code block (4 spaces padded)\n\n'use strict';\n\n\nmodule.exports = function code(state, startLine, endLine/*, silent*/) {\n  var nextLine, last, token;\n\n  if (state.sCount[startLine] - state.blkIndent < 4) { return false; }\n\n  last = nextLine = startLine + 1;\n\n  while (nextLine < endLine) {\n    if (state.isEmpty(nextLine)) {\n      nextLine++;\n      continue;\n    }\n\n    if (state.sCount[nextLine] - state.blkIndent >= 4) {\n      nextLine++;\n      last = nextLine;\n      continue;\n    }\n    break;\n  }\n\n  state.line = last;\n\n  token         = state.push('code_block', 'code', 0);\n  token.content = state.getLines(startLine, last, 4 + state.blkIndent, false) + '\\n';\n  token.map     = [ startLine, state.line ];\n\n  return true;\n};\n",
+      "start": 1699633501682,
+      "end": 1699633501778,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501779,
+      "end": 1699633501779,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501779,
+      "end": 1699633501779,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501779,
+      "end": 1699633501779,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501779,
+      "end": 1699633501779,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501779,
+      "end": 1699633501779,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501779,
+      "end": 1699633501779,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501779,
+      "end": 1699633501779,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501779,
+      "end": 1699633501779,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501780,
+      "end": 1699633501780,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501780,
+      "end": 1699633501780,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501780,
+      "end": 1699633501780,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501784,
+      "end": 1699633501784,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501784,
+      "end": 1699633501784,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501784,
+      "end": 1699633501784,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501784,
+      "end": 1699633501784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501784,
+      "end": 1699633501784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501784,
+      "end": 1699633501784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501784,
+      "end": 1699633501784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501784,
+      "end": 1699633501784,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501784,
+      "end": 1699633501784,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\n// Code block (4 spaces padded)\n\n'use strict';\n\n\nvar code = function code(state, startLine, endLine/*, silent*/) {\n  var nextLine, last, token;\n\n  if (state.sCount[startLine] - state.blkIndent < 4) { return false; }\n\n  last = nextLine = startLine + 1;\n\n  while (nextLine < endLine) {\n    if (state.isEmpty(nextLine)) {\n      nextLine++;\n      continue;\n    }\n\n    if (state.sCount[nextLine] - state.blkIndent >= 4) {\n      nextLine++;\n      last = nextLine;\n      continue;\n    }\n    break;\n  }\n\n  state.line = last;\n\n  token         = state.push('code_block', 'code', 0);\n  token.content = state.getLines(startLine, last, 4 + state.blkIndent, false) + '\\n';\n  token.map     = [ startLine, state.line ];\n\n  return true;\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(code);\nexport { code as __moduleExports };",
+      "start": 1699633501784,
+      "end": 1699633501785,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;AAAA;AACA;AACA,YAAY,CAAC;AACb;AACA;IACA,IAAc,GAAG,SAAS,IAAI,CAAC,KAAK,EAAE,SAAS,EAAE,OAAO,cAAc;AACtE,EAAE,IAAI,QAAQ,EAAE,IAAI,EAAE,KAAK,CAAC;AAC5B;AACA,EAAE,IAAI,KAAK,CAAC,MAAM,CAAC,SAAS,CAAC,GAAG,KAAK,CAAC,SAAS,GAAG,CAAC,EAAE,EAAE,OAAO,KAAK,CAAC,EAAE;AACtE;AACA,EAAE,IAAI,GAAG,QAAQ,GAAG,SAAS,GAAG,CAAC,CAAC;AAClC;AACA,EAAE,OAAO,QAAQ,GAAG,OAAO,EAAE;AAC7B,IAAI,IAAI,KAAK,CAAC,OAAO,CAAC,QAAQ,CAAC,EAAE;AACjC,MAAM,QAAQ,EAAE,CAAC;AACjB,MAAM,SAAS;AACf,KAAK;AACL;AACA,IAAI,IAAI,KAAK,CAAC,MAAM,CAAC,QAAQ,CAAC,GAAG,KAAK,CAAC,SAAS,IAAI,CAAC,EAAE;AACvD,MAAM,QAAQ,EAAE,CAAC;AACjB,MAAM,IAAI,GAAG,QAAQ,CAAC;AACtB,MAAM,SAAS;AACf,KAAK;AACL,IAAI,MAAM;AACV,GAAG;AACH;AACA,EAAE,KAAK,CAAC,IAAI,GAAG,IAAI,CAAC;AACpB;AACA,EAAE,KAAK,WAAW,KAAK,CAAC,IAAI,CAAC,YAAY,EAAE,MAAM,EAAE,CAAC,CAAC,CAAC;AACtD,EAAE,KAAK,CAAC,OAAO,GAAG,KAAK,CAAC,QAAQ,CAAC,SAAS,EAAE,IAAI,EAAE,CAAC,GAAG,KAAK,CAAC,SAAS,EAAE,KAAK,CAAC,GAAG,IAAI,CAAC;AACrF,EAAE,KAAK,CAAC,GAAG,OAAO,EAAE,SAAS,EAAE,KAAK,CAAC,IAAI,EAAE,CAAC;AAC5C;AACA,EAAE,OAAO,IAAI,CAAC;AACd,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501785,
+      "end": 1699633501785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501785,
+      "end": 1699633501785,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501785,
+      "end": 1699633501785,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501785,
+      "end": 1699633501785,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501785,
+      "end": 1699633501785,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501785,
+      "end": 1699633501785,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501785,
+      "end": 1699633501785,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501785,
+      "end": 1699633501785,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501785,
+      "end": 1699633501785,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501785,
+      "end": 1699633501785,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501785,
+      "end": 1699633501785,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501785,
+      "end": 1699633501785,
+      "order": "normal"
+    }
+  ]
+}

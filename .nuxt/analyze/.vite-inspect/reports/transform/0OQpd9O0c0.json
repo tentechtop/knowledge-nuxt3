@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/rules_inline/text.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Skip text characters for text token, place those to pending buffer\n// and increment current pos\n\n'use strict';\n\n\n// Rule to skip pure text\n// '{}$%@~+=:' reserved for extentions\n\n// !, \", #, $, %, &, ', (, ), *, +, ,, -, ., /, :, ;, <, =, >, ?, @, [, \\, ], ^, _, `, {, |, }, or ~\n\n// !!!! Don't confuse with \"Markdown ASCII Punctuation\" chars\n// http://spec.commonmark.org/0.15/#ascii-punctuation-character\nfunction isTerminatorChar(ch) {\n  switch (ch) {\n    case 0x0A/* \\n */:\n    case 0x21/* ! */:\n    case 0x23/* # */:\n    case 0x24/* $ */:\n    case 0x25/* % */:\n    case 0x26/* & */:\n    case 0x2A/* * */:\n    case 0x2B/* + */:\n    case 0x2D/* - */:\n    case 0x3A/* : */:\n    case 0x3C/* < */:\n    case 0x3D/* = */:\n    case 0x3E/* > */:\n    case 0x40/* @ */:\n    case 0x5B/* [ */:\n    case 0x5C/* \\ */:\n    case 0x5D/* ] */:\n    case 0x5E/* ^ */:\n    case 0x5F/* _ */:\n    case 0x60/* ` */:\n    case 0x7B/* { */:\n    case 0x7D/* } */:\n    case 0x7E/* ~ */:\n      return true;\n    default:\n      return false;\n  }\n}\n\nmodule.exports = function text(state, silent) {\n  var pos = state.pos;\n\n  while (pos < state.posMax && !isTerminatorChar(state.src.charCodeAt(pos))) {\n    pos++;\n  }\n\n  if (pos === state.pos) { return false; }\n\n  if (!silent) { state.pending += state.src.slice(state.pos, pos); }\n\n  state.pos = pos;\n\n  return true;\n};\n\n// Alternative implementation, for memory.\n//\n// It costs 10% of performance, but allows extend terminators list, if place it\n// to `ParcerInline` property. Probably, will switch to it sometime, such\n// flexibility required.\n\n/*\nvar TERMINATOR_RE = /[\\n!#$%&*+\\-:<=>@[\\\\\\]^_`{}~]/;\n\nmodule.exports = function text(state, silent) {\n  var pos = state.pos,\n      idx = state.src.slice(pos).search(TERMINATOR_RE);\n\n  // first char is terminator -> empty text\n  if (idx === 0) { return false; }\n\n  // no terminator -> text till end of string\n  if (idx < 0) {\n    if (!silent) { state.pending += state.src.slice(pos); }\n    state.pos = state.src.length;\n    return true;\n  }\n\n  if (!silent) { state.pending += state.src.slice(pos, pos + idx); }\n\n  state.pos += idx;\n\n  return true;\n};*/\n",
+      "start": 1699633501784,
+      "end": 1699633501885,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501886,
+      "end": 1699633501886,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501886,
+      "end": 1699633501886,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501886,
+      "end": 1699633501886,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501886,
+      "end": 1699633501886,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501886,
+      "end": 1699633501886,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501886,
+      "end": 1699633501887,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501887,
+      "end": 1699633501887,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501887,
+      "end": 1699633501887,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501887,
+      "end": 1699633501887,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501887,
+      "end": 1699633501887,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501887,
+      "end": 1699633501887,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501887,
+      "end": 1699633501887,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501887,
+      "end": 1699633501887,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501888,
+      "end": 1699633501888,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501888,
+      "end": 1699633501888,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501888,
+      "end": 1699633501888,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501888,
+      "end": 1699633501888,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501888,
+      "end": 1699633501888,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501888,
+      "end": 1699633501888,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501888,
+      "end": 1699633501888,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\n// Skip text characters for text token, place those to pending buffer\n// and increment current pos\n\n'use strict';\n\n\n// Rule to skip pure text\n// '{}$%@~+=:' reserved for extentions\n\n// !, \", #, $, %, &, ', (, ), *, +, ,, -, ., /, :, ;, <, =, >, ?, @, [, \\, ], ^, _, `, {, |, }, or ~\n\n// !!!! Don't confuse with \"Markdown ASCII Punctuation\" chars\n// http://spec.commonmark.org/0.15/#ascii-punctuation-character\nfunction isTerminatorChar(ch) {\n  switch (ch) {\n    case 0x0A/* \\n */:\n    case 0x21/* ! */:\n    case 0x23/* # */:\n    case 0x24/* $ */:\n    case 0x25/* % */:\n    case 0x26/* & */:\n    case 0x2A/* * */:\n    case 0x2B/* + */:\n    case 0x2D/* - */:\n    case 0x3A/* : */:\n    case 0x3C/* < */:\n    case 0x3D/* = */:\n    case 0x3E/* > */:\n    case 0x40/* @ */:\n    case 0x5B/* [ */:\n    case 0x5C/* \\ */:\n    case 0x5D/* ] */:\n    case 0x5E/* ^ */:\n    case 0x5F/* _ */:\n    case 0x60/* ` */:\n    case 0x7B/* { */:\n    case 0x7D/* } */:\n    case 0x7E/* ~ */:\n      return true;\n    default:\n      return false;\n  }\n}\n\nvar text = function text(state, silent) {\n  var pos = state.pos;\n\n  while (pos < state.posMax && !isTerminatorChar(state.src.charCodeAt(pos))) {\n    pos++;\n  }\n\n  if (pos === state.pos) { return false; }\n\n  if (!silent) { state.pending += state.src.slice(state.pos, pos); }\n\n  state.pos = pos;\n\n  return true;\n};\n\n// Alternative implementation, for memory.\n//\n// It costs 10% of performance, but allows extend terminators list, if place it\n// to `ParcerInline` property. Probably, will switch to it sometime, such\n// flexibility required.\n\n/*\nvar TERMINATOR_RE = /[\\n!#$%&*+\\-:<=>@[\\\\\\]^_`{}~]/;\n\nmodule.exports = function text(state, silent) {\n  var pos = state.pos,\n      idx = state.src.slice(pos).search(TERMINATOR_RE);\n\n  // first char is terminator -> empty text\n  if (idx === 0) { return false; }\n\n  // no terminator -> text till end of string\n  if (idx < 0) {\n    if (!silent) { state.pending += state.src.slice(pos); }\n    state.pos = state.src.length;\n    return true;\n  }\n\n  if (!silent) { state.pending += state.src.slice(pos, pos + idx); }\n\n  state.pos += idx;\n\n  return true;\n};*/\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(text);\nexport { text as __moduleExports };",
+      "start": 1699633501888,
+      "end": 1699633501888,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;AAAA;AACA;AACA;AACA,YAAY,CAAC;AACb;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,SAAS,gBAAgB,CAAC,EAAE,EAAE;AAC9B,EAAE,QAAQ,EAAE;AACZ,IAAI,KAAK,IAAI,SAAS;AACtB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI,QAAQ;AACrB,IAAI,KAAK,IAAI;AACb,MAAM,OAAO,IAAI,CAAC;AAClB,IAAI;AACJ,MAAM,OAAO,KAAK,CAAC;AACnB,GAAG;AACH,CAAC;AACD;IACA,IAAc,GAAG,SAAS,IAAI,CAAC,KAAK,EAAE,MAAM,EAAE;AAC9C,EAAE,IAAI,GAAG,GAAG,KAAK,CAAC,GAAG,CAAC;AACtB;AACA,EAAE,OAAO,GAAG,GAAG,KAAK,CAAC,MAAM,IAAI,CAAC,gBAAgB,CAAC,KAAK,CAAC,GAAG,CAAC,UAAU,CAAC,GAAG,CAAC,CAAC,EAAE;AAC7E,IAAI,GAAG,EAAE,CAAC;AACV,GAAG;AACH;AACA,EAAE,IAAI,GAAG,KAAK,KAAK,CAAC,GAAG,EAAE,EAAE,OAAO,KAAK,CAAC,EAAE;AAC1C;AACA,EAAE,IAAI,CAAC,MAAM,EAAE,EAAE,KAAK,CAAC,OAAO,IAAI,KAAK,CAAC,GAAG,CAAC,KAAK,CAAC,KAAK,CAAC,GAAG,EAAE,GAAG,CAAC,CAAC,EAAE;AACpE;AACA,EAAE,KAAK,CAAC,GAAG,GAAG,GAAG,CAAC;AAClB;AACA,EAAE,OAAO,IAAI,CAAC;AACd,CAAC,CAAC;AACF;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501888,
+      "end": 1699633501888,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501889,
+      "end": 1699633501889,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501889,
+      "end": 1699633501889,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501889,
+      "end": 1699633501889,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501889,
+      "end": 1699633501889,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501889,
+      "end": 1699633501889,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501889,
+      "end": 1699633501889,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501889,
+      "end": 1699633501889,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501889,
+      "end": 1699633501889,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501889,
+      "end": 1699633501889,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501889,
+      "end": 1699633501889,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501889,
+      "end": 1699633501889,
+      "order": "normal"
+    }
+  ]
+}

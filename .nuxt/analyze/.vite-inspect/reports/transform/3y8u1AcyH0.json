@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/llvm.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: LLVM IR\nAuthor: Michael Rodler <contact@f0rki.at>\nDescription: language used as intermediate representation in the LLVM compiler framework\nWebsite: https://llvm.org/docs/LangRef.html\nCategory: assembler\nAudit: 2020\n*/\n\n/** @type LanguageFn */\nfunction llvm(hljs) {\n  const regex = hljs.regex;\n  const IDENT_RE = /([-a-zA-Z$._][\\w$.-]*)/;\n  const TYPE = {\n    className: 'type',\n    begin: /\\bi\\d+(?=\\s|\\b)/\n  };\n  const OPERATOR = {\n    className: 'operator',\n    relevance: 0,\n    begin: /=/\n  };\n  const PUNCTUATION = {\n    className: 'punctuation',\n    relevance: 0,\n    begin: /,/\n  };\n  const NUMBER = {\n    className: 'number',\n    variants: [\n      { begin: /[su]?0[xX][KMLHR]?[a-fA-F0-9]+/ },\n      { begin: /[-+]?\\d+(?:[.]\\d+)?(?:[eE][-+]?\\d+(?:[.]\\d+)?)?/ }\n    ],\n    relevance: 0\n  };\n  const LABEL = {\n    className: 'symbol',\n    variants: [ { begin: /^\\s*[a-z]+:/ }, // labels\n    ],\n    relevance: 0\n  };\n  const VARIABLE = {\n    className: 'variable',\n    variants: [\n      { begin: regex.concat(/%/, IDENT_RE) },\n      { begin: /%\\d+/ },\n      { begin: /#\\d+/ },\n    ]\n  };\n  const FUNCTION = {\n    className: 'title',\n    variants: [\n      { begin: regex.concat(/@/, IDENT_RE) },\n      { begin: /@\\d+/ },\n      { begin: regex.concat(/!/, IDENT_RE) },\n      { begin: regex.concat(/!\\d+/, IDENT_RE) },\n      // https://llvm.org/docs/LangRef.html#namedmetadatastructure\n      // obviously a single digit can also be used in this fashion\n      { begin: /!\\d+/ }\n    ]\n  };\n\n  return {\n    name: 'LLVM IR',\n    // TODO: split into different categories of keywords\n    keywords:\n      'begin end true false declare define global '\n      + 'constant private linker_private internal '\n      + 'available_externally linkonce linkonce_odr weak '\n      + 'weak_odr appending dllimport dllexport common '\n      + 'default hidden protected extern_weak external '\n      + 'thread_local zeroinitializer undef null to tail '\n      + 'target triple datalayout volatile nuw nsw nnan '\n      + 'ninf nsz arcp fast exact inbounds align '\n      + 'addrspace section alias module asm sideeffect '\n      + 'gc dbg linker_private_weak attributes blockaddress '\n      + 'initialexec localdynamic localexec prefix unnamed_addr '\n      + 'ccc fastcc coldcc x86_stdcallcc x86_fastcallcc '\n      + 'arm_apcscc arm_aapcscc arm_aapcs_vfpcc ptx_device '\n      + 'ptx_kernel intel_ocl_bicc msp430_intrcc spir_func '\n      + 'spir_kernel x86_64_sysvcc x86_64_win64cc x86_thiscallcc '\n      + 'cc c signext zeroext inreg sret nounwind '\n      + 'noreturn noalias nocapture byval nest readnone '\n      + 'readonly inlinehint noinline alwaysinline optsize ssp '\n      + 'sspreq noredzone noimplicitfloat naked builtin cold '\n      + 'nobuiltin noduplicate nonlazybind optnone returns_twice '\n      + 'sanitize_address sanitize_memory sanitize_thread sspstrong '\n      + 'uwtable returned type opaque eq ne slt sgt '\n      + 'sle sge ult ugt ule uge oeq one olt ogt '\n      + 'ole oge ord uno ueq une x acq_rel acquire '\n      + 'alignstack atomic catch cleanup filter inteldialect '\n      + 'max min monotonic nand personality release seq_cst '\n      + 'singlethread umax umin unordered xchg add fadd '\n      + 'sub fsub mul fmul udiv sdiv fdiv urem srem '\n      + 'frem shl lshr ashr and or xor icmp fcmp '\n      + 'phi call trunc zext sext fptrunc fpext uitofp '\n      + 'sitofp fptoui fptosi inttoptr ptrtoint bitcast '\n      + 'addrspacecast select va_arg ret br switch invoke '\n      + 'unwind unreachable indirectbr landingpad resume '\n      + 'malloc alloca free load store getelementptr '\n      + 'extractelement insertelement shufflevector getresult '\n      + 'extractvalue insertvalue atomicrmw cmpxchg fence '\n      + 'argmemonly double',\n    contains: [\n      TYPE,\n      // this matches \"empty comments\"...\n      // ...because it's far more likely this is a statement terminator in\n      // another language than an actual comment\n      hljs.COMMENT(/;\\s*$/, null, { relevance: 0 }),\n      hljs.COMMENT(/;/, /$/),\n      {\n        className: 'string',\n        begin: /\"/,\n        end: /\"/,\n        contains: [\n          {\n            className: 'char.escape',\n            match: /\\\\\\d\\d/\n          }\n        ]\n      },\n      FUNCTION,\n      PUNCTUATION,\n      OPERATOR,\n      VARIABLE,\n      LABEL,\n      NUMBER\n    ]\n  };\n}\n\nmodule.exports = llvm;\n",
+      "start": 1699633500999,
+      "end": 1699633501138,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501138,
+      "end": 1699633501138,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501139,
+      "end": 1699633501139,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501139,
+      "end": 1699633501139,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501139,
+      "end": 1699633501139,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501139,
+      "end": 1699633501139,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501139,
+      "end": 1699633501139,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501139,
+      "end": 1699633501139,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501139,
+      "end": 1699633501139,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501139,
+      "end": 1699633501139,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501139,
+      "end": 1699633501139,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501139,
+      "end": 1699633501139,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501139,
+      "end": 1699633501139,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501139,
+      "end": 1699633501140,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501140,
+      "end": 1699633501140,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501140,
+      "end": 1699633501140,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501140,
+      "end": 1699633501140,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501140,
+      "end": 1699633501140,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501140,
+      "end": 1699633501140,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501140,
+      "end": 1699633501140,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501140,
+      "end": 1699633501140,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: LLVM IR\nAuthor: Michael Rodler <contact@f0rki.at>\nDescription: language used as intermediate representation in the LLVM compiler framework\nWebsite: https://llvm.org/docs/LangRef.html\nCategory: assembler\nAudit: 2020\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar llvm_1;\nvar hasRequiredLlvm;\n\nfunction requireLlvm () {\n\tif (hasRequiredLlvm) return llvm_1;\n\thasRequiredLlvm = 1;\n\t/** @type LanguageFn */\n\tfunction llvm(hljs) {\n\t  const regex = hljs.regex;\n\t  const IDENT_RE = /([-a-zA-Z$._][\\w$.-]*)/;\n\t  const TYPE = {\n\t    className: 'type',\n\t    begin: /\\bi\\d+(?=\\s|\\b)/\n\t  };\n\t  const OPERATOR = {\n\t    className: 'operator',\n\t    relevance: 0,\n\t    begin: /=/\n\t  };\n\t  const PUNCTUATION = {\n\t    className: 'punctuation',\n\t    relevance: 0,\n\t    begin: /,/\n\t  };\n\t  const NUMBER = {\n\t    className: 'number',\n\t    variants: [\n\t      { begin: /[su]?0[xX][KMLHR]?[a-fA-F0-9]+/ },\n\t      { begin: /[-+]?\\d+(?:[.]\\d+)?(?:[eE][-+]?\\d+(?:[.]\\d+)?)?/ }\n\t    ],\n\t    relevance: 0\n\t  };\n\t  const LABEL = {\n\t    className: 'symbol',\n\t    variants: [ { begin: /^\\s*[a-z]+:/ }, // labels\n\t    ],\n\t    relevance: 0\n\t  };\n\t  const VARIABLE = {\n\t    className: 'variable',\n\t    variants: [\n\t      { begin: regex.concat(/%/, IDENT_RE) },\n\t      { begin: /%\\d+/ },\n\t      { begin: /#\\d+/ },\n\t    ]\n\t  };\n\t  const FUNCTION = {\n\t    className: 'title',\n\t    variants: [\n\t      { begin: regex.concat(/@/, IDENT_RE) },\n\t      { begin: /@\\d+/ },\n\t      { begin: regex.concat(/!/, IDENT_RE) },\n\t      { begin: regex.concat(/!\\d+/, IDENT_RE) },\n\t      // https://llvm.org/docs/LangRef.html#namedmetadatastructure\n\t      // obviously a single digit can also be used in this fashion\n\t      { begin: /!\\d+/ }\n\t    ]\n\t  };\n\n\t  return {\n\t    name: 'LLVM IR',\n\t    // TODO: split into different categories of keywords\n\t    keywords:\n\t      'begin end true false declare define global '\n\t      + 'constant private linker_private internal '\n\t      + 'available_externally linkonce linkonce_odr weak '\n\t      + 'weak_odr appending dllimport dllexport common '\n\t      + 'default hidden protected extern_weak external '\n\t      + 'thread_local zeroinitializer undef null to tail '\n\t      + 'target triple datalayout volatile nuw nsw nnan '\n\t      + 'ninf nsz arcp fast exact inbounds align '\n\t      + 'addrspace section alias module asm sideeffect '\n\t      + 'gc dbg linker_private_weak attributes blockaddress '\n\t      + 'initialexec localdynamic localexec prefix unnamed_addr '\n\t      + 'ccc fastcc coldcc x86_stdcallcc x86_fastcallcc '\n\t      + 'arm_apcscc arm_aapcscc arm_aapcs_vfpcc ptx_device '\n\t      + 'ptx_kernel intel_ocl_bicc msp430_intrcc spir_func '\n\t      + 'spir_kernel x86_64_sysvcc x86_64_win64cc x86_thiscallcc '\n\t      + 'cc c signext zeroext inreg sret nounwind '\n\t      + 'noreturn noalias nocapture byval nest readnone '\n\t      + 'readonly inlinehint noinline alwaysinline optsize ssp '\n\t      + 'sspreq noredzone noimplicitfloat naked builtin cold '\n\t      + 'nobuiltin noduplicate nonlazybind optnone returns_twice '\n\t      + 'sanitize_address sanitize_memory sanitize_thread sspstrong '\n\t      + 'uwtable returned type opaque eq ne slt sgt '\n\t      + 'sle sge ult ugt ule uge oeq one olt ogt '\n\t      + 'ole oge ord uno ueq une x acq_rel acquire '\n\t      + 'alignstack atomic catch cleanup filter inteldialect '\n\t      + 'max min monotonic nand personality release seq_cst '\n\t      + 'singlethread umax umin unordered xchg add fadd '\n\t      + 'sub fsub mul fmul udiv sdiv fdiv urem srem '\n\t      + 'frem shl lshr ashr and or xor icmp fcmp '\n\t      + 'phi call trunc zext sext fptrunc fpext uitofp '\n\t      + 'sitofp fptoui fptosi inttoptr ptrtoint bitcast '\n\t      + 'addrspacecast select va_arg ret br switch invoke '\n\t      + 'unwind unreachable indirectbr landingpad resume '\n\t      + 'malloc alloca free load store getelementptr '\n\t      + 'extractelement insertelement shufflevector getresult '\n\t      + 'extractvalue insertvalue atomicrmw cmpxchg fence '\n\t      + 'argmemonly double',\n\t    contains: [\n\t      TYPE,\n\t      // this matches \"empty comments\"...\n\t      // ...because it's far more likely this is a statement terminator in\n\t      // another language than an actual comment\n\t      hljs.COMMENT(/;\\s*$/, null, { relevance: 0 }),\n\t      hljs.COMMENT(/;/, /$/),\n\t      {\n\t        className: 'string',\n\t        begin: /\"/,\n\t        end: /\"/,\n\t        contains: [\n\t          {\n\t            className: 'char.escape',\n\t            match: /\\\\\\d\\d/\n\t          }\n\t        ]\n\t      },\n\t      FUNCTION,\n\t      PUNCTUATION,\n\t      OPERATOR,\n\t      VARIABLE,\n\t      LABEL,\n\t      NUMBER\n\t    ]\n\t  };\n\t}\n\n\tllvm_1 = llvm;\n\treturn llvm_1;\n}\n\nexport { requireLlvm as __require };",
+      "start": 1699633501140,
+      "end": 1699633501140,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501140,
+      "end": 1699633501141,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501141,
+      "end": 1699633501141,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501141,
+      "end": 1699633501141,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501141,
+      "end": 1699633501141,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501141,
+      "end": 1699633501141,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501141,
+      "end": 1699633501141,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501141,
+      "end": 1699633501141,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501141,
+      "end": 1699633501141,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501141,
+      "end": 1699633501141,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501141,
+      "end": 1699633501141,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501141,
+      "end": 1699633501141,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501141,
+      "end": 1699633501141,
+      "order": "normal"
+    }
+  ]
+}

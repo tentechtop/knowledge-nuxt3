@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/fix.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: FIX\nAuthor: Brent Bradbury <brent@brentium.com>\n*/\n\n/** @type LanguageFn */\nfunction fix(hljs) {\n  return {\n    name: 'FIX',\n    contains: [\n      {\n        begin: /[^\\u2401\\u0001]+/,\n        end: /[\\u2401\\u0001]/,\n        excludeEnd: true,\n        returnBegin: true,\n        returnEnd: false,\n        contains: [\n          {\n            begin: /([^\\u2401\\u0001=]+)/,\n            end: /=([^\\u2401\\u0001=]+)/,\n            returnEnd: true,\n            returnBegin: false,\n            className: 'attr'\n          },\n          {\n            begin: /=/,\n            end: /([\\u2401\\u0001])/,\n            excludeEnd: true,\n            excludeBegin: true,\n            className: 'string'\n          }\n        ]\n      }\n    ],\n    case_insensitive: true\n  };\n}\n\nmodule.exports = fix;\n",
+      "start": 1699633500805,
+      "end": 1699633500899,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500899,
+      "end": 1699633500899,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500899,
+      "end": 1699633500899,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500899,
+      "end": 1699633500900,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500900,
+      "end": 1699633500900,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500900,
+      "end": 1699633500900,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500900,
+      "end": 1699633500900,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500900,
+      "end": 1699633500900,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500900,
+      "end": 1699633500900,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500900,
+      "end": 1699633500900,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500900,
+      "end": 1699633500900,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500900,
+      "end": 1699633500900,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500900,
+      "end": 1699633500900,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500900,
+      "end": 1699633500900,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: FIX\nAuthor: Brent Bradbury <brent@brentium.com>\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar fix_1;\nvar hasRequiredFix;\n\nfunction requireFix () {\n\tif (hasRequiredFix) return fix_1;\n\thasRequiredFix = 1;\n\t/** @type LanguageFn */\n\tfunction fix(hljs) {\n\t  return {\n\t    name: 'FIX',\n\t    contains: [\n\t      {\n\t        begin: /[^\\u2401\\u0001]+/,\n\t        end: /[\\u2401\\u0001]/,\n\t        excludeEnd: true,\n\t        returnBegin: true,\n\t        returnEnd: false,\n\t        contains: [\n\t          {\n\t            begin: /([^\\u2401\\u0001=]+)/,\n\t            end: /=([^\\u2401\\u0001=]+)/,\n\t            returnEnd: true,\n\t            returnBegin: false,\n\t            className: 'attr'\n\t          },\n\t          {\n\t            begin: /=/,\n\t            end: /([\\u2401\\u0001])/,\n\t            excludeEnd: true,\n\t            excludeBegin: true,\n\t            className: 'string'\n\t          }\n\t        ]\n\t      }\n\t    ],\n\t    case_insensitive: true\n\t  };\n\t}\n\n\tfix_1 = fix;\n\treturn fix_1;\n}\n\nexport { requireFix as __require };",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;CAKA;CACA,SAAS,GAAG,CAAC,IAAI,EAAE;CACnB,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,KAAK;CACf,IAAI,QAAQ,EAAE;CACd,MAAM;CACN,QAAQ,KAAK,EAAE,kBAAkB;CACjC,QAAQ,GAAG,EAAE,gBAAgB;CAC7B,QAAQ,UAAU,EAAE,IAAI;CACxB,QAAQ,WAAW,EAAE,IAAI;CACzB,QAAQ,SAAS,EAAE,KAAK;CACxB,QAAQ,QAAQ,EAAE;CAClB,UAAU;CACV,YAAY,KAAK,EAAE,qBAAqB;CACxC,YAAY,GAAG,EAAE,sBAAsB;CACvC,YAAY,SAAS,EAAE,IAAI;CAC3B,YAAY,WAAW,EAAE,KAAK;CAC9B,YAAY,SAAS,EAAE,MAAM;CAC7B,WAAW;CACX,UAAU;CACV,YAAY,KAAK,EAAE,GAAG;CACtB,YAAY,GAAG,EAAE,kBAAkB;CACnC,YAAY,UAAU,EAAE,IAAI;CAC5B,YAAY,YAAY,EAAE,IAAI;CAC9B,YAAY,SAAS,EAAE,QAAQ;CAC/B,WAAW;CACX,SAAS;CACT,OAAO;CACP,KAAK;CACL,IAAI,gBAAgB,EAAE,IAAI;CAC1B,GAAG,CAAC;CACJ,CAAC;AACD;AACA,MAAc,GAAG,GAAG"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500901,
+      "end": 1699633500901,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500901,
+      "end": 1699633500902,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500902,
+      "end": 1699633500902,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500902,
+      "end": 1699633500902,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500902,
+      "end": 1699633500902,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500902,
+      "end": 1699633500902,
+      "order": "normal"
+    }
+  ]
+}

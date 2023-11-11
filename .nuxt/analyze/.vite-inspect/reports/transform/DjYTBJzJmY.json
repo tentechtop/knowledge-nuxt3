@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/mizar.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Mizar\nDescription: The Mizar Language is a formal language derived from the mathematical vernacular.\nAuthor: Kelley van Evert <kelleyvanevert@gmail.com>\nWebsite: http://mizar.org/language/\nCategory: scientific\n*/\n\nfunction mizar(hljs) {\n  return {\n    name: 'Mizar',\n    keywords:\n      'environ vocabularies notations constructors definitions '\n      + 'registrations theorems schemes requirements begin end definition '\n      + 'registration cluster existence pred func defpred deffunc theorem '\n      + 'proof let take assume then thus hence ex for st holds consider '\n      + 'reconsider such that and in provided of as from be being by means '\n      + 'equals implies iff redefine define now not or attr is mode '\n      + 'suppose per cases set thesis contradiction scheme reserve struct '\n      + 'correctness compatibility coherence symmetry assymetry '\n      + 'reflexivity irreflexivity connectedness uniqueness commutativity '\n      + 'idempotence involutiveness projectivity',\n    contains: [ hljs.COMMENT('::', '$') ]\n  };\n}\n\nmodule.exports = mizar;\n",
+      "start": 1699633501095,
+      "end": 1699633501215,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501215,
+      "end": 1699633501215,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501215,
+      "end": 1699633501215,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501215,
+      "end": 1699633501215,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501215,
+      "end": 1699633501215,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501215,
+      "end": 1699633501215,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501216,
+      "end": 1699633501216,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501216,
+      "end": 1699633501217,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Mizar\nDescription: The Mizar Language is a formal language derived from the mathematical vernacular.\nAuthor: Kelley van Evert <kelleyvanevert@gmail.com>\nWebsite: http://mizar.org/language/\nCategory: scientific\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar mizar_1;\nvar hasRequiredMizar;\n\nfunction requireMizar () {\n\tif (hasRequiredMizar) return mizar_1;\n\thasRequiredMizar = 1;\n\tfunction mizar(hljs) {\n\t  return {\n\t    name: 'Mizar',\n\t    keywords:\n\t      'environ vocabularies notations constructors definitions '\n\t      + 'registrations theorems schemes requirements begin end definition '\n\t      + 'registration cluster existence pred func defpred deffunc theorem '\n\t      + 'proof let take assume then thus hence ex for st holds consider '\n\t      + 'reconsider such that and in provided of as from be being by means '\n\t      + 'equals implies iff redefine define now not or attr is mode '\n\t      + 'suppose per cases set thesis contradiction scheme reserve struct '\n\t      + 'correctness compatibility coherence symmetry assymetry '\n\t      + 'reflexivity irreflexivity connectedness uniqueness commutativity '\n\t      + 'idempotence involutiveness projectivity',\n\t    contains: [ hljs.COMMENT('::', '$') ]\n\t  };\n\t}\n\n\tmizar_1 = mizar;\n\treturn mizar_1;\n}\n\nexport { requireMizar as __require };",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;;CAQA,SAAS,KAAK,CAAC,IAAI,EAAE;CACrB,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,OAAO;CACjB,IAAI,QAAQ;CACZ,MAAM,0DAA0D;CAChE,QAAQ,mEAAmE;CAC3E,QAAQ,mEAAmE;CAC3E,QAAQ,iEAAiE;CACzE,QAAQ,oEAAoE;CAC5E,QAAQ,6DAA6D;CACrE,QAAQ,mEAAmE;CAC3E,QAAQ,yDAAyD;CACjE,QAAQ,mEAAmE;CAC3E,QAAQ,yCAAyC;CACjD,IAAI,QAAQ,EAAE,EAAE,IAAI,CAAC,OAAO,CAAC,IAAI,EAAE,GAAG,CAAC,EAAE;CACzC,GAAG,CAAC;CACJ,CAAC;AACD;AACA,QAAc,GAAG,KAAK"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501217,
+      "end": 1699633501217,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/crypto-js/enc-base64.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": ";(function (root, factory) {\n\tif (typeof exports === \"object\") {\n\t\t// CommonJS\n\t\tmodule.exports = exports = factory(require(\"./core\"));\n\t}\n\telse if (typeof define === \"function\" && define.amd) {\n\t\t// AMD\n\t\tdefine([\"./core\"], factory);\n\t}\n\telse {\n\t\t// Global (browser)\n\t\tfactory(root.CryptoJS);\n\t}\n}(this, function (CryptoJS) {\n\n\t(function () {\n\t    // Shortcuts\n\t    var C = CryptoJS;\n\t    var C_lib = C.lib;\n\t    var WordArray = C_lib.WordArray;\n\t    var C_enc = C.enc;\n\n\t    /**\n\t     * Base64 encoding strategy.\n\t     */\n\t    var Base64 = C_enc.Base64 = {\n\t        /**\n\t         * Converts a word array to a Base64 string.\n\t         *\n\t         * @param {WordArray} wordArray The word array.\n\t         *\n\t         * @return {string} The Base64 string.\n\t         *\n\t         * @static\n\t         *\n\t         * @example\n\t         *\n\t         *     var base64String = CryptoJS.enc.Base64.stringify(wordArray);\n\t         */\n\t        stringify: function (wordArray) {\n\t            // Shortcuts\n\t            var words = wordArray.words;\n\t            var sigBytes = wordArray.sigBytes;\n\t            var map = this._map;\n\n\t            // Clamp excess bits\n\t            wordArray.clamp();\n\n\t            // Convert\n\t            var base64Chars = [];\n\t            for (var i = 0; i < sigBytes; i += 3) {\n\t                var byte1 = (words[i >>> 2]       >>> (24 - (i % 4) * 8))       & 0xff;\n\t                var byte2 = (words[(i + 1) >>> 2] >>> (24 - ((i + 1) % 4) * 8)) & 0xff;\n\t                var byte3 = (words[(i + 2) >>> 2] >>> (24 - ((i + 2) % 4) * 8)) & 0xff;\n\n\t                var triplet = (byte1 << 16) | (byte2 << 8) | byte3;\n\n\t                for (var j = 0; (j < 4) && (i + j * 0.75 < sigBytes); j++) {\n\t                    base64Chars.push(map.charAt((triplet >>> (6 * (3 - j))) & 0x3f));\n\t                }\n\t            }\n\n\t            // Add padding\n\t            var paddingChar = map.charAt(64);\n\t            if (paddingChar) {\n\t                while (base64Chars.length % 4) {\n\t                    base64Chars.push(paddingChar);\n\t                }\n\t            }\n\n\t            return base64Chars.join('');\n\t        },\n\n\t        /**\n\t         * Converts a Base64 string to a word array.\n\t         *\n\t         * @param {string} base64Str The Base64 string.\n\t         *\n\t         * @return {WordArray} The word array.\n\t         *\n\t         * @static\n\t         *\n\t         * @example\n\t         *\n\t         *     var wordArray = CryptoJS.enc.Base64.parse(base64String);\n\t         */\n\t        parse: function (base64Str) {\n\t            // Shortcuts\n\t            var base64StrLength = base64Str.length;\n\t            var map = this._map;\n\t            var reverseMap = this._reverseMap;\n\n\t            if (!reverseMap) {\n\t                    reverseMap = this._reverseMap = [];\n\t                    for (var j = 0; j < map.length; j++) {\n\t                        reverseMap[map.charCodeAt(j)] = j;\n\t                    }\n\t            }\n\n\t            // Ignore padding\n\t            var paddingChar = map.charAt(64);\n\t            if (paddingChar) {\n\t                var paddingIndex = base64Str.indexOf(paddingChar);\n\t                if (paddingIndex !== -1) {\n\t                    base64StrLength = paddingIndex;\n\t                }\n\t            }\n\n\t            // Convert\n\t            return parseLoop(base64Str, base64StrLength, reverseMap);\n\n\t        },\n\n\t        _map: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='\n\t    };\n\n\t    function parseLoop(base64Str, base64StrLength, reverseMap) {\n\t      var words = [];\n\t      var nBytes = 0;\n\t      for (var i = 0; i < base64StrLength; i++) {\n\t          if (i % 4) {\n\t              var bits1 = reverseMap[base64Str.charCodeAt(i - 1)] << ((i % 4) * 2);\n\t              var bits2 = reverseMap[base64Str.charCodeAt(i)] >>> (6 - (i % 4) * 2);\n\t              var bitsCombined = bits1 | bits2;\n\t              words[nBytes >>> 2] |= bitsCombined << (24 - (nBytes % 4) * 8);\n\t              nBytes++;\n\t          }\n\t      }\n\t      return WordArray.create(words, nBytes);\n\t    }\n\t}());\n\n\n\treturn CryptoJS.enc.Base64;\n\n}));",
+      "start": 1699633499853,
+      "end": 1699633499908,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633499908,
+      "end": 1699633499908,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633499909,
+      "end": 1699633499909,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633499909,
+      "end": 1699633499909,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633499909,
+      "end": 1699633499909,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633499909,
+      "end": 1699633499909,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633499909,
+      "end": 1699633499909,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633499909,
+      "end": 1699633499909,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633499909,
+      "end": 1699633499909,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633499909,
+      "end": 1699633499909,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633499909,
+      "end": 1699633499909,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633499909,
+      "end": 1699633499910,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633499910,
+      "end": 1699633499910,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633499910,
+      "end": 1699633499910,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633499910,
+      "end": 1699633499910,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633499910,
+      "end": 1699633499910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633499910,
+      "end": 1699633499910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633499910,
+      "end": 1699633499910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633499910,
+      "end": 1699633499910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633499910,
+      "end": 1699633499910,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633499910,
+      "end": 1699633499910,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __module as encBase64Module } from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/crypto-js/enc-base64.js?commonjs-module\";\nvar encBase64 = encBase64Module.exports;\nimport { __require as require$$0 } from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/crypto-js/core.js?commonjs-wrapped\";\n\nvar hasRequiredEncBase64;\n\nfunction requireEncBase64 () {\n\tif (hasRequiredEncBase64) return encBase64Module.exports;\n\thasRequiredEncBase64 = 1;\n\t(function (module, exports) {\n\t\t;(function (root, factory) {\n\t\t\tif ('object' === \"object\") {\n\t\t\t\t// CommonJS\n\t\t\t\tmodule.exports = exports = factory(require$$0());\n\t\t\t}\n\t\t\telse if (typeof undefined === \"function\" && undefined.amd) {\n\t\t\t\t// AMD\n\t\t\t\tundefined([\"./core\"], factory);\n\t\t\t}\n\t\t\telse {\n\t\t\t\t// Global (browser)\n\t\t\t\tfactory(root.CryptoJS);\n\t\t\t}\n\t\t}(commonjsHelpers.commonjsGlobal, function (CryptoJS) {\n\n\t\t\t(function () {\n\t\t\t    // Shortcuts\n\t\t\t    var C = CryptoJS;\n\t\t\t    var C_lib = C.lib;\n\t\t\t    var WordArray = C_lib.WordArray;\n\t\t\t    var C_enc = C.enc;\n\n\t\t\t    /**\n\t\t\t     * Base64 encoding strategy.\n\t\t\t     */\n\t\t\t    var Base64 = C_enc.Base64 = {\n\t\t\t        /**\n\t\t\t         * Converts a word array to a Base64 string.\n\t\t\t         *\n\t\t\t         * @param {WordArray} wordArray The word array.\n\t\t\t         *\n\t\t\t         * @return {string} The Base64 string.\n\t\t\t         *\n\t\t\t         * @static\n\t\t\t         *\n\t\t\t         * @example\n\t\t\t         *\n\t\t\t         *     var base64String = CryptoJS.enc.Base64.stringify(wordArray);\n\t\t\t         */\n\t\t\t        stringify: function (wordArray) {\n\t\t\t            // Shortcuts\n\t\t\t            var words = wordArray.words;\n\t\t\t            var sigBytes = wordArray.sigBytes;\n\t\t\t            var map = this._map;\n\n\t\t\t            // Clamp excess bits\n\t\t\t            wordArray.clamp();\n\n\t\t\t            // Convert\n\t\t\t            var base64Chars = [];\n\t\t\t            for (var i = 0; i < sigBytes; i += 3) {\n\t\t\t                var byte1 = (words[i >>> 2]       >>> (24 - (i % 4) * 8))       & 0xff;\n\t\t\t                var byte2 = (words[(i + 1) >>> 2] >>> (24 - ((i + 1) % 4) * 8)) & 0xff;\n\t\t\t                var byte3 = (words[(i + 2) >>> 2] >>> (24 - ((i + 2) % 4) * 8)) & 0xff;\n\n\t\t\t                var triplet = (byte1 << 16) | (byte2 << 8) | byte3;\n\n\t\t\t                for (var j = 0; (j < 4) && (i + j * 0.75 < sigBytes); j++) {\n\t\t\t                    base64Chars.push(map.charAt((triplet >>> (6 * (3 - j))) & 0x3f));\n\t\t\t                }\n\t\t\t            }\n\n\t\t\t            // Add padding\n\t\t\t            var paddingChar = map.charAt(64);\n\t\t\t            if (paddingChar) {\n\t\t\t                while (base64Chars.length % 4) {\n\t\t\t                    base64Chars.push(paddingChar);\n\t\t\t                }\n\t\t\t            }\n\n\t\t\t            return base64Chars.join('');\n\t\t\t        },\n\n\t\t\t        /**\n\t\t\t         * Converts a Base64 string to a word array.\n\t\t\t         *\n\t\t\t         * @param {string} base64Str The Base64 string.\n\t\t\t         *\n\t\t\t         * @return {WordArray} The word array.\n\t\t\t         *\n\t\t\t         * @static\n\t\t\t         *\n\t\t\t         * @example\n\t\t\t         *\n\t\t\t         *     var wordArray = CryptoJS.enc.Base64.parse(base64String);\n\t\t\t         */\n\t\t\t        parse: function (base64Str) {\n\t\t\t            // Shortcuts\n\t\t\t            var base64StrLength = base64Str.length;\n\t\t\t            var map = this._map;\n\t\t\t            var reverseMap = this._reverseMap;\n\n\t\t\t            if (!reverseMap) {\n\t\t\t                    reverseMap = this._reverseMap = [];\n\t\t\t                    for (var j = 0; j < map.length; j++) {\n\t\t\t                        reverseMap[map.charCodeAt(j)] = j;\n\t\t\t                    }\n\t\t\t            }\n\n\t\t\t            // Ignore padding\n\t\t\t            var paddingChar = map.charAt(64);\n\t\t\t            if (paddingChar) {\n\t\t\t                var paddingIndex = base64Str.indexOf(paddingChar);\n\t\t\t                if (paddingIndex !== -1) {\n\t\t\t                    base64StrLength = paddingIndex;\n\t\t\t                }\n\t\t\t            }\n\n\t\t\t            // Convert\n\t\t\t            return parseLoop(base64Str, base64StrLength, reverseMap);\n\n\t\t\t        },\n\n\t\t\t        _map: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='\n\t\t\t    };\n\n\t\t\t    function parseLoop(base64Str, base64StrLength, reverseMap) {\n\t\t\t      var words = [];\n\t\t\t      var nBytes = 0;\n\t\t\t      for (var i = 0; i < base64StrLength; i++) {\n\t\t\t          if (i % 4) {\n\t\t\t              var bits1 = reverseMap[base64Str.charCodeAt(i - 1)] << ((i % 4) * 2);\n\t\t\t              var bits2 = reverseMap[base64Str.charCodeAt(i)] >>> (6 - (i % 4) * 2);\n\t\t\t              var bitsCombined = bits1 | bits2;\n\t\t\t              words[nBytes >>> 2] |= bitsCombined << (24 - (nBytes % 4) * 8);\n\t\t\t              nBytes++;\n\t\t\t          }\n\t\t\t      }\n\t\t\t      return WordArray.create(words, nBytes);\n\t\t\t    }\n\t\t\t}());\n\n\n\t\t\treturn CryptoJS.enc.Base64;\n\n\t\t})); \n\t} (encBase64Module, encBase64Module.exports));\n\treturn encBase64Module.exports;\n}\n\nexport { requireEncBase64 as __require };",
+      "start": 1699633499910,
+      "end": 1699633500018,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [
+          "define",
+          "this"
+        ],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500018,
+      "end": 1699633500018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500019,
+      "end": 1699633500019,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500019,
+      "end": 1699633500019,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500020,
+      "end": 1699633500020,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500020,
+      "end": 1699633500021,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500021,
+      "end": 1699633500021,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500021,
+      "end": 1699633500021,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500022,
+      "end": 1699633500022,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500022,
+      "end": 1699633500022,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500023,
+      "end": 1699633500023,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500023,
+      "end": 1699633500023,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500024,
+      "end": 1699633500024,
+      "order": "normal"
+    }
+  ]
+}

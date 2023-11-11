@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/protobuf.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Protocol Buffers\nAuthor: Dan Tao <daniel.tao@gmail.com>\nDescription: Protocol buffer message definition format\nWebsite: https://developers.google.com/protocol-buffers/docs/proto3\nCategory: protocols\n*/\n\nfunction protobuf(hljs) {\n  const KEYWORDS = [\n    \"package\",\n    \"import\",\n    \"option\",\n    \"optional\",\n    \"required\",\n    \"repeated\",\n    \"group\",\n    \"oneof\"\n  ];\n  const TYPES = [\n    \"double\",\n    \"float\",\n    \"int32\",\n    \"int64\",\n    \"uint32\",\n    \"uint64\",\n    \"sint32\",\n    \"sint64\",\n    \"fixed32\",\n    \"fixed64\",\n    \"sfixed32\",\n    \"sfixed64\",\n    \"bool\",\n    \"string\",\n    \"bytes\"\n  ];\n  const CLASS_DEFINITION = {\n    match: [\n      /(message|enum|service)\\s+/,\n      hljs.IDENT_RE\n    ],\n    scope: {\n      1: \"keyword\",\n      2: \"title.class\"\n    }\n  };\n\n  return {\n    name: 'Protocol Buffers',\n    aliases: ['proto'],\n    keywords: {\n      keyword: KEYWORDS,\n      type: TYPES,\n      literal: [\n        'true',\n        'false'\n      ]\n    },\n    contains: [\n      hljs.QUOTE_STRING_MODE,\n      hljs.NUMBER_MODE,\n      hljs.C_LINE_COMMENT_MODE,\n      hljs.C_BLOCK_COMMENT_MODE,\n      CLASS_DEFINITION,\n      {\n        className: 'function',\n        beginKeywords: 'rpc',\n        end: /[{;]/,\n        excludeEnd: true,\n        keywords: 'rpc returns'\n      },\n      { // match enum items (relevance)\n        // BLAH = ...;\n        begin: /^\\s*[A-Z_]+(?=\\s*=[^\\n]+;$)/ }\n    ]\n  };\n}\n\nmodule.exports = protobuf;\n",
+      "start": 1699633501250,
+      "end": 1699633501343,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501343,
+      "end": 1699633501343,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501343,
+      "end": 1699633501343,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501344,
+      "end": 1699633501344,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501344,
+      "end": 1699633501344,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501344,
+      "end": 1699633501344,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501344,
+      "end": 1699633501344,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501344,
+      "end": 1699633501344,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501344,
+      "end": 1699633501344,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501344,
+      "end": 1699633501344,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501344,
+      "end": 1699633501344,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501344,
+      "end": 1699633501344,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501344,
+      "end": 1699633501344,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501344,
+      "end": 1699633501345,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Protocol Buffers\nAuthor: Dan Tao <daniel.tao@gmail.com>\nDescription: Protocol buffer message definition format\nWebsite: https://developers.google.com/protocol-buffers/docs/proto3\nCategory: protocols\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar protobuf_1;\nvar hasRequiredProtobuf;\n\nfunction requireProtobuf () {\n\tif (hasRequiredProtobuf) return protobuf_1;\n\thasRequiredProtobuf = 1;\n\tfunction protobuf(hljs) {\n\t  const KEYWORDS = [\n\t    \"package\",\n\t    \"import\",\n\t    \"option\",\n\t    \"optional\",\n\t    \"required\",\n\t    \"repeated\",\n\t    \"group\",\n\t    \"oneof\"\n\t  ];\n\t  const TYPES = [\n\t    \"double\",\n\t    \"float\",\n\t    \"int32\",\n\t    \"int64\",\n\t    \"uint32\",\n\t    \"uint64\",\n\t    \"sint32\",\n\t    \"sint64\",\n\t    \"fixed32\",\n\t    \"fixed64\",\n\t    \"sfixed32\",\n\t    \"sfixed64\",\n\t    \"bool\",\n\t    \"string\",\n\t    \"bytes\"\n\t  ];\n\t  const CLASS_DEFINITION = {\n\t    match: [\n\t      /(message|enum|service)\\s+/,\n\t      hljs.IDENT_RE\n\t    ],\n\t    scope: {\n\t      1: \"keyword\",\n\t      2: \"title.class\"\n\t    }\n\t  };\n\n\t  return {\n\t    name: 'Protocol Buffers',\n\t    aliases: ['proto'],\n\t    keywords: {\n\t      keyword: KEYWORDS,\n\t      type: TYPES,\n\t      literal: [\n\t        'true',\n\t        'false'\n\t      ]\n\t    },\n\t    contains: [\n\t      hljs.QUOTE_STRING_MODE,\n\t      hljs.NUMBER_MODE,\n\t      hljs.C_LINE_COMMENT_MODE,\n\t      hljs.C_BLOCK_COMMENT_MODE,\n\t      CLASS_DEFINITION,\n\t      {\n\t        className: 'function',\n\t        beginKeywords: 'rpc',\n\t        end: /[{;]/,\n\t        excludeEnd: true,\n\t        keywords: 'rpc returns'\n\t      },\n\t      { // match enum items (relevance)\n\t        // BLAH = ...;\n\t        begin: /^\\s*[A-Z_]+(?=\\s*=[^\\n]+;$)/ }\n\t    ]\n\t  };\n\t}\n\n\tprotobuf_1 = protobuf;\n\treturn protobuf_1;\n}\n\nexport { requireProtobuf as __require };",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;;CAQA,SAAS,QAAQ,CAAC,IAAI,EAAE;CACxB,EAAE,MAAM,QAAQ,GAAG;CACnB,IAAI,SAAS;CACb,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,IAAI,UAAU;CACd,IAAI,UAAU;CACd,IAAI,UAAU;CACd,IAAI,OAAO;CACX,IAAI,OAAO;CACX,GAAG,CAAC;CACJ,EAAE,MAAM,KAAK,GAAG;CAChB,IAAI,QAAQ;CACZ,IAAI,OAAO;CACX,IAAI,OAAO;CACX,IAAI,OAAO;CACX,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,IAAI,SAAS;CACb,IAAI,SAAS;CACb,IAAI,UAAU;CACd,IAAI,UAAU;CACd,IAAI,MAAM;CACV,IAAI,QAAQ;CACZ,IAAI,OAAO;CACX,GAAG,CAAC;CACJ,EAAE,MAAM,gBAAgB,GAAG;CAC3B,IAAI,KAAK,EAAE;CACX,MAAM,2BAA2B;CACjC,MAAM,IAAI,CAAC,QAAQ;CACnB,KAAK;CACL,IAAI,KAAK,EAAE;CACX,MAAM,CAAC,EAAE,SAAS;CAClB,MAAM,CAAC,EAAE,aAAa;CACtB,KAAK;CACL,GAAG,CAAC;AACJ;CACA,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,kBAAkB;CAC5B,IAAI,OAAO,EAAE,CAAC,OAAO,CAAC;CACtB,IAAI,QAAQ,EAAE;CACd,MAAM,OAAO,EAAE,QAAQ;CACvB,MAAM,IAAI,EAAE,KAAK;CACjB,MAAM,OAAO,EAAE;CACf,QAAQ,MAAM;CACd,QAAQ,OAAO;CACf,OAAO;CACP,KAAK;CACL,IAAI,QAAQ,EAAE;CACd,MAAM,IAAI,CAAC,iBAAiB;CAC5B,MAAM,IAAI,CAAC,WAAW;CACtB,MAAM,IAAI,CAAC,mBAAmB;CAC9B,MAAM,IAAI,CAAC,oBAAoB;CAC/B,MAAM,gBAAgB;CACtB,MAAM;CACN,QAAQ,SAAS,EAAE,UAAU;CAC7B,QAAQ,aAAa,EAAE,KAAK;CAC5B,QAAQ,GAAG,EAAE,MAAM;CACnB,QAAQ,UAAU,EAAE,IAAI;CACxB,QAAQ,QAAQ,EAAE,aAAa;CAC/B,OAAO;CACP,MAAM;CACN;CACA,QAAQ,KAAK,EAAE,6BAA6B,EAAE;CAC9C,KAAK;CACL,GAAG,CAAC;CACJ,CAAC;AACD;AACA,WAAc,GAAG,QAAQ"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501345,
+      "end": 1699633501345,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501345,
+      "end": 1699633501346,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501346,
+      "end": 1699633501346,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501346,
+      "end": 1699633501346,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501346,
+      "end": 1699633501346,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501346,
+      "end": 1699633501346,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501346,
+      "end": 1699633501346,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501346,
+      "end": 1699633501346,
+      "order": "normal"
+    }
+  ]
+}

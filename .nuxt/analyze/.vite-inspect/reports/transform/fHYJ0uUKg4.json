@@ -1,0 +1,226 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/crypto-js/pad-iso97971.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": ";(function (root, factory, undef) {\n\tif (typeof exports === \"object\") {\n\t\t// CommonJS\n\t\tmodule.exports = exports = factory(require(\"./core\"), require(\"./cipher-core\"));\n\t}\n\telse if (typeof define === \"function\" && define.amd) {\n\t\t// AMD\n\t\tdefine([\"./core\", \"./cipher-core\"], factory);\n\t}\n\telse {\n\t\t// Global (browser)\n\t\tfactory(root.CryptoJS);\n\t}\n}(this, function (CryptoJS) {\n\n\t/**\n\t * ISO/IEC 9797-1 Padding Method 2.\n\t */\n\tCryptoJS.pad.Iso97971 = {\n\t    pad: function (data, blockSize) {\n\t        // Add 0x80 byte\n\t        data.concat(CryptoJS.lib.WordArray.create([0x80000000], 1));\n\n\t        // Zero pad the rest\n\t        CryptoJS.pad.ZeroPadding.pad(data, blockSize);\n\t    },\n\n\t    unpad: function (data) {\n\t        // Remove zero padding\n\t        CryptoJS.pad.ZeroPadding.unpad(data);\n\n\t        // Remove one more byte -- the 0x80 byte\n\t        data.sigBytes--;\n\t    }\n\t};\n\n\n\treturn CryptoJS.pad.Iso97971;\n\n}));",
+      "start": 1699633499914,
+      "end": 1699633500102,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500102,
+      "end": 1699633500102,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500102,
+      "end": 1699633500102,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500102,
+      "end": 1699633500102,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500102,
+      "end": 1699633500102,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500103,
+      "end": 1699633500103,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __module as padIso97971Module } from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/crypto-js/pad-iso97971.js?commonjs-module\";\nvar padIso97971 = padIso97971Module.exports;\nimport { __require as require$$0 } from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/crypto-js/core.js?commonjs-wrapped\";\nimport { __require as require$$1 } from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/crypto-js/cipher-core.js?commonjs-wrapped\";\n\nvar hasRequiredPadIso97971;\n\nfunction requirePadIso97971 () {\n\tif (hasRequiredPadIso97971) return padIso97971Module.exports;\n\thasRequiredPadIso97971 = 1;\n\t(function (module, exports) {\n\t\t;(function (root, factory, undef) {\n\t\t\tif ('object' === \"object\") {\n\t\t\t\t// CommonJS\n\t\t\t\tmodule.exports = exports = factory(require$$0(), require$$1());\n\t\t\t}\n\t\t\telse if (typeof undefined === \"function\" && undefined.amd) {\n\t\t\t\t// AMD\n\t\t\t\tundefined([\"./core\", \"./cipher-core\"], factory);\n\t\t\t}\n\t\t\telse {\n\t\t\t\t// Global (browser)\n\t\t\t\tfactory(root.CryptoJS);\n\t\t\t}\n\t\t}(commonjsHelpers.commonjsGlobal, function (CryptoJS) {\n\n\t\t\t/**\n\t\t\t * ISO/IEC 9797-1 Padding Method 2.\n\t\t\t */\n\t\t\tCryptoJS.pad.Iso97971 = {\n\t\t\t    pad: function (data, blockSize) {\n\t\t\t        // Add 0x80 byte\n\t\t\t        data.concat(CryptoJS.lib.WordArray.create([0x80000000], 1));\n\n\t\t\t        // Zero pad the rest\n\t\t\t        CryptoJS.pad.ZeroPadding.pad(data, blockSize);\n\t\t\t    },\n\n\t\t\t    unpad: function (data) {\n\t\t\t        // Remove zero padding\n\t\t\t        CryptoJS.pad.ZeroPadding.unpad(data);\n\n\t\t\t        // Remove one more byte -- the 0x80 byte\n\t\t\t        data.sigBytes--;\n\t\t\t    }\n\t\t\t};\n\n\n\t\t\treturn CryptoJS.pad.Iso97971;\n\n\t\t})); \n\t} (padIso97971Module, padIso97971Module.exports));\n\treturn padIso97971Module.exports;\n}\n\nexport { requirePadIso97971 as __require };",
+      "start": 1699633500103,
+      "end": 1699633500105,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [
+          "define",
+          "this"
+        ],
+        "mappings": ";;;;;;;;;;;;EAAA,CAAC,CAAC,UAAU,IAAI,EAAE,OAAO,EAAE,KAAK,EAAE;EAClC,CAAC,IAAI,QAAc,KAAK,QAAQ,EAAE;EAClC;EACA,EAAE,iBAAiB,OAAO,GAAG,OAAO,CAAC,YAAiB,EAAE,YAAwB,CAAC,CAAC;EAClF,EAAE;EACF,MAAM,IAAI,OAAOA,SAAM,KAAK,UAAU,IAAIA,SAAM,CAAC,GAAG,EAAE;EACtD;EACA,EAAEA,SAAM,CAAC,CAAC,QAAQ,EAAE,eAAe,CAAC,EAAE,OAAO,CAAC,CAAC;EAC/C,EAAE;EACF,MAAM;EACN;EACA,EAAE,OAAO,CAAC,IAAI,CAAC,QAAQ,CAAC,CAAC;EACzB,EAAE;EACF,CAAC,CAACC,8BAAI,EAAE,UAAU,QAAQ,EAAE;AAC5B;EACA;EACA;EACA;EACA,CAAC,QAAQ,CAAC,GAAG,CAAC,QAAQ,GAAG;EACzB,KAAK,GAAG,EAAE,UAAU,IAAI,EAAE,SAAS,EAAE;EACrC;EACA,SAAS,IAAI,CAAC,MAAM,CAAC,QAAQ,CAAC,GAAG,CAAC,SAAS,CAAC,MAAM,CAAC,CAAC,UAAU,CAAC,EAAE,CAAC,CAAC,CAAC,CAAC;AACrE;EACA;EACA,SAAS,QAAQ,CAAC,GAAG,CAAC,WAAW,CAAC,GAAG,CAAC,IAAI,EAAE,SAAS,CAAC,CAAC;EACvD,MAAM;AACN;EACA,KAAK,KAAK,EAAE,UAAU,IAAI,EAAE;EAC5B;EACA,SAAS,QAAQ,CAAC,GAAG,CAAC,WAAW,CAAC,KAAK,CAAC,IAAI,CAAC,CAAC;AAC9C;EACA;EACA,SAAS,IAAI,CAAC,QAAQ,EAAE,CAAC;EACzB,MAAM;EACN,EAAE,CAAC;AACH;AACA;EACA,CAAC,OAAO,QAAQ,CAAC,GAAG,CAAC,QAAQ,CAAC;AAC9B;EACA,CAAC,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500105,
+      "end": 1699633500105,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500105,
+      "end": 1699633500105,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500105,
+      "end": 1699633500105,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500105,
+      "end": 1699633500105,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500105,
+      "end": 1699633500105,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500105,
+      "end": 1699633500105,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500105,
+      "end": 1699633500105,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500105,
+      "end": 1699633500105,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500105,
+      "end": 1699633500105,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500106,
+      "end": 1699633500106,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500106,
+      "end": 1699633500106,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500106,
+      "end": 1699633500106,
+      "order": "normal"
+    }
+  ]
+}

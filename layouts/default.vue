@@ -1,12 +1,10 @@
-<template>
-  <div>
-
-  </div>
-</template>
-
-<script lang="ts" setup>
-
+<script setup>
+import HeaderCpn from './components/HeaderCpn.vue'
 </script>
 
-
-<style scoped></style>
+<template>
+  <main>
+    <HeaderCpn />
+    <slot />
+  </main>
+</template>

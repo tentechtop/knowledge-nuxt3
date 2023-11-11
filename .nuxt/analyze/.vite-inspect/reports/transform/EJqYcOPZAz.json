@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/vbnet.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Visual Basic .NET\nDescription: Visual Basic .NET (VB.NET) is a multi-paradigm, object-oriented programming language, implemented on the .NET Framework.\nAuthors: Poren Chiang <ren.chiang@gmail.com>, Jan Pilzer\nWebsite: https://docs.microsoft.com/dotnet/visual-basic/getting-started\nCategory: common\n*/\n\n/** @type LanguageFn */\nfunction vbnet(hljs) {\n  const regex = hljs.regex;\n  /**\n   * Character Literal\n   * Either a single character (\"a\"C) or an escaped double quote (\"\"\"\"C).\n   */\n  const CHARACTER = {\n    className: 'string',\n    begin: /\"(\"\"|[^/n])\"C\\b/\n  };\n\n  const STRING = {\n    className: 'string',\n    begin: /\"/,\n    end: /\"/,\n    illegal: /\\n/,\n    contains: [\n      {\n        // double quote escape\n        begin: /\"\"/ }\n    ]\n  };\n\n  /** Date Literals consist of a date, a time, or both separated by whitespace, surrounded by # */\n  const MM_DD_YYYY = /\\d{1,2}\\/\\d{1,2}\\/\\d{4}/;\n  const YYYY_MM_DD = /\\d{4}-\\d{1,2}-\\d{1,2}/;\n  const TIME_12H = /(\\d|1[012])(:\\d+){0,2} *(AM|PM)/;\n  const TIME_24H = /\\d{1,2}(:\\d{1,2}){1,2}/;\n  const DATE = {\n    className: 'literal',\n    variants: [\n      {\n        // #YYYY-MM-DD# (ISO-Date) or #M/D/YYYY# (US-Date)\n        begin: regex.concat(/# */, regex.either(YYYY_MM_DD, MM_DD_YYYY), / *#/) },\n      {\n        // #H:mm[:ss]# (24h Time)\n        begin: regex.concat(/# */, TIME_24H, / *#/) },\n      {\n        // #h[:mm[:ss]] A# (12h Time)\n        begin: regex.concat(/# */, TIME_12H, / *#/) },\n      {\n        // date plus time\n        begin: regex.concat(\n          /# */,\n          regex.either(YYYY_MM_DD, MM_DD_YYYY),\n          / +/,\n          regex.either(TIME_12H, TIME_24H),\n          / *#/\n        ) }\n    ]\n  };\n\n  const NUMBER = {\n    className: 'number',\n    relevance: 0,\n    variants: [\n      {\n        // Float\n        begin: /\\b\\d[\\d_]*((\\.[\\d_]+(E[+-]?[\\d_]+)?)|(E[+-]?[\\d_]+))[RFD@!#]?/ },\n      {\n        // Integer (base 10)\n        begin: /\\b\\d[\\d_]*((U?[SIL])|[%&])?/ },\n      {\n        // Integer (base 16)\n        begin: /&H[\\dA-F_]+((U?[SIL])|[%&])?/ },\n      {\n        // Integer (base 8)\n        begin: /&O[0-7_]+((U?[SIL])|[%&])?/ },\n      {\n        // Integer (base 2)\n        begin: /&B[01_]+((U?[SIL])|[%&])?/ }\n    ]\n  };\n\n  const LABEL = {\n    className: 'label',\n    begin: /^\\w+:/\n  };\n\n  const DOC_COMMENT = hljs.COMMENT(/'''/, /$/, { contains: [\n    {\n      className: 'doctag',\n      begin: /<\\/?/,\n      end: />/\n    }\n  ] });\n\n  const COMMENT = hljs.COMMENT(null, /$/, { variants: [\n    { begin: /'/ },\n    {\n      // TODO: Use multi-class for leading spaces\n      begin: /([\\t ]|^)REM(?=\\s)/ }\n  ] });\n\n  const DIRECTIVES = {\n    className: 'meta',\n    // TODO: Use multi-class for indentation once available\n    begin: /[\\t ]*#(const|disable|else|elseif|enable|end|externalsource|if|region)\\b/,\n    end: /$/,\n    keywords: { keyword:\n        'const disable else elseif enable end externalsource if region then' },\n    contains: [ COMMENT ]\n  };\n\n  return {\n    name: 'Visual Basic .NET',\n    aliases: [ 'vb' ],\n    case_insensitive: true,\n    classNameAliases: { label: 'symbol' },\n    keywords: {\n      keyword:\n        'addhandler alias aggregate ansi as async assembly auto binary by byref byval ' /* a-b */\n        + 'call case catch class compare const continue custom declare default delegate dim distinct do ' /* c-d */\n        + 'each equals else elseif end enum erase error event exit explicit finally for friend from function ' /* e-f */\n        + 'get global goto group handles if implements imports in inherits interface into iterator ' /* g-i */\n        + 'join key let lib loop me mid module mustinherit mustoverride mybase myclass ' /* j-m */\n        + 'namespace narrowing new next notinheritable notoverridable ' /* n */\n        + 'of off on operator option optional order overloads overridable overrides ' /* o */\n        + 'paramarray partial preserve private property protected public ' /* p */\n        + 'raiseevent readonly redim removehandler resume return ' /* r */\n        + 'select set shadows shared skip static step stop structure strict sub synclock ' /* s */\n        + 'take text then throw to try unicode until using when where while widening with withevents writeonly yield' /* t-y */,\n      built_in:\n        // Operators https://docs.microsoft.com/dotnet/visual-basic/language-reference/operators\n        'addressof and andalso await directcast gettype getxmlnamespace is isfalse isnot istrue like mod nameof new not or orelse trycast typeof xor '\n        // Type Conversion Functions https://docs.microsoft.com/dotnet/visual-basic/language-reference/functions/type-conversion-functions\n        + 'cbool cbyte cchar cdate cdbl cdec cint clng cobj csbyte cshort csng cstr cuint culng cushort',\n      type:\n        // Data types https://docs.microsoft.com/dotnet/visual-basic/language-reference/data-types\n        'boolean byte char date decimal double integer long object sbyte short single string uinteger ulong ushort',\n      literal: 'true false nothing'\n    },\n    illegal:\n      '//|\\\\{|\\\\}|endif|gosub|variant|wend|^\\\\$ ' /* reserved deprecated keywords */,\n    contains: [\n      CHARACTER,\n      STRING,\n      DATE,\n      NUMBER,\n      LABEL,\n      DOC_COMMENT,\n      COMMENT,\n      DIRECTIVES\n    ]\n  };\n}\n\nmodule.exports = vbnet;\n",
+      "start": 1699633501434,
+      "end": 1699633501543,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501543,
+      "end": 1699633501543,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501543,
+      "end": 1699633501543,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501543,
+      "end": 1699633501543,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501543,
+      "end": 1699633501543,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501543,
+      "end": 1699633501543,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501543,
+      "end": 1699633501543,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501543,
+      "end": 1699633501543,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501543,
+      "end": 1699633501543,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501543,
+      "end": 1699633501543,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501543,
+      "end": 1699633501543,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501543,
+      "end": 1699633501543,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501543,
+      "end": 1699633501543,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501543,
+      "end": 1699633501544,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501544,
+      "end": 1699633501544,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501544,
+      "end": 1699633501544,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501544,
+      "end": 1699633501544,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501544,
+      "end": 1699633501544,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501544,
+      "end": 1699633501544,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501544,
+      "end": 1699633501544,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501544,
+      "end": 1699633501544,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Visual Basic .NET\nDescription: Visual Basic .NET (VB.NET) is a multi-paradigm, object-oriented programming language, implemented on the .NET Framework.\nAuthors: Poren Chiang <ren.chiang@gmail.com>, Jan Pilzer\nWebsite: https://docs.microsoft.com/dotnet/visual-basic/getting-started\nCategory: common\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar vbnet_1;\nvar hasRequiredVbnet;\n\nfunction requireVbnet () {\n\tif (hasRequiredVbnet) return vbnet_1;\n\thasRequiredVbnet = 1;\n\t/** @type LanguageFn */\n\tfunction vbnet(hljs) {\n\t  const regex = hljs.regex;\n\t  /**\n\t   * Character Literal\n\t   * Either a single character (\"a\"C) or an escaped double quote (\"\"\"\"C).\n\t   */\n\t  const CHARACTER = {\n\t    className: 'string',\n\t    begin: /\"(\"\"|[^/n])\"C\\b/\n\t  };\n\n\t  const STRING = {\n\t    className: 'string',\n\t    begin: /\"/,\n\t    end: /\"/,\n\t    illegal: /\\n/,\n\t    contains: [\n\t      {\n\t        // double quote escape\n\t        begin: /\"\"/ }\n\t    ]\n\t  };\n\n\t  /** Date Literals consist of a date, a time, or both separated by whitespace, surrounded by # */\n\t  const MM_DD_YYYY = /\\d{1,2}\\/\\d{1,2}\\/\\d{4}/;\n\t  const YYYY_MM_DD = /\\d{4}-\\d{1,2}-\\d{1,2}/;\n\t  const TIME_12H = /(\\d|1[012])(:\\d+){0,2} *(AM|PM)/;\n\t  const TIME_24H = /\\d{1,2}(:\\d{1,2}){1,2}/;\n\t  const DATE = {\n\t    className: 'literal',\n\t    variants: [\n\t      {\n\t        // #YYYY-MM-DD# (ISO-Date) or #M/D/YYYY# (US-Date)\n\t        begin: regex.concat(/# */, regex.either(YYYY_MM_DD, MM_DD_YYYY), / *#/) },\n\t      {\n\t        // #H:mm[:ss]# (24h Time)\n\t        begin: regex.concat(/# */, TIME_24H, / *#/) },\n\t      {\n\t        // #h[:mm[:ss]] A# (12h Time)\n\t        begin: regex.concat(/# */, TIME_12H, / *#/) },\n\t      {\n\t        // date plus time\n\t        begin: regex.concat(\n\t          /# */,\n\t          regex.either(YYYY_MM_DD, MM_DD_YYYY),\n\t          / +/,\n\t          regex.either(TIME_12H, TIME_24H),\n\t          / *#/\n\t        ) }\n\t    ]\n\t  };\n\n\t  const NUMBER = {\n\t    className: 'number',\n\t    relevance: 0,\n\t    variants: [\n\t      {\n\t        // Float\n\t        begin: /\\b\\d[\\d_]*((\\.[\\d_]+(E[+-]?[\\d_]+)?)|(E[+-]?[\\d_]+))[RFD@!#]?/ },\n\t      {\n\t        // Integer (base 10)\n\t        begin: /\\b\\d[\\d_]*((U?[SIL])|[%&])?/ },\n\t      {\n\t        // Integer (base 16)\n\t        begin: /&H[\\dA-F_]+((U?[SIL])|[%&])?/ },\n\t      {\n\t        // Integer (base 8)\n\t        begin: /&O[0-7_]+((U?[SIL])|[%&])?/ },\n\t      {\n\t        // Integer (base 2)\n\t        begin: /&B[01_]+((U?[SIL])|[%&])?/ }\n\t    ]\n\t  };\n\n\t  const LABEL = {\n\t    className: 'label',\n\t    begin: /^\\w+:/\n\t  };\n\n\t  const DOC_COMMENT = hljs.COMMENT(/'''/, /$/, { contains: [\n\t    {\n\t      className: 'doctag',\n\t      begin: /<\\/?/,\n\t      end: />/\n\t    }\n\t  ] });\n\n\t  const COMMENT = hljs.COMMENT(null, /$/, { variants: [\n\t    { begin: /'/ },\n\t    {\n\t      // TODO: Use multi-class for leading spaces\n\t      begin: /([\\t ]|^)REM(?=\\s)/ }\n\t  ] });\n\n\t  const DIRECTIVES = {\n\t    className: 'meta',\n\t    // TODO: Use multi-class for indentation once available\n\t    begin: /[\\t ]*#(const|disable|else|elseif|enable|end|externalsource|if|region)\\b/,\n\t    end: /$/,\n\t    keywords: { keyword:\n\t        'const disable else elseif enable end externalsource if region then' },\n\t    contains: [ COMMENT ]\n\t  };\n\n\t  return {\n\t    name: 'Visual Basic .NET',\n\t    aliases: [ 'vb' ],\n\t    case_insensitive: true,\n\t    classNameAliases: { label: 'symbol' },\n\t    keywords: {\n\t      keyword:\n\t        'addhandler alias aggregate ansi as async assembly auto binary by byref byval ' /* a-b */\n\t        + 'call case catch class compare const continue custom declare default delegate dim distinct do ' /* c-d */\n\t        + 'each equals else elseif end enum erase error event exit explicit finally for friend from function ' /* e-f */\n\t        + 'get global goto group handles if implements imports in inherits interface into iterator ' /* g-i */\n\t        + 'join key let lib loop me mid module mustinherit mustoverride mybase myclass ' /* j-m */\n\t        + 'namespace narrowing new next notinheritable notoverridable ' /* n */\n\t        + 'of off on operator option optional order overloads overridable overrides ' /* o */\n\t        + 'paramarray partial preserve private property protected public ' /* p */\n\t        + 'raiseevent readonly redim removehandler resume return ' /* r */\n\t        + 'select set shadows shared skip static step stop structure strict sub synclock ' /* s */\n\t        + 'take text then throw to try unicode until using when where while widening with withevents writeonly yield' /* t-y */,\n\t      built_in:\n\t        // Operators https://docs.microsoft.com/dotnet/visual-basic/language-reference/operators\n\t        'addressof and andalso await directcast gettype getxmlnamespace is isfalse isnot istrue like mod nameof new not or orelse trycast typeof xor '\n\t        // Type Conversion Functions https://docs.microsoft.com/dotnet/visual-basic/language-reference/functions/type-conversion-functions\n\t        + 'cbool cbyte cchar cdate cdbl cdec cint clng cobj csbyte cshort csng cstr cuint culng cushort',\n\t      type:\n\t        // Data types https://docs.microsoft.com/dotnet/visual-basic/language-reference/data-types\n\t        'boolean byte char date decimal double integer long object sbyte short single string uinteger ulong ushort',\n\t      literal: 'true false nothing'\n\t    },\n\t    illegal:\n\t      '//|\\\\{|\\\\}|endif|gosub|variant|wend|^\\\\$ ' /* reserved deprecated keywords */,\n\t    contains: [\n\t      CHARACTER,\n\t      STRING,\n\t      DATE,\n\t      NUMBER,\n\t      LABEL,\n\t      DOC_COMMENT,\n\t      COMMENT,\n\t      DIRECTIVES\n\t    ]\n\t  };\n\t}\n\n\tvbnet_1 = vbnet;\n\treturn vbnet_1;\n}\n\nexport { requireVbnet as __require };",
+      "start": 1699633501544,
+      "end": 1699633501545,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501545,
+      "end": 1699633501545,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501545,
+      "end": 1699633501545,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501545,
+      "end": 1699633501545,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501545,
+      "end": 1699633501545,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501545,
+      "end": 1699633501545,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501545,
+      "end": 1699633501545,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501545,
+      "end": 1699633501545,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501545,
+      "end": 1699633501545,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501545,
+      "end": 1699633501545,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501545,
+      "end": 1699633501545,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501545,
+      "end": 1699633501545,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501545,
+      "end": 1699633501545,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/rules_inline/linkify.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Process links like https://example.org/\n\n'use strict';\n\n\n// RFC3986: scheme = ALPHA *( ALPHA / DIGIT / \"+\" / \"-\" / \".\" )\nvar SCHEME_RE = /(?:^|[^a-z0-9.+-])([a-z][a-z0-9.+-]*)$/i;\n\n\nmodule.exports = function linkify(state, silent) {\n  var pos, max, match, proto, link, url, fullUrl, token;\n\n  if (!state.md.options.linkify) return false;\n  if (state.linkLevel > 0) return false;\n\n  pos = state.pos;\n  max = state.posMax;\n\n  if (pos + 3 > max) return false;\n  if (state.src.charCodeAt(pos) !== 0x3A/* : */) return false;\n  if (state.src.charCodeAt(pos + 1) !== 0x2F/* / */) return false;\n  if (state.src.charCodeAt(pos + 2) !== 0x2F/* / */) return false;\n\n  match = state.pending.match(SCHEME_RE);\n  if (!match) return false;\n\n  proto = match[1];\n\n  link = state.md.linkify.matchAtStart(state.src.slice(pos - proto.length));\n  if (!link) return false;\n\n  url = link.url;\n\n  // invalid link, but still detected by linkify somehow;\n  // need to check to prevent infinite loop below\n  if (url.length <= proto.length) return false;\n\n  // disallow '*' at the end of the link (conflicts with emphasis)\n  url = url.replace(/\\*+$/, '');\n\n  fullUrl = state.md.normalizeLink(url);\n  if (!state.md.validateLink(fullUrl)) return false;\n\n  if (!silent) {\n    state.pending = state.pending.slice(0, -proto.length);\n\n    token         = state.push('link_open', 'a', 1);\n    token.attrs   = [ [ 'href', fullUrl ] ];\n    token.markup  = 'linkify';\n    token.info    = 'auto';\n\n    token         = state.push('text', '', 0);\n    token.content = state.md.normalizeLinkText(url);\n\n    token         = state.push('link_close', 'a', -1);\n    token.markup  = 'linkify';\n    token.info    = 'auto';\n  }\n\n  state.pos += url.length - proto.length;\n  return true;\n};\n",
+      "start": 1699633501787,
+      "end": 1699633501881,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501881,
+      "end": 1699633501881,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501881,
+      "end": 1699633501881,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501881,
+      "end": 1699633501881,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501881,
+      "end": 1699633501881,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501881,
+      "end": 1699633501881,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501881,
+      "end": 1699633501882,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501882,
+      "end": 1699633501882,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501882,
+      "end": 1699633501882,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501882,
+      "end": 1699633501882,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501882,
+      "end": 1699633501882,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501882,
+      "end": 1699633501882,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501882,
+      "end": 1699633501882,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501882,
+      "end": 1699633501882,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501882,
+      "end": 1699633501882,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501882,
+      "end": 1699633501882,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501882,
+      "end": 1699633501882,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501882,
+      "end": 1699633501884,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501884,
+      "end": 1699633501884,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501884,
+      "end": 1699633501884,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501884,
+      "end": 1699633501884,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\n// Process links like https://example.org/\n\n'use strict';\n\n\n// RFC3986: scheme = ALPHA *( ALPHA / DIGIT / \"+\" / \"-\" / \".\" )\nvar SCHEME_RE = /(?:^|[^a-z0-9.+-])([a-z][a-z0-9.+-]*)$/i;\n\n\nvar linkify = function linkify(state, silent) {\n  var pos, max, match, proto, link, url, fullUrl, token;\n\n  if (!state.md.options.linkify) return false;\n  if (state.linkLevel > 0) return false;\n\n  pos = state.pos;\n  max = state.posMax;\n\n  if (pos + 3 > max) return false;\n  if (state.src.charCodeAt(pos) !== 0x3A/* : */) return false;\n  if (state.src.charCodeAt(pos + 1) !== 0x2F/* / */) return false;\n  if (state.src.charCodeAt(pos + 2) !== 0x2F/* / */) return false;\n\n  match = state.pending.match(SCHEME_RE);\n  if (!match) return false;\n\n  proto = match[1];\n\n  link = state.md.linkify.matchAtStart(state.src.slice(pos - proto.length));\n  if (!link) return false;\n\n  url = link.url;\n\n  // invalid link, but still detected by linkify somehow;\n  // need to check to prevent infinite loop below\n  if (url.length <= proto.length) return false;\n\n  // disallow '*' at the end of the link (conflicts with emphasis)\n  url = url.replace(/\\*+$/, '');\n\n  fullUrl = state.md.normalizeLink(url);\n  if (!state.md.validateLink(fullUrl)) return false;\n\n  if (!silent) {\n    state.pending = state.pending.slice(0, -proto.length);\n\n    token         = state.push('link_open', 'a', 1);\n    token.attrs   = [ [ 'href', fullUrl ] ];\n    token.markup  = 'linkify';\n    token.info    = 'auto';\n\n    token         = state.push('text', '', 0);\n    token.content = state.md.normalizeLinkText(url);\n\n    token         = state.push('link_close', 'a', -1);\n    token.markup  = 'linkify';\n    token.info    = 'auto';\n  }\n\n  state.pos += url.length - proto.length;\n  return true;\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(linkify);\nexport { linkify as __moduleExports };",
+      "start": 1699633501884,
+      "end": 1699633501884,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501884,
+      "end": 1699633501884,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501884,
+      "end": 1699633501884,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501884,
+      "end": 1699633501884,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501884,
+      "end": 1699633501884,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501884,
+      "end": 1699633501884,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501884,
+      "end": 1699633501884,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501885,
+      "end": 1699633501885,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501885,
+      "end": 1699633501885,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501885,
+      "end": 1699633501885,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501885,
+      "end": 1699633501885,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501885,
+      "end": 1699633501885,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501885,
+      "end": 1699633501885,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/token.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Token class\n\n'use strict';\n\n\n/**\n * class Token\n **/\n\n/**\n * new Token(type, tag, nesting)\n *\n * Create new token and fill passed properties.\n **/\nfunction Token(type, tag, nesting) {\n  /**\n   * Token#type -> String\n   *\n   * Type of the token (string, e.g. \"paragraph_open\")\n   **/\n  this.type     = type;\n\n  /**\n   * Token#tag -> String\n   *\n   * html tag name, e.g. \"p\"\n   **/\n  this.tag      = tag;\n\n  /**\n   * Token#attrs -> Array\n   *\n   * Html attributes. Format: `[ [ name1, value1 ], [ name2, value2 ] ]`\n   **/\n  this.attrs    = null;\n\n  /**\n   * Token#map -> Array\n   *\n   * Source map info. Format: `[ line_begin, line_end ]`\n   **/\n  this.map      = null;\n\n  /**\n   * Token#nesting -> Number\n   *\n   * Level change (number in {-1, 0, 1} set), where:\n   *\n   * -  `1` means the tag is opening\n   * -  `0` means the tag is self-closing\n   * - `-1` means the tag is closing\n   **/\n  this.nesting  = nesting;\n\n  /**\n   * Token#level -> Number\n   *\n   * nesting level, the same as `state.level`\n   **/\n  this.level    = 0;\n\n  /**\n   * Token#children -> Array\n   *\n   * An array of child nodes (inline and img tokens)\n   **/\n  this.children = null;\n\n  /**\n   * Token#content -> String\n   *\n   * In a case of self-closing tag (code, html, fence, etc.),\n   * it has contents of this tag.\n   **/\n  this.content  = '';\n\n  /**\n   * Token#markup -> String\n   *\n   * '*' or '_' for emphasis, fence string for fence, etc.\n   **/\n  this.markup   = '';\n\n  /**\n   * Token#info -> String\n   *\n   * Additional information:\n   *\n   * - Info string for \"fence\" tokens\n   * - The value \"auto\" for autolink \"link_open\" and \"link_close\" tokens\n   * - The string value of the item marker for ordered-list \"list_item_open\" tokens\n   **/\n  this.info     = '';\n\n  /**\n   * Token#meta -> Object\n   *\n   * A place for plugins to store an arbitrary data\n   **/\n  this.meta     = null;\n\n  /**\n   * Token#block -> Boolean\n   *\n   * True for block-level tokens, false for inline tokens.\n   * Used in renderer to calculate line breaks\n   **/\n  this.block    = false;\n\n  /**\n   * Token#hidden -> Boolean\n   *\n   * If it's true, ignore this element when rendering. Used for tight lists\n   * to hide paragraphs.\n   **/\n  this.hidden   = false;\n}\n\n\n/**\n * Token.attrIndex(name) -> Number\n *\n * Search attribute index by name.\n **/\nToken.prototype.attrIndex = function attrIndex(name) {\n  var attrs, i, len;\n\n  if (!this.attrs) { return -1; }\n\n  attrs = this.attrs;\n\n  for (i = 0, len = attrs.length; i < len; i++) {\n    if (attrs[i][0] === name) { return i; }\n  }\n  return -1;\n};\n\n\n/**\n * Token.attrPush(attrData)\n *\n * Add `[ name, value ]` attribute to list. Init attrs if necessary\n **/\nToken.prototype.attrPush = function attrPush(attrData) {\n  if (this.attrs) {\n    this.attrs.push(attrData);\n  } else {\n    this.attrs = [ attrData ];\n  }\n};\n\n\n/**\n * Token.attrSet(name, value)\n *\n * Set `name` attribute to `value`. Override old value if exists.\n **/\nToken.prototype.attrSet = function attrSet(name, value) {\n  var idx = this.attrIndex(name),\n      attrData = [ name, value ];\n\n  if (idx < 0) {\n    this.attrPush(attrData);\n  } else {\n    this.attrs[idx] = attrData;\n  }\n};\n\n\n/**\n * Token.attrGet(name)\n *\n * Get the value of attribute `name`, or null if it does not exist.\n **/\nToken.prototype.attrGet = function attrGet(name) {\n  var idx = this.attrIndex(name), value = null;\n  if (idx >= 0) {\n    value = this.attrs[idx][1];\n  }\n  return value;\n};\n\n\n/**\n * Token.attrJoin(name, value)\n *\n * Join value to existing attribute via space. Or create new attribute if not\n * exists. Useful to operate with token classes.\n **/\nToken.prototype.attrJoin = function attrJoin(name, value) {\n  var idx = this.attrIndex(name);\n\n  if (idx < 0) {\n    this.attrPush([ name, value ]);\n  } else {\n    this.attrs[idx][1] = this.attrs[idx][1] + ' ' + value;\n  }\n};\n\n\nmodule.exports = Token;\n",
+      "start": 1699633501905,
+      "end": 1699633502061,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633502061,
+      "end": 1699633502061,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633502061,
+      "end": 1699633502061,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633502061,
+      "end": 1699633502061,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633502061,
+      "end": 1699633502061,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633502061,
+      "end": 1699633502061,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633502061,
+      "end": 1699633502061,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633502061,
+      "end": 1699633502061,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633502061,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633502062,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633502062,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633502062,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633502062,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633502062,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633502062,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633502062,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633502062,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633502062,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633502062,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633502062,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633502062,
+      "end": 1699633502062,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\n// Token class\n\n'use strict';\n\n\n/**\n * class Token\n **/\n\n/**\n * new Token(type, tag, nesting)\n *\n * Create new token and fill passed properties.\n **/\nfunction Token(type, tag, nesting) {\n  /**\n   * Token#type -> String\n   *\n   * Type of the token (string, e.g. \"paragraph_open\")\n   **/\n  this.type     = type;\n\n  /**\n   * Token#tag -> String\n   *\n   * html tag name, e.g. \"p\"\n   **/\n  this.tag      = tag;\n\n  /**\n   * Token#attrs -> Array\n   *\n   * Html attributes. Format: `[ [ name1, value1 ], [ name2, value2 ] ]`\n   **/\n  this.attrs    = null;\n\n  /**\n   * Token#map -> Array\n   *\n   * Source map info. Format: `[ line_begin, line_end ]`\n   **/\n  this.map      = null;\n\n  /**\n   * Token#nesting -> Number\n   *\n   * Level change (number in {-1, 0, 1} set), where:\n   *\n   * -  `1` means the tag is opening\n   * -  `0` means the tag is self-closing\n   * - `-1` means the tag is closing\n   **/\n  this.nesting  = nesting;\n\n  /**\n   * Token#level -> Number\n   *\n   * nesting level, the same as `state.level`\n   **/\n  this.level    = 0;\n\n  /**\n   * Token#children -> Array\n   *\n   * An array of child nodes (inline and img tokens)\n   **/\n  this.children = null;\n\n  /**\n   * Token#content -> String\n   *\n   * In a case of self-closing tag (code, html, fence, etc.),\n   * it has contents of this tag.\n   **/\n  this.content  = '';\n\n  /**\n   * Token#markup -> String\n   *\n   * '*' or '_' for emphasis, fence string for fence, etc.\n   **/\n  this.markup   = '';\n\n  /**\n   * Token#info -> String\n   *\n   * Additional information:\n   *\n   * - Info string for \"fence\" tokens\n   * - The value \"auto\" for autolink \"link_open\" and \"link_close\" tokens\n   * - The string value of the item marker for ordered-list \"list_item_open\" tokens\n   **/\n  this.info     = '';\n\n  /**\n   * Token#meta -> Object\n   *\n   * A place for plugins to store an arbitrary data\n   **/\n  this.meta     = null;\n\n  /**\n   * Token#block -> Boolean\n   *\n   * True for block-level tokens, false for inline tokens.\n   * Used in renderer to calculate line breaks\n   **/\n  this.block    = false;\n\n  /**\n   * Token#hidden -> Boolean\n   *\n   * If it's true, ignore this element when rendering. Used for tight lists\n   * to hide paragraphs.\n   **/\n  this.hidden   = false;\n}\n\n\n/**\n * Token.attrIndex(name) -> Number\n *\n * Search attribute index by name.\n **/\nToken.prototype.attrIndex = function attrIndex(name) {\n  var attrs, i, len;\n\n  if (!this.attrs) { return -1; }\n\n  attrs = this.attrs;\n\n  for (i = 0, len = attrs.length; i < len; i++) {\n    if (attrs[i][0] === name) { return i; }\n  }\n  return -1;\n};\n\n\n/**\n * Token.attrPush(attrData)\n *\n * Add `[ name, value ]` attribute to list. Init attrs if necessary\n **/\nToken.prototype.attrPush = function attrPush(attrData) {\n  if (this.attrs) {\n    this.attrs.push(attrData);\n  } else {\n    this.attrs = [ attrData ];\n  }\n};\n\n\n/**\n * Token.attrSet(name, value)\n *\n * Set `name` attribute to `value`. Override old value if exists.\n **/\nToken.prototype.attrSet = function attrSet(name, value) {\n  var idx = this.attrIndex(name),\n      attrData = [ name, value ];\n\n  if (idx < 0) {\n    this.attrPush(attrData);\n  } else {\n    this.attrs[idx] = attrData;\n  }\n};\n\n\n/**\n * Token.attrGet(name)\n *\n * Get the value of attribute `name`, or null if it does not exist.\n **/\nToken.prototype.attrGet = function attrGet(name) {\n  var idx = this.attrIndex(name), value = null;\n  if (idx >= 0) {\n    value = this.attrs[idx][1];\n  }\n  return value;\n};\n\n\n/**\n * Token.attrJoin(name, value)\n *\n * Join value to existing attribute via space. Or create new attribute if not\n * exists. Useful to operate with token classes.\n **/\nToken.prototype.attrJoin = function attrJoin(name, value) {\n  var idx = this.attrIndex(name);\n\n  if (idx < 0) {\n    this.attrPush([ name, value ]);\n  } else {\n    this.attrs[idx][1] = this.attrs[idx][1] + ' ' + value;\n  }\n};\n\n\nvar token = Token;\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(token);\nexport { token as __moduleExports };",
+      "start": 1699633502062,
+      "end": 1699633502063,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;AAAA;AACA;AACA,YAAY,CAAC;AACb;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,SAAS,KAAK,CAAC,IAAI,EAAE,GAAG,EAAE,OAAO,EAAE;AACnC;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,IAAI,OAAO,IAAI,CAAC;AACvB;AACA;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,GAAG,QAAQ,GAAG,CAAC;AACtB;AACA;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,KAAK,MAAM,IAAI,CAAC;AACvB;AACA;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,GAAG,QAAQ,IAAI,CAAC;AACvB;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,OAAO,IAAI,OAAO,CAAC;AAC1B;AACA;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,KAAK,MAAM,CAAC,CAAC;AACpB;AACA;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,QAAQ,GAAG,IAAI,CAAC;AACvB;AACA;AACA;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,OAAO,IAAI,EAAE,CAAC;AACrB;AACA;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,MAAM,KAAK,EAAE,CAAC;AACrB;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,IAAI,OAAO,EAAE,CAAC;AACrB;AACA;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,IAAI,OAAO,IAAI,CAAC;AACvB;AACA;AACA;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,KAAK,MAAM,KAAK,CAAC;AACxB;AACA;AACA;AACA;AACA;AACA;AACA;AACA,EAAE,IAAI,CAAC,MAAM,KAAK,KAAK,CAAC;AACxB,CAAC;AACD;AACA;AACA;AACA;AACA;AACA;AACA;AACA,KAAK,CAAC,SAAS,CAAC,SAAS,GAAG,SAAS,SAAS,CAAC,IAAI,EAAE;AACrD,EAAE,IAAI,KAAK,EAAE,CAAC,EAAE,GAAG,CAAC;AACpB;AACA,EAAE,IAAI,CAAC,IAAI,CAAC,KAAK,EAAE,EAAE,OAAO,CAAC,CAAC,CAAC,EAAE;AACjC;AACA,EAAE,KAAK,GAAG,IAAI,CAAC,KAAK,CAAC;AACrB;AACA,EAAE,KAAK,CAAC,GAAG,CAAC,EAAE,GAAG,GAAG,KAAK,CAAC,MAAM,EAAE,CAAC,GAAG,GAAG,EAAE,CAAC,EAAE,EAAE;AAChD,IAAI,IAAI,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,KAAK,IAAI,EAAE,EAAE,OAAO,CAAC,CAAC,EAAE;AAC3C,GAAG;AACH,EAAE,OAAO,CAAC,CAAC,CAAC;AACZ,CAAC,CAAC;AACF;AACA;AACA;AACA;AACA;AACA;AACA;AACA,KAAK,CAAC,SAAS,CAAC,QAAQ,GAAG,SAAS,QAAQ,CAAC,QAAQ,EAAE;AACvD,EAAE,IAAI,IAAI,CAAC,KAAK,EAAE;AAClB,IAAI,IAAI,CAAC,KAAK,CAAC,IAAI,CAAC,QAAQ,CAAC,CAAC;AAC9B,GAAG,MAAM;AACT,IAAI,IAAI,CAAC,KAAK,GAAG,EAAE,QAAQ,EAAE,CAAC;AAC9B,GAAG;AACH,CAAC,CAAC;AACF;AACA;AACA;AACA;AACA;AACA;AACA;AACA,KAAK,CAAC,SAAS,CAAC,OAAO,GAAG,SAAS,OAAO,CAAC,IAAI,EAAE,KAAK,EAAE;AACxD,EAAE,IAAI,GAAG,GAAG,IAAI,CAAC,SAAS,CAAC,IAAI,CAAC;AAChC,MAAM,QAAQ,GAAG,EAAE,IAAI,EAAE,KAAK,EAAE,CAAC;AACjC;AACA,EAAE,IAAI,GAAG,GAAG,CAAC,EAAE;AACf,IAAI,IAAI,CAAC,QAAQ,CAAC,QAAQ,CAAC,CAAC;AAC5B,GAAG,MAAM;AACT,IAAI,IAAI,CAAC,KAAK,CAAC,GAAG,CAAC,GAAG,QAAQ,CAAC;AAC/B,GAAG;AACH,CAAC,CAAC;AACF;AACA;AACA;AACA;AACA;AACA;AACA;AACA,KAAK,CAAC,SAAS,CAAC,OAAO,GAAG,SAAS,OAAO,CAAC,IAAI,EAAE;AACjD,EAAE,IAAI,GAAG,GAAG,IAAI,CAAC,SAAS,CAAC,IAAI,CAAC,EAAE,KAAK,GAAG,IAAI,CAAC;AAC/C,EAAE,IAAI,GAAG,IAAI,CAAC,EAAE;AAChB,IAAI,KAAK,GAAG,IAAI,CAAC,KAAK,CAAC,GAAG,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/B,GAAG;AACH,EAAE,OAAO,KAAK,CAAC;AACf,CAAC,CAAC;AACF;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,KAAK,CAAC,SAAS,CAAC,QAAQ,GAAG,SAAS,QAAQ,CAAC,IAAI,EAAE,KAAK,EAAE;AAC1D,EAAE,IAAI,GAAG,GAAG,IAAI,CAAC,SAAS,CAAC,IAAI,CAAC,CAAC;AACjC;AACA,EAAE,IAAI,GAAG,GAAG,CAAC,EAAE;AACf,IAAI,IAAI,CAAC,QAAQ,CAAC,EAAE,IAAI,EAAE,KAAK,EAAE,CAAC,CAAC;AACnC,GAAG,MAAM;AACT,IAAI,IAAI,CAAC,KAAK,CAAC,GAAG,CAAC,CAAC,CAAC,CAAC,GAAG,IAAI,CAAC,KAAK,CAAC,GAAG,CAAC,CAAC,CAAC,CAAC,GAAG,GAAG,GAAG,KAAK,CAAC;AAC1D,GAAG;AACH,CAAC,CAAC;AACF;AACA;IACA,KAAc,GAAG,KAAK"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633502063,
+      "end": 1699633502063,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633502063,
+      "end": 1699633502063,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633502063,
+      "end": 1699633502063,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633502063,
+      "end": 1699633502063,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633502063,
+      "end": 1699633502063,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633502063,
+      "end": 1699633502063,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633502063,
+      "end": 1699633502063,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633502063,
+      "end": 1699633502063,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633502063,
+      "end": 1699633502063,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633502063,
+      "end": 1699633502063,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633502063,
+      "end": 1699633502063,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633502063,
+      "end": 1699633502064,
+      "order": "normal"
+    }
+  ]
+}

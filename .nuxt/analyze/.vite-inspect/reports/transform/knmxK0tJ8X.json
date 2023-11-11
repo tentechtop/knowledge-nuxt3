@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/mdurl/encode.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "\n'use strict';\n\n\nvar encodeCache = {};\n\n\n// Create a lookup array where anything but characters in `chars` string\n// and alphanumeric chars is percent-encoded.\n//\nfunction getEncodeCache(exclude) {\n  var i, ch, cache = encodeCache[exclude];\n  if (cache) { return cache; }\n\n  cache = encodeCache[exclude] = [];\n\n  for (i = 0; i < 128; i++) {\n    ch = String.fromCharCode(i);\n\n    if (/^[0-9a-z]$/i.test(ch)) {\n      // always allow unencoded alphanumeric characters\n      cache.push(ch);\n    } else {\n      cache.push('%' + ('0' + i.toString(16).toUpperCase()).slice(-2));\n    }\n  }\n\n  for (i = 0; i < exclude.length; i++) {\n    cache[exclude.charCodeAt(i)] = exclude[i];\n  }\n\n  return cache;\n}\n\n\n// Encode unsafe characters with percent-encoding, skipping already\n// encoded sequences.\n//\n//  - string       - string to encode\n//  - exclude      - list of characters to ignore (in addition to a-zA-Z0-9)\n//  - keepEscaped  - don't encode '%' in a correct escape sequence (default: true)\n//\nfunction encode(string, exclude, keepEscaped) {\n  var i, l, code, nextCode, cache,\n      result = '';\n\n  if (typeof exclude !== 'string') {\n    // encode(string, keepEscaped)\n    keepEscaped  = exclude;\n    exclude = encode.defaultChars;\n  }\n\n  if (typeof keepEscaped === 'undefined') {\n    keepEscaped = true;\n  }\n\n  cache = getEncodeCache(exclude);\n\n  for (i = 0, l = string.length; i < l; i++) {\n    code = string.charCodeAt(i);\n\n    if (keepEscaped && code === 0x25 /* % */ && i + 2 < l) {\n      if (/^[0-9a-f]{2}$/i.test(string.slice(i + 1, i + 3))) {\n        result += string.slice(i, i + 3);\n        i += 2;\n        continue;\n      }\n    }\n\n    if (code < 128) {\n      result += cache[code];\n      continue;\n    }\n\n    if (code >= 0xD800 && code <= 0xDFFF) {\n      if (code >= 0xD800 && code <= 0xDBFF && i + 1 < l) {\n        nextCode = string.charCodeAt(i + 1);\n        if (nextCode >= 0xDC00 && nextCode <= 0xDFFF) {\n          result += encodeURIComponent(string[i] + string[i + 1]);\n          i++;\n          continue;\n        }\n      }\n      result += '%EF%BF%BD';\n      continue;\n    }\n\n    result += encodeURIComponent(string[i]);\n  }\n\n  return result;\n}\n\nencode.defaultChars   = \";/?:@&=+$,-_.!~*'()#\";\nencode.componentChars = \"-_.!~*'()\";\n\n\nmodule.exports = encode;\n",
+      "start": 1699633501858,
+      "end": 1699633501946,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501946,
+      "end": 1699633501946,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501946,
+      "end": 1699633501946,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501946,
+      "end": 1699633501946,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501946,
+      "end": 1699633501946,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501946,
+      "end": 1699633501946,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501946,
+      "end": 1699633501946,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501946,
+      "end": 1699633501946,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501946,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501947,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501947,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501947,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501947,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501947,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501947,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501947,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501947,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501947,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501947,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501947,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501947,
+      "end": 1699633501947,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\n'use strict';\n\n\nvar encodeCache = {};\n\n\n// Create a lookup array where anything but characters in `chars` string\n// and alphanumeric chars is percent-encoded.\n//\nfunction getEncodeCache(exclude) {\n  var i, ch, cache = encodeCache[exclude];\n  if (cache) { return cache; }\n\n  cache = encodeCache[exclude] = [];\n\n  for (i = 0; i < 128; i++) {\n    ch = String.fromCharCode(i);\n\n    if (/^[0-9a-z]$/i.test(ch)) {\n      // always allow unencoded alphanumeric characters\n      cache.push(ch);\n    } else {\n      cache.push('%' + ('0' + i.toString(16).toUpperCase()).slice(-2));\n    }\n  }\n\n  for (i = 0; i < exclude.length; i++) {\n    cache[exclude.charCodeAt(i)] = exclude[i];\n  }\n\n  return cache;\n}\n\n\n// Encode unsafe characters with percent-encoding, skipping already\n// encoded sequences.\n//\n//  - string       - string to encode\n//  - exclude      - list of characters to ignore (in addition to a-zA-Z0-9)\n//  - keepEscaped  - don't encode '%' in a correct escape sequence (default: true)\n//\nfunction encode(string, exclude, keepEscaped) {\n  var i, l, code, nextCode, cache,\n      result = '';\n\n  if (typeof exclude !== 'string') {\n    // encode(string, keepEscaped)\n    keepEscaped  = exclude;\n    exclude = encode.defaultChars;\n  }\n\n  if (typeof keepEscaped === 'undefined') {\n    keepEscaped = true;\n  }\n\n  cache = getEncodeCache(exclude);\n\n  for (i = 0, l = string.length; i < l; i++) {\n    code = string.charCodeAt(i);\n\n    if (keepEscaped && code === 0x25 /* % */ && i + 2 < l) {\n      if (/^[0-9a-f]{2}$/i.test(string.slice(i + 1, i + 3))) {\n        result += string.slice(i, i + 3);\n        i += 2;\n        continue;\n      }\n    }\n\n    if (code < 128) {\n      result += cache[code];\n      continue;\n    }\n\n    if (code >= 0xD800 && code <= 0xDFFF) {\n      if (code >= 0xD800 && code <= 0xDBFF && i + 1 < l) {\n        nextCode = string.charCodeAt(i + 1);\n        if (nextCode >= 0xDC00 && nextCode <= 0xDFFF) {\n          result += encodeURIComponent(string[i] + string[i + 1]);\n          i++;\n          continue;\n        }\n      }\n      result += '%EF%BF%BD';\n      continue;\n    }\n\n    result += encodeURIComponent(string[i]);\n  }\n\n  return result;\n}\n\nencode.defaultChars   = \";/?:@&=+$,-_.!~*'()#\";\nencode.componentChars = \"-_.!~*'()\";\n\n\nvar encode_1 = encode;\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(encode_1);\nexport { encode_1 as __moduleExports };",
+      "start": 1699633501947,
+      "end": 1699633501948,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501948,
+      "end": 1699633501948,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501948,
+      "end": 1699633501948,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501948,
+      "end": 1699633501948,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501948,
+      "end": 1699633501948,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501948,
+      "end": 1699633501948,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501948,
+      "end": 1699633501948,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501948,
+      "end": 1699633501948,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501948,
+      "end": 1699633501948,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501948,
+      "end": 1699633501948,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501948,
+      "end": 1699633501948,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501948,
+      "end": 1699633501948,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501948,
+      "end": 1699633501948,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/mdurl/parse.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Copyright Joyent, Inc. and other Node contributors.\n//\n// Permission is hereby granted, free of charge, to any person obtaining a\n// copy of this software and associated documentation files (the\n// \"Software\"), to deal in the Software without restriction, including\n// without limitation the rights to use, copy, modify, merge, publish,\n// distribute, sublicense, and/or sell copies of the Software, and to permit\n// persons to whom the Software is furnished to do so, subject to the\n// following conditions:\n//\n// The above copyright notice and this permission notice shall be included\n// in all copies or substantial portions of the Software.\n//\n// THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS\n// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN\n// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,\n// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR\n// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE\n// USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n'use strict';\n\n//\n// Changes from joyent/node:\n//\n// 1. No leading slash in paths,\n//    e.g. in `url.parse('http://foo?bar')` pathname is ``, not `/`\n//\n// 2. Backslashes are not replaced with slashes,\n//    so `http:\\\\example.org\\` is treated like a relative path\n//\n// 3. Trailing colon is treated like a part of the path,\n//    i.e. in `http://example.org:foo` pathname is `:foo`\n//\n// 4. Nothing is URL-encoded in the resulting object,\n//    (in joyent/node some chars in auth and paths are encoded)\n//\n// 5. `url.parse()` does not have `parseQueryString` argument\n//\n// 6. Removed extraneous result properties: `host`, `path`, `query`, etc.,\n//    which can be constructed using other parts of the url.\n//\n\n\nfunction Url() {\n  this.protocol = null;\n  this.slashes = null;\n  this.auth = null;\n  this.port = null;\n  this.hostname = null;\n  this.hash = null;\n  this.search = null;\n  this.pathname = null;\n}\n\n// Reference: RFC 3986, RFC 1808, RFC 2396\n\n// define these here so at least they only have to be\n// compiled once on the first module load.\nvar protocolPattern = /^([a-z0-9.+-]+:)/i,\n    portPattern = /:[0-9]*$/,\n\n    // Special case for a simple path URL\n    simplePathPattern = /^(\\/\\/?(?!\\/)[^\\?\\s]*)(\\?[^\\s]*)?$/,\n\n    // RFC 2396: characters reserved for delimiting URLs.\n    // We actually just auto-escape these.\n    delims = [ '<', '>', '\"', '`', ' ', '\\r', '\\n', '\\t' ],\n\n    // RFC 2396: characters not allowed for various reasons.\n    unwise = [ '{', '}', '|', '\\\\', '^', '`' ].concat(delims),\n\n    // Allowed by RFCs, but cause of XSS attacks.  Always escape these.\n    autoEscape = [ '\\'' ].concat(unwise),\n    // Characters that are never ever allowed in a hostname.\n    // Note that any invalid chars are also handled, but these\n    // are the ones that are *expected* to be seen, so we fast-path\n    // them.\n    nonHostChars = [ '%', '/', '?', ';', '#' ].concat(autoEscape),\n    hostEndingChars = [ '/', '?', '#' ],\n    hostnameMaxLen = 255,\n    hostnamePartPattern = /^[+a-z0-9A-Z_-]{0,63}$/,\n    hostnamePartStart = /^([+a-z0-9A-Z_-]{0,63})(.*)$/,\n    // protocols that can allow \"unsafe\" and \"unwise\" chars.\n    /* eslint-disable no-script-url */\n    // protocols that never have a hostname.\n    hostlessProtocol = {\n      'javascript': true,\n      'javascript:': true\n    },\n    // protocols that always contain a // bit.\n    slashedProtocol = {\n      'http': true,\n      'https': true,\n      'ftp': true,\n      'gopher': true,\n      'file': true,\n      'http:': true,\n      'https:': true,\n      'ftp:': true,\n      'gopher:': true,\n      'file:': true\n    };\n    /* eslint-enable no-script-url */\n\nfunction urlParse(url, slashesDenoteHost) {\n  if (url && url instanceof Url) { return url; }\n\n  var u = new Url();\n  u.parse(url, slashesDenoteHost);\n  return u;\n}\n\nUrl.prototype.parse = function(url, slashesDenoteHost) {\n  var i, l, lowerProto, hec, slashes,\n      rest = url;\n\n  // trim before proceeding.\n  // This is to support parse stuff like \"  http://foo.com  \\n\"\n  rest = rest.trim();\n\n  if (!slashesDenoteHost && url.split('#').length === 1) {\n    // Try fast path regexp\n    var simplePath = simplePathPattern.exec(rest);\n    if (simplePath) {\n      this.pathname = simplePath[1];\n      if (simplePath[2]) {\n        this.search = simplePath[2];\n      }\n      return this;\n    }\n  }\n\n  var proto = protocolPattern.exec(rest);\n  if (proto) {\n    proto = proto[0];\n    lowerProto = proto.toLowerCase();\n    this.protocol = proto;\n    rest = rest.substr(proto.length);\n  }\n\n  // figure out if it's got a host\n  // user@server is *always* interpreted as a hostname, and url\n  // resolution will treat //foo/bar as host=foo,path=bar because that's\n  // how the browser resolves relative URLs.\n  if (slashesDenoteHost || proto || rest.match(/^\\/\\/[^@\\/]+@[^@\\/]+/)) {\n    slashes = rest.substr(0, 2) === '//';\n    if (slashes && !(proto && hostlessProtocol[proto])) {\n      rest = rest.substr(2);\n      this.slashes = true;\n    }\n  }\n\n  if (!hostlessProtocol[proto] &&\n      (slashes || (proto && !slashedProtocol[proto]))) {\n\n    // there's a hostname.\n    // the first instance of /, ?, ;, or # ends the host.\n    //\n    // If there is an @ in the hostname, then non-host chars *are* allowed\n    // to the left of the last @ sign, unless some host-ending character\n    // comes *before* the @-sign.\n    // URLs are obnoxious.\n    //\n    // ex:\n    // http://a@b@c/ => user:a@b host:c\n    // http://a@b?@c => user:a host:c path:/?@c\n\n    // v0.12 TODO(isaacs): This is not quite how Chrome does things.\n    // Review our test case against browsers more comprehensively.\n\n    // find the first instance of any hostEndingChars\n    var hostEnd = -1;\n    for (i = 0; i < hostEndingChars.length; i++) {\n      hec = rest.indexOf(hostEndingChars[i]);\n      if (hec !== -1 && (hostEnd === -1 || hec < hostEnd)) {\n        hostEnd = hec;\n      }\n    }\n\n    // at this point, either we have an explicit point where the\n    // auth portion cannot go past, or the last @ char is the decider.\n    var auth, atSign;\n    if (hostEnd === -1) {\n      // atSign can be anywhere.\n      atSign = rest.lastIndexOf('@');\n    } else {\n      // atSign must be in auth portion.\n      // http://a@b/c@d => host:b auth:a path:/c@d\n      atSign = rest.lastIndexOf('@', hostEnd);\n    }\n\n    // Now we have a portion which is definitely the auth.\n    // Pull that off.\n    if (atSign !== -1) {\n      auth = rest.slice(0, atSign);\n      rest = rest.slice(atSign + 1);\n      this.auth = auth;\n    }\n\n    // the host is the remaining to the left of the first non-host char\n    hostEnd = -1;\n    for (i = 0; i < nonHostChars.length; i++) {\n      hec = rest.indexOf(nonHostChars[i]);\n      if (hec !== -1 && (hostEnd === -1 || hec < hostEnd)) {\n        hostEnd = hec;\n      }\n    }\n    // if we still have not hit it, then the entire thing is a host.\n    if (hostEnd === -1) {\n      hostEnd = rest.length;\n    }\n\n    if (rest[hostEnd - 1] === ':') { hostEnd--; }\n    var host = rest.slice(0, hostEnd);\n    rest = rest.slice(hostEnd);\n\n    // pull out port.\n    this.parseHost(host);\n\n    // we've indicated that there is a hostname,\n    // so even if it's empty, it has to be present.\n    this.hostname = this.hostname || '';\n\n    // if hostname begins with [ and ends with ]\n    // assume that it's an IPv6 address.\n    var ipv6Hostname = this.hostname[0] === '[' &&\n        this.hostname[this.hostname.length - 1] === ']';\n\n    // validate a little.\n    if (!ipv6Hostname) {\n      var hostparts = this.hostname.split(/\\./);\n      for (i = 0, l = hostparts.length; i < l; i++) {\n        var part = hostparts[i];\n        if (!part) { continue; }\n        if (!part.match(hostnamePartPattern)) {\n          var newpart = '';\n          for (var j = 0, k = part.length; j < k; j++) {\n            if (part.charCodeAt(j) > 127) {\n              // we replace non-ASCII char with a temporary placeholder\n              // we need this to make sure size of hostname is not\n              // broken by replacing non-ASCII by nothing\n              newpart += 'x';\n            } else {\n              newpart += part[j];\n            }\n          }\n          // we test again with ASCII char only\n          if (!newpart.match(hostnamePartPattern)) {\n            var validParts = hostparts.slice(0, i);\n            var notHost = hostparts.slice(i + 1);\n            var bit = part.match(hostnamePartStart);\n            if (bit) {\n              validParts.push(bit[1]);\n              notHost.unshift(bit[2]);\n            }\n            if (notHost.length) {\n              rest = notHost.join('.') + rest;\n            }\n            this.hostname = validParts.join('.');\n            break;\n          }\n        }\n      }\n    }\n\n    if (this.hostname.length > hostnameMaxLen) {\n      this.hostname = '';\n    }\n\n    // strip [ and ] from the hostname\n    // the host field still retains them, though\n    if (ipv6Hostname) {\n      this.hostname = this.hostname.substr(1, this.hostname.length - 2);\n    }\n  }\n\n  // chop off from the tail first.\n  var hash = rest.indexOf('#');\n  if (hash !== -1) {\n    // got a fragment string.\n    this.hash = rest.substr(hash);\n    rest = rest.slice(0, hash);\n  }\n  var qm = rest.indexOf('?');\n  if (qm !== -1) {\n    this.search = rest.substr(qm);\n    rest = rest.slice(0, qm);\n  }\n  if (rest) { this.pathname = rest; }\n  if (slashedProtocol[lowerProto] &&\n      this.hostname && !this.pathname) {\n    this.pathname = '';\n  }\n\n  return this;\n};\n\nUrl.prototype.parseHost = function(host) {\n  var port = portPattern.exec(host);\n  if (port) {\n    port = port[0];\n    if (port !== ':') {\n      this.port = port.substr(1);\n    }\n    host = host.substr(0, host.length - port.length);\n  }\n  if (host) { this.hostname = host; }\n};\n\nmodule.exports = urlParse;\n",
+      "start": 1699633501869,
+      "end": 1699633501978,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501979,
+      "end": 1699633501979,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501980,
+      "end": 1699633501980,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501980,
+      "end": 1699633501980,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\n// Copyright Joyent, Inc. and other Node contributors.\n//\n// Permission is hereby granted, free of charge, to any person obtaining a\n// copy of this software and associated documentation files (the\n// \"Software\"), to deal in the Software without restriction, including\n// without limitation the rights to use, copy, modify, merge, publish,\n// distribute, sublicense, and/or sell copies of the Software, and to permit\n// persons to whom the Software is furnished to do so, subject to the\n// following conditions:\n//\n// The above copyright notice and this permission notice shall be included\n// in all copies or substantial portions of the Software.\n//\n// THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS\n// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\n// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN\n// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,\n// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR\n// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE\n// USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n'use strict';\n\n//\n// Changes from joyent/node:\n//\n// 1. No leading slash in paths,\n//    e.g. in `url.parse('http://foo?bar')` pathname is ``, not `/`\n//\n// 2. Backslashes are not replaced with slashes,\n//    so `http:\\\\example.org\\` is treated like a relative path\n//\n// 3. Trailing colon is treated like a part of the path,\n//    i.e. in `http://example.org:foo` pathname is `:foo`\n//\n// 4. Nothing is URL-encoded in the resulting object,\n//    (in joyent/node some chars in auth and paths are encoded)\n//\n// 5. `url.parse()` does not have `parseQueryString` argument\n//\n// 6. Removed extraneous result properties: `host`, `path`, `query`, etc.,\n//    which can be constructed using other parts of the url.\n//\n\n\nfunction Url() {\n  this.protocol = null;\n  this.slashes = null;\n  this.auth = null;\n  this.port = null;\n  this.hostname = null;\n  this.hash = null;\n  this.search = null;\n  this.pathname = null;\n}\n\n// Reference: RFC 3986, RFC 1808, RFC 2396\n\n// define these here so at least they only have to be\n// compiled once on the first module load.\nvar protocolPattern = /^([a-z0-9.+-]+:)/i,\n    portPattern = /:[0-9]*$/,\n\n    // Special case for a simple path URL\n    simplePathPattern = /^(\\/\\/?(?!\\/)[^\\?\\s]*)(\\?[^\\s]*)?$/,\n\n    // RFC 2396: characters reserved for delimiting URLs.\n    // We actually just auto-escape these.\n    delims = [ '<', '>', '\"', '`', ' ', '\\r', '\\n', '\\t' ],\n\n    // RFC 2396: characters not allowed for various reasons.\n    unwise = [ '{', '}', '|', '\\\\', '^', '`' ].concat(delims),\n\n    // Allowed by RFCs, but cause of XSS attacks.  Always escape these.\n    autoEscape = [ '\\'' ].concat(unwise),\n    // Characters that are never ever allowed in a hostname.\n    // Note that any invalid chars are also handled, but these\n    // are the ones that are *expected* to be seen, so we fast-path\n    // them.\n    nonHostChars = [ '%', '/', '?', ';', '#' ].concat(autoEscape),\n    hostEndingChars = [ '/', '?', '#' ],\n    hostnameMaxLen = 255,\n    hostnamePartPattern = /^[+a-z0-9A-Z_-]{0,63}$/,\n    hostnamePartStart = /^([+a-z0-9A-Z_-]{0,63})(.*)$/,\n    // protocols that can allow \"unsafe\" and \"unwise\" chars.\n    /* eslint-disable no-script-url */\n    // protocols that never have a hostname.\n    hostlessProtocol = {\n      'javascript': true,\n      'javascript:': true\n    },\n    // protocols that always contain a // bit.\n    slashedProtocol = {\n      'http': true,\n      'https': true,\n      'ftp': true,\n      'gopher': true,\n      'file': true,\n      'http:': true,\n      'https:': true,\n      'ftp:': true,\n      'gopher:': true,\n      'file:': true\n    };\n    /* eslint-enable no-script-url */\n\nfunction urlParse(url, slashesDenoteHost) {\n  if (url && url instanceof Url) { return url; }\n\n  var u = new Url();\n  u.parse(url, slashesDenoteHost);\n  return u;\n}\n\nUrl.prototype.parse = function(url, slashesDenoteHost) {\n  var i, l, lowerProto, hec, slashes,\n      rest = url;\n\n  // trim before proceeding.\n  // This is to support parse stuff like \"  http://foo.com  \\n\"\n  rest = rest.trim();\n\n  if (!slashesDenoteHost && url.split('#').length === 1) {\n    // Try fast path regexp\n    var simplePath = simplePathPattern.exec(rest);\n    if (simplePath) {\n      this.pathname = simplePath[1];\n      if (simplePath[2]) {\n        this.search = simplePath[2];\n      }\n      return this;\n    }\n  }\n\n  var proto = protocolPattern.exec(rest);\n  if (proto) {\n    proto = proto[0];\n    lowerProto = proto.toLowerCase();\n    this.protocol = proto;\n    rest = rest.substr(proto.length);\n  }\n\n  // figure out if it's got a host\n  // user@server is *always* interpreted as a hostname, and url\n  // resolution will treat //foo/bar as host=foo,path=bar because that's\n  // how the browser resolves relative URLs.\n  if (slashesDenoteHost || proto || rest.match(/^\\/\\/[^@\\/]+@[^@\\/]+/)) {\n    slashes = rest.substr(0, 2) === '//';\n    if (slashes && !(proto && hostlessProtocol[proto])) {\n      rest = rest.substr(2);\n      this.slashes = true;\n    }\n  }\n\n  if (!hostlessProtocol[proto] &&\n      (slashes || (proto && !slashedProtocol[proto]))) {\n\n    // there's a hostname.\n    // the first instance of /, ?, ;, or # ends the host.\n    //\n    // If there is an @ in the hostname, then non-host chars *are* allowed\n    // to the left of the last @ sign, unless some host-ending character\n    // comes *before* the @-sign.\n    // URLs are obnoxious.\n    //\n    // ex:\n    // http://a@b@c/ => user:a@b host:c\n    // http://a@b?@c => user:a host:c path:/?@c\n\n    // v0.12 TODO(isaacs): This is not quite how Chrome does things.\n    // Review our test case against browsers more comprehensively.\n\n    // find the first instance of any hostEndingChars\n    var hostEnd = -1;\n    for (i = 0; i < hostEndingChars.length; i++) {\n      hec = rest.indexOf(hostEndingChars[i]);\n      if (hec !== -1 && (hostEnd === -1 || hec < hostEnd)) {\n        hostEnd = hec;\n      }\n    }\n\n    // at this point, either we have an explicit point where the\n    // auth portion cannot go past, or the last @ char is the decider.\n    var auth, atSign;\n    if (hostEnd === -1) {\n      // atSign can be anywhere.\n      atSign = rest.lastIndexOf('@');\n    } else {\n      // atSign must be in auth portion.\n      // http://a@b/c@d => host:b auth:a path:/c@d\n      atSign = rest.lastIndexOf('@', hostEnd);\n    }\n\n    // Now we have a portion which is definitely the auth.\n    // Pull that off.\n    if (atSign !== -1) {\n      auth = rest.slice(0, atSign);\n      rest = rest.slice(atSign + 1);\n      this.auth = auth;\n    }\n\n    // the host is the remaining to the left of the first non-host char\n    hostEnd = -1;\n    for (i = 0; i < nonHostChars.length; i++) {\n      hec = rest.indexOf(nonHostChars[i]);\n      if (hec !== -1 && (hostEnd === -1 || hec < hostEnd)) {\n        hostEnd = hec;\n      }\n    }\n    // if we still have not hit it, then the entire thing is a host.\n    if (hostEnd === -1) {\n      hostEnd = rest.length;\n    }\n\n    if (rest[hostEnd - 1] === ':') { hostEnd--; }\n    var host = rest.slice(0, hostEnd);\n    rest = rest.slice(hostEnd);\n\n    // pull out port.\n    this.parseHost(host);\n\n    // we've indicated that there is a hostname,\n    // so even if it's empty, it has to be present.\n    this.hostname = this.hostname || '';\n\n    // if hostname begins with [ and ends with ]\n    // assume that it's an IPv6 address.\n    var ipv6Hostname = this.hostname[0] === '[' &&\n        this.hostname[this.hostname.length - 1] === ']';\n\n    // validate a little.\n    if (!ipv6Hostname) {\n      var hostparts = this.hostname.split(/\\./);\n      for (i = 0, l = hostparts.length; i < l; i++) {\n        var part = hostparts[i];\n        if (!part) { continue; }\n        if (!part.match(hostnamePartPattern)) {\n          var newpart = '';\n          for (var j = 0, k = part.length; j < k; j++) {\n            if (part.charCodeAt(j) > 127) {\n              // we replace non-ASCII char with a temporary placeholder\n              // we need this to make sure size of hostname is not\n              // broken by replacing non-ASCII by nothing\n              newpart += 'x';\n            } else {\n              newpart += part[j];\n            }\n          }\n          // we test again with ASCII char only\n          if (!newpart.match(hostnamePartPattern)) {\n            var validParts = hostparts.slice(0, i);\n            var notHost = hostparts.slice(i + 1);\n            var bit = part.match(hostnamePartStart);\n            if (bit) {\n              validParts.push(bit[1]);\n              notHost.unshift(bit[2]);\n            }\n            if (notHost.length) {\n              rest = notHost.join('.') + rest;\n            }\n            this.hostname = validParts.join('.');\n            break;\n          }\n        }\n      }\n    }\n\n    if (this.hostname.length > hostnameMaxLen) {\n      this.hostname = '';\n    }\n\n    // strip [ and ] from the hostname\n    // the host field still retains them, though\n    if (ipv6Hostname) {\n      this.hostname = this.hostname.substr(1, this.hostname.length - 2);\n    }\n  }\n\n  // chop off from the tail first.\n  var hash = rest.indexOf('#');\n  if (hash !== -1) {\n    // got a fragment string.\n    this.hash = rest.substr(hash);\n    rest = rest.slice(0, hash);\n  }\n  var qm = rest.indexOf('?');\n  if (qm !== -1) {\n    this.search = rest.substr(qm);\n    rest = rest.slice(0, qm);\n  }\n  if (rest) { this.pathname = rest; }\n  if (slashedProtocol[lowerProto] &&\n      this.hostname && !this.pathname) {\n    this.pathname = '';\n  }\n\n  return this;\n};\n\nUrl.prototype.parseHost = function(host) {\n  var port = portPattern.exec(host);\n  if (port) {\n    port = port[0];\n    if (port !== ':') {\n      this.port = port.substr(1);\n    }\n    host = host.substr(0, host.length - port.length);\n  }\n  if (host) { this.hostname = host; }\n};\n\nvar parse = urlParse;\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(parse);\nexport { parse as __moduleExports };",
+      "start": 1699633501980,
+      "end": 1699633501981,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501981,
+      "end": 1699633501981,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501981,
+      "end": 1699633501981,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501981,
+      "end": 1699633501981,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501981,
+      "end": 1699633501981,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501981,
+      "end": 1699633501981,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501981,
+      "end": 1699633501981,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501981,
+      "end": 1699633501981,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501981,
+      "end": 1699633501981,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501981,
+      "end": 1699633501981,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501981,
+      "end": 1699633501981,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501981,
+      "end": 1699633501981,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501981,
+      "end": 1699633501981,
+      "order": "normal"
+    }
+  ]
+}

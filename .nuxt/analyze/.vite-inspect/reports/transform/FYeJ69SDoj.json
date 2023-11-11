@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/c.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: C\nCategory: common, system\nWebsite: https://en.wikipedia.org/wiki/C_(programming_language)\n*/\n\n/** @type LanguageFn */\nfunction c(hljs) {\n  const regex = hljs.regex;\n  // added for historic reasons because `hljs.C_LINE_COMMENT_MODE` does\n  // not include such support nor can we be sure all the grammars depending\n  // on it would desire this behavior\n  const C_LINE_COMMENT_MODE = hljs.COMMENT('//', '$', { contains: [ { begin: /\\\\\\n/ } ] });\n  const DECLTYPE_AUTO_RE = 'decltype\\\\(auto\\\\)';\n  const NAMESPACE_RE = '[a-zA-Z_]\\\\w*::';\n  const TEMPLATE_ARGUMENT_RE = '<[^<>]+>';\n  const FUNCTION_TYPE_RE = '('\n    + DECLTYPE_AUTO_RE + '|'\n    + regex.optional(NAMESPACE_RE)\n    + '[a-zA-Z_]\\\\w*' + regex.optional(TEMPLATE_ARGUMENT_RE)\n  + ')';\n\n\n  const TYPES = {\n    className: 'type',\n    variants: [\n      { begin: '\\\\b[a-z\\\\d_]*_t\\\\b' },\n      { match: /\\batomic_[a-z]{3,6}\\b/ }\n    ]\n\n  };\n\n  // https://en.cppreference.com/w/cpp/language/escape\n  // \\\\ \\x \\xFF \\u2837 \\u00323747 \\374\n  const CHARACTER_ESCAPES = '\\\\\\\\(x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4,8}|[0-7]{3}|\\\\S)';\n  const STRINGS = {\n    className: 'string',\n    variants: [\n      {\n        begin: '(u8?|U|L)?\"',\n        end: '\"',\n        illegal: '\\\\n',\n        contains: [ hljs.BACKSLASH_ESCAPE ]\n      },\n      {\n        begin: '(u8?|U|L)?\\'(' + CHARACTER_ESCAPES + \"|.)\",\n        end: '\\'',\n        illegal: '.'\n      },\n      hljs.END_SAME_AS_BEGIN({\n        begin: /(?:u8?|U|L)?R\"([^()\\\\ ]{0,16})\\(/,\n        end: /\\)([^()\\\\ ]{0,16})\"/\n      })\n    ]\n  };\n\n  const NUMBERS = {\n    className: 'number',\n    variants: [\n      { begin: '\\\\b(0b[01\\']+)' },\n      { begin: '(-?)\\\\b([\\\\d\\']+(\\\\.[\\\\d\\']*)?|\\\\.[\\\\d\\']+)((ll|LL|l|L)(u|U)?|(u|U)(ll|LL|l|L)?|f|F|b|B)' },\n      { begin: '(-?)(\\\\b0[xX][a-fA-F0-9\\']+|(\\\\b[\\\\d\\']+(\\\\.[\\\\d\\']*)?|\\\\.[\\\\d\\']+)([eE][-+]?[\\\\d\\']+)?)' }\n    ],\n    relevance: 0\n  };\n\n  const PREPROCESSOR = {\n    className: 'meta',\n    begin: /#\\s*[a-z]+\\b/,\n    end: /$/,\n    keywords: { keyword:\n        'if else elif endif define undef warning error line '\n        + 'pragma _Pragma ifdef ifndef include' },\n    contains: [\n      {\n        begin: /\\\\\\n/,\n        relevance: 0\n      },\n      hljs.inherit(STRINGS, { className: 'string' }),\n      {\n        className: 'string',\n        begin: /<.*?>/\n      },\n      C_LINE_COMMENT_MODE,\n      hljs.C_BLOCK_COMMENT_MODE\n    ]\n  };\n\n  const TITLE_MODE = {\n    className: 'title',\n    begin: regex.optional(NAMESPACE_RE) + hljs.IDENT_RE,\n    relevance: 0\n  };\n\n  const FUNCTION_TITLE = regex.optional(NAMESPACE_RE) + hljs.IDENT_RE + '\\\\s*\\\\(';\n\n  const C_KEYWORDS = [\n    \"asm\",\n    \"auto\",\n    \"break\",\n    \"case\",\n    \"continue\",\n    \"default\",\n    \"do\",\n    \"else\",\n    \"enum\",\n    \"extern\",\n    \"for\",\n    \"fortran\",\n    \"goto\",\n    \"if\",\n    \"inline\",\n    \"register\",\n    \"restrict\",\n    \"return\",\n    \"sizeof\",\n    \"struct\",\n    \"switch\",\n    \"typedef\",\n    \"union\",\n    \"volatile\",\n    \"while\",\n    \"_Alignas\",\n    \"_Alignof\",\n    \"_Atomic\",\n    \"_Generic\",\n    \"_Noreturn\",\n    \"_Static_assert\",\n    \"_Thread_local\",\n    // aliases\n    \"alignas\",\n    \"alignof\",\n    \"noreturn\",\n    \"static_assert\",\n    \"thread_local\",\n    // not a C keyword but is, for all intents and purposes, treated exactly like one.\n    \"_Pragma\"\n  ];\n\n  const C_TYPES = [\n    \"float\",\n    \"double\",\n    \"signed\",\n    \"unsigned\",\n    \"int\",\n    \"short\",\n    \"long\",\n    \"char\",\n    \"void\",\n    \"_Bool\",\n    \"_Complex\",\n    \"_Imaginary\",\n    \"_Decimal32\",\n    \"_Decimal64\",\n    \"_Decimal128\",\n    // modifiers\n    \"const\",\n    \"static\",\n    // aliases\n    \"complex\",\n    \"bool\",\n    \"imaginary\"\n  ];\n\n  const KEYWORDS = {\n    keyword: C_KEYWORDS,\n    type: C_TYPES,\n    literal: 'true false NULL',\n    // TODO: apply hinting work similar to what was done in cpp.js\n    built_in: 'std string wstring cin cout cerr clog stdin stdout stderr stringstream istringstream ostringstream '\n      + 'auto_ptr deque list queue stack vector map set pair bitset multiset multimap unordered_set '\n      + 'unordered_map unordered_multiset unordered_multimap priority_queue make_pair array shared_ptr abort terminate abs acos '\n      + 'asin atan2 atan calloc ceil cosh cos exit exp fabs floor fmod fprintf fputs free frexp '\n      + 'fscanf future isalnum isalpha iscntrl isdigit isgraph islower isprint ispunct isspace isupper '\n      + 'isxdigit tolower toupper labs ldexp log10 log malloc realloc memchr memcmp memcpy memset modf pow '\n      + 'printf putchar puts scanf sinh sin snprintf sprintf sqrt sscanf strcat strchr strcmp '\n      + 'strcpy strcspn strlen strncat strncmp strncpy strpbrk strrchr strspn strstr tanh tan '\n      + 'vfprintf vprintf vsprintf endl initializer_list unique_ptr',\n  };\n\n  const EXPRESSION_CONTAINS = [\n    PREPROCESSOR,\n    TYPES,\n    C_LINE_COMMENT_MODE,\n    hljs.C_BLOCK_COMMENT_MODE,\n    NUMBERS,\n    STRINGS\n  ];\n\n  const EXPRESSION_CONTEXT = {\n    // This mode covers expression context where we can't expect a function\n    // definition and shouldn't highlight anything that looks like one:\n    // `return some()`, `else if()`, `(x*sum(1, 2))`\n    variants: [\n      {\n        begin: /=/,\n        end: /;/\n      },\n      {\n        begin: /\\(/,\n        end: /\\)/\n      },\n      {\n        beginKeywords: 'new throw return else',\n        end: /;/\n      }\n    ],\n    keywords: KEYWORDS,\n    contains: EXPRESSION_CONTAINS.concat([\n      {\n        begin: /\\(/,\n        end: /\\)/,\n        keywords: KEYWORDS,\n        contains: EXPRESSION_CONTAINS.concat([ 'self' ]),\n        relevance: 0\n      }\n    ]),\n    relevance: 0\n  };\n\n  const FUNCTION_DECLARATION = {\n    begin: '(' + FUNCTION_TYPE_RE + '[\\\\*&\\\\s]+)+' + FUNCTION_TITLE,\n    returnBegin: true,\n    end: /[{;=]/,\n    excludeEnd: true,\n    keywords: KEYWORDS,\n    illegal: /[^\\w\\s\\*&:<>.]/,\n    contains: [\n      { // to prevent it from being confused as the function title\n        begin: DECLTYPE_AUTO_RE,\n        keywords: KEYWORDS,\n        relevance: 0\n      },\n      {\n        begin: FUNCTION_TITLE,\n        returnBegin: true,\n        contains: [ hljs.inherit(TITLE_MODE, { className: \"title.function\" }) ],\n        relevance: 0\n      },\n      // allow for multiple declarations, e.g.:\n      // extern void f(int), g(char);\n      {\n        relevance: 0,\n        match: /,/\n      },\n      {\n        className: 'params',\n        begin: /\\(/,\n        end: /\\)/,\n        keywords: KEYWORDS,\n        relevance: 0,\n        contains: [\n          C_LINE_COMMENT_MODE,\n          hljs.C_BLOCK_COMMENT_MODE,\n          STRINGS,\n          NUMBERS,\n          TYPES,\n          // Count matching parentheses.\n          {\n            begin: /\\(/,\n            end: /\\)/,\n            keywords: KEYWORDS,\n            relevance: 0,\n            contains: [\n              'self',\n              C_LINE_COMMENT_MODE,\n              hljs.C_BLOCK_COMMENT_MODE,\n              STRINGS,\n              NUMBERS,\n              TYPES\n            ]\n          }\n        ]\n      },\n      TYPES,\n      C_LINE_COMMENT_MODE,\n      hljs.C_BLOCK_COMMENT_MODE,\n      PREPROCESSOR\n    ]\n  };\n\n  return {\n    name: \"C\",\n    aliases: [ 'h' ],\n    keywords: KEYWORDS,\n    // Until differentiations are added between `c` and `cpp`, `c` will\n    // not be auto-detected to avoid auto-detect conflicts between C and C++\n    disableAutodetect: true,\n    illegal: '</',\n    contains: [].concat(\n      EXPRESSION_CONTEXT,\n      FUNCTION_DECLARATION,\n      EXPRESSION_CONTAINS,\n      [\n        PREPROCESSOR,\n        {\n          begin: hljs.IDENT_RE + '::',\n          keywords: KEYWORDS\n        },\n        {\n          className: 'class',\n          beginKeywords: 'enum class struct union',\n          end: /[{;:<>=]/,\n          contains: [\n            { beginKeywords: \"final class struct\" },\n            hljs.TITLE_MODE\n          ]\n        }\n      ]),\n    exports: {\n      preprocessor: PREPROCESSOR,\n      strings: STRINGS,\n      keywords: KEYWORDS\n    }\n  };\n}\n\nmodule.exports = c;\n",
+      "start": 1699633500615,
+      "end": 1699633500706,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500706,
+      "end": 1699633500706,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500706,
+      "end": 1699633500706,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500706,
+      "end": 1699633500706,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500706,
+      "end": 1699633500706,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500706,
+      "end": 1699633500706,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500706,
+      "end": 1699633500706,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500706,
+      "end": 1699633500707,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500707,
+      "end": 1699633500707,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500707,
+      "end": 1699633500707,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500707,
+      "end": 1699633500707,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500707,
+      "end": 1699633500707,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500707,
+      "end": 1699633500707,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500707,
+      "end": 1699633500707,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500707,
+      "end": 1699633500707,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500707,
+      "end": 1699633500707,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500707,
+      "end": 1699633500707,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500707,
+      "end": 1699633500707,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500708,
+      "end": 1699633500708,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500708,
+      "end": 1699633500708,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500708,
+      "end": 1699633500708,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: C\nCategory: common, system\nWebsite: https://en.wikipedia.org/wiki/C_(programming_language)\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar c_1;\nvar hasRequiredC;\n\nfunction requireC () {\n\tif (hasRequiredC) return c_1;\n\thasRequiredC = 1;\n\t/** @type LanguageFn */\n\tfunction c(hljs) {\n\t  const regex = hljs.regex;\n\t  // added for historic reasons because `hljs.C_LINE_COMMENT_MODE` does\n\t  // not include such support nor can we be sure all the grammars depending\n\t  // on it would desire this behavior\n\t  const C_LINE_COMMENT_MODE = hljs.COMMENT('//', '$', { contains: [ { begin: /\\\\\\n/ } ] });\n\t  const DECLTYPE_AUTO_RE = 'decltype\\\\(auto\\\\)';\n\t  const NAMESPACE_RE = '[a-zA-Z_]\\\\w*::';\n\t  const TEMPLATE_ARGUMENT_RE = '<[^<>]+>';\n\t  const FUNCTION_TYPE_RE = '('\n\t    + DECLTYPE_AUTO_RE + '|'\n\t    + regex.optional(NAMESPACE_RE)\n\t    + '[a-zA-Z_]\\\\w*' + regex.optional(TEMPLATE_ARGUMENT_RE)\n\t  + ')';\n\n\n\t  const TYPES = {\n\t    className: 'type',\n\t    variants: [\n\t      { begin: '\\\\b[a-z\\\\d_]*_t\\\\b' },\n\t      { match: /\\batomic_[a-z]{3,6}\\b/ }\n\t    ]\n\n\t  };\n\n\t  // https://en.cppreference.com/w/cpp/language/escape\n\t  // \\\\ \\x \\xFF \\u2837 \\u00323747 \\374\n\t  const CHARACTER_ESCAPES = '\\\\\\\\(x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4,8}|[0-7]{3}|\\\\S)';\n\t  const STRINGS = {\n\t    className: 'string',\n\t    variants: [\n\t      {\n\t        begin: '(u8?|U|L)?\"',\n\t        end: '\"',\n\t        illegal: '\\\\n',\n\t        contains: [ hljs.BACKSLASH_ESCAPE ]\n\t      },\n\t      {\n\t        begin: '(u8?|U|L)?\\'(' + CHARACTER_ESCAPES + \"|.)\",\n\t        end: '\\'',\n\t        illegal: '.'\n\t      },\n\t      hljs.END_SAME_AS_BEGIN({\n\t        begin: /(?:u8?|U|L)?R\"([^()\\\\ ]{0,16})\\(/,\n\t        end: /\\)([^()\\\\ ]{0,16})\"/\n\t      })\n\t    ]\n\t  };\n\n\t  const NUMBERS = {\n\t    className: 'number',\n\t    variants: [\n\t      { begin: '\\\\b(0b[01\\']+)' },\n\t      { begin: '(-?)\\\\b([\\\\d\\']+(\\\\.[\\\\d\\']*)?|\\\\.[\\\\d\\']+)((ll|LL|l|L)(u|U)?|(u|U)(ll|LL|l|L)?|f|F|b|B)' },\n\t      { begin: '(-?)(\\\\b0[xX][a-fA-F0-9\\']+|(\\\\b[\\\\d\\']+(\\\\.[\\\\d\\']*)?|\\\\.[\\\\d\\']+)([eE][-+]?[\\\\d\\']+)?)' }\n\t    ],\n\t    relevance: 0\n\t  };\n\n\t  const PREPROCESSOR = {\n\t    className: 'meta',\n\t    begin: /#\\s*[a-z]+\\b/,\n\t    end: /$/,\n\t    keywords: { keyword:\n\t        'if else elif endif define undef warning error line '\n\t        + 'pragma _Pragma ifdef ifndef include' },\n\t    contains: [\n\t      {\n\t        begin: /\\\\\\n/,\n\t        relevance: 0\n\t      },\n\t      hljs.inherit(STRINGS, { className: 'string' }),\n\t      {\n\t        className: 'string',\n\t        begin: /<.*?>/\n\t      },\n\t      C_LINE_COMMENT_MODE,\n\t      hljs.C_BLOCK_COMMENT_MODE\n\t    ]\n\t  };\n\n\t  const TITLE_MODE = {\n\t    className: 'title',\n\t    begin: regex.optional(NAMESPACE_RE) + hljs.IDENT_RE,\n\t    relevance: 0\n\t  };\n\n\t  const FUNCTION_TITLE = regex.optional(NAMESPACE_RE) + hljs.IDENT_RE + '\\\\s*\\\\(';\n\n\t  const C_KEYWORDS = [\n\t    \"asm\",\n\t    \"auto\",\n\t    \"break\",\n\t    \"case\",\n\t    \"continue\",\n\t    \"default\",\n\t    \"do\",\n\t    \"else\",\n\t    \"enum\",\n\t    \"extern\",\n\t    \"for\",\n\t    \"fortran\",\n\t    \"goto\",\n\t    \"if\",\n\t    \"inline\",\n\t    \"register\",\n\t    \"restrict\",\n\t    \"return\",\n\t    \"sizeof\",\n\t    \"struct\",\n\t    \"switch\",\n\t    \"typedef\",\n\t    \"union\",\n\t    \"volatile\",\n\t    \"while\",\n\t    \"_Alignas\",\n\t    \"_Alignof\",\n\t    \"_Atomic\",\n\t    \"_Generic\",\n\t    \"_Noreturn\",\n\t    \"_Static_assert\",\n\t    \"_Thread_local\",\n\t    // aliases\n\t    \"alignas\",\n\t    \"alignof\",\n\t    \"noreturn\",\n\t    \"static_assert\",\n\t    \"thread_local\",\n\t    // not a C keyword but is, for all intents and purposes, treated exactly like one.\n\t    \"_Pragma\"\n\t  ];\n\n\t  const C_TYPES = [\n\t    \"float\",\n\t    \"double\",\n\t    \"signed\",\n\t    \"unsigned\",\n\t    \"int\",\n\t    \"short\",\n\t    \"long\",\n\t    \"char\",\n\t    \"void\",\n\t    \"_Bool\",\n\t    \"_Complex\",\n\t    \"_Imaginary\",\n\t    \"_Decimal32\",\n\t    \"_Decimal64\",\n\t    \"_Decimal128\",\n\t    // modifiers\n\t    \"const\",\n\t    \"static\",\n\t    // aliases\n\t    \"complex\",\n\t    \"bool\",\n\t    \"imaginary\"\n\t  ];\n\n\t  const KEYWORDS = {\n\t    keyword: C_KEYWORDS,\n\t    type: C_TYPES,\n\t    literal: 'true false NULL',\n\t    // TODO: apply hinting work similar to what was done in cpp.js\n\t    built_in: 'std string wstring cin cout cerr clog stdin stdout stderr stringstream istringstream ostringstream '\n\t      + 'auto_ptr deque list queue stack vector map set pair bitset multiset multimap unordered_set '\n\t      + 'unordered_map unordered_multiset unordered_multimap priority_queue make_pair array shared_ptr abort terminate abs acos '\n\t      + 'asin atan2 atan calloc ceil cosh cos exit exp fabs floor fmod fprintf fputs free frexp '\n\t      + 'fscanf future isalnum isalpha iscntrl isdigit isgraph islower isprint ispunct isspace isupper '\n\t      + 'isxdigit tolower toupper labs ldexp log10 log malloc realloc memchr memcmp memcpy memset modf pow '\n\t      + 'printf putchar puts scanf sinh sin snprintf sprintf sqrt sscanf strcat strchr strcmp '\n\t      + 'strcpy strcspn strlen strncat strncmp strncpy strpbrk strrchr strspn strstr tanh tan '\n\t      + 'vfprintf vprintf vsprintf endl initializer_list unique_ptr',\n\t  };\n\n\t  const EXPRESSION_CONTAINS = [\n\t    PREPROCESSOR,\n\t    TYPES,\n\t    C_LINE_COMMENT_MODE,\n\t    hljs.C_BLOCK_COMMENT_MODE,\n\t    NUMBERS,\n\t    STRINGS\n\t  ];\n\n\t  const EXPRESSION_CONTEXT = {\n\t    // This mode covers expression context where we can't expect a function\n\t    // definition and shouldn't highlight anything that looks like one:\n\t    // `return some()`, `else if()`, `(x*sum(1, 2))`\n\t    variants: [\n\t      {\n\t        begin: /=/,\n\t        end: /;/\n\t      },\n\t      {\n\t        begin: /\\(/,\n\t        end: /\\)/\n\t      },\n\t      {\n\t        beginKeywords: 'new throw return else',\n\t        end: /;/\n\t      }\n\t    ],\n\t    keywords: KEYWORDS,\n\t    contains: EXPRESSION_CONTAINS.concat([\n\t      {\n\t        begin: /\\(/,\n\t        end: /\\)/,\n\t        keywords: KEYWORDS,\n\t        contains: EXPRESSION_CONTAINS.concat([ 'self' ]),\n\t        relevance: 0\n\t      }\n\t    ]),\n\t    relevance: 0\n\t  };\n\n\t  const FUNCTION_DECLARATION = {\n\t    begin: '(' + FUNCTION_TYPE_RE + '[\\\\*&\\\\s]+)+' + FUNCTION_TITLE,\n\t    returnBegin: true,\n\t    end: /[{;=]/,\n\t    excludeEnd: true,\n\t    keywords: KEYWORDS,\n\t    illegal: /[^\\w\\s\\*&:<>.]/,\n\t    contains: [\n\t      { // to prevent it from being confused as the function title\n\t        begin: DECLTYPE_AUTO_RE,\n\t        keywords: KEYWORDS,\n\t        relevance: 0\n\t      },\n\t      {\n\t        begin: FUNCTION_TITLE,\n\t        returnBegin: true,\n\t        contains: [ hljs.inherit(TITLE_MODE, { className: \"title.function\" }) ],\n\t        relevance: 0\n\t      },\n\t      // allow for multiple declarations, e.g.:\n\t      // extern void f(int), g(char);\n\t      {\n\t        relevance: 0,\n\t        match: /,/\n\t      },\n\t      {\n\t        className: 'params',\n\t        begin: /\\(/,\n\t        end: /\\)/,\n\t        keywords: KEYWORDS,\n\t        relevance: 0,\n\t        contains: [\n\t          C_LINE_COMMENT_MODE,\n\t          hljs.C_BLOCK_COMMENT_MODE,\n\t          STRINGS,\n\t          NUMBERS,\n\t          TYPES,\n\t          // Count matching parentheses.\n\t          {\n\t            begin: /\\(/,\n\t            end: /\\)/,\n\t            keywords: KEYWORDS,\n\t            relevance: 0,\n\t            contains: [\n\t              'self',\n\t              C_LINE_COMMENT_MODE,\n\t              hljs.C_BLOCK_COMMENT_MODE,\n\t              STRINGS,\n\t              NUMBERS,\n\t              TYPES\n\t            ]\n\t          }\n\t        ]\n\t      },\n\t      TYPES,\n\t      C_LINE_COMMENT_MODE,\n\t      hljs.C_BLOCK_COMMENT_MODE,\n\t      PREPROCESSOR\n\t    ]\n\t  };\n\n\t  return {\n\t    name: \"C\",\n\t    aliases: [ 'h' ],\n\t    keywords: KEYWORDS,\n\t    // Until differentiations are added between `c` and `cpp`, `c` will\n\t    // not be auto-detected to avoid auto-detect conflicts between C and C++\n\t    disableAutodetect: true,\n\t    illegal: '</',\n\t    contains: [].concat(\n\t      EXPRESSION_CONTEXT,\n\t      FUNCTION_DECLARATION,\n\t      EXPRESSION_CONTAINS,\n\t      [\n\t        PREPROCESSOR,\n\t        {\n\t          begin: hljs.IDENT_RE + '::',\n\t          keywords: KEYWORDS\n\t        },\n\t        {\n\t          className: 'class',\n\t          beginKeywords: 'enum class struct union',\n\t          end: /[{;:<>=]/,\n\t          contains: [\n\t            { beginKeywords: \"final class struct\" },\n\t            hljs.TITLE_MODE\n\t          ]\n\t        }\n\t      ]),\n\t    exports: {\n\t      preprocessor: PREPROCESSOR,\n\t      strings: STRINGS,\n\t      keywords: KEYWORDS\n\t    }\n\t  };\n\t}\n\n\tc_1 = c;\n\treturn c_1;\n}\n\nexport { requireC as __require };",
+      "start": 1699633500708,
+      "end": 1699633500709,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500709,
+      "end": 1699633500709,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500709,
+      "end": 1699633500709,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500709,
+      "end": 1699633500709,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500709,
+      "end": 1699633500709,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500709,
+      "end": 1699633500709,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500709,
+      "end": 1699633500709,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500709,
+      "end": 1699633500709,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500709,
+      "end": 1699633500709,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500709,
+      "end": 1699633500709,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500709,
+      "end": 1699633500709,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500709,
+      "end": 1699633500709,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500709,
+      "end": 1699633500709,
+      "order": "normal"
+    }
+  ]
+}

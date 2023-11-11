@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/dsconfig.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\n Language: dsconfig\n Description: dsconfig batch configuration language for LDAP directory servers\n Contributors: Jacob Childress <jacobc@gmail.com>\n Category: enterprise, config\n */\n\n/** @type LanguageFn */\nfunction dsconfig(hljs) {\n  const QUOTED_PROPERTY = {\n    className: 'string',\n    begin: /\"/,\n    end: /\"/\n  };\n  const APOS_PROPERTY = {\n    className: 'string',\n    begin: /'/,\n    end: /'/\n  };\n  const UNQUOTED_PROPERTY = {\n    className: 'string',\n    begin: /[\\w\\-?]+:\\w+/,\n    end: /\\W/,\n    relevance: 0\n  };\n  const VALUELESS_PROPERTY = {\n    className: 'string',\n    begin: /\\w+(\\-\\w+)*/,\n    end: /(?=\\W)/,\n    relevance: 0\n  };\n\n  return {\n    keywords: 'dsconfig',\n    contains: [\n      {\n        className: 'keyword',\n        begin: '^dsconfig',\n        end: /\\s/,\n        excludeEnd: true,\n        relevance: 10\n      },\n      {\n        className: 'built_in',\n        begin: /(list|create|get|set|delete)-(\\w+)/,\n        end: /\\s/,\n        excludeEnd: true,\n        illegal: '!@#$%^&*()',\n        relevance: 10\n      },\n      {\n        className: 'built_in',\n        begin: /--(\\w+)/,\n        end: /\\s/,\n        excludeEnd: true\n      },\n      QUOTED_PROPERTY,\n      APOS_PROPERTY,\n      UNQUOTED_PROPERTY,\n      VALUELESS_PROPERTY,\n      hljs.HASH_COMMENT_MODE\n    ]\n  };\n}\n\nmodule.exports = dsconfig;\n",
+      "start": 1699633500747,
+      "end": 1699633500837,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500837,
+      "end": 1699633500837,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500837,
+      "end": 1699633500837,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500837,
+      "end": 1699633500837,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500837,
+      "end": 1699633500837,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500837,
+      "end": 1699633500837,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500838,
+      "end": 1699633500838,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500838,
+      "end": 1699633500838,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500838,
+      "end": 1699633500838,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500838,
+      "end": 1699633500838,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500838,
+      "end": 1699633500838,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500838,
+      "end": 1699633500838,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500838,
+      "end": 1699633500838,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500838,
+      "end": 1699633500839,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500839,
+      "end": 1699633500839,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500839,
+      "end": 1699633500839,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500839,
+      "end": 1699633500839,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500839,
+      "end": 1699633500839,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500839,
+      "end": 1699633500839,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500839,
+      "end": 1699633500839,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500839,
+      "end": 1699633500839,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\n Language: dsconfig\n Description: dsconfig batch configuration language for LDAP directory servers\n Contributors: Jacob Childress <jacobc@gmail.com>\n Category: enterprise, config\n */\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar dsconfig_1;\nvar hasRequiredDsconfig;\n\nfunction requireDsconfig () {\n\tif (hasRequiredDsconfig) return dsconfig_1;\n\thasRequiredDsconfig = 1;\n\t/** @type LanguageFn */\n\tfunction dsconfig(hljs) {\n\t  const QUOTED_PROPERTY = {\n\t    className: 'string',\n\t    begin: /\"/,\n\t    end: /\"/\n\t  };\n\t  const APOS_PROPERTY = {\n\t    className: 'string',\n\t    begin: /'/,\n\t    end: /'/\n\t  };\n\t  const UNQUOTED_PROPERTY = {\n\t    className: 'string',\n\t    begin: /[\\w\\-?]+:\\w+/,\n\t    end: /\\W/,\n\t    relevance: 0\n\t  };\n\t  const VALUELESS_PROPERTY = {\n\t    className: 'string',\n\t    begin: /\\w+(\\-\\w+)*/,\n\t    end: /(?=\\W)/,\n\t    relevance: 0\n\t  };\n\n\t  return {\n\t    keywords: 'dsconfig',\n\t    contains: [\n\t      {\n\t        className: 'keyword',\n\t        begin: '^dsconfig',\n\t        end: /\\s/,\n\t        excludeEnd: true,\n\t        relevance: 10\n\t      },\n\t      {\n\t        className: 'built_in',\n\t        begin: /(list|create|get|set|delete)-(\\w+)/,\n\t        end: /\\s/,\n\t        excludeEnd: true,\n\t        illegal: '!@#$%^&*()',\n\t        relevance: 10\n\t      },\n\t      {\n\t        className: 'built_in',\n\t        begin: /--(\\w+)/,\n\t        end: /\\s/,\n\t        excludeEnd: true\n\t      },\n\t      QUOTED_PROPERTY,\n\t      APOS_PROPERTY,\n\t      UNQUOTED_PROPERTY,\n\t      VALUELESS_PROPERTY,\n\t      hljs.HASH_COMMENT_MODE\n\t    ]\n\t  };\n\t}\n\n\tdsconfig_1 = dsconfig;\n\treturn dsconfig_1;\n}\n\nexport { requireDsconfig as __require };",
+      "start": 1699633500839,
+      "end": 1699633500839,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;CAOA;CACA,SAAS,QAAQ,CAAC,IAAI,EAAE;CACxB,EAAE,MAAM,eAAe,GAAG;CAC1B,IAAI,SAAS,EAAE,QAAQ;CACvB,IAAI,KAAK,EAAE,GAAG;CACd,IAAI,GAAG,EAAE,GAAG;CACZ,GAAG,CAAC;CACJ,EAAE,MAAM,aAAa,GAAG;CACxB,IAAI,SAAS,EAAE,QAAQ;CACvB,IAAI,KAAK,EAAE,GAAG;CACd,IAAI,GAAG,EAAE,GAAG;CACZ,GAAG,CAAC;CACJ,EAAE,MAAM,iBAAiB,GAAG;CAC5B,IAAI,SAAS,EAAE,QAAQ;CACvB,IAAI,KAAK,EAAE,cAAc;CACzB,IAAI,GAAG,EAAE,IAAI;CACb,IAAI,SAAS,EAAE,CAAC;CAChB,GAAG,CAAC;CACJ,EAAE,MAAM,kBAAkB,GAAG;CAC7B,IAAI,SAAS,EAAE,QAAQ;CACvB,IAAI,KAAK,EAAE,aAAa;CACxB,IAAI,GAAG,EAAE,QAAQ;CACjB,IAAI,SAAS,EAAE,CAAC;CAChB,GAAG,CAAC;AACJ;CACA,EAAE,OAAO;CACT,IAAI,QAAQ,EAAE,UAAU;CACxB,IAAI,QAAQ,EAAE;CACd,MAAM;CACN,QAAQ,SAAS,EAAE,SAAS;CAC5B,QAAQ,KAAK,EAAE,WAAW;CAC1B,QAAQ,GAAG,EAAE,IAAI;CACjB,QAAQ,UAAU,EAAE,IAAI;CACxB,QAAQ,SAAS,EAAE,EAAE;CACrB,OAAO;CACP,MAAM;CACN,QAAQ,SAAS,EAAE,UAAU;CAC7B,QAAQ,KAAK,EAAE,oCAAoC;CACnD,QAAQ,GAAG,EAAE,IAAI;CACjB,QAAQ,UAAU,EAAE,IAAI;CACxB,QAAQ,OAAO,EAAE,YAAY;CAC7B,QAAQ,SAAS,EAAE,EAAE;CACrB,OAAO;CACP,MAAM;CACN,QAAQ,SAAS,EAAE,UAAU;CAC7B,QAAQ,KAAK,EAAE,SAAS;CACxB,QAAQ,GAAG,EAAE,IAAI;CACjB,QAAQ,UAAU,EAAE,IAAI;CACxB,OAAO;CACP,MAAM,eAAe;CACrB,MAAM,aAAa;CACnB,MAAM,iBAAiB;CACvB,MAAM,kBAAkB;CACxB,MAAM,IAAI,CAAC,iBAAiB;CAC5B,KAAK;CACL,GAAG,CAAC;CACJ,CAAC;AACD;AACA,WAAc,GAAG,QAAQ"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500839,
+      "end": 1699633500839,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500840,
+      "end": 1699633500840,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500840,
+      "end": 1699633500840,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500840,
+      "end": 1699633500840,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500840,
+      "end": 1699633500840,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500840,
+      "end": 1699633500840,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500840,
+      "end": 1699633500840,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500840,
+      "end": 1699633500840,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500840,
+      "end": 1699633500840,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500840,
+      "end": 1699633500840,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500840,
+      "end": 1699633500840,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500840,
+      "end": 1699633500840,
+      "order": "normal"
+    }
+  ]
+}

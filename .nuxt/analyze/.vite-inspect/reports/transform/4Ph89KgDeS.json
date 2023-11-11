@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/rules_block/list.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Lists\n\n'use strict';\n\nvar isSpace = require('../common/utils').isSpace;\n\n\n// Search `[-+*][\\n ]`, returns next pos after marker on success\n// or -1 on fail.\nfunction skipBulletListMarker(state, startLine) {\n  var marker, pos, max, ch;\n\n  pos = state.bMarks[startLine] + state.tShift[startLine];\n  max = state.eMarks[startLine];\n\n  marker = state.src.charCodeAt(pos++);\n  // Check bullet\n  if (marker !== 0x2A/* * */ &&\n      marker !== 0x2D/* - */ &&\n      marker !== 0x2B/* + */) {\n    return -1;\n  }\n\n  if (pos < max) {\n    ch = state.src.charCodeAt(pos);\n\n    if (!isSpace(ch)) {\n      // \" -test \" - is not a list item\n      return -1;\n    }\n  }\n\n  return pos;\n}\n\n// Search `\\d+[.)][\\n ]`, returns next pos after marker on success\n// or -1 on fail.\nfunction skipOrderedListMarker(state, startLine) {\n  var ch,\n      start = state.bMarks[startLine] + state.tShift[startLine],\n      pos = start,\n      max = state.eMarks[startLine];\n\n  // List marker should have at least 2 chars (digit + dot)\n  if (pos + 1 >= max) { return -1; }\n\n  ch = state.src.charCodeAt(pos++);\n\n  if (ch < 0x30/* 0 */ || ch > 0x39/* 9 */) { return -1; }\n\n  for (;;) {\n    // EOL -> fail\n    if (pos >= max) { return -1; }\n\n    ch = state.src.charCodeAt(pos++);\n\n    if (ch >= 0x30/* 0 */ && ch <= 0x39/* 9 */) {\n\n      // List marker should have no more than 9 digits\n      // (prevents integer overflow in browsers)\n      if (pos - start >= 10) { return -1; }\n\n      continue;\n    }\n\n    // found valid marker\n    if (ch === 0x29/* ) */ || ch === 0x2e/* . */) {\n      break;\n    }\n\n    return -1;\n  }\n\n\n  if (pos < max) {\n    ch = state.src.charCodeAt(pos);\n\n    if (!isSpace(ch)) {\n      // \" 1.test \" - is not a list item\n      return -1;\n    }\n  }\n  return pos;\n}\n\nfunction markTightParagraphs(state, idx) {\n  var i, l,\n      level = state.level + 2;\n\n  for (i = idx + 2, l = state.tokens.length - 2; i < l; i++) {\n    if (state.tokens[i].level === level && state.tokens[i].type === 'paragraph_open') {\n      state.tokens[i + 2].hidden = true;\n      state.tokens[i].hidden = true;\n      i += 2;\n    }\n  }\n}\n\n\nmodule.exports = function list(state, startLine, endLine, silent) {\n  var ch,\n      contentStart,\n      i,\n      indent,\n      indentAfterMarker,\n      initial,\n      isOrdered,\n      itemLines,\n      l,\n      listLines,\n      listTokIdx,\n      markerCharCode,\n      markerValue,\n      max,\n      offset,\n      oldListIndent,\n      oldParentType,\n      oldSCount,\n      oldTShift,\n      oldTight,\n      pos,\n      posAfterMarker,\n      prevEmptyEnd,\n      start,\n      terminate,\n      terminatorRules,\n      token,\n      nextLine = startLine,\n      isTerminatingParagraph = false,\n      tight = true;\n\n  // if it's indented more than 3 spaces, it should be a code block\n  if (state.sCount[nextLine] - state.blkIndent >= 4) { return false; }\n\n  // Special case:\n  //  - item 1\n  //   - item 2\n  //    - item 3\n  //     - item 4\n  //      - this one is a paragraph continuation\n  if (state.listIndent >= 0 &&\n      state.sCount[nextLine] - state.listIndent >= 4 &&\n      state.sCount[nextLine] < state.blkIndent) {\n    return false;\n  }\n\n  // limit conditions when list can interrupt\n  // a paragraph (validation mode only)\n  if (silent && state.parentType === 'paragraph') {\n    // Next list item should still terminate previous list item;\n    //\n    // This code can fail if plugins use blkIndent as well as lists,\n    // but I hope the spec gets fixed long before that happens.\n    //\n    if (state.sCount[nextLine] >= state.blkIndent) {\n      isTerminatingParagraph = true;\n    }\n  }\n\n  // Detect list type and position after marker\n  if ((posAfterMarker = skipOrderedListMarker(state, nextLine)) >= 0) {\n    isOrdered = true;\n    start = state.bMarks[nextLine] + state.tShift[nextLine];\n    markerValue = Number(state.src.slice(start, posAfterMarker - 1));\n\n    // If we're starting a new ordered list right after\n    // a paragraph, it should start with 1.\n    if (isTerminatingParagraph && markerValue !== 1) return false;\n\n  } else if ((posAfterMarker = skipBulletListMarker(state, nextLine)) >= 0) {\n    isOrdered = false;\n\n  } else {\n    return false;\n  }\n\n  // If we're starting a new unordered list right after\n  // a paragraph, first line should not be empty.\n  if (isTerminatingParagraph) {\n    if (state.skipSpaces(posAfterMarker) >= state.eMarks[nextLine]) return false;\n  }\n\n  // For validation mode we can terminate immediately\n  if (silent) { return true; }\n\n  // We should terminate list on style change. Remember first one to compare.\n  markerCharCode = state.src.charCodeAt(posAfterMarker - 1);\n\n  // Start list\n  listTokIdx = state.tokens.length;\n\n  if (isOrdered) {\n    token       = state.push('ordered_list_open', 'ol', 1);\n    if (markerValue !== 1) {\n      token.attrs = [ [ 'start', markerValue ] ];\n    }\n\n  } else {\n    token       = state.push('bullet_list_open', 'ul', 1);\n  }\n\n  token.map    = listLines = [ nextLine, 0 ];\n  token.markup = String.fromCharCode(markerCharCode);\n\n  //\n  // Iterate list items\n  //\n\n  prevEmptyEnd = false;\n  terminatorRules = state.md.block.ruler.getRules('list');\n\n  oldParentType = state.parentType;\n  state.parentType = 'list';\n\n  while (nextLine < endLine) {\n    pos = posAfterMarker;\n    max = state.eMarks[nextLine];\n\n    initial = offset = state.sCount[nextLine] + posAfterMarker - (state.bMarks[nextLine] + state.tShift[nextLine]);\n\n    while (pos < max) {\n      ch = state.src.charCodeAt(pos);\n\n      if (ch === 0x09) {\n        offset += 4 - (offset + state.bsCount[nextLine]) % 4;\n      } else if (ch === 0x20) {\n        offset++;\n      } else {\n        break;\n      }\n\n      pos++;\n    }\n\n    contentStart = pos;\n\n    if (contentStart >= max) {\n      // trimming space in \"-    \\n  3\" case, indent is 1 here\n      indentAfterMarker = 1;\n    } else {\n      indentAfterMarker = offset - initial;\n    }\n\n    // If we have more than 4 spaces, the indent is 1\n    // (the rest is just indented code block)\n    if (indentAfterMarker > 4) { indentAfterMarker = 1; }\n\n    // \"  -  test\"\n    //  ^^^^^ - calculating total length of this thing\n    indent = initial + indentAfterMarker;\n\n    // Run subparser & write tokens\n    token        = state.push('list_item_open', 'li', 1);\n    token.markup = String.fromCharCode(markerCharCode);\n    token.map    = itemLines = [ nextLine, 0 ];\n    if (isOrdered) {\n      token.info = state.src.slice(start, posAfterMarker - 1);\n    }\n\n    // change current state, then restore it after parser subcall\n    oldTight = state.tight;\n    oldTShift = state.tShift[nextLine];\n    oldSCount = state.sCount[nextLine];\n\n    //  - example list\n    // ^ listIndent position will be here\n    //   ^ blkIndent position will be here\n    //\n    oldListIndent = state.listIndent;\n    state.listIndent = state.blkIndent;\n    state.blkIndent = indent;\n\n    state.tight = true;\n    state.tShift[nextLine] = contentStart - state.bMarks[nextLine];\n    state.sCount[nextLine] = offset;\n\n    if (contentStart >= max && state.isEmpty(nextLine + 1)) {\n      // workaround for this case\n      // (list item is empty, list terminates before \"foo\"):\n      // ~~~~~~~~\n      //   -\n      //\n      //     foo\n      // ~~~~~~~~\n      state.line = Math.min(state.line + 2, endLine);\n    } else {\n      state.md.block.tokenize(state, nextLine, endLine, true);\n    }\n\n    // If any of list item is tight, mark list as tight\n    if (!state.tight || prevEmptyEnd) {\n      tight = false;\n    }\n    // Item become loose if finish with empty line,\n    // but we should filter last element, because it means list finish\n    prevEmptyEnd = (state.line - nextLine) > 1 && state.isEmpty(state.line - 1);\n\n    state.blkIndent = state.listIndent;\n    state.listIndent = oldListIndent;\n    state.tShift[nextLine] = oldTShift;\n    state.sCount[nextLine] = oldSCount;\n    state.tight = oldTight;\n\n    token        = state.push('list_item_close', 'li', -1);\n    token.markup = String.fromCharCode(markerCharCode);\n\n    nextLine = state.line;\n    itemLines[1] = nextLine;\n\n    if (nextLine >= endLine) { break; }\n\n    //\n    // Try to check if list is terminated or continued.\n    //\n    if (state.sCount[nextLine] < state.blkIndent) { break; }\n\n    // if it's indented more than 3 spaces, it should be a code block\n    if (state.sCount[nextLine] - state.blkIndent >= 4) { break; }\n\n    // fail if terminating block found\n    terminate = false;\n    for (i = 0, l = terminatorRules.length; i < l; i++) {\n      if (terminatorRules[i](state, nextLine, endLine, true)) {\n        terminate = true;\n        break;\n      }\n    }\n    if (terminate) { break; }\n\n    // fail if list has another type\n    if (isOrdered) {\n      posAfterMarker = skipOrderedListMarker(state, nextLine);\n      if (posAfterMarker < 0) { break; }\n      start = state.bMarks[nextLine] + state.tShift[nextLine];\n    } else {\n      posAfterMarker = skipBulletListMarker(state, nextLine);\n      if (posAfterMarker < 0) { break; }\n    }\n\n    if (markerCharCode !== state.src.charCodeAt(posAfterMarker - 1)) { break; }\n  }\n\n  // Finalize list\n  if (isOrdered) {\n    token = state.push('ordered_list_close', 'ol', -1);\n  } else {\n    token = state.push('bullet_list_close', 'ul', -1);\n  }\n  token.markup = String.fromCharCode(markerCharCode);\n\n  listLines[1] = nextLine;\n  state.line = nextLine;\n\n  state.parentType = oldParentType;\n\n  // mark paragraphs tight if needed\n  if (tight) {\n    markTightParagraphs(state, listTokIdx);\n  }\n\n  return true;\n};\n",
+      "start": 1699633501682,
+      "end": 1699633501811,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501812,
+      "end": 1699633501812,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501812,
+      "end": 1699633501812,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501812,
+      "end": 1699633501812,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501812,
+      "end": 1699633501812,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501812,
+      "end": 1699633501812,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501812,
+      "end": 1699633501812,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501812,
+      "end": 1699633501812,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501812,
+      "end": 1699633501812,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501812,
+      "end": 1699633501812,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501812,
+      "end": 1699633501812,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501812,
+      "end": 1699633501812,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501812,
+      "end": 1699633501813,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501813,
+      "end": 1699633501813,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501813,
+      "end": 1699633501813,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501813,
+      "end": 1699633501813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501813,
+      "end": 1699633501813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501813,
+      "end": 1699633501813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501813,
+      "end": 1699633501813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501813,
+      "end": 1699633501813,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501813,
+      "end": 1699633501813,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/common/utils.js?commonjs-proxy\";\n\n// Lists\n\n'use strict';\n\nvar isSpace = require$$0.isSpace;\n\n\n// Search `[-+*][\\n ]`, returns next pos after marker on success\n// or -1 on fail.\nfunction skipBulletListMarker(state, startLine) {\n  var marker, pos, max, ch;\n\n  pos = state.bMarks[startLine] + state.tShift[startLine];\n  max = state.eMarks[startLine];\n\n  marker = state.src.charCodeAt(pos++);\n  // Check bullet\n  if (marker !== 0x2A/* * */ &&\n      marker !== 0x2D/* - */ &&\n      marker !== 0x2B/* + */) {\n    return -1;\n  }\n\n  if (pos < max) {\n    ch = state.src.charCodeAt(pos);\n\n    if (!isSpace(ch)) {\n      // \" -test \" - is not a list item\n      return -1;\n    }\n  }\n\n  return pos;\n}\n\n// Search `\\d+[.)][\\n ]`, returns next pos after marker on success\n// or -1 on fail.\nfunction skipOrderedListMarker(state, startLine) {\n  var ch,\n      start = state.bMarks[startLine] + state.tShift[startLine],\n      pos = start,\n      max = state.eMarks[startLine];\n\n  // List marker should have at least 2 chars (digit + dot)\n  if (pos + 1 >= max) { return -1; }\n\n  ch = state.src.charCodeAt(pos++);\n\n  if (ch < 0x30/* 0 */ || ch > 0x39/* 9 */) { return -1; }\n\n  for (;;) {\n    // EOL -> fail\n    if (pos >= max) { return -1; }\n\n    ch = state.src.charCodeAt(pos++);\n\n    if (ch >= 0x30/* 0 */ && ch <= 0x39/* 9 */) {\n\n      // List marker should have no more than 9 digits\n      // (prevents integer overflow in browsers)\n      if (pos - start >= 10) { return -1; }\n\n      continue;\n    }\n\n    // found valid marker\n    if (ch === 0x29/* ) */ || ch === 0x2e/* . */) {\n      break;\n    }\n\n    return -1;\n  }\n\n\n  if (pos < max) {\n    ch = state.src.charCodeAt(pos);\n\n    if (!isSpace(ch)) {\n      // \" 1.test \" - is not a list item\n      return -1;\n    }\n  }\n  return pos;\n}\n\nfunction markTightParagraphs(state, idx) {\n  var i, l,\n      level = state.level + 2;\n\n  for (i = idx + 2, l = state.tokens.length - 2; i < l; i++) {\n    if (state.tokens[i].level === level && state.tokens[i].type === 'paragraph_open') {\n      state.tokens[i + 2].hidden = true;\n      state.tokens[i].hidden = true;\n      i += 2;\n    }\n  }\n}\n\n\nvar list = function list(state, startLine, endLine, silent) {\n  var ch,\n      contentStart,\n      i,\n      indent,\n      indentAfterMarker,\n      initial,\n      isOrdered,\n      itemLines,\n      l,\n      listLines,\n      listTokIdx,\n      markerCharCode,\n      markerValue,\n      max,\n      offset,\n      oldListIndent,\n      oldParentType,\n      oldSCount,\n      oldTShift,\n      oldTight,\n      pos,\n      posAfterMarker,\n      prevEmptyEnd,\n      start,\n      terminate,\n      terminatorRules,\n      token,\n      nextLine = startLine,\n      isTerminatingParagraph = false,\n      tight = true;\n\n  // if it's indented more than 3 spaces, it should be a code block\n  if (state.sCount[nextLine] - state.blkIndent >= 4) { return false; }\n\n  // Special case:\n  //  - item 1\n  //   - item 2\n  //    - item 3\n  //     - item 4\n  //      - this one is a paragraph continuation\n  if (state.listIndent >= 0 &&\n      state.sCount[nextLine] - state.listIndent >= 4 &&\n      state.sCount[nextLine] < state.blkIndent) {\n    return false;\n  }\n\n  // limit conditions when list can interrupt\n  // a paragraph (validation mode only)\n  if (silent && state.parentType === 'paragraph') {\n    // Next list item should still terminate previous list item;\n    //\n    // This code can fail if plugins use blkIndent as well as lists,\n    // but I hope the spec gets fixed long before that happens.\n    //\n    if (state.sCount[nextLine] >= state.blkIndent) {\n      isTerminatingParagraph = true;\n    }\n  }\n\n  // Detect list type and position after marker\n  if ((posAfterMarker = skipOrderedListMarker(state, nextLine)) >= 0) {\n    isOrdered = true;\n    start = state.bMarks[nextLine] + state.tShift[nextLine];\n    markerValue = Number(state.src.slice(start, posAfterMarker - 1));\n\n    // If we're starting a new ordered list right after\n    // a paragraph, it should start with 1.\n    if (isTerminatingParagraph && markerValue !== 1) return false;\n\n  } else if ((posAfterMarker = skipBulletListMarker(state, nextLine)) >= 0) {\n    isOrdered = false;\n\n  } else {\n    return false;\n  }\n\n  // If we're starting a new unordered list right after\n  // a paragraph, first line should not be empty.\n  if (isTerminatingParagraph) {\n    if (state.skipSpaces(posAfterMarker) >= state.eMarks[nextLine]) return false;\n  }\n\n  // For validation mode we can terminate immediately\n  if (silent) { return true; }\n\n  // We should terminate list on style change. Remember first one to compare.\n  markerCharCode = state.src.charCodeAt(posAfterMarker - 1);\n\n  // Start list\n  listTokIdx = state.tokens.length;\n\n  if (isOrdered) {\n    token       = state.push('ordered_list_open', 'ol', 1);\n    if (markerValue !== 1) {\n      token.attrs = [ [ 'start', markerValue ] ];\n    }\n\n  } else {\n    token       = state.push('bullet_list_open', 'ul', 1);\n  }\n\n  token.map    = listLines = [ nextLine, 0 ];\n  token.markup = String.fromCharCode(markerCharCode);\n\n  //\n  // Iterate list items\n  //\n\n  prevEmptyEnd = false;\n  terminatorRules = state.md.block.ruler.getRules('list');\n\n  oldParentType = state.parentType;\n  state.parentType = 'list';\n\n  while (nextLine < endLine) {\n    pos = posAfterMarker;\n    max = state.eMarks[nextLine];\n\n    initial = offset = state.sCount[nextLine] + posAfterMarker - (state.bMarks[nextLine] + state.tShift[nextLine]);\n\n    while (pos < max) {\n      ch = state.src.charCodeAt(pos);\n\n      if (ch === 0x09) {\n        offset += 4 - (offset + state.bsCount[nextLine]) % 4;\n      } else if (ch === 0x20) {\n        offset++;\n      } else {\n        break;\n      }\n\n      pos++;\n    }\n\n    contentStart = pos;\n\n    if (contentStart >= max) {\n      // trimming space in \"-    \\n  3\" case, indent is 1 here\n      indentAfterMarker = 1;\n    } else {\n      indentAfterMarker = offset - initial;\n    }\n\n    // If we have more than 4 spaces, the indent is 1\n    // (the rest is just indented code block)\n    if (indentAfterMarker > 4) { indentAfterMarker = 1; }\n\n    // \"  -  test\"\n    //  ^^^^^ - calculating total length of this thing\n    indent = initial + indentAfterMarker;\n\n    // Run subparser & write tokens\n    token        = state.push('list_item_open', 'li', 1);\n    token.markup = String.fromCharCode(markerCharCode);\n    token.map    = itemLines = [ nextLine, 0 ];\n    if (isOrdered) {\n      token.info = state.src.slice(start, posAfterMarker - 1);\n    }\n\n    // change current state, then restore it after parser subcall\n    oldTight = state.tight;\n    oldTShift = state.tShift[nextLine];\n    oldSCount = state.sCount[nextLine];\n\n    //  - example list\n    // ^ listIndent position will be here\n    //   ^ blkIndent position will be here\n    //\n    oldListIndent = state.listIndent;\n    state.listIndent = state.blkIndent;\n    state.blkIndent = indent;\n\n    state.tight = true;\n    state.tShift[nextLine] = contentStart - state.bMarks[nextLine];\n    state.sCount[nextLine] = offset;\n\n    if (contentStart >= max && state.isEmpty(nextLine + 1)) {\n      // workaround for this case\n      // (list item is empty, list terminates before \"foo\"):\n      // ~~~~~~~~\n      //   -\n      //\n      //     foo\n      // ~~~~~~~~\n      state.line = Math.min(state.line + 2, endLine);\n    } else {\n      state.md.block.tokenize(state, nextLine, endLine, true);\n    }\n\n    // If any of list item is tight, mark list as tight\n    if (!state.tight || prevEmptyEnd) {\n      tight = false;\n    }\n    // Item become loose if finish with empty line,\n    // but we should filter last element, because it means list finish\n    prevEmptyEnd = (state.line - nextLine) > 1 && state.isEmpty(state.line - 1);\n\n    state.blkIndent = state.listIndent;\n    state.listIndent = oldListIndent;\n    state.tShift[nextLine] = oldTShift;\n    state.sCount[nextLine] = oldSCount;\n    state.tight = oldTight;\n\n    token        = state.push('list_item_close', 'li', -1);\n    token.markup = String.fromCharCode(markerCharCode);\n\n    nextLine = state.line;\n    itemLines[1] = nextLine;\n\n    if (nextLine >= endLine) { break; }\n\n    //\n    // Try to check if list is terminated or continued.\n    //\n    if (state.sCount[nextLine] < state.blkIndent) { break; }\n\n    // if it's indented more than 3 spaces, it should be a code block\n    if (state.sCount[nextLine] - state.blkIndent >= 4) { break; }\n\n    // fail if terminating block found\n    terminate = false;\n    for (i = 0, l = terminatorRules.length; i < l; i++) {\n      if (terminatorRules[i](state, nextLine, endLine, true)) {\n        terminate = true;\n        break;\n      }\n    }\n    if (terminate) { break; }\n\n    // fail if list has another type\n    if (isOrdered) {\n      posAfterMarker = skipOrderedListMarker(state, nextLine);\n      if (posAfterMarker < 0) { break; }\n      start = state.bMarks[nextLine] + state.tShift[nextLine];\n    } else {\n      posAfterMarker = skipBulletListMarker(state, nextLine);\n      if (posAfterMarker < 0) { break; }\n    }\n\n    if (markerCharCode !== state.src.charCodeAt(posAfterMarker - 1)) { break; }\n  }\n\n  // Finalize list\n  if (isOrdered) {\n    token = state.push('ordered_list_close', 'ol', -1);\n  } else {\n    token = state.push('bullet_list_close', 'ul', -1);\n  }\n  token.markup = String.fromCharCode(markerCharCode);\n\n  listLines[1] = nextLine;\n  state.line = nextLine;\n\n  state.parentType = oldParentType;\n\n  // mark paragraphs tight if needed\n  if (tight) {\n    markTightParagraphs(state, listTokIdx);\n  }\n\n  return true;\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(list);\nexport { list as __moduleExports };",
+      "start": 1699633501813,
+      "end": 1699633502024,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633502025,
+      "end": 1699633502025,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633502026,
+      "end": 1699633502026,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633502026,
+      "end": 1699633502027,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633502027,
+      "end": 1699633502027,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633502028,
+      "end": 1699633502028,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633502029,
+      "end": 1699633502029,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633502031,
+      "end": 1699633502031,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633502032,
+      "end": 1699633502032,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633502032,
+      "end": 1699633502032,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633502033,
+      "end": 1699633502033,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633502034,
+      "end": 1699633502034,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633502034,
+      "end": 1699633502034,
+      "order": "normal"
+    }
+  ]
+}

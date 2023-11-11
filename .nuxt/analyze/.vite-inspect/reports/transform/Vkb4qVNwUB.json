@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/xl.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: XL\nAuthor: Christophe de Dinechin <christophe@taodyne.com>\nDescription: An extensible programming language, based on parse tree rewriting\nWebsite: http://xlr.sf.net\n*/\n\nfunction xl(hljs) {\n  const KWS = [\n    \"if\",\n    \"then\",\n    \"else\",\n    \"do\",\n    \"while\",\n    \"until\",\n    \"for\",\n    \"loop\",\n    \"import\",\n    \"with\",\n    \"is\",\n    \"as\",\n    \"where\",\n    \"when\",\n    \"by\",\n    \"data\",\n    \"constant\",\n    \"integer\",\n    \"real\",\n    \"text\",\n    \"name\",\n    \"boolean\",\n    \"symbol\",\n    \"infix\",\n    \"prefix\",\n    \"postfix\",\n    \"block\",\n    \"tree\"\n  ];\n  const BUILT_INS = [\n    \"in\",\n    \"mod\",\n    \"rem\",\n    \"and\",\n    \"or\",\n    \"xor\",\n    \"not\",\n    \"abs\",\n    \"sign\",\n    \"floor\",\n    \"ceil\",\n    \"sqrt\",\n    \"sin\",\n    \"cos\",\n    \"tan\",\n    \"asin\",\n    \"acos\",\n    \"atan\",\n    \"exp\",\n    \"expm1\",\n    \"log\",\n    \"log2\",\n    \"log10\",\n    \"log1p\",\n    \"pi\",\n    \"at\",\n    \"text_length\",\n    \"text_range\",\n    \"text_find\",\n    \"text_replace\",\n    \"contains\",\n    \"page\",\n    \"slide\",\n    \"basic_slide\",\n    \"title_slide\",\n    \"title\",\n    \"subtitle\",\n    \"fade_in\",\n    \"fade_out\",\n    \"fade_at\",\n    \"clear_color\",\n    \"color\",\n    \"line_color\",\n    \"line_width\",\n    \"texture_wrap\",\n    \"texture_transform\",\n    \"texture\",\n    \"scale_?x\",\n    \"scale_?y\",\n    \"scale_?z?\",\n    \"translate_?x\",\n    \"translate_?y\",\n    \"translate_?z?\",\n    \"rotate_?x\",\n    \"rotate_?y\",\n    \"rotate_?z?\",\n    \"rectangle\",\n    \"circle\",\n    \"ellipse\",\n    \"sphere\",\n    \"path\",\n    \"line_to\",\n    \"move_to\",\n    \"quad_to\",\n    \"curve_to\",\n    \"theme\",\n    \"background\",\n    \"contents\",\n    \"locally\",\n    \"time\",\n    \"mouse_?x\",\n    \"mouse_?y\",\n    \"mouse_buttons\"\n  ];\n  const BUILTIN_MODULES = [\n    \"ObjectLoader\",\n    \"Animate\",\n    \"MovieCredits\",\n    \"Slides\",\n    \"Filters\",\n    \"Shading\",\n    \"Materials\",\n    \"LensFlare\",\n    \"Mapping\",\n    \"VLCAudioVideo\",\n    \"StereoDecoder\",\n    \"PointCloud\",\n    \"NetworkAccess\",\n    \"RemoteControl\",\n    \"RegExp\",\n    \"ChromaKey\",\n    \"Snowfall\",\n    \"NodeJS\",\n    \"Speech\",\n    \"Charts\"\n  ];\n  const LITERALS = [\n    \"true\",\n    \"false\",\n    \"nil\"\n  ];\n  const KEYWORDS = {\n    $pattern: /[a-zA-Z][a-zA-Z0-9_?]*/,\n    keyword: KWS,\n    literal: LITERALS,\n    built_in: BUILT_INS.concat(BUILTIN_MODULES)\n  };\n\n  const DOUBLE_QUOTE_TEXT = {\n    className: 'string',\n    begin: '\"',\n    end: '\"',\n    illegal: '\\\\n'\n  };\n  const SINGLE_QUOTE_TEXT = {\n    className: 'string',\n    begin: '\\'',\n    end: '\\'',\n    illegal: '\\\\n'\n  };\n  const LONG_TEXT = {\n    className: 'string',\n    begin: '<<',\n    end: '>>'\n  };\n  const BASED_NUMBER = {\n    className: 'number',\n    begin: '[0-9]+#[0-9A-Z_]+(\\\\.[0-9-A-Z_]+)?#?([Ee][+-]?[0-9]+)?'\n  };\n  const IMPORT = {\n    beginKeywords: 'import',\n    end: '$',\n    keywords: KEYWORDS,\n    contains: [ DOUBLE_QUOTE_TEXT ]\n  };\n  const FUNCTION_DEFINITION = {\n    className: 'function',\n    begin: /[a-z][^\\n]*->/,\n    returnBegin: true,\n    end: /->/,\n    contains: [\n      hljs.inherit(hljs.TITLE_MODE, { starts: {\n        endsWithParent: true,\n        keywords: KEYWORDS\n      } })\n    ]\n  };\n  return {\n    name: 'XL',\n    aliases: [ 'tao' ],\n    keywords: KEYWORDS,\n    contains: [\n      hljs.C_LINE_COMMENT_MODE,\n      hljs.C_BLOCK_COMMENT_MODE,\n      DOUBLE_QUOTE_TEXT,\n      SINGLE_QUOTE_TEXT,\n      LONG_TEXT,\n      FUNCTION_DEFINITION,\n      IMPORT,\n      BASED_NUMBER,\n      hljs.NUMBER_MODE\n    ]\n  };\n}\n\nmodule.exports = xl;\n",
+      "start": 1699633501480,
+      "end": 1699633501568,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501569,
+      "end": 1699633501569,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: XL\nAuthor: Christophe de Dinechin <christophe@taodyne.com>\nDescription: An extensible programming language, based on parse tree rewriting\nWebsite: http://xlr.sf.net\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar xl_1;\nvar hasRequiredXl;\n\nfunction requireXl () {\n\tif (hasRequiredXl) return xl_1;\n\thasRequiredXl = 1;\n\tfunction xl(hljs) {\n\t  const KWS = [\n\t    \"if\",\n\t    \"then\",\n\t    \"else\",\n\t    \"do\",\n\t    \"while\",\n\t    \"until\",\n\t    \"for\",\n\t    \"loop\",\n\t    \"import\",\n\t    \"with\",\n\t    \"is\",\n\t    \"as\",\n\t    \"where\",\n\t    \"when\",\n\t    \"by\",\n\t    \"data\",\n\t    \"constant\",\n\t    \"integer\",\n\t    \"real\",\n\t    \"text\",\n\t    \"name\",\n\t    \"boolean\",\n\t    \"symbol\",\n\t    \"infix\",\n\t    \"prefix\",\n\t    \"postfix\",\n\t    \"block\",\n\t    \"tree\"\n\t  ];\n\t  const BUILT_INS = [\n\t    \"in\",\n\t    \"mod\",\n\t    \"rem\",\n\t    \"and\",\n\t    \"or\",\n\t    \"xor\",\n\t    \"not\",\n\t    \"abs\",\n\t    \"sign\",\n\t    \"floor\",\n\t    \"ceil\",\n\t    \"sqrt\",\n\t    \"sin\",\n\t    \"cos\",\n\t    \"tan\",\n\t    \"asin\",\n\t    \"acos\",\n\t    \"atan\",\n\t    \"exp\",\n\t    \"expm1\",\n\t    \"log\",\n\t    \"log2\",\n\t    \"log10\",\n\t    \"log1p\",\n\t    \"pi\",\n\t    \"at\",\n\t    \"text_length\",\n\t    \"text_range\",\n\t    \"text_find\",\n\t    \"text_replace\",\n\t    \"contains\",\n\t    \"page\",\n\t    \"slide\",\n\t    \"basic_slide\",\n\t    \"title_slide\",\n\t    \"title\",\n\t    \"subtitle\",\n\t    \"fade_in\",\n\t    \"fade_out\",\n\t    \"fade_at\",\n\t    \"clear_color\",\n\t    \"color\",\n\t    \"line_color\",\n\t    \"line_width\",\n\t    \"texture_wrap\",\n\t    \"texture_transform\",\n\t    \"texture\",\n\t    \"scale_?x\",\n\t    \"scale_?y\",\n\t    \"scale_?z?\",\n\t    \"translate_?x\",\n\t    \"translate_?y\",\n\t    \"translate_?z?\",\n\t    \"rotate_?x\",\n\t    \"rotate_?y\",\n\t    \"rotate_?z?\",\n\t    \"rectangle\",\n\t    \"circle\",\n\t    \"ellipse\",\n\t    \"sphere\",\n\t    \"path\",\n\t    \"line_to\",\n\t    \"move_to\",\n\t    \"quad_to\",\n\t    \"curve_to\",\n\t    \"theme\",\n\t    \"background\",\n\t    \"contents\",\n\t    \"locally\",\n\t    \"time\",\n\t    \"mouse_?x\",\n\t    \"mouse_?y\",\n\t    \"mouse_buttons\"\n\t  ];\n\t  const BUILTIN_MODULES = [\n\t    \"ObjectLoader\",\n\t    \"Animate\",\n\t    \"MovieCredits\",\n\t    \"Slides\",\n\t    \"Filters\",\n\t    \"Shading\",\n\t    \"Materials\",\n\t    \"LensFlare\",\n\t    \"Mapping\",\n\t    \"VLCAudioVideo\",\n\t    \"StereoDecoder\",\n\t    \"PointCloud\",\n\t    \"NetworkAccess\",\n\t    \"RemoteControl\",\n\t    \"RegExp\",\n\t    \"ChromaKey\",\n\t    \"Snowfall\",\n\t    \"NodeJS\",\n\t    \"Speech\",\n\t    \"Charts\"\n\t  ];\n\t  const LITERALS = [\n\t    \"true\",\n\t    \"false\",\n\t    \"nil\"\n\t  ];\n\t  const KEYWORDS = {\n\t    $pattern: /[a-zA-Z][a-zA-Z0-9_?]*/,\n\t    keyword: KWS,\n\t    literal: LITERALS,\n\t    built_in: BUILT_INS.concat(BUILTIN_MODULES)\n\t  };\n\n\t  const DOUBLE_QUOTE_TEXT = {\n\t    className: 'string',\n\t    begin: '\"',\n\t    end: '\"',\n\t    illegal: '\\\\n'\n\t  };\n\t  const SINGLE_QUOTE_TEXT = {\n\t    className: 'string',\n\t    begin: '\\'',\n\t    end: '\\'',\n\t    illegal: '\\\\n'\n\t  };\n\t  const LONG_TEXT = {\n\t    className: 'string',\n\t    begin: '<<',\n\t    end: '>>'\n\t  };\n\t  const BASED_NUMBER = {\n\t    className: 'number',\n\t    begin: '[0-9]+#[0-9A-Z_]+(\\\\.[0-9-A-Z_]+)?#?([Ee][+-]?[0-9]+)?'\n\t  };\n\t  const IMPORT = {\n\t    beginKeywords: 'import',\n\t    end: '$',\n\t    keywords: KEYWORDS,\n\t    contains: [ DOUBLE_QUOTE_TEXT ]\n\t  };\n\t  const FUNCTION_DEFINITION = {\n\t    className: 'function',\n\t    begin: /[a-z][^\\n]*->/,\n\t    returnBegin: true,\n\t    end: /->/,\n\t    contains: [\n\t      hljs.inherit(hljs.TITLE_MODE, { starts: {\n\t        endsWithParent: true,\n\t        keywords: KEYWORDS\n\t      } })\n\t    ]\n\t  };\n\t  return {\n\t    name: 'XL',\n\t    aliases: [ 'tao' ],\n\t    keywords: KEYWORDS,\n\t    contains: [\n\t      hljs.C_LINE_COMMENT_MODE,\n\t      hljs.C_BLOCK_COMMENT_MODE,\n\t      DOUBLE_QUOTE_TEXT,\n\t      SINGLE_QUOTE_TEXT,\n\t      LONG_TEXT,\n\t      FUNCTION_DEFINITION,\n\t      IMPORT,\n\t      BASED_NUMBER,\n\t      hljs.NUMBER_MODE\n\t    ]\n\t  };\n\t}\n\n\txl_1 = xl;\n\treturn xl_1;\n}\n\nexport { requireXl as __require };",
+      "start": 1699633501569,
+      "end": 1699633501570,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501570,
+      "end": 1699633501570,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501570,
+      "end": 1699633501570,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501570,
+      "end": 1699633501570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501570,
+      "end": 1699633501570,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501570,
+      "end": 1699633501570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501570,
+      "end": 1699633501570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501570,
+      "end": 1699633501570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501570,
+      "end": 1699633501570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501570,
+      "end": 1699633501570,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501571,
+      "end": 1699633501571,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501571,
+      "end": 1699633501571,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501571,
+      "end": 1699633501571,
+      "order": "normal"
+    }
+  ]
+}

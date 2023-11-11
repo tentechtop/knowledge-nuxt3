@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/autoit.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: AutoIt\nAuthor: Manh Tuan <junookyo@gmail.com>\nDescription: AutoIt language definition\nCategory: scripting\n*/\n\n/** @type LanguageFn */\nfunction autoit(hljs) {\n  const KEYWORDS = 'ByRef Case Const ContinueCase ContinueLoop '\n        + 'Dim Do Else ElseIf EndFunc EndIf EndSelect '\n        + 'EndSwitch EndWith Enum Exit ExitLoop For Func '\n        + 'Global If In Local Next ReDim Return Select Static '\n        + 'Step Switch Then To Until Volatile WEnd While With';\n\n  const DIRECTIVES = [\n    \"EndRegion\",\n    \"forcedef\",\n    \"forceref\",\n    \"ignorefunc\",\n    \"include\",\n    \"include-once\",\n    \"NoTrayIcon\",\n    \"OnAutoItStartRegister\",\n    \"pragma\",\n    \"Region\",\n    \"RequireAdmin\",\n    \"Tidy_Off\",\n    \"Tidy_On\",\n    \"Tidy_Parameters\"\n  ];\n\n  const LITERAL = 'True False And Null Not Or Default';\n\n  const BUILT_IN =\n          'Abs ACos AdlibRegister AdlibUnRegister Asc AscW ASin Assign ATan AutoItSetOption AutoItWinGetTitle AutoItWinSetTitle Beep Binary BinaryLen BinaryMid BinaryToString BitAND BitNOT BitOR BitRotate BitShift BitXOR BlockInput Break Call CDTray Ceiling Chr ChrW ClipGet ClipPut ConsoleRead ConsoleWrite ConsoleWriteError ControlClick ControlCommand ControlDisable ControlEnable ControlFocus ControlGetFocus ControlGetHandle ControlGetPos ControlGetText ControlHide ControlListView ControlMove ControlSend ControlSetText ControlShow ControlTreeView Cos Dec DirCopy DirCreate DirGetSize DirMove DirRemove DllCall DllCallAddress DllCallbackFree DllCallbackGetPtr DllCallbackRegister DllClose DllOpen DllStructCreate DllStructGetData DllStructGetPtr DllStructGetSize DllStructSetData DriveGetDrive DriveGetFileSystem DriveGetLabel DriveGetSerial DriveGetType DriveMapAdd DriveMapDel DriveMapGet DriveSetLabel DriveSpaceFree DriveSpaceTotal DriveStatus EnvGet EnvSet EnvUpdate Eval Execute Exp FileChangeDir FileClose FileCopy FileCreateNTFSLink FileCreateShortcut FileDelete FileExists FileFindFirstFile FileFindNextFile FileFlush FileGetAttrib FileGetEncoding FileGetLongName FileGetPos FileGetShortcut FileGetShortName FileGetSize FileGetTime FileGetVersion FileInstall FileMove FileOpen FileOpenDialog FileRead FileReadLine FileReadToArray FileRecycle FileRecycleEmpty FileSaveDialog FileSelectFolder FileSetAttrib FileSetEnd FileSetPos FileSetTime FileWrite FileWriteLine Floor FtpSetProxy FuncName GUICreate GUICtrlCreateAvi GUICtrlCreateButton GUICtrlCreateCheckbox GUICtrlCreateCombo GUICtrlCreateContextMenu GUICtrlCreateDate GUICtrlCreateDummy GUICtrlCreateEdit GUICtrlCreateGraphic GUICtrlCreateGroup GUICtrlCreateIcon GUICtrlCreateInput GUICtrlCreateLabel GUICtrlCreateList GUICtrlCreateListView GUICtrlCreateListViewItem GUICtrlCreateMenu GUICtrlCreateMenuItem GUICtrlCreateMonthCal GUICtrlCreateObj GUICtrlCreatePic GUICtrlCreateProgress GUICtrlCreateRadio GUICtrlCreateSlider GUICtrlCreateTab GUICtrlCreateTabItem GUICtrlCreateTreeView GUICtrlCreateTreeViewItem GUICtrlCreateUpdown GUICtrlDelete GUICtrlGetHandle GUICtrlGetState GUICtrlRead GUICtrlRecvMsg GUICtrlRegisterListViewSort GUICtrlSendMsg GUICtrlSendToDummy GUICtrlSetBkColor GUICtrlSetColor GUICtrlSetCursor GUICtrlSetData GUICtrlSetDefBkColor GUICtrlSetDefColor GUICtrlSetFont GUICtrlSetGraphic GUICtrlSetImage GUICtrlSetLimit GUICtrlSetOnEvent GUICtrlSetPos GUICtrlSetResizing GUICtrlSetState GUICtrlSetStyle GUICtrlSetTip GUIDelete GUIGetCursorInfo GUIGetMsg GUIGetStyle GUIRegisterMsg GUISetAccelerators GUISetBkColor GUISetCoord GUISetCursor GUISetFont GUISetHelp GUISetIcon GUISetOnEvent GUISetState GUISetStyle GUIStartGroup GUISwitch Hex HotKeySet HttpSetProxy HttpSetUserAgent HWnd InetClose InetGet InetGetInfo InetGetSize InetRead IniDelete IniRead IniReadSection IniReadSectionNames IniRenameSection IniWrite IniWriteSection InputBox Int IsAdmin IsArray IsBinary IsBool IsDeclared IsDllStruct IsFloat IsFunc IsHWnd IsInt IsKeyword IsNumber IsObj IsPtr IsString Log MemGetStats Mod MouseClick MouseClickDrag MouseDown MouseGetCursor MouseGetPos MouseMove MouseUp MouseWheel MsgBox Number ObjCreate ObjCreateInterface ObjEvent ObjGet ObjName OnAutoItExitRegister OnAutoItExitUnRegister Ping PixelChecksum PixelGetColor PixelSearch ProcessClose ProcessExists ProcessGetStats ProcessList ProcessSetPriority ProcessWait ProcessWaitClose ProgressOff ProgressOn ProgressSet Ptr Random RegDelete RegEnumKey RegEnumVal RegRead RegWrite Round Run RunAs RunAsWait RunWait Send SendKeepActive SetError SetExtended ShellExecute ShellExecuteWait Shutdown Sin Sleep SoundPlay SoundSetWaveVolume SplashImageOn SplashOff SplashTextOn Sqrt SRandom StatusbarGetText StderrRead StdinWrite StdioClose StdoutRead String StringAddCR StringCompare StringFormat StringFromASCIIArray StringInStr StringIsAlNum StringIsAlpha StringIsASCII StringIsDigit StringIsFloat StringIsInt StringIsLower StringIsSpace StringIsUpper StringIsXDigit StringLeft StringLen StringLower StringMid StringRegExp StringRegExpReplace StringReplace StringReverse StringRight StringSplit StringStripCR StringStripWS StringToASCIIArray StringToBinary StringTrimLeft StringTrimRight StringUpper Tan TCPAccept TCPCloseSocket TCPConnect TCPListen TCPNameToIP TCPRecv TCPSend TCPShutdown, UDPShutdown TCPStartup, UDPStartup TimerDiff TimerInit ToolTip TrayCreateItem TrayCreateMenu TrayGetMsg TrayItemDelete TrayItemGetHandle TrayItemGetState TrayItemGetText TrayItemSetOnEvent TrayItemSetState TrayItemSetText TraySetClick TraySetIcon TraySetOnEvent TraySetPauseIcon TraySetState TraySetToolTip TrayTip UBound UDPBind UDPCloseSocket UDPOpen UDPRecv UDPSend VarGetType WinActivate WinActive WinClose WinExists WinFlash WinGetCaretPos WinGetClassList WinGetClientSize WinGetHandle WinGetPos WinGetProcess WinGetState WinGetText WinGetTitle WinKill WinList WinMenuSelectItem WinMinimizeAll WinMinimizeAllUndo WinMove WinSetOnTop WinSetState WinSetTitle WinSetTrans WinWait WinWaitActive WinWaitClose WinWaitNotActive';\n\n  const COMMENT = { variants: [\n    hljs.COMMENT(';', '$', { relevance: 0 }),\n    hljs.COMMENT('#cs', '#ce'),\n    hljs.COMMENT('#comments-start', '#comments-end')\n  ] };\n\n  const VARIABLE = { begin: '\\\\$[A-z0-9_]+' };\n\n  const STRING = {\n    className: 'string',\n    variants: [\n      {\n        begin: /\"/,\n        end: /\"/,\n        contains: [\n          {\n            begin: /\"\"/,\n            relevance: 0\n          }\n        ]\n      },\n      {\n        begin: /'/,\n        end: /'/,\n        contains: [\n          {\n            begin: /''/,\n            relevance: 0\n          }\n        ]\n      }\n    ]\n  };\n\n  const NUMBER = { variants: [\n    hljs.BINARY_NUMBER_MODE,\n    hljs.C_NUMBER_MODE\n  ] };\n\n  const PREPROCESSOR = {\n    className: 'meta',\n    begin: '#',\n    end: '$',\n    keywords: { keyword: DIRECTIVES },\n    contains: [\n      {\n        begin: /\\\\\\n/,\n        relevance: 0\n      },\n      {\n        beginKeywords: 'include',\n        keywords: { keyword: 'include' },\n        end: '$',\n        contains: [\n          STRING,\n          {\n            className: 'string',\n            variants: [\n              {\n                begin: '<',\n                end: '>'\n              },\n              {\n                begin: /\"/,\n                end: /\"/,\n                contains: [\n                  {\n                    begin: /\"\"/,\n                    relevance: 0\n                  }\n                ]\n              },\n              {\n                begin: /'/,\n                end: /'/,\n                contains: [\n                  {\n                    begin: /''/,\n                    relevance: 0\n                  }\n                ]\n              }\n            ]\n          }\n        ]\n      },\n      STRING,\n      COMMENT\n    ]\n  };\n\n  const CONSTANT = {\n    className: 'symbol',\n    // begin: '@',\n    // end: '$',\n    // keywords: 'AppDataCommonDir AppDataDir AutoItExe AutoItPID AutoItVersion AutoItX64 COM_EventObj CommonFilesDir Compiled ComputerName ComSpec CPUArch CR CRLF DesktopCommonDir DesktopDepth DesktopDir DesktopHeight DesktopRefresh DesktopWidth DocumentsCommonDir error exitCode exitMethod extended FavoritesCommonDir FavoritesDir GUI_CtrlHandle GUI_CtrlId GUI_DragFile GUI_DragId GUI_DropId GUI_WinHandle HomeDrive HomePath HomeShare HotKeyPressed HOUR IPAddress1 IPAddress2 IPAddress3 IPAddress4 KBLayout LF LocalAppDataDir LogonDNSDomain LogonDomain LogonServer MDAY MIN MON MSEC MUILang MyDocumentsDir NumParams OSArch OSBuild OSLang OSServicePack OSType OSVersion ProgramFilesDir ProgramsCommonDir ProgramsDir ScriptDir ScriptFullPath ScriptLineNumber ScriptName SEC StartMenuCommonDir StartMenuDir StartupCommonDir StartupDir SW_DISABLE SW_ENABLE SW_HIDE SW_LOCK SW_MAXIMIZE SW_MINIMIZE SW_RESTORE SW_SHOW SW_SHOWDEFAULT SW_SHOWMAXIMIZED SW_SHOWMINIMIZED SW_SHOWMINNOACTIVE SW_SHOWNA SW_SHOWNOACTIVATE SW_SHOWNORMAL SW_UNLOCK SystemDir TAB TempDir TRAY_ID TrayIconFlashing TrayIconVisible UserName UserProfileDir WDAY WindowsDir WorkingDir YDAY YEAR',\n    // relevance: 5\n    begin: '@[A-z0-9_]+'\n  };\n\n  const FUNCTION = {\n    beginKeywords: 'Func',\n    end: '$',\n    illegal: '\\\\$|\\\\[|%',\n    contains: [\n      hljs.inherit(hljs.UNDERSCORE_TITLE_MODE, { className: \"title.function\" }),\n      {\n        className: 'params',\n        begin: '\\\\(',\n        end: '\\\\)',\n        contains: [\n          VARIABLE,\n          STRING,\n          NUMBER\n        ]\n      }\n    ]\n  };\n\n  return {\n    name: 'AutoIt',\n    case_insensitive: true,\n    illegal: /\\/\\*/,\n    keywords: {\n      keyword: KEYWORDS,\n      built_in: BUILT_IN,\n      literal: LITERAL\n    },\n    contains: [\n      COMMENT,\n      VARIABLE,\n      STRING,\n      NUMBER,\n      PREPROCESSOR,\n      CONSTANT,\n      FUNCTION\n    ]\n  };\n}\n\nmodule.exports = autoit;\n",
+      "start": 1699633500536,
+      "end": 1699633500687,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500688,
+      "end": 1699633500688,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500688,
+      "end": 1699633500688,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500688,
+      "end": 1699633500688,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500688,
+      "end": 1699633500688,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500688,
+      "end": 1699633500688,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500688,
+      "end": 1699633500688,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500688,
+      "end": 1699633500688,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500688,
+      "end": 1699633500688,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500688,
+      "end": 1699633500688,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500688,
+      "end": 1699633500688,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500688,
+      "end": 1699633500688,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500688,
+      "end": 1699633500689,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500689,
+      "end": 1699633500689,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500689,
+      "end": 1699633500689,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500689,
+      "end": 1699633500689,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500689,
+      "end": 1699633500689,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500689,
+      "end": 1699633500689,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500689,
+      "end": 1699633500689,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500689,
+      "end": 1699633500689,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500689,
+      "end": 1699633500689,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: AutoIt\nAuthor: Manh Tuan <junookyo@gmail.com>\nDescription: AutoIt language definition\nCategory: scripting\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar autoit_1;\nvar hasRequiredAutoit;\n\nfunction requireAutoit () {\n\tif (hasRequiredAutoit) return autoit_1;\n\thasRequiredAutoit = 1;\n\t/** @type LanguageFn */\n\tfunction autoit(hljs) {\n\t  const KEYWORDS = 'ByRef Case Const ContinueCase ContinueLoop '\n\t        + 'Dim Do Else ElseIf EndFunc EndIf EndSelect '\n\t        + 'EndSwitch EndWith Enum Exit ExitLoop For Func '\n\t        + 'Global If In Local Next ReDim Return Select Static '\n\t        + 'Step Switch Then To Until Volatile WEnd While With';\n\n\t  const DIRECTIVES = [\n\t    \"EndRegion\",\n\t    \"forcedef\",\n\t    \"forceref\",\n\t    \"ignorefunc\",\n\t    \"include\",\n\t    \"include-once\",\n\t    \"NoTrayIcon\",\n\t    \"OnAutoItStartRegister\",\n\t    \"pragma\",\n\t    \"Region\",\n\t    \"RequireAdmin\",\n\t    \"Tidy_Off\",\n\t    \"Tidy_On\",\n\t    \"Tidy_Parameters\"\n\t  ];\n\n\t  const LITERAL = 'True False And Null Not Or Default';\n\n\t  const BUILT_IN =\n\t          'Abs ACos AdlibRegister AdlibUnRegister Asc AscW ASin Assign ATan AutoItSetOption AutoItWinGetTitle AutoItWinSetTitle Beep Binary BinaryLen BinaryMid BinaryToString BitAND BitNOT BitOR BitRotate BitShift BitXOR BlockInput Break Call CDTray Ceiling Chr ChrW ClipGet ClipPut ConsoleRead ConsoleWrite ConsoleWriteError ControlClick ControlCommand ControlDisable ControlEnable ControlFocus ControlGetFocus ControlGetHandle ControlGetPos ControlGetText ControlHide ControlListView ControlMove ControlSend ControlSetText ControlShow ControlTreeView Cos Dec DirCopy DirCreate DirGetSize DirMove DirRemove DllCall DllCallAddress DllCallbackFree DllCallbackGetPtr DllCallbackRegister DllClose DllOpen DllStructCreate DllStructGetData DllStructGetPtr DllStructGetSize DllStructSetData DriveGetDrive DriveGetFileSystem DriveGetLabel DriveGetSerial DriveGetType DriveMapAdd DriveMapDel DriveMapGet DriveSetLabel DriveSpaceFree DriveSpaceTotal DriveStatus EnvGet EnvSet EnvUpdate Eval Execute Exp FileChangeDir FileClose FileCopy FileCreateNTFSLink FileCreateShortcut FileDelete FileExists FileFindFirstFile FileFindNextFile FileFlush FileGetAttrib FileGetEncoding FileGetLongName FileGetPos FileGetShortcut FileGetShortName FileGetSize FileGetTime FileGetVersion FileInstall FileMove FileOpen FileOpenDialog FileRead FileReadLine FileReadToArray FileRecycle FileRecycleEmpty FileSaveDialog FileSelectFolder FileSetAttrib FileSetEnd FileSetPos FileSetTime FileWrite FileWriteLine Floor FtpSetProxy FuncName GUICreate GUICtrlCreateAvi GUICtrlCreateButton GUICtrlCreateCheckbox GUICtrlCreateCombo GUICtrlCreateContextMenu GUICtrlCreateDate GUICtrlCreateDummy GUICtrlCreateEdit GUICtrlCreateGraphic GUICtrlCreateGroup GUICtrlCreateIcon GUICtrlCreateInput GUICtrlCreateLabel GUICtrlCreateList GUICtrlCreateListView GUICtrlCreateListViewItem GUICtrlCreateMenu GUICtrlCreateMenuItem GUICtrlCreateMonthCal GUICtrlCreateObj GUICtrlCreatePic GUICtrlCreateProgress GUICtrlCreateRadio GUICtrlCreateSlider GUICtrlCreateTab GUICtrlCreateTabItem GUICtrlCreateTreeView GUICtrlCreateTreeViewItem GUICtrlCreateUpdown GUICtrlDelete GUICtrlGetHandle GUICtrlGetState GUICtrlRead GUICtrlRecvMsg GUICtrlRegisterListViewSort GUICtrlSendMsg GUICtrlSendToDummy GUICtrlSetBkColor GUICtrlSetColor GUICtrlSetCursor GUICtrlSetData GUICtrlSetDefBkColor GUICtrlSetDefColor GUICtrlSetFont GUICtrlSetGraphic GUICtrlSetImage GUICtrlSetLimit GUICtrlSetOnEvent GUICtrlSetPos GUICtrlSetResizing GUICtrlSetState GUICtrlSetStyle GUICtrlSetTip GUIDelete GUIGetCursorInfo GUIGetMsg GUIGetStyle GUIRegisterMsg GUISetAccelerators GUISetBkColor GUISetCoord GUISetCursor GUISetFont GUISetHelp GUISetIcon GUISetOnEvent GUISetState GUISetStyle GUIStartGroup GUISwitch Hex HotKeySet HttpSetProxy HttpSetUserAgent HWnd InetClose InetGet InetGetInfo InetGetSize InetRead IniDelete IniRead IniReadSection IniReadSectionNames IniRenameSection IniWrite IniWriteSection InputBox Int IsAdmin IsArray IsBinary IsBool IsDeclared IsDllStruct IsFloat IsFunc IsHWnd IsInt IsKeyword IsNumber IsObj IsPtr IsString Log MemGetStats Mod MouseClick MouseClickDrag MouseDown MouseGetCursor MouseGetPos MouseMove MouseUp MouseWheel MsgBox Number ObjCreate ObjCreateInterface ObjEvent ObjGet ObjName OnAutoItExitRegister OnAutoItExitUnRegister Ping PixelChecksum PixelGetColor PixelSearch ProcessClose ProcessExists ProcessGetStats ProcessList ProcessSetPriority ProcessWait ProcessWaitClose ProgressOff ProgressOn ProgressSet Ptr Random RegDelete RegEnumKey RegEnumVal RegRead RegWrite Round Run RunAs RunAsWait RunWait Send SendKeepActive SetError SetExtended ShellExecute ShellExecuteWait Shutdown Sin Sleep SoundPlay SoundSetWaveVolume SplashImageOn SplashOff SplashTextOn Sqrt SRandom StatusbarGetText StderrRead StdinWrite StdioClose StdoutRead String StringAddCR StringCompare StringFormat StringFromASCIIArray StringInStr StringIsAlNum StringIsAlpha StringIsASCII StringIsDigit StringIsFloat StringIsInt StringIsLower StringIsSpace StringIsUpper StringIsXDigit StringLeft StringLen StringLower StringMid StringRegExp StringRegExpReplace StringReplace StringReverse StringRight StringSplit StringStripCR StringStripWS StringToASCIIArray StringToBinary StringTrimLeft StringTrimRight StringUpper Tan TCPAccept TCPCloseSocket TCPConnect TCPListen TCPNameToIP TCPRecv TCPSend TCPShutdown, UDPShutdown TCPStartup, UDPStartup TimerDiff TimerInit ToolTip TrayCreateItem TrayCreateMenu TrayGetMsg TrayItemDelete TrayItemGetHandle TrayItemGetState TrayItemGetText TrayItemSetOnEvent TrayItemSetState TrayItemSetText TraySetClick TraySetIcon TraySetOnEvent TraySetPauseIcon TraySetState TraySetToolTip TrayTip UBound UDPBind UDPCloseSocket UDPOpen UDPRecv UDPSend VarGetType WinActivate WinActive WinClose WinExists WinFlash WinGetCaretPos WinGetClassList WinGetClientSize WinGetHandle WinGetPos WinGetProcess WinGetState WinGetText WinGetTitle WinKill WinList WinMenuSelectItem WinMinimizeAll WinMinimizeAllUndo WinMove WinSetOnTop WinSetState WinSetTitle WinSetTrans WinWait WinWaitActive WinWaitClose WinWaitNotActive';\n\n\t  const COMMENT = { variants: [\n\t    hljs.COMMENT(';', '$', { relevance: 0 }),\n\t    hljs.COMMENT('#cs', '#ce'),\n\t    hljs.COMMENT('#comments-start', '#comments-end')\n\t  ] };\n\n\t  const VARIABLE = { begin: '\\\\$[A-z0-9_]+' };\n\n\t  const STRING = {\n\t    className: 'string',\n\t    variants: [\n\t      {\n\t        begin: /\"/,\n\t        end: /\"/,\n\t        contains: [\n\t          {\n\t            begin: /\"\"/,\n\t            relevance: 0\n\t          }\n\t        ]\n\t      },\n\t      {\n\t        begin: /'/,\n\t        end: /'/,\n\t        contains: [\n\t          {\n\t            begin: /''/,\n\t            relevance: 0\n\t          }\n\t        ]\n\t      }\n\t    ]\n\t  };\n\n\t  const NUMBER = { variants: [\n\t    hljs.BINARY_NUMBER_MODE,\n\t    hljs.C_NUMBER_MODE\n\t  ] };\n\n\t  const PREPROCESSOR = {\n\t    className: 'meta',\n\t    begin: '#',\n\t    end: '$',\n\t    keywords: { keyword: DIRECTIVES },\n\t    contains: [\n\t      {\n\t        begin: /\\\\\\n/,\n\t        relevance: 0\n\t      },\n\t      {\n\t        beginKeywords: 'include',\n\t        keywords: { keyword: 'include' },\n\t        end: '$',\n\t        contains: [\n\t          STRING,\n\t          {\n\t            className: 'string',\n\t            variants: [\n\t              {\n\t                begin: '<',\n\t                end: '>'\n\t              },\n\t              {\n\t                begin: /\"/,\n\t                end: /\"/,\n\t                contains: [\n\t                  {\n\t                    begin: /\"\"/,\n\t                    relevance: 0\n\t                  }\n\t                ]\n\t              },\n\t              {\n\t                begin: /'/,\n\t                end: /'/,\n\t                contains: [\n\t                  {\n\t                    begin: /''/,\n\t                    relevance: 0\n\t                  }\n\t                ]\n\t              }\n\t            ]\n\t          }\n\t        ]\n\t      },\n\t      STRING,\n\t      COMMENT\n\t    ]\n\t  };\n\n\t  const CONSTANT = {\n\t    className: 'symbol',\n\t    // begin: '@',\n\t    // end: '$',\n\t    // keywords: 'AppDataCommonDir AppDataDir AutoItExe AutoItPID AutoItVersion AutoItX64 COM_EventObj CommonFilesDir Compiled ComputerName ComSpec CPUArch CR CRLF DesktopCommonDir DesktopDepth DesktopDir DesktopHeight DesktopRefresh DesktopWidth DocumentsCommonDir error exitCode exitMethod extended FavoritesCommonDir FavoritesDir GUI_CtrlHandle GUI_CtrlId GUI_DragFile GUI_DragId GUI_DropId GUI_WinHandle HomeDrive HomePath HomeShare HotKeyPressed HOUR IPAddress1 IPAddress2 IPAddress3 IPAddress4 KBLayout LF LocalAppDataDir LogonDNSDomain LogonDomain LogonServer MDAY MIN MON MSEC MUILang MyDocumentsDir NumParams OSArch OSBuild OSLang OSServicePack OSType OSVersion ProgramFilesDir ProgramsCommonDir ProgramsDir ScriptDir ScriptFullPath ScriptLineNumber ScriptName SEC StartMenuCommonDir StartMenuDir StartupCommonDir StartupDir SW_DISABLE SW_ENABLE SW_HIDE SW_LOCK SW_MAXIMIZE SW_MINIMIZE SW_RESTORE SW_SHOW SW_SHOWDEFAULT SW_SHOWMAXIMIZED SW_SHOWMINIMIZED SW_SHOWMINNOACTIVE SW_SHOWNA SW_SHOWNOACTIVATE SW_SHOWNORMAL SW_UNLOCK SystemDir TAB TempDir TRAY_ID TrayIconFlashing TrayIconVisible UserName UserProfileDir WDAY WindowsDir WorkingDir YDAY YEAR',\n\t    // relevance: 5\n\t    begin: '@[A-z0-9_]+'\n\t  };\n\n\t  const FUNCTION = {\n\t    beginKeywords: 'Func',\n\t    end: '$',\n\t    illegal: '\\\\$|\\\\[|%',\n\t    contains: [\n\t      hljs.inherit(hljs.UNDERSCORE_TITLE_MODE, { className: \"title.function\" }),\n\t      {\n\t        className: 'params',\n\t        begin: '\\\\(',\n\t        end: '\\\\)',\n\t        contains: [\n\t          VARIABLE,\n\t          STRING,\n\t          NUMBER\n\t        ]\n\t      }\n\t    ]\n\t  };\n\n\t  return {\n\t    name: 'AutoIt',\n\t    case_insensitive: true,\n\t    illegal: /\\/\\*/,\n\t    keywords: {\n\t      keyword: KEYWORDS,\n\t      built_in: BUILT_IN,\n\t      literal: LITERAL\n\t    },\n\t    contains: [\n\t      COMMENT,\n\t      VARIABLE,\n\t      STRING,\n\t      NUMBER,\n\t      PREPROCESSOR,\n\t      CONSTANT,\n\t      FUNCTION\n\t    ]\n\t  };\n\t}\n\n\tautoit_1 = autoit;\n\treturn autoit_1;\n}\n\nexport { requireAutoit as __require };",
+      "start": 1699633500689,
+      "end": 1699633500690,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500690,
+      "end": 1699633500690,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500690,
+      "end": 1699633500690,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500690,
+      "end": 1699633500690,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500690,
+      "end": 1699633500690,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500690,
+      "end": 1699633500690,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500690,
+      "end": 1699633500690,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500690,
+      "end": 1699633500690,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500690,
+      "end": 1699633500690,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500690,
+      "end": 1699633500690,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500690,
+      "end": 1699633500690,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500690,
+      "end": 1699633500690,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500690,
+      "end": 1699633500690,
+      "order": "normal"
+    }
+  ]
+}

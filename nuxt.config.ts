@@ -1,15 +1,28 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// @ts-ignore
 export default defineNuxtConfig({
     ssr: true,
     imports: {
         autoImport: true
     },
-    css: ["@/assets/main.css",
-        "@/assets/iconfont/iconfont.css"
+    css: [
+        "@/assets/main.css",
+        "@/assets/iconfont/iconfont.css",
+        '@unocss/reset/tailwind.css',
+        '@/styles/index.scss',
+        '@/styles/anime.css',
     ],
+    // @ts-ignore
+    colorMode: {
+        classSuffix: '',
+    },
+    experimental: {
+        reactivityTransform: true,
+        inlineSSRStyles: false,
+    },
     app: {
         head: {
-            title: '紫光毕设-官方网站',
+            title: '奥恩毕设 aecode-官方网站',
             htmlAttrs: {},
             meta: [
                 {charset: 'utf-8'},
@@ -31,11 +44,22 @@ export default defineNuxtConfig({
     build: {},
     nitro: {
         output: {
-            dir: '../.output',
-            serverDir: '../.output/server',
-            publicDir: '../.output/public'
+            dir: '.output',
+            serverDir: '.output/server',
+            publicDir: '.output/public'
         }
     },
     plugins: [],
-    modules: [],
+    modules: [
+        '@vueuse/nuxt',
+        '@unocss/nuxt',
+        '@pinia/nuxt',
+        '@nuxtjs/color-mode',
+        '@element-plus/nuxt',
+    ],
+    devServer: {
+        port: 3000,
+    },
+
+
 })

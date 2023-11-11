@@ -1,0 +1,222 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/assets/libs/markdown.ts",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import Markdown from \"markdown-it\";\r\nimport highlight from \"highlight.js\";\r\n\r\nconst mdOptions: Markdown.Options = {\r\n    linkify: true,\r\n    typographer: true,\r\n    breaks: true,\r\n    langPrefix: \"language-\",\r\n    // 代码高亮\r\n    highlight(str: string, lang: string) {\r\n        if (lang && highlight.getLanguage(lang)) {\r\n            try {\r\n                return (\r\n                    '<pre class=\"hljs\"><code>' +\r\n                    highlight.highlight(lang, str, true).value +\r\n                    \"</code></pre>\"\r\n                );\r\n            } catch (__) {}\r\n        }\r\n        return \"\";\r\n    },\r\n};\r\n\r\nexport const md = new Markdown(mdOptions);\r\n",
+      "start": 1699633499646,
+      "end": 1699633499810,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633499811,
+      "end": 1699633499811,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633499811,
+      "end": 1699633499811,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633499811,
+      "end": 1699633499811,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633499811,
+      "end": 1699633499811,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import Markdown from \"markdown-it\";\nimport highlight from \"highlight.js\";\nconst mdOptions = {\n  linkify: true,\n  typographer: true,\n  breaks: true,\n  langPrefix: \"language-\",\n  // 代码高亮\n  highlight(str, lang) {\n    if (lang && highlight.getLanguage(lang)) {\n      try {\n        return '<pre class=\"hljs\"><code>' + highlight.highlight(lang, str, true).value + \"</code></pre>\";\n      } catch (__) {\n      }\n    }\n    return \"\";\n  }\n};\nexport const md = new Markdown(mdOptions);\n",
+      "start": 1699633499811,
+      "end": 1699633499870,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/assets/libs/markdown.ts"
+        ],
+        "sourcesContent": [
+          "import Markdown from \"markdown-it\";\r\nimport highlight from \"highlight.js\";\r\n\r\nconst mdOptions: Markdown.Options = {\r\n    linkify: true,\r\n    typographer: true,\r\n    breaks: true,\r\n    langPrefix: \"language-\",\r\n    // 代码高亮\r\n    highlight(str: string, lang: string) {\r\n        if (lang && highlight.getLanguage(lang)) {\r\n            try {\r\n                return (\r\n                    '<pre class=\"hljs\"><code>' +\r\n                    highlight.highlight(lang, str, true).value +\r\n                    \"</code></pre>\"\r\n                );\r\n            } catch (__) {}\r\n        }\r\n        return \"\";\r\n    },\r\n};\r\n\r\nexport const md = new Markdown(mdOptions);\r\n"
+        ],
+        "mappings": "AAAA,OAAO,cAAc;AACrB,OAAO,eAAe;AAEtB,MAAM,YAA8B;AAAA,EAChC,SAAS;AAAA,EACT,aAAa;AAAA,EACb,QAAQ;AAAA,EACR,YAAY;AAAA;AAAA,EAEZ,UAAU,KAAa,MAAc;AACjC,QAAI,QAAQ,UAAU,YAAY,IAAI,GAAG;AACrC,UAAI;AACA,eACI,6BACA,UAAU,UAAU,MAAM,KAAK,IAAI,EAAE,QACrC;AAAA,MAER,SAAS,IAAI;AAAA,MAAC;AAAA,IAClB;AACA,WAAO;AAAA,EACX;AACJ;AAEO,aAAM,KAAK,IAAI,SAAS,SAAS;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699633499870,
+      "end": 1699633499870,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633499871,
+      "end": 1699633499871,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633499871,
+      "end": 1699633499871,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633499871,
+      "end": 1699633499871,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633499871,
+      "end": 1699633499871,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633499871,
+      "end": 1699633499871,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633499871,
+      "end": 1699633499871,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633499871,
+      "end": 1699633499871,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633499871,
+      "end": 1699633499871,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633499871,
+      "end": 1699633499871,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633499871,
+      "end": 1699633499871,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633499871,
+      "end": 1699633499872,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633499872,
+      "end": 1699633499872,
+      "order": "normal"
+    }
+  ]
+}

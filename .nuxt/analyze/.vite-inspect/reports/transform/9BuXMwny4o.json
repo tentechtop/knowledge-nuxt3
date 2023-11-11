@@ -1,0 +1,222 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/assets/libs/gpt.ts",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import type {ChatMessage} from \"assets/types\";\r\n\r\nexport async function chat(messageList: ChatMessage[], apiKey: string) {\r\n    const path1 = \"https://api.openai.com/v1/chat/completions\"\r\n    const path2 = \"https://api.chatanywhere.com.cn/v1/chat/completions\"\r\n\r\n    try {\r\n        const result = await fetch(path2, {\r\n            method: \"post\",\r\n            /*      signal: AbortSignal.timeout(400),*/\r\n            // 开启后到达设定时间会中断流式输出\r\n            headers: {\r\n                \"Content-Type\": \"application/json\",\r\n                Authorization: `Bearer ${apiKey}`,\r\n            },\r\n            body: JSON.stringify({\r\n                model: \"gpt-3.5-turbo\",\r\n                stream: true,\r\n                messages: messageList,\r\n            }),\r\n        });\r\n        return result;\r\n    } catch (error) {\r\n        throw error;\r\n    }\r\n\r\n}\r\n",
+      "start": 1699633499646,
+      "end": 1699633499810,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633499810,
+      "end": 1699633499810,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633499810,
+      "end": 1699633499810,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633499810,
+      "end": 1699633499810,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633499810,
+      "end": 1699633499810,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "export async function chat(messageList, apiKey) {\n  const path1 = \"https://api.openai.com/v1/chat/completions\";\n  const path2 = \"https://api.chatanywhere.com.cn/v1/chat/completions\";\n  try {\n    const result = await fetch(path2, {\n      method: \"post\",\n      /*      signal: AbortSignal.timeout(400),*/\n      // 开启后到达设定时间会中断流式输出\n      headers: {\n        \"Content-Type\": \"application/json\",\n        Authorization: `Bearer ${apiKey}`\n      },\n      body: JSON.stringify({\n        model: \"gpt-3.5-turbo\",\n        stream: true,\n        messages: messageList\n      })\n    });\n    return result;\n  } catch (error) {\n    throw error;\n  }\n}\n",
+      "start": 1699633499810,
+      "end": 1699633499856,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/assets/libs/gpt.ts"
+        ],
+        "sourcesContent": [
+          "import type {ChatMessage} from \"assets/types\";\r\n\r\nexport async function chat(messageList: ChatMessage[], apiKey: string) {\r\n    const path1 = \"https://api.openai.com/v1/chat/completions\"\r\n    const path2 = \"https://api.chatanywhere.com.cn/v1/chat/completions\"\r\n\r\n    try {\r\n        const result = await fetch(path2, {\r\n            method: \"post\",\r\n            /*      signal: AbortSignal.timeout(400),*/\r\n            // 开启后到达设定时间会中断流式输出\r\n            headers: {\r\n                \"Content-Type\": \"application/json\",\r\n                Authorization: `Bearer ${apiKey}`,\r\n            },\r\n            body: JSON.stringify({\r\n                model: \"gpt-3.5-turbo\",\r\n                stream: true,\r\n                messages: messageList,\r\n            }),\r\n        });\r\n        return result;\r\n    } catch (error) {\r\n        throw error;\r\n    }\r\n\r\n}\r\n"
+        ],
+        "mappings": "AAEA,sBAAsB,KAAK,aAA4B,QAAgB;AACnE,QAAM,QAAQ;AACd,QAAM,QAAQ;AAEd,MAAI;AACA,UAAM,SAAS,MAAM,MAAM,OAAO;AAAA,MAC9B,QAAQ;AAAA;AAAA;AAAA,MAGR,SAAS;AAAA,QACL,gBAAgB;AAAA,QAChB,eAAe,UAAU,MAAM;AAAA,MACnC;AAAA,MACA,MAAM,KAAK,UAAU;AAAA,QACjB,OAAO;AAAA,QACP,QAAQ;AAAA,QACR,UAAU;AAAA,MACd,CAAC;AAAA,IACL,CAAC;AACD,WAAO;AAAA,EACX,SAAS,OAAO;AACZ,UAAM;AAAA,EACV;AAEJ;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633499856,
+      "end": 1699633499856,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633499856,
+      "end": 1699633499856,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633499856,
+      "end": 1699633499856,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633499856,
+      "end": 1699633499856,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633499857,
+      "end": 1699633499857,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633499857,
+      "end": 1699633499857,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633499857,
+      "end": 1699633499857,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633499857,
+      "end": 1699633499857,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633499858,
+      "end": 1699633499858,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633499858,
+      "end": 1699633499858,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633499858,
+      "end": 1699633499858,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633499858,
+      "end": 1699633499858,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633499858,
+      "end": 1699633499858,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633499858,
+      "end": 1699633499858,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633499858,
+      "end": 1699633499858,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699633499858,
+      "end": 1699633499858,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633499858,
+      "end": 1699633499858,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633499859,
+      "end": 1699633499859,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633499859,
+      "end": 1699633499859,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633499859,
+      "end": 1699633499860,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633499860,
+      "end": 1699633499860,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633499860,
+      "end": 1699633499860,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633499860,
+      "end": 1699633499860,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633499860,
+      "end": 1699633499860,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633499860,
+      "end": 1699633499860,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633499861,
+      "end": 1699633499861,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633499861,
+      "end": 1699633499861,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633499861,
+      "end": 1699633499861,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/reasonml.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: ReasonML\nDescription: Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript & OCaml ecosystems.\nWebsite: https://reasonml.github.io\nAuthor: Gidi Meir Morris <oss@gidi.io>\nCategory: functional\n*/\nfunction reasonml(hljs) {\n  const BUILT_IN_TYPES = [\n    \"array\",\n    \"bool\",\n    \"bytes\",\n    \"char\",\n    \"exn|5\",\n    \"float\",\n    \"int\",\n    \"int32\",\n    \"int64\",\n    \"list\",\n    \"lazy_t|5\",\n    \"nativeint|5\",\n    \"ref\",\n    \"string\",\n    \"unit\",\n  ];\n  return {\n    name: 'ReasonML',\n    aliases: [ 're' ],\n    keywords: {\n      $pattern:  /[a-z_]\\w*!?/,\n      keyword: [\n        \"and\",\n        \"as\",\n        \"asr\",\n        \"assert\",\n        \"begin\",\n        \"class\",\n        \"constraint\",\n        \"do\",\n        \"done\",\n        \"downto\",\n        \"else\",\n        \"end\",\n        \"esfun\",\n        \"exception\",\n        \"external\",\n        \"for\",\n        \"fun\",\n        \"function\",\n        \"functor\",\n        \"if\",\n        \"in\",\n        \"include\",\n        \"inherit\",\n        \"initializer\",\n        \"land\",\n        \"lazy\",\n        \"let\",\n        \"lor\",\n        \"lsl\",\n        \"lsr\",\n        \"lxor\",\n        \"mod\",\n        \"module\",\n        \"mutable\",\n        \"new\",\n        \"nonrec\",\n        \"object\",\n        \"of\",\n        \"open\",\n        \"or\",\n        \"pri\",\n        \"pub\",\n        \"rec\",\n        \"sig\",\n        \"struct\",\n        \"switch\",\n        \"then\",\n        \"to\",\n        \"try\",\n        \"type\",\n        \"val\",\n        \"virtual\",\n        \"when\",\n        \"while\",\n        \"with\",\n      ],\n      built_in: BUILT_IN_TYPES,\n      literal: [\"true\", \"false\"],\n    },\n    illegal: /(:-|:=|\\$\\{|\\+=)/,\n    contains: [\n      {\n        scope: 'literal',\n        match: /\\[(\\|\\|)?\\]|\\(\\)/,\n        relevance: 0\n      },\n      hljs.C_LINE_COMMENT_MODE,\n      hljs.COMMENT(/\\/\\*/, /\\*\\//, { illegal: /^(#,\\/\\/)/ }),\n      { /* type variable */\n        scope: 'symbol',\n        match: /\\'[A-Za-z_](?!\\')[\\w\\']*/\n        /* the grammar is ambiguous on how 'a'b should be interpreted but not the compiler */\n      },\n      { /* polymorphic variant */\n        scope: 'type',\n        match: /`[A-Z][\\w\\']*/\n      },\n      { /* module or constructor */\n        scope: 'type',\n        match: /\\b[A-Z][\\w\\']*/,\n        relevance: 0\n      },\n      { /* don't color identifiers, but safely catch all identifiers with ' */\n      match: /[a-z_]\\w*\\'[\\w\\']*/,\n        relevance: 0\n      },\n      {\n        scope: 'operator',\n        match: /\\s+(\\|\\||\\+[\\+\\.]?|\\*[\\*\\/\\.]?|\\/[\\.]?|\\.\\.\\.|\\|>|&&|===?)\\s+/,\n        relevance: 0\n      },      \n      hljs.inherit(hljs.APOS_STRING_MODE, {\n        scope: 'string',\n        relevance: 0\n      }),\n      hljs.inherit(hljs.QUOTE_STRING_MODE, { illegal: null }),\n      {\n        scope: 'number',\n        variants: [\n          { match: /\\b0[xX][a-fA-F0-9_]+[Lln]?/ },\n          { match: /\\b0[oO][0-7_]+[Lln]?/ },\n          { match: /\\b0[bB][01_]+[Lln]?/ },\n          { match: /\\b[0-9][0-9_]*([Lln]|(\\.[0-9_]*)?([eE][-+]?[0-9_]+)?)/ },\n        ],\n        relevance: 0\n      },\n    ]\n  };\n}\n\nmodule.exports = reasonml;\n",
+      "start": 1699633501282,
+      "end": 1699633501376,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501376,
+      "end": 1699633501376,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501376,
+      "end": 1699633501376,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501377,
+      "end": 1699633501377,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501377,
+      "end": 1699633501377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501377,
+      "end": 1699633501377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501377,
+      "end": 1699633501377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501377,
+      "end": 1699633501377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501377,
+      "end": 1699633501377,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501377,
+      "end": 1699633501377,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501377,
+      "end": 1699633501377,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501377,
+      "end": 1699633501377,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501377,
+      "end": 1699633501377,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501377,
+      "end": 1699633501377,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501377,
+      "end": 1699633501377,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501378,
+      "end": 1699633501378,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501378,
+      "end": 1699633501378,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501378,
+      "end": 1699633501378,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501378,
+      "end": 1699633501378,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501378,
+      "end": 1699633501378,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501378,
+      "end": 1699633501378,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: ReasonML\nDescription: Reason lets you write simple, fast and quality type safe code while leveraging both the JavaScript & OCaml ecosystems.\nWebsite: https://reasonml.github.io\nAuthor: Gidi Meir Morris <oss@gidi.io>\nCategory: functional\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar reasonml_1;\nvar hasRequiredReasonml;\n\nfunction requireReasonml () {\n\tif (hasRequiredReasonml) return reasonml_1;\n\thasRequiredReasonml = 1;\n\tfunction reasonml(hljs) {\n\t  const BUILT_IN_TYPES = [\n\t    \"array\",\n\t    \"bool\",\n\t    \"bytes\",\n\t    \"char\",\n\t    \"exn|5\",\n\t    \"float\",\n\t    \"int\",\n\t    \"int32\",\n\t    \"int64\",\n\t    \"list\",\n\t    \"lazy_t|5\",\n\t    \"nativeint|5\",\n\t    \"ref\",\n\t    \"string\",\n\t    \"unit\",\n\t  ];\n\t  return {\n\t    name: 'ReasonML',\n\t    aliases: [ 're' ],\n\t    keywords: {\n\t      $pattern:  /[a-z_]\\w*!?/,\n\t      keyword: [\n\t        \"and\",\n\t        \"as\",\n\t        \"asr\",\n\t        \"assert\",\n\t        \"begin\",\n\t        \"class\",\n\t        \"constraint\",\n\t        \"do\",\n\t        \"done\",\n\t        \"downto\",\n\t        \"else\",\n\t        \"end\",\n\t        \"esfun\",\n\t        \"exception\",\n\t        \"external\",\n\t        \"for\",\n\t        \"fun\",\n\t        \"function\",\n\t        \"functor\",\n\t        \"if\",\n\t        \"in\",\n\t        \"include\",\n\t        \"inherit\",\n\t        \"initializer\",\n\t        \"land\",\n\t        \"lazy\",\n\t        \"let\",\n\t        \"lor\",\n\t        \"lsl\",\n\t        \"lsr\",\n\t        \"lxor\",\n\t        \"mod\",\n\t        \"module\",\n\t        \"mutable\",\n\t        \"new\",\n\t        \"nonrec\",\n\t        \"object\",\n\t        \"of\",\n\t        \"open\",\n\t        \"or\",\n\t        \"pri\",\n\t        \"pub\",\n\t        \"rec\",\n\t        \"sig\",\n\t        \"struct\",\n\t        \"switch\",\n\t        \"then\",\n\t        \"to\",\n\t        \"try\",\n\t        \"type\",\n\t        \"val\",\n\t        \"virtual\",\n\t        \"when\",\n\t        \"while\",\n\t        \"with\",\n\t      ],\n\t      built_in: BUILT_IN_TYPES,\n\t      literal: [\"true\", \"false\"],\n\t    },\n\t    illegal: /(:-|:=|\\$\\{|\\+=)/,\n\t    contains: [\n\t      {\n\t        scope: 'literal',\n\t        match: /\\[(\\|\\|)?\\]|\\(\\)/,\n\t        relevance: 0\n\t      },\n\t      hljs.C_LINE_COMMENT_MODE,\n\t      hljs.COMMENT(/\\/\\*/, /\\*\\//, { illegal: /^(#,\\/\\/)/ }),\n\t      { /* type variable */\n\t        scope: 'symbol',\n\t        match: /\\'[A-Za-z_](?!\\')[\\w\\']*/\n\t        /* the grammar is ambiguous on how 'a'b should be interpreted but not the compiler */\n\t      },\n\t      { /* polymorphic variant */\n\t        scope: 'type',\n\t        match: /`[A-Z][\\w\\']*/\n\t      },\n\t      { /* module or constructor */\n\t        scope: 'type',\n\t        match: /\\b[A-Z][\\w\\']*/,\n\t        relevance: 0\n\t      },\n\t      { /* don't color identifiers, but safely catch all identifiers with ' */\n\t      match: /[a-z_]\\w*\\'[\\w\\']*/,\n\t        relevance: 0\n\t      },\n\t      {\n\t        scope: 'operator',\n\t        match: /\\s+(\\|\\||\\+[\\+\\.]?|\\*[\\*\\/\\.]?|\\/[\\.]?|\\.\\.\\.|\\|>|&&|===?)\\s+/,\n\t        relevance: 0\n\t      },      \n\t      hljs.inherit(hljs.APOS_STRING_MODE, {\n\t        scope: 'string',\n\t        relevance: 0\n\t      }),\n\t      hljs.inherit(hljs.QUOTE_STRING_MODE, { illegal: null }),\n\t      {\n\t        scope: 'number',\n\t        variants: [\n\t          { match: /\\b0[xX][a-fA-F0-9_]+[Lln]?/ },\n\t          { match: /\\b0[oO][0-7_]+[Lln]?/ },\n\t          { match: /\\b0[bB][01_]+[Lln]?/ },\n\t          { match: /\\b[0-9][0-9_]*([Lln]|(\\.[0-9_]*)?([eE][-+]?[0-9_]+)?)/ },\n\t        ],\n\t        relevance: 0\n\t      },\n\t    ]\n\t  };\n\t}\n\n\treasonml_1 = reasonml;\n\treturn reasonml_1;\n}\n\nexport { requireReasonml as __require };",
+      "start": 1699633501378,
+      "end": 1699633501378,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501378,
+      "end": 1699633501378,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501378,
+      "end": 1699633501378,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501378,
+      "end": 1699633501378,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501379,
+      "end": 1699633501379,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501379,
+      "end": 1699633501379,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501379,
+      "end": 1699633501379,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501379,
+      "end": 1699633501379,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501379,
+      "end": 1699633501379,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501379,
+      "end": 1699633501379,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501379,
+      "end": 1699633501379,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501379,
+      "end": 1699633501379,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501379,
+      "end": 1699633501379,
+      "order": "normal"
+    }
+  ]
+}

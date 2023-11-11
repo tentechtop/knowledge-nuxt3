@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/helpers/parse_link_destination.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Parse link destination\n//\n'use strict';\n\n\nvar unescapeAll = require('../common/utils').unescapeAll;\n\n\nmodule.exports = function parseLinkDestination(str, start, max) {\n  var code, level,\n      pos = start,\n      result = {\n        ok: false,\n        pos: 0,\n        lines: 0,\n        str: ''\n      };\n\n  if (str.charCodeAt(pos) === 0x3C /* < */) {\n    pos++;\n    while (pos < max) {\n      code = str.charCodeAt(pos);\n      if (code === 0x0A /* \\n */) { return result; }\n      if (code === 0x3C /* < */) { return result; }\n      if (code === 0x3E /* > */) {\n        result.pos = pos + 1;\n        result.str = unescapeAll(str.slice(start + 1, pos));\n        result.ok = true;\n        return result;\n      }\n      if (code === 0x5C /* \\ */ && pos + 1 < max) {\n        pos += 2;\n        continue;\n      }\n\n      pos++;\n    }\n\n    // no closing '>'\n    return result;\n  }\n\n  // this should be ... } else { ... branch\n\n  level = 0;\n  while (pos < max) {\n    code = str.charCodeAt(pos);\n\n    if (code === 0x20) { break; }\n\n    // ascii control characters\n    if (code < 0x20 || code === 0x7F) { break; }\n\n    if (code === 0x5C /* \\ */ && pos + 1 < max) {\n      if (str.charCodeAt(pos + 1) === 0x20) { break; }\n      pos += 2;\n      continue;\n    }\n\n    if (code === 0x28 /* ( */) {\n      level++;\n      if (level > 32) { return result; }\n    }\n\n    if (code === 0x29 /* ) */) {\n      if (level === 0) { break; }\n      level--;\n    }\n\n    pos++;\n  }\n\n  if (start === pos) { return result; }\n  if (level !== 0) { return result; }\n\n  result.str = unescapeAll(str.slice(start, pos));\n  result.pos = pos;\n  result.ok = true;\n  return result;\n};\n",
+      "start": 1699633501584,
+      "end": 1699633501745,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501746,
+      "end": 1699633501746,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501746,
+      "end": 1699633501746,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501746,
+      "end": 1699633501746,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501746,
+      "end": 1699633501746,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501746,
+      "end": 1699633501747,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501747,
+      "end": 1699633501747,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501747,
+      "end": 1699633501747,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501747,
+      "end": 1699633501747,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501747,
+      "end": 1699633501747,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501747,
+      "end": 1699633501747,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501747,
+      "end": 1699633501747,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501747,
+      "end": 1699633501747,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501747,
+      "end": 1699633501748,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501748,
+      "end": 1699633501748,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501748,
+      "end": 1699633501748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501748,
+      "end": 1699633501748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501748,
+      "end": 1699633501748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501748,
+      "end": 1699633501748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501748,
+      "end": 1699633501748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501748,
+      "end": 1699633501748,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/common/utils.js?commonjs-proxy\";\n\n// Parse link destination\n//\n'use strict';\n\n\nvar unescapeAll = require$$0.unescapeAll;\n\n\nvar parse_link_destination = function parseLinkDestination(str, start, max) {\n  var code, level,\n      pos = start,\n      result = {\n        ok: false,\n        pos: 0,\n        lines: 0,\n        str: ''\n      };\n\n  if (str.charCodeAt(pos) === 0x3C /* < */) {\n    pos++;\n    while (pos < max) {\n      code = str.charCodeAt(pos);\n      if (code === 0x0A /* \\n */) { return result; }\n      if (code === 0x3C /* < */) { return result; }\n      if (code === 0x3E /* > */) {\n        result.pos = pos + 1;\n        result.str = unescapeAll(str.slice(start + 1, pos));\n        result.ok = true;\n        return result;\n      }\n      if (code === 0x5C /* \\ */ && pos + 1 < max) {\n        pos += 2;\n        continue;\n      }\n\n      pos++;\n    }\n\n    // no closing '>'\n    return result;\n  }\n\n  // this should be ... } else { ... branch\n\n  level = 0;\n  while (pos < max) {\n    code = str.charCodeAt(pos);\n\n    if (code === 0x20) { break; }\n\n    // ascii control characters\n    if (code < 0x20 || code === 0x7F) { break; }\n\n    if (code === 0x5C /* \\ */ && pos + 1 < max) {\n      if (str.charCodeAt(pos + 1) === 0x20) { break; }\n      pos += 2;\n      continue;\n    }\n\n    if (code === 0x28 /* ( */) {\n      level++;\n      if (level > 32) { return result; }\n    }\n\n    if (code === 0x29 /* ) */) {\n      if (level === 0) { break; }\n      level--;\n    }\n\n    pos++;\n  }\n\n  if (start === pos) { return result; }\n  if (level !== 0) { return result; }\n\n  result.str = unescapeAll(str.slice(start, pos));\n  result.pos = pos;\n  result.ok = true;\n  return result;\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(parse_link_destination);\nexport { parse_link_destination as __moduleExports };",
+      "start": 1699633501748,
+      "end": 1699633502024,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633502025,
+      "end": 1699633502025,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633502025,
+      "end": 1699633502026,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633502026,
+      "end": 1699633502027,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633502027,
+      "end": 1699633502027,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633502028,
+      "end": 1699633502028,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633502029,
+      "end": 1699633502029,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633502030,
+      "end": 1699633502031,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633502031,
+      "end": 1699633502032,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633502032,
+      "end": 1699633502032,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633502033,
+      "end": 1699633502033,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633502034,
+      "end": 1699633502034,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633502034,
+      "end": 1699633502034,
+      "order": "normal"
+    }
+  ]
+}

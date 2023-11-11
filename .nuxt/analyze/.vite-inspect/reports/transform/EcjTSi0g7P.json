@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/rules_block/hr.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Horizontal rule\n\n'use strict';\n\nvar isSpace = require('../common/utils').isSpace;\n\n\nmodule.exports = function hr(state, startLine, endLine, silent) {\n  var marker, cnt, ch, token,\n      pos = state.bMarks[startLine] + state.tShift[startLine],\n      max = state.eMarks[startLine];\n\n  // if it's indented more than 3 spaces, it should be a code block\n  if (state.sCount[startLine] - state.blkIndent >= 4) { return false; }\n\n  marker = state.src.charCodeAt(pos++);\n\n  // Check hr marker\n  if (marker !== 0x2A/* * */ &&\n      marker !== 0x2D/* - */ &&\n      marker !== 0x5F/* _ */) {\n    return false;\n  }\n\n  // markers can be mixed with spaces, but there should be at least 3 of them\n\n  cnt = 1;\n  while (pos < max) {\n    ch = state.src.charCodeAt(pos++);\n    if (ch !== marker && !isSpace(ch)) { return false; }\n    if (ch === marker) { cnt++; }\n  }\n\n  if (cnt < 3) { return false; }\n\n  if (silent) { return true; }\n\n  state.line = startLine + 1;\n\n  token        = state.push('hr', 'hr', 0);\n  token.map    = [ startLine, state.line ];\n  token.markup = Array(cnt + 1).join(String.fromCharCode(marker));\n\n  return true;\n};\n",
+      "start": 1699633501682,
+      "end": 1699633501786,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501786,
+      "end": 1699633501786,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501786,
+      "end": 1699633501786,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501786,
+      "end": 1699633501786,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501786,
+      "end": 1699633501786,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501786,
+      "end": 1699633501786,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501786,
+      "end": 1699633501786,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501786,
+      "end": 1699633501786,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501787,
+      "end": 1699633501787,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/common/utils.js?commonjs-proxy\";\n\n// Horizontal rule\n\n'use strict';\n\nvar isSpace = require$$0.isSpace;\n\n\nvar hr = function hr(state, startLine, endLine, silent) {\n  var marker, cnt, ch, token,\n      pos = state.bMarks[startLine] + state.tShift[startLine],\n      max = state.eMarks[startLine];\n\n  // if it's indented more than 3 spaces, it should be a code block\n  if (state.sCount[startLine] - state.blkIndent >= 4) { return false; }\n\n  marker = state.src.charCodeAt(pos++);\n\n  // Check hr marker\n  if (marker !== 0x2A/* * */ &&\n      marker !== 0x2D/* - */ &&\n      marker !== 0x5F/* _ */) {\n    return false;\n  }\n\n  // markers can be mixed with spaces, but there should be at least 3 of them\n\n  cnt = 1;\n  while (pos < max) {\n    ch = state.src.charCodeAt(pos++);\n    if (ch !== marker && !isSpace(ch)) { return false; }\n    if (ch === marker) { cnt++; }\n  }\n\n  if (cnt < 3) { return false; }\n\n  if (silent) { return true; }\n\n  state.line = startLine + 1;\n\n  token        = state.push('hr', 'hr', 0);\n  token.map    = [ startLine, state.line ];\n  token.markup = Array(cnt + 1).join(String.fromCharCode(marker));\n\n  return true;\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(hr);\nexport { hr as __moduleExports };",
+      "start": 1699633501787,
+      "end": 1699633502024,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;AAAA;AACA;AACA,YAAY,CAAC;AACb;AACA,IAAI,OAAO,GAAG,UAA0B,CAAC,OAAO,CAAC;AACjD;AACA;IACA,EAAc,GAAG,SAAS,EAAE,CAAC,KAAK,EAAE,SAAS,EAAE,OAAO,EAAE,MAAM,EAAE;AAChE,EAAE,IAAI,MAAM,EAAE,GAAG,EAAE,EAAE,EAAE,KAAK;AAC5B,MAAM,GAAG,GAAG,KAAK,CAAC,MAAM,CAAC,SAAS,CAAC,GAAG,KAAK,CAAC,MAAM,CAAC,SAAS,CAAC;AAC7D,MAAM,GAAG,GAAG,KAAK,CAAC,MAAM,CAAC,SAAS,CAAC,CAAC;AACpC;AACA;AACA,EAAE,IAAI,KAAK,CAAC,MAAM,CAAC,SAAS,CAAC,GAAG,KAAK,CAAC,SAAS,IAAI,CAAC,EAAE,EAAE,OAAO,KAAK,CAAC,EAAE;AACvE;AACA,EAAE,MAAM,GAAG,KAAK,CAAC,GAAG,CAAC,UAAU,CAAC,GAAG,EAAE,CAAC,CAAC;AACvC;AACA;AACA,EAAE,IAAI,MAAM,KAAK,IAAI;AACrB,MAAM,MAAM,KAAK,IAAI;AACrB,MAAM,MAAM,KAAK,IAAI,SAAS;AAC9B,IAAI,OAAO,KAAK,CAAC;AACjB,GAAG;AACH;AACA;AACA;AACA,EAAE,GAAG,GAAG,CAAC,CAAC;AACV,EAAE,OAAO,GAAG,GAAG,GAAG,EAAE;AACpB,IAAI,EAAE,GAAG,KAAK,CAAC,GAAG,CAAC,UAAU,CAAC,GAAG,EAAE,CAAC,CAAC;AACrC,IAAI,IAAI,EAAE,KAAK,MAAM,IAAI,CAAC,OAAO,CAAC,EAAE,CAAC,EAAE,EAAE,OAAO,KAAK,CAAC,EAAE;AACxD,IAAI,IAAI,EAAE,KAAK,MAAM,EAAE,EAAE,GAAG,EAAE,CAAC,EAAE;AACjC,GAAG;AACH;AACA,EAAE,IAAI,GAAG,GAAG,CAAC,EAAE,EAAE,OAAO,KAAK,CAAC,EAAE;AAChC;AACA,EAAE,IAAI,MAAM,EAAE,EAAE,OAAO,IAAI,CAAC,EAAE;AAC9B;AACA,EAAE,KAAK,CAAC,IAAI,GAAG,SAAS,GAAG,CAAC,CAAC;AAC7B;AACA,EAAE,KAAK,UAAU,KAAK,CAAC,IAAI,CAAC,IAAI,EAAE,IAAI,EAAE,CAAC,CAAC,CAAC;AAC3C,EAAE,KAAK,CAAC,GAAG,MAAM,EAAE,SAAS,EAAE,KAAK,CAAC,IAAI,EAAE,CAAC;AAC3C,EAAE,KAAK,CAAC,MAAM,GAAG,KAAK,CAAC,GAAG,GAAG,CAAC,CAAC,CAAC,IAAI,CAAC,MAAM,CAAC,YAAY,CAAC,MAAM,CAAC,CAAC,CAAC;AAClE;AACA,EAAE,OAAO,IAAI,CAAC;AACd,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633502025,
+      "end": 1699633502025,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633502025,
+      "end": 1699633502026,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633502026,
+      "end": 1699633502027,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633502027,
+      "end": 1699633502027,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633502028,
+      "end": 1699633502028,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633502029,
+      "end": 1699633502029,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633502031,
+      "end": 1699633502031,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633502031,
+      "end": 1699633502032,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633502032,
+      "end": 1699633502032,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633502033,
+      "end": 1699633502033,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633502034,
+      "end": 1699633502034,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633502034,
+      "end": 1699633502034,
+      "order": "normal"
+    }
+  ]
+}

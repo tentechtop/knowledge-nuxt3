@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/common/utils.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Utilities\n//\n'use strict';\n\n\nfunction _class(obj) { return Object.prototype.toString.call(obj); }\n\nfunction isString(obj) { return _class(obj) === '[object String]'; }\n\nvar _hasOwnProperty = Object.prototype.hasOwnProperty;\n\nfunction has(object, key) {\n  return _hasOwnProperty.call(object, key);\n}\n\n// Merge objects\n//\nfunction assign(obj /*from1, from2, from3, ...*/) {\n  var sources = Array.prototype.slice.call(arguments, 1);\n\n  sources.forEach(function (source) {\n    if (!source) { return; }\n\n    if (typeof source !== 'object') {\n      throw new TypeError(source + 'must be object');\n    }\n\n    Object.keys(source).forEach(function (key) {\n      obj[key] = source[key];\n    });\n  });\n\n  return obj;\n}\n\n// Remove element from array and put another array at those position.\n// Useful for some operations with tokens\nfunction arrayReplaceAt(src, pos, newElements) {\n  return [].concat(src.slice(0, pos), newElements, src.slice(pos + 1));\n}\n\n////////////////////////////////////////////////////////////////////////////////\n\nfunction isValidEntityCode(c) {\n  /*eslint no-bitwise:0*/\n  // broken sequence\n  if (c >= 0xD800 && c <= 0xDFFF) { return false; }\n  // never used\n  if (c >= 0xFDD0 && c <= 0xFDEF) { return false; }\n  if ((c & 0xFFFF) === 0xFFFF || (c & 0xFFFF) === 0xFFFE) { return false; }\n  // control codes\n  if (c >= 0x00 && c <= 0x08) { return false; }\n  if (c === 0x0B) { return false; }\n  if (c >= 0x0E && c <= 0x1F) { return false; }\n  if (c >= 0x7F && c <= 0x9F) { return false; }\n  // out of range\n  if (c > 0x10FFFF) { return false; }\n  return true;\n}\n\nfunction fromCodePoint(c) {\n  /*eslint no-bitwise:0*/\n  if (c > 0xffff) {\n    c -= 0x10000;\n    var surrogate1 = 0xd800 + (c >> 10),\n        surrogate2 = 0xdc00 + (c & 0x3ff);\n\n    return String.fromCharCode(surrogate1, surrogate2);\n  }\n  return String.fromCharCode(c);\n}\n\n\nvar UNESCAPE_MD_RE  = /\\\\([!\"#$%&'()*+,\\-.\\/:;<=>?@[\\\\\\]^_`{|}~])/g;\nvar ENTITY_RE       = /&([a-z#][a-z0-9]{1,31});/gi;\nvar UNESCAPE_ALL_RE = new RegExp(UNESCAPE_MD_RE.source + '|' + ENTITY_RE.source, 'gi');\n\nvar DIGITAL_ENTITY_TEST_RE = /^#((?:x[a-f0-9]{1,8}|[0-9]{1,8}))$/i;\n\nvar entities = require('./entities');\n\nfunction replaceEntityPattern(match, name) {\n  var code;\n\n  if (has(entities, name)) {\n    return entities[name];\n  }\n\n  if (name.charCodeAt(0) === 0x23/* # */ && DIGITAL_ENTITY_TEST_RE.test(name)) {\n    code = name[1].toLowerCase() === 'x' ?\n      parseInt(name.slice(2), 16) : parseInt(name.slice(1), 10);\n\n    if (isValidEntityCode(code)) {\n      return fromCodePoint(code);\n    }\n  }\n\n  return match;\n}\n\n/*function replaceEntities(str) {\n  if (str.indexOf('&') < 0) { return str; }\n\n  return str.replace(ENTITY_RE, replaceEntityPattern);\n}*/\n\nfunction unescapeMd(str) {\n  if (str.indexOf('\\\\') < 0) { return str; }\n  return str.replace(UNESCAPE_MD_RE, '$1');\n}\n\nfunction unescapeAll(str) {\n  if (str.indexOf('\\\\') < 0 && str.indexOf('&') < 0) { return str; }\n\n  return str.replace(UNESCAPE_ALL_RE, function (match, escaped, entity) {\n    if (escaped) { return escaped; }\n    return replaceEntityPattern(match, entity);\n  });\n}\n\n////////////////////////////////////////////////////////////////////////////////\n\nvar HTML_ESCAPE_TEST_RE = /[&<>\"]/;\nvar HTML_ESCAPE_REPLACE_RE = /[&<>\"]/g;\nvar HTML_REPLACEMENTS = {\n  '&': '&amp;',\n  '<': '&lt;',\n  '>': '&gt;',\n  '\"': '&quot;'\n};\n\nfunction replaceUnsafeChar(ch) {\n  return HTML_REPLACEMENTS[ch];\n}\n\nfunction escapeHtml(str) {\n  if (HTML_ESCAPE_TEST_RE.test(str)) {\n    return str.replace(HTML_ESCAPE_REPLACE_RE, replaceUnsafeChar);\n  }\n  return str;\n}\n\n////////////////////////////////////////////////////////////////////////////////\n\nvar REGEXP_ESCAPE_RE = /[.?*+^$[\\]\\\\(){}|-]/g;\n\nfunction escapeRE(str) {\n  return str.replace(REGEXP_ESCAPE_RE, '\\\\$&');\n}\n\n////////////////////////////////////////////////////////////////////////////////\n\nfunction isSpace(code) {\n  switch (code) {\n    case 0x09:\n    case 0x20:\n      return true;\n  }\n  return false;\n}\n\n// Zs (unicode class) || [\\t\\f\\v\\r\\n]\nfunction isWhiteSpace(code) {\n  if (code >= 0x2000 && code <= 0x200A) { return true; }\n  switch (code) {\n    case 0x09: // \\t\n    case 0x0A: // \\n\n    case 0x0B: // \\v\n    case 0x0C: // \\f\n    case 0x0D: // \\r\n    case 0x20:\n    case 0xA0:\n    case 0x1680:\n    case 0x202F:\n    case 0x205F:\n    case 0x3000:\n      return true;\n  }\n  return false;\n}\n\n////////////////////////////////////////////////////////////////////////////////\n\n/*eslint-disable max-len*/\nvar UNICODE_PUNCT_RE = require('uc.micro/categories/P/regex');\n\n// Currently without astral characters support.\nfunction isPunctChar(ch) {\n  return UNICODE_PUNCT_RE.test(ch);\n}\n\n\n// Markdown ASCII punctuation characters.\n//\n// !, \", #, $, %, &, ', (, ), *, +, ,, -, ., /, :, ;, <, =, >, ?, @, [, \\, ], ^, _, `, {, |, }, or ~\n// http://spec.commonmark.org/0.15/#ascii-punctuation-character\n//\n// Don't confuse with unicode punctuation !!! It lacks some chars in ascii range.\n//\nfunction isMdAsciiPunct(ch) {\n  switch (ch) {\n    case 0x21/* ! */:\n    case 0x22/* \" */:\n    case 0x23/* # */:\n    case 0x24/* $ */:\n    case 0x25/* % */:\n    case 0x26/* & */:\n    case 0x27/* ' */:\n    case 0x28/* ( */:\n    case 0x29/* ) */:\n    case 0x2A/* * */:\n    case 0x2B/* + */:\n    case 0x2C/* , */:\n    case 0x2D/* - */:\n    case 0x2E/* . */:\n    case 0x2F/* / */:\n    case 0x3A/* : */:\n    case 0x3B/* ; */:\n    case 0x3C/* < */:\n    case 0x3D/* = */:\n    case 0x3E/* > */:\n    case 0x3F/* ? */:\n    case 0x40/* @ */:\n    case 0x5B/* [ */:\n    case 0x5C/* \\ */:\n    case 0x5D/* ] */:\n    case 0x5E/* ^ */:\n    case 0x5F/* _ */:\n    case 0x60/* ` */:\n    case 0x7B/* { */:\n    case 0x7C/* | */:\n    case 0x7D/* } */:\n    case 0x7E/* ~ */:\n      return true;\n    default:\n      return false;\n  }\n}\n\n// Hepler to unify [reference labels].\n//\nfunction normalizeReference(str) {\n  // Trim and collapse whitespace\n  //\n  str = str.trim().replace(/\\s+/g, ' ');\n\n  // In node v10 'ẞ'.toLowerCase() === 'Ṿ', which is presumed to be a bug\n  // fixed in v12 (couldn't find any details).\n  //\n  // So treat this one as a special case\n  // (remove this when node v10 is no longer supported).\n  //\n  if ('ẞ'.toLowerCase() === 'Ṿ') {\n    str = str.replace(/ẞ/g, 'ß');\n  }\n\n  // .toLowerCase().toUpperCase() should get rid of all differences\n  // between letter variants.\n  //\n  // Simple .toLowerCase() doesn't normalize 125 code points correctly,\n  // and .toUpperCase doesn't normalize 6 of them (list of exceptions:\n  // İ, ϴ, ẞ, Ω, K, Å - those are already uppercased, but have differently\n  // uppercased versions).\n  //\n  // Here's an example showing how it happens. Lets take greek letter omega:\n  // uppercase U+0398 (Θ), U+03f4 (ϴ) and lowercase U+03b8 (θ), U+03d1 (ϑ)\n  //\n  // Unicode entries:\n  // 0398;GREEK CAPITAL LETTER THETA;Lu;0;L;;;;;N;;;;03B8;\n  // 03B8;GREEK SMALL LETTER THETA;Ll;0;L;;;;;N;;;0398;;0398\n  // 03D1;GREEK THETA SYMBOL;Ll;0;L;<compat> 03B8;;;;N;GREEK SMALL LETTER SCRIPT THETA;;0398;;0398\n  // 03F4;GREEK CAPITAL THETA SYMBOL;Lu;0;L;<compat> 0398;;;;N;;;;03B8;\n  //\n  // Case-insensitive comparison should treat all of them as equivalent.\n  //\n  // But .toLowerCase() doesn't change ϑ (it's already lowercase),\n  // and .toUpperCase() doesn't change ϴ (already uppercase).\n  //\n  // Applying first lower then upper case normalizes any character:\n  // '\\u0398\\u03f4\\u03b8\\u03d1'.toLowerCase().toUpperCase() === '\\u0398\\u0398\\u0398\\u0398'\n  //\n  // Note: this is equivalent to unicode case folding; unicode normalization\n  // is a different step that is not required here.\n  //\n  // Final result should be uppercased, because it's later stored in an object\n  // (this avoid a conflict with Object.prototype members,\n  // most notably, `__proto__`)\n  //\n  return str.toLowerCase().toUpperCase();\n}\n\n////////////////////////////////////////////////////////////////////////////////\n\n// Re-export libraries commonly used in both markdown-it and its plugins,\n// so plugins won't have to depend on them explicitly, which reduces their\n// bundled size (e.g. a browser build).\n//\nexports.lib                 = {};\nexports.lib.mdurl           = require('mdurl');\nexports.lib.ucmicro         = require('uc.micro');\n\nexports.assign              = assign;\nexports.isString            = isString;\nexports.has                 = has;\nexports.unescapeMd          = unescapeMd;\nexports.unescapeAll         = unescapeAll;\nexports.isValidEntityCode   = isValidEntityCode;\nexports.fromCodePoint       = fromCodePoint;\n// exports.replaceEntities     = replaceEntities;\nexports.escapeHtml          = escapeHtml;\nexports.arrayReplaceAt      = arrayReplaceAt;\nexports.isSpace             = isSpace;\nexports.isWhiteSpace        = isWhiteSpace;\nexports.isMdAsciiPunct      = isMdAsciiPunct;\nexports.isPunctChar         = isPunctChar;\nexports.escapeRE            = escapeRE;\nexports.normalizeReference  = normalizeReference;\n",
+      "start": 1699633501494,
+      "end": 1699633501646,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501646,
+      "end": 1699633501646,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501646,
+      "end": 1699633501646,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501646,
+      "end": 1699633501646,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501646,
+      "end": 1699633501646,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501646,
+      "end": 1699633501646,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501646,
+      "end": 1699633501646,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501646,
+      "end": 1699633501646,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501646,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501647,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501647,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501647,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501647,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501647,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501647,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501647,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501647,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501647,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501647,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501647,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501647,
+      "end": 1699633501647,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __exports as utils } from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/common/utils.js?commonjs-exports\";\nimport require$$0 from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/common/entities.js?commonjs-proxy\";\nimport require$$1 from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/uc.micro/categories/P/regex.js?commonjs-proxy\";\nimport require$$2 from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/mdurl/index.js?commonjs-proxy\";\nimport { __require as require$$3 } from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/uc.micro/index.js?commonjs-wrapped\";\n\n(function (exports) {\n\t// Utilities\n\t//\n\t'use strict';\n\n\n\tfunction _class(obj) { return Object.prototype.toString.call(obj); }\n\n\tfunction isString(obj) { return _class(obj) === '[object String]'; }\n\n\tvar _hasOwnProperty = Object.prototype.hasOwnProperty;\n\n\tfunction has(object, key) {\n\t  return _hasOwnProperty.call(object, key);\n\t}\n\n\t// Merge objects\n\t//\n\tfunction assign(obj /*from1, from2, from3, ...*/) {\n\t  var sources = Array.prototype.slice.call(arguments, 1);\n\n\t  sources.forEach(function (source) {\n\t    if (!source) { return; }\n\n\t    if (typeof source !== 'object') {\n\t      throw new TypeError(source + 'must be object');\n\t    }\n\n\t    Object.keys(source).forEach(function (key) {\n\t      obj[key] = source[key];\n\t    });\n\t  });\n\n\t  return obj;\n\t}\n\n\t// Remove element from array and put another array at those position.\n\t// Useful for some operations with tokens\n\tfunction arrayReplaceAt(src, pos, newElements) {\n\t  return [].concat(src.slice(0, pos), newElements, src.slice(pos + 1));\n\t}\n\n\t////////////////////////////////////////////////////////////////////////////////\n\n\tfunction isValidEntityCode(c) {\n\t  /*eslint no-bitwise:0*/\n\t  // broken sequence\n\t  if (c >= 0xD800 && c <= 0xDFFF) { return false; }\n\t  // never used\n\t  if (c >= 0xFDD0 && c <= 0xFDEF) { return false; }\n\t  if ((c & 0xFFFF) === 0xFFFF || (c & 0xFFFF) === 0xFFFE) { return false; }\n\t  // control codes\n\t  if (c >= 0x00 && c <= 0x08) { return false; }\n\t  if (c === 0x0B) { return false; }\n\t  if (c >= 0x0E && c <= 0x1F) { return false; }\n\t  if (c >= 0x7F && c <= 0x9F) { return false; }\n\t  // out of range\n\t  if (c > 0x10FFFF) { return false; }\n\t  return true;\n\t}\n\n\tfunction fromCodePoint(c) {\n\t  /*eslint no-bitwise:0*/\n\t  if (c > 0xffff) {\n\t    c -= 0x10000;\n\t    var surrogate1 = 0xd800 + (c >> 10),\n\t        surrogate2 = 0xdc00 + (c & 0x3ff);\n\n\t    return String.fromCharCode(surrogate1, surrogate2);\n\t  }\n\t  return String.fromCharCode(c);\n\t}\n\n\n\tvar UNESCAPE_MD_RE  = /\\\\([!\"#$%&'()*+,\\-.\\/:;<=>?@[\\\\\\]^_`{|}~])/g;\n\tvar ENTITY_RE       = /&([a-z#][a-z0-9]{1,31});/gi;\n\tvar UNESCAPE_ALL_RE = new RegExp(UNESCAPE_MD_RE.source + '|' + ENTITY_RE.source, 'gi');\n\n\tvar DIGITAL_ENTITY_TEST_RE = /^#((?:x[a-f0-9]{1,8}|[0-9]{1,8}))$/i;\n\n\tvar entities = require$$0;\n\n\tfunction replaceEntityPattern(match, name) {\n\t  var code;\n\n\t  if (has(entities, name)) {\n\t    return entities[name];\n\t  }\n\n\t  if (name.charCodeAt(0) === 0x23/* # */ && DIGITAL_ENTITY_TEST_RE.test(name)) {\n\t    code = name[1].toLowerCase() === 'x' ?\n\t      parseInt(name.slice(2), 16) : parseInt(name.slice(1), 10);\n\n\t    if (isValidEntityCode(code)) {\n\t      return fromCodePoint(code);\n\t    }\n\t  }\n\n\t  return match;\n\t}\n\n\t/*function replaceEntities(str) {\n\t  if (str.indexOf('&') < 0) { return str; }\n\n\t  return str.replace(ENTITY_RE, replaceEntityPattern);\n\t}*/\n\n\tfunction unescapeMd(str) {\n\t  if (str.indexOf('\\\\') < 0) { return str; }\n\t  return str.replace(UNESCAPE_MD_RE, '$1');\n\t}\n\n\tfunction unescapeAll(str) {\n\t  if (str.indexOf('\\\\') < 0 && str.indexOf('&') < 0) { return str; }\n\n\t  return str.replace(UNESCAPE_ALL_RE, function (match, escaped, entity) {\n\t    if (escaped) { return escaped; }\n\t    return replaceEntityPattern(match, entity);\n\t  });\n\t}\n\n\t////////////////////////////////////////////////////////////////////////////////\n\n\tvar HTML_ESCAPE_TEST_RE = /[&<>\"]/;\n\tvar HTML_ESCAPE_REPLACE_RE = /[&<>\"]/g;\n\tvar HTML_REPLACEMENTS = {\n\t  '&': '&amp;',\n\t  '<': '&lt;',\n\t  '>': '&gt;',\n\t  '\"': '&quot;'\n\t};\n\n\tfunction replaceUnsafeChar(ch) {\n\t  return HTML_REPLACEMENTS[ch];\n\t}\n\n\tfunction escapeHtml(str) {\n\t  if (HTML_ESCAPE_TEST_RE.test(str)) {\n\t    return str.replace(HTML_ESCAPE_REPLACE_RE, replaceUnsafeChar);\n\t  }\n\t  return str;\n\t}\n\n\t////////////////////////////////////////////////////////////////////////////////\n\n\tvar REGEXP_ESCAPE_RE = /[.?*+^$[\\]\\\\(){}|-]/g;\n\n\tfunction escapeRE(str) {\n\t  return str.replace(REGEXP_ESCAPE_RE, '\\\\$&');\n\t}\n\n\t////////////////////////////////////////////////////////////////////////////////\n\n\tfunction isSpace(code) {\n\t  switch (code) {\n\t    case 0x09:\n\t    case 0x20:\n\t      return true;\n\t  }\n\t  return false;\n\t}\n\n\t// Zs (unicode class) || [\\t\\f\\v\\r\\n]\n\tfunction isWhiteSpace(code) {\n\t  if (code >= 0x2000 && code <= 0x200A) { return true; }\n\t  switch (code) {\n\t    case 0x09: // \\t\n\t    case 0x0A: // \\n\n\t    case 0x0B: // \\v\n\t    case 0x0C: // \\f\n\t    case 0x0D: // \\r\n\t    case 0x20:\n\t    case 0xA0:\n\t    case 0x1680:\n\t    case 0x202F:\n\t    case 0x205F:\n\t    case 0x3000:\n\t      return true;\n\t  }\n\t  return false;\n\t}\n\n\t////////////////////////////////////////////////////////////////////////////////\n\n\t/*eslint-disable max-len*/\n\tvar UNICODE_PUNCT_RE = require$$1;\n\n\t// Currently without astral characters support.\n\tfunction isPunctChar(ch) {\n\t  return UNICODE_PUNCT_RE.test(ch);\n\t}\n\n\n\t// Markdown ASCII punctuation characters.\n\t//\n\t// !, \", #, $, %, &, ', (, ), *, +, ,, -, ., /, :, ;, <, =, >, ?, @, [, \\, ], ^, _, `, {, |, }, or ~\n\t// http://spec.commonmark.org/0.15/#ascii-punctuation-character\n\t//\n\t// Don't confuse with unicode punctuation !!! It lacks some chars in ascii range.\n\t//\n\tfunction isMdAsciiPunct(ch) {\n\t  switch (ch) {\n\t    case 0x21/* ! */:\n\t    case 0x22/* \" */:\n\t    case 0x23/* # */:\n\t    case 0x24/* $ */:\n\t    case 0x25/* % */:\n\t    case 0x26/* & */:\n\t    case 0x27/* ' */:\n\t    case 0x28/* ( */:\n\t    case 0x29/* ) */:\n\t    case 0x2A/* * */:\n\t    case 0x2B/* + */:\n\t    case 0x2C/* , */:\n\t    case 0x2D/* - */:\n\t    case 0x2E/* . */:\n\t    case 0x2F/* / */:\n\t    case 0x3A/* : */:\n\t    case 0x3B/* ; */:\n\t    case 0x3C/* < */:\n\t    case 0x3D/* = */:\n\t    case 0x3E/* > */:\n\t    case 0x3F/* ? */:\n\t    case 0x40/* @ */:\n\t    case 0x5B/* [ */:\n\t    case 0x5C/* \\ */:\n\t    case 0x5D/* ] */:\n\t    case 0x5E/* ^ */:\n\t    case 0x5F/* _ */:\n\t    case 0x60/* ` */:\n\t    case 0x7B/* { */:\n\t    case 0x7C/* | */:\n\t    case 0x7D/* } */:\n\t    case 0x7E/* ~ */:\n\t      return true;\n\t    default:\n\t      return false;\n\t  }\n\t}\n\n\t// Hepler to unify [reference labels].\n\t//\n\tfunction normalizeReference(str) {\n\t  // Trim and collapse whitespace\n\t  //\n\t  str = str.trim().replace(/\\s+/g, ' ');\n\n\t  // In node v10 'ẞ'.toLowerCase() === 'Ṿ', which is presumed to be a bug\n\t  // fixed in v12 (couldn't find any details).\n\t  //\n\t  // So treat this one as a special case\n\t  // (remove this when node v10 is no longer supported).\n\t  //\n\t  if ('ẞ'.toLowerCase() === 'Ṿ') {\n\t    str = str.replace(/ẞ/g, 'ß');\n\t  }\n\n\t  // .toLowerCase().toUpperCase() should get rid of all differences\n\t  // between letter variants.\n\t  //\n\t  // Simple .toLowerCase() doesn't normalize 125 code points correctly,\n\t  // and .toUpperCase doesn't normalize 6 of them (list of exceptions:\n\t  // İ, ϴ, ẞ, Ω, K, Å - those are already uppercased, but have differently\n\t  // uppercased versions).\n\t  //\n\t  // Here's an example showing how it happens. Lets take greek letter omega:\n\t  // uppercase U+0398 (Θ), U+03f4 (ϴ) and lowercase U+03b8 (θ), U+03d1 (ϑ)\n\t  //\n\t  // Unicode entries:\n\t  // 0398;GREEK CAPITAL LETTER THETA;Lu;0;L;;;;;N;;;;03B8;\n\t  // 03B8;GREEK SMALL LETTER THETA;Ll;0;L;;;;;N;;;0398;;0398\n\t  // 03D1;GREEK THETA SYMBOL;Ll;0;L;<compat> 03B8;;;;N;GREEK SMALL LETTER SCRIPT THETA;;0398;;0398\n\t  // 03F4;GREEK CAPITAL THETA SYMBOL;Lu;0;L;<compat> 0398;;;;N;;;;03B8;\n\t  //\n\t  // Case-insensitive comparison should treat all of them as equivalent.\n\t  //\n\t  // But .toLowerCase() doesn't change ϑ (it's already lowercase),\n\t  // and .toUpperCase() doesn't change ϴ (already uppercase).\n\t  //\n\t  // Applying first lower then upper case normalizes any character:\n\t  // '\\u0398\\u03f4\\u03b8\\u03d1'.toLowerCase().toUpperCase() === '\\u0398\\u0398\\u0398\\u0398'\n\t  //\n\t  // Note: this is equivalent to unicode case folding; unicode normalization\n\t  // is a different step that is not required here.\n\t  //\n\t  // Final result should be uppercased, because it's later stored in an object\n\t  // (this avoid a conflict with Object.prototype members,\n\t  // most notably, `__proto__`)\n\t  //\n\t  return str.toLowerCase().toUpperCase();\n\t}\n\n\t////////////////////////////////////////////////////////////////////////////////\n\n\t// Re-export libraries commonly used in both markdown-it and its plugins,\n\t// so plugins won't have to depend on them explicitly, which reduces their\n\t// bundled size (e.g. a browser build).\n\t//\n\texports.lib                 = {};\n\texports.lib.mdurl           = require$$2;\n\texports.lib.ucmicro         = require$$3();\n\n\texports.assign              = assign;\n\texports.isString            = isString;\n\texports.has                 = has;\n\texports.unescapeMd          = unescapeMd;\n\texports.unescapeAll         = unescapeAll;\n\texports.isValidEntityCode   = isValidEntityCode;\n\texports.fromCodePoint       = fromCodePoint;\n\t// exports.replaceEntities     = replaceEntities;\n\texports.escapeHtml          = escapeHtml;\n\texports.arrayReplaceAt      = arrayReplaceAt;\n\texports.isSpace             = isSpace;\n\texports.isWhiteSpace        = isWhiteSpace;\n\texports.isMdAsciiPunct      = isMdAsciiPunct;\n\texports.isPunctChar         = isPunctChar;\n\texports.escapeRE            = escapeRE;\n\texports.normalizeReference  = normalizeReference; \n} (utils));\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(utils);\nexport { utils as __moduleExports };",
+      "start": 1699633501647,
+      "end": 1699633502018,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633502018,
+      "end": 1699633502018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633502018,
+      "end": 1699633502018,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633502018,
+      "end": 1699633502018,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633502018,
+      "end": 1699633502018,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633502018,
+      "end": 1699633502018,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633502018,
+      "end": 1699633502018,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633502018,
+      "end": 1699633502018,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633502018,
+      "end": 1699633502018,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633502018,
+      "end": 1699633502018,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633502018,
+      "end": 1699633502018,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633502018,
+      "end": 1699633502018,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633502018,
+      "end": 1699633502018,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/angelscript.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: AngelScript\nAuthor: Melissa Geels <melissa@nimble.tools>\nCategory: scripting\nWebsite: https://www.angelcode.com/angelscript/\n*/\n\n/** @type LanguageFn */\nfunction angelscript(hljs) {\n  const builtInTypeMode = {\n    className: 'built_in',\n    begin: '\\\\b(void|bool|int8|int16|int32|int64|int|uint8|uint16|uint32|uint64|uint|string|ref|array|double|float|auto|dictionary)'\n  };\n\n  const objectHandleMode = {\n    className: 'symbol',\n    begin: '[a-zA-Z0-9_]+@'\n  };\n\n  const genericMode = {\n    className: 'keyword',\n    begin: '<',\n    end: '>',\n    contains: [\n      builtInTypeMode,\n      objectHandleMode\n    ]\n  };\n\n  builtInTypeMode.contains = [ genericMode ];\n  objectHandleMode.contains = [ genericMode ];\n\n  const KEYWORDS = [\n    \"for\",\n    \"in|0\",\n    \"break\",\n    \"continue\",\n    \"while\",\n    \"do|0\",\n    \"return\",\n    \"if\",\n    \"else\",\n    \"case\",\n    \"switch\",\n    \"namespace\",\n    \"is\",\n    \"cast\",\n    \"or\",\n    \"and\",\n    \"xor\",\n    \"not\",\n    \"get|0\",\n    \"in\",\n    \"inout|10\",\n    \"out\",\n    \"override\",\n    \"set|0\",\n    \"private\",\n    \"public\",\n    \"const\",\n    \"default|0\",\n    \"final\",\n    \"shared\",\n    \"external\",\n    \"mixin|10\",\n    \"enum\",\n    \"typedef\",\n    \"funcdef\",\n    \"this\",\n    \"super\",\n    \"import\",\n    \"from\",\n    \"interface\",\n    \"abstract|0\",\n    \"try\",\n    \"catch\",\n    \"protected\",\n    \"explicit\",\n    \"property\"\n  ];\n\n  return {\n    name: 'AngelScript',\n    aliases: [ 'asc' ],\n\n    keywords: KEYWORDS,\n\n    // avoid close detection with C# and JS\n    illegal: '(^using\\\\s+[A-Za-z0-9_\\\\.]+;$|\\\\bfunction\\\\s*[^\\\\(])',\n\n    contains: [\n      { // 'strings'\n        className: 'string',\n        begin: '\\'',\n        end: '\\'',\n        illegal: '\\\\n',\n        contains: [ hljs.BACKSLASH_ESCAPE ],\n        relevance: 0\n      },\n\n      // \"\"\"heredoc strings\"\"\"\n      {\n        className: 'string',\n        begin: '\"\"\"',\n        end: '\"\"\"'\n      },\n\n      { // \"strings\"\n        className: 'string',\n        begin: '\"',\n        end: '\"',\n        illegal: '\\\\n',\n        contains: [ hljs.BACKSLASH_ESCAPE ],\n        relevance: 0\n      },\n\n      hljs.C_LINE_COMMENT_MODE, // single-line comments\n      hljs.C_BLOCK_COMMENT_MODE, // comment blocks\n\n      { // metadata\n        className: 'string',\n        begin: '^\\\\s*\\\\[',\n        end: '\\\\]'\n      },\n\n      { // interface or namespace declaration\n        beginKeywords: 'interface namespace',\n        end: /\\{/,\n        illegal: '[;.\\\\-]',\n        contains: [\n          { // interface or namespace name\n            className: 'symbol',\n            begin: '[a-zA-Z0-9_]+'\n          }\n        ]\n      },\n\n      { // class declaration\n        beginKeywords: 'class',\n        end: /\\{/,\n        illegal: '[;.\\\\-]',\n        contains: [\n          { // class name\n            className: 'symbol',\n            begin: '[a-zA-Z0-9_]+',\n            contains: [\n              {\n                begin: '[:,]\\\\s*',\n                contains: [\n                  {\n                    className: 'symbol',\n                    begin: '[a-zA-Z0-9_]+'\n                  }\n                ]\n              }\n            ]\n          }\n        ]\n      },\n\n      builtInTypeMode, // built-in types\n      objectHandleMode, // object handles\n\n      { // literals\n        className: 'literal',\n        begin: '\\\\b(null|true|false)'\n      },\n\n      { // numbers\n        className: 'number',\n        relevance: 0,\n        begin: '(-?)(\\\\b0[xXbBoOdD][a-fA-F0-9]+|(\\\\b\\\\d+(\\\\.\\\\d*)?f?|\\\\.\\\\d+f?)([eE][-+]?\\\\d+f?)?)'\n      }\n    ]\n  };\n}\n\nmodule.exports = angelscript;\n",
+      "start": 1699633500535,
+      "end": 1699633500614,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500614,
+      "end": 1699633500614,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500614,
+      "end": 1699633500614,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500614,
+      "end": 1699633500614,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500615,
+      "end": 1699633500615,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500615,
+      "end": 1699633500615,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500615,
+      "end": 1699633500615,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500615,
+      "end": 1699633500615,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500615,
+      "end": 1699633500615,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500615,
+      "end": 1699633500615,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500615,
+      "end": 1699633500615,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500615,
+      "end": 1699633500615,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500615,
+      "end": 1699633500615,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500615,
+      "end": 1699633500615,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500616,
+      "end": 1699633500616,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500616,
+      "end": 1699633500616,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500616,
+      "end": 1699633500616,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500616,
+      "end": 1699633500616,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500616,
+      "end": 1699633500616,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500616,
+      "end": 1699633500616,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500616,
+      "end": 1699633500616,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: AngelScript\nAuthor: Melissa Geels <melissa@nimble.tools>\nCategory: scripting\nWebsite: https://www.angelcode.com/angelscript/\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar angelscript_1;\nvar hasRequiredAngelscript;\n\nfunction requireAngelscript () {\n\tif (hasRequiredAngelscript) return angelscript_1;\n\thasRequiredAngelscript = 1;\n\t/** @type LanguageFn */\n\tfunction angelscript(hljs) {\n\t  const builtInTypeMode = {\n\t    className: 'built_in',\n\t    begin: '\\\\b(void|bool|int8|int16|int32|int64|int|uint8|uint16|uint32|uint64|uint|string|ref|array|double|float|auto|dictionary)'\n\t  };\n\n\t  const objectHandleMode = {\n\t    className: 'symbol',\n\t    begin: '[a-zA-Z0-9_]+@'\n\t  };\n\n\t  const genericMode = {\n\t    className: 'keyword',\n\t    begin: '<',\n\t    end: '>',\n\t    contains: [\n\t      builtInTypeMode,\n\t      objectHandleMode\n\t    ]\n\t  };\n\n\t  builtInTypeMode.contains = [ genericMode ];\n\t  objectHandleMode.contains = [ genericMode ];\n\n\t  const KEYWORDS = [\n\t    \"for\",\n\t    \"in|0\",\n\t    \"break\",\n\t    \"continue\",\n\t    \"while\",\n\t    \"do|0\",\n\t    \"return\",\n\t    \"if\",\n\t    \"else\",\n\t    \"case\",\n\t    \"switch\",\n\t    \"namespace\",\n\t    \"is\",\n\t    \"cast\",\n\t    \"or\",\n\t    \"and\",\n\t    \"xor\",\n\t    \"not\",\n\t    \"get|0\",\n\t    \"in\",\n\t    \"inout|10\",\n\t    \"out\",\n\t    \"override\",\n\t    \"set|0\",\n\t    \"private\",\n\t    \"public\",\n\t    \"const\",\n\t    \"default|0\",\n\t    \"final\",\n\t    \"shared\",\n\t    \"external\",\n\t    \"mixin|10\",\n\t    \"enum\",\n\t    \"typedef\",\n\t    \"funcdef\",\n\t    \"this\",\n\t    \"super\",\n\t    \"import\",\n\t    \"from\",\n\t    \"interface\",\n\t    \"abstract|0\",\n\t    \"try\",\n\t    \"catch\",\n\t    \"protected\",\n\t    \"explicit\",\n\t    \"property\"\n\t  ];\n\n\t  return {\n\t    name: 'AngelScript',\n\t    aliases: [ 'asc' ],\n\n\t    keywords: KEYWORDS,\n\n\t    // avoid close detection with C# and JS\n\t    illegal: '(^using\\\\s+[A-Za-z0-9_\\\\.]+;$|\\\\bfunction\\\\s*[^\\\\(])',\n\n\t    contains: [\n\t      { // 'strings'\n\t        className: 'string',\n\t        begin: '\\'',\n\t        end: '\\'',\n\t        illegal: '\\\\n',\n\t        contains: [ hljs.BACKSLASH_ESCAPE ],\n\t        relevance: 0\n\t      },\n\n\t      // \"\"\"heredoc strings\"\"\"\n\t      {\n\t        className: 'string',\n\t        begin: '\"\"\"',\n\t        end: '\"\"\"'\n\t      },\n\n\t      { // \"strings\"\n\t        className: 'string',\n\t        begin: '\"',\n\t        end: '\"',\n\t        illegal: '\\\\n',\n\t        contains: [ hljs.BACKSLASH_ESCAPE ],\n\t        relevance: 0\n\t      },\n\n\t      hljs.C_LINE_COMMENT_MODE, // single-line comments\n\t      hljs.C_BLOCK_COMMENT_MODE, // comment blocks\n\n\t      { // metadata\n\t        className: 'string',\n\t        begin: '^\\\\s*\\\\[',\n\t        end: '\\\\]'\n\t      },\n\n\t      { // interface or namespace declaration\n\t        beginKeywords: 'interface namespace',\n\t        end: /\\{/,\n\t        illegal: '[;.\\\\-]',\n\t        contains: [\n\t          { // interface or namespace name\n\t            className: 'symbol',\n\t            begin: '[a-zA-Z0-9_]+'\n\t          }\n\t        ]\n\t      },\n\n\t      { // class declaration\n\t        beginKeywords: 'class',\n\t        end: /\\{/,\n\t        illegal: '[;.\\\\-]',\n\t        contains: [\n\t          { // class name\n\t            className: 'symbol',\n\t            begin: '[a-zA-Z0-9_]+',\n\t            contains: [\n\t              {\n\t                begin: '[:,]\\\\s*',\n\t                contains: [\n\t                  {\n\t                    className: 'symbol',\n\t                    begin: '[a-zA-Z0-9_]+'\n\t                  }\n\t                ]\n\t              }\n\t            ]\n\t          }\n\t        ]\n\t      },\n\n\t      builtInTypeMode, // built-in types\n\t      objectHandleMode, // object handles\n\n\t      { // literals\n\t        className: 'literal',\n\t        begin: '\\\\b(null|true|false)'\n\t      },\n\n\t      { // numbers\n\t        className: 'number',\n\t        relevance: 0,\n\t        begin: '(-?)(\\\\b0[xXbBoOdD][a-fA-F0-9]+|(\\\\b\\\\d+(\\\\.\\\\d*)?f?|\\\\.\\\\d+f?)([eE][-+]?\\\\d+f?)?)'\n\t      }\n\t    ]\n\t  };\n\t}\n\n\tangelscript_1 = angelscript;\n\treturn angelscript_1;\n}\n\nexport { requireAngelscript as __require };",
+      "start": 1699633500616,
+      "end": 1699633500616,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500617,
+      "end": 1699633500617,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500617,
+      "end": 1699633500617,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500617,
+      "end": 1699633500617,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500617,
+      "end": 1699633500617,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500617,
+      "end": 1699633500617,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500617,
+      "end": 1699633500617,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500617,
+      "end": 1699633500617,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500617,
+      "end": 1699633500617,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500617,
+      "end": 1699633500617,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500617,
+      "end": 1699633500617,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500617,
+      "end": 1699633500617,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500617,
+      "end": 1699633500617,
+      "order": "normal"
+    }
+  ]
+}

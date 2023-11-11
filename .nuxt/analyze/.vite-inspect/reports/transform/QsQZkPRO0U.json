@@ -1,0 +1,226 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/crypto-js/mode-ctr-gladman.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": ";(function (root, factory, undef) {\n\tif (typeof exports === \"object\") {\n\t\t// CommonJS\n\t\tmodule.exports = exports = factory(require(\"./core\"), require(\"./cipher-core\"));\n\t}\n\telse if (typeof define === \"function\" && define.amd) {\n\t\t// AMD\n\t\tdefine([\"./core\", \"./cipher-core\"], factory);\n\t}\n\telse {\n\t\t// Global (browser)\n\t\tfactory(root.CryptoJS);\n\t}\n}(this, function (CryptoJS) {\n\n\t/** @preserve\n\t * Counter block mode compatible with  Dr Brian Gladman fileenc.c\n\t * derived from CryptoJS.mode.CTR\n\t * Jan Hruby jhruby.web@gmail.com\n\t */\n\tCryptoJS.mode.CTRGladman = (function () {\n\t    var CTRGladman = CryptoJS.lib.BlockCipherMode.extend();\n\n\t\tfunction incWord(word)\n\t\t{\n\t\t\tif (((word >> 24) & 0xff) === 0xff) { //overflow\n\t\t\tvar b1 = (word >> 16)&0xff;\n\t\t\tvar b2 = (word >> 8)&0xff;\n\t\t\tvar b3 = word & 0xff;\n\n\t\t\tif (b1 === 0xff) // overflow b1\n\t\t\t{\n\t\t\tb1 = 0;\n\t\t\tif (b2 === 0xff)\n\t\t\t{\n\t\t\t\tb2 = 0;\n\t\t\t\tif (b3 === 0xff)\n\t\t\t\t{\n\t\t\t\t\tb3 = 0;\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\t++b3;\n\t\t\t\t}\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t\t++b2;\n\t\t\t}\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\t++b1;\n\t\t\t}\n\n\t\t\tword = 0;\n\t\t\tword += (b1 << 16);\n\t\t\tword += (b2 << 8);\n\t\t\tword += b3;\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\tword += (0x01 << 24);\n\t\t\t}\n\t\t\treturn word;\n\t\t}\n\n\t\tfunction incCounter(counter)\n\t\t{\n\t\t\tif ((counter[0] = incWord(counter[0])) === 0)\n\t\t\t{\n\t\t\t\t// encr_data in fileenc.c from  Dr Brian Gladman's counts only with DWORD j < 8\n\t\t\t\tcounter[1] = incWord(counter[1]);\n\t\t\t}\n\t\t\treturn counter;\n\t\t}\n\n\t    var Encryptor = CTRGladman.Encryptor = CTRGladman.extend({\n\t        processBlock: function (words, offset) {\n\t            // Shortcuts\n\t            var cipher = this._cipher\n\t            var blockSize = cipher.blockSize;\n\t            var iv = this._iv;\n\t            var counter = this._counter;\n\n\t            // Generate keystream\n\t            if (iv) {\n\t                counter = this._counter = iv.slice(0);\n\n\t                // Remove IV for subsequent blocks\n\t                this._iv = undefined;\n\t            }\n\n\t\t\t\tincCounter(counter);\n\n\t\t\t\tvar keystream = counter.slice(0);\n\t            cipher.encryptBlock(keystream, 0);\n\n\t            // Encrypt\n\t            for (var i = 0; i < blockSize; i++) {\n\t                words[offset + i] ^= keystream[i];\n\t            }\n\t        }\n\t    });\n\n\t    CTRGladman.Decryptor = Encryptor;\n\n\t    return CTRGladman;\n\t}());\n\n\n\n\n\treturn CryptoJS.mode.CTRGladman;\n\n}));",
+      "start": 1699633499890,
+      "end": 1699633500077,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500077,
+      "end": 1699633500077,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500077,
+      "end": 1699633500077,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500077,
+      "end": 1699633500077,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500077,
+      "end": 1699633500077,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500078,
+      "end": 1699633500078,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport { __module as modeCtrGladmanModule } from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/crypto-js/mode-ctr-gladman.js?commonjs-module\";\nvar modeCtrGladman = modeCtrGladmanModule.exports;\nimport { __require as require$$0 } from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/crypto-js/core.js?commonjs-wrapped\";\nimport { __require as require$$1 } from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/crypto-js/cipher-core.js?commonjs-wrapped\";\n\nvar hasRequiredModeCtrGladman;\n\nfunction requireModeCtrGladman () {\n\tif (hasRequiredModeCtrGladman) return modeCtrGladmanModule.exports;\n\thasRequiredModeCtrGladman = 1;\n\t(function (module, exports) {\n\t\t;(function (root, factory, undef) {\n\t\t\tif ('object' === \"object\") {\n\t\t\t\t// CommonJS\n\t\t\t\tmodule.exports = exports = factory(require$$0(), require$$1());\n\t\t\t}\n\t\t\telse if (typeof undefined === \"function\" && undefined.amd) {\n\t\t\t\t// AMD\n\t\t\t\tundefined([\"./core\", \"./cipher-core\"], factory);\n\t\t\t}\n\t\t\telse {\n\t\t\t\t// Global (browser)\n\t\t\t\tfactory(root.CryptoJS);\n\t\t\t}\n\t\t}(commonjsHelpers.commonjsGlobal, function (CryptoJS) {\n\n\t\t\t/** @preserve\n\t\t\t * Counter block mode compatible with  Dr Brian Gladman fileenc.c\n\t\t\t * derived from CryptoJS.mode.CTR\n\t\t\t * Jan Hruby jhruby.web@gmail.com\n\t\t\t */\n\t\t\tCryptoJS.mode.CTRGladman = (function () {\n\t\t\t    var CTRGladman = CryptoJS.lib.BlockCipherMode.extend();\n\n\t\t\t\tfunction incWord(word)\n\t\t\t\t{\n\t\t\t\t\tif (((word >> 24) & 0xff) === 0xff) { //overflow\n\t\t\t\t\tvar b1 = (word >> 16)&0xff;\n\t\t\t\t\tvar b2 = (word >> 8)&0xff;\n\t\t\t\t\tvar b3 = word & 0xff;\n\n\t\t\t\t\tif (b1 === 0xff) // overflow b1\n\t\t\t\t\t{\n\t\t\t\t\tb1 = 0;\n\t\t\t\t\tif (b2 === 0xff)\n\t\t\t\t\t{\n\t\t\t\t\t\tb2 = 0;\n\t\t\t\t\t\tif (b3 === 0xff)\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tb3 = 0;\n\t\t\t\t\t\t}\n\t\t\t\t\t\telse\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\t++b3;\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\telse\n\t\t\t\t\t{\n\t\t\t\t\t\t++b2;\n\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t\telse\n\t\t\t\t\t{\n\t\t\t\t\t++b1;\n\t\t\t\t\t}\n\n\t\t\t\t\tword = 0;\n\t\t\t\t\tword += (b1 << 16);\n\t\t\t\t\tword += (b2 << 8);\n\t\t\t\t\tword += b3;\n\t\t\t\t\t}\n\t\t\t\t\telse\n\t\t\t\t\t{\n\t\t\t\t\tword += (0x01 << 24);\n\t\t\t\t\t}\n\t\t\t\t\treturn word;\n\t\t\t\t}\n\n\t\t\t\tfunction incCounter(counter)\n\t\t\t\t{\n\t\t\t\t\tif ((counter[0] = incWord(counter[0])) === 0)\n\t\t\t\t\t{\n\t\t\t\t\t\t// encr_data in fileenc.c from  Dr Brian Gladman's counts only with DWORD j < 8\n\t\t\t\t\t\tcounter[1] = incWord(counter[1]);\n\t\t\t\t\t}\n\t\t\t\t\treturn counter;\n\t\t\t\t}\n\n\t\t\t    var Encryptor = CTRGladman.Encryptor = CTRGladman.extend({\n\t\t\t        processBlock: function (words, offset) {\n\t\t\t            // Shortcuts\n\t\t\t            var cipher = this._cipher\n\t\t\t            var blockSize = cipher.blockSize;\n\t\t\t            var iv = this._iv;\n\t\t\t            var counter = this._counter;\n\n\t\t\t            // Generate keystream\n\t\t\t            if (iv) {\n\t\t\t                counter = this._counter = iv.slice(0);\n\n\t\t\t                // Remove IV for subsequent blocks\n\t\t\t                this._iv = undefined;\n\t\t\t            }\n\n\t\t\t\t\t\tincCounter(counter);\n\n\t\t\t\t\t\tvar keystream = counter.slice(0);\n\t\t\t            cipher.encryptBlock(keystream, 0);\n\n\t\t\t            // Encrypt\n\t\t\t            for (var i = 0; i < blockSize; i++) {\n\t\t\t                words[offset + i] ^= keystream[i];\n\t\t\t            }\n\t\t\t        }\n\t\t\t    });\n\n\t\t\t    CTRGladman.Decryptor = Encryptor;\n\n\t\t\t    return CTRGladman;\n\t\t\t}());\n\n\n\n\n\t\t\treturn CryptoJS.mode.CTRGladman;\n\n\t\t})); \n\t} (modeCtrGladmanModule, modeCtrGladmanModule.exports));\n\treturn modeCtrGladmanModule.exports;\n}\n\nexport { requireModeCtrGladman as __require };",
+      "start": 1699633500078,
+      "end": 1699633500080,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [
+          "define",
+          "this"
+        ],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500080,
+      "end": 1699633500080,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500081,
+      "end": 1699633500081,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500081,
+      "end": 1699633500081,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500081,
+      "end": 1699633500081,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500081,
+      "end": 1699633500081,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500081,
+      "end": 1699633500081,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500081,
+      "end": 1699633500081,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500081,
+      "end": 1699633500081,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500081,
+      "end": 1699633500081,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500081,
+      "end": 1699633500081,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500081,
+      "end": 1699633500081,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500081,
+      "end": 1699633500081,
+      "order": "normal"
+    }
+  ]
+}

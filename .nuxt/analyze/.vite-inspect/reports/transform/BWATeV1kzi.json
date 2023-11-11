@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/capnproto.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Cap’n Proto\nAuthor: Oleg Efimov <efimovov@gmail.com>\nDescription: Cap’n Proto message definition format\nWebsite: https://capnproto.org/capnp-tool.html\nCategory: protocols\n*/\n\n/** @type LanguageFn */\nfunction capnproto(hljs) {\n  const KEYWORDS = [\n    \"struct\",\n    \"enum\",\n    \"interface\",\n    \"union\",\n    \"group\",\n    \"import\",\n    \"using\",\n    \"const\",\n    \"annotation\",\n    \"extends\",\n    \"in\",\n    \"of\",\n    \"on\",\n    \"as\",\n    \"with\",\n    \"from\",\n    \"fixed\"\n  ];\n  const TYPES = [\n    \"Void\",\n    \"Bool\",\n    \"Int8\",\n    \"Int16\",\n    \"Int32\",\n    \"Int64\",\n    \"UInt8\",\n    \"UInt16\",\n    \"UInt32\",\n    \"UInt64\",\n    \"Float32\",\n    \"Float64\",\n    \"Text\",\n    \"Data\",\n    \"AnyPointer\",\n    \"AnyStruct\",\n    \"Capability\",\n    \"List\"\n  ];\n  const LITERALS = [\n    \"true\",\n    \"false\"\n  ];\n  const CLASS_DEFINITION = {\n    variants: [\n      { match: [\n        /(struct|enum|interface)/,\n        /\\s+/,\n        hljs.IDENT_RE\n      ] },\n      { match: [\n        /extends/,\n        /\\s*\\(/,\n        hljs.IDENT_RE,\n        /\\s*\\)/\n      ] }\n    ],\n    scope: {\n      1: \"keyword\",\n      3: \"title.class\"\n    }\n  };\n  return {\n    name: 'Cap’n Proto',\n    aliases: [ 'capnp' ],\n    keywords: {\n      keyword: KEYWORDS,\n      type: TYPES,\n      literal: LITERALS\n    },\n    contains: [\n      hljs.QUOTE_STRING_MODE,\n      hljs.NUMBER_MODE,\n      hljs.HASH_COMMENT_MODE,\n      {\n        className: 'meta',\n        begin: /@0x[\\w\\d]{16};/,\n        illegal: /\\n/\n      },\n      {\n        className: 'symbol',\n        begin: /@\\d+\\b/\n      },\n      CLASS_DEFINITION\n    ]\n  };\n}\n\nmodule.exports = capnproto;\n",
+      "start": 1699633500625,
+      "end": 1699633500730,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500730,
+      "end": 1699633500730,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500730,
+      "end": 1699633500730,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500730,
+      "end": 1699633500730,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500730,
+      "end": 1699633500730,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500730,
+      "end": 1699633500730,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500730,
+      "end": 1699633500730,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500731,
+      "end": 1699633500731,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500731,
+      "end": 1699633500731,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500731,
+      "end": 1699633500731,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500733,
+      "end": 1699633500733,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500733,
+      "end": 1699633500733,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500733,
+      "end": 1699633500733,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500733,
+      "end": 1699633500733,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500733,
+      "end": 1699633500733,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500733,
+      "end": 1699633500733,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500733,
+      "end": 1699633500733,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500733,
+      "end": 1699633500733,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500733,
+      "end": 1699633500733,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500733,
+      "end": 1699633500733,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500733,
+      "end": 1699633500733,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Cap’n Proto\nAuthor: Oleg Efimov <efimovov@gmail.com>\nDescription: Cap’n Proto message definition format\nWebsite: https://capnproto.org/capnp-tool.html\nCategory: protocols\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar capnproto_1;\nvar hasRequiredCapnproto;\n\nfunction requireCapnproto () {\n\tif (hasRequiredCapnproto) return capnproto_1;\n\thasRequiredCapnproto = 1;\n\t/** @type LanguageFn */\n\tfunction capnproto(hljs) {\n\t  const KEYWORDS = [\n\t    \"struct\",\n\t    \"enum\",\n\t    \"interface\",\n\t    \"union\",\n\t    \"group\",\n\t    \"import\",\n\t    \"using\",\n\t    \"const\",\n\t    \"annotation\",\n\t    \"extends\",\n\t    \"in\",\n\t    \"of\",\n\t    \"on\",\n\t    \"as\",\n\t    \"with\",\n\t    \"from\",\n\t    \"fixed\"\n\t  ];\n\t  const TYPES = [\n\t    \"Void\",\n\t    \"Bool\",\n\t    \"Int8\",\n\t    \"Int16\",\n\t    \"Int32\",\n\t    \"Int64\",\n\t    \"UInt8\",\n\t    \"UInt16\",\n\t    \"UInt32\",\n\t    \"UInt64\",\n\t    \"Float32\",\n\t    \"Float64\",\n\t    \"Text\",\n\t    \"Data\",\n\t    \"AnyPointer\",\n\t    \"AnyStruct\",\n\t    \"Capability\",\n\t    \"List\"\n\t  ];\n\t  const LITERALS = [\n\t    \"true\",\n\t    \"false\"\n\t  ];\n\t  const CLASS_DEFINITION = {\n\t    variants: [\n\t      { match: [\n\t        /(struct|enum|interface)/,\n\t        /\\s+/,\n\t        hljs.IDENT_RE\n\t      ] },\n\t      { match: [\n\t        /extends/,\n\t        /\\s*\\(/,\n\t        hljs.IDENT_RE,\n\t        /\\s*\\)/\n\t      ] }\n\t    ],\n\t    scope: {\n\t      1: \"keyword\",\n\t      3: \"title.class\"\n\t    }\n\t  };\n\t  return {\n\t    name: 'Cap’n Proto',\n\t    aliases: [ 'capnp' ],\n\t    keywords: {\n\t      keyword: KEYWORDS,\n\t      type: TYPES,\n\t      literal: LITERALS\n\t    },\n\t    contains: [\n\t      hljs.QUOTE_STRING_MODE,\n\t      hljs.NUMBER_MODE,\n\t      hljs.HASH_COMMENT_MODE,\n\t      {\n\t        className: 'meta',\n\t        begin: /@0x[\\w\\d]{16};/,\n\t        illegal: /\\n/\n\t      },\n\t      {\n\t        className: 'symbol',\n\t        begin: /@\\d+\\b/\n\t      },\n\t      CLASS_DEFINITION\n\t    ]\n\t  };\n\t}\n\n\tcapnproto_1 = capnproto;\n\treturn capnproto_1;\n}\n\nexport { requireCapnproto as __require };",
+      "start": 1699633500733,
+      "end": 1699633500734,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;;CAQA;CACA,SAAS,SAAS,CAAC,IAAI,EAAE;CACzB,EAAE,MAAM,QAAQ,GAAG;CACnB,IAAI,QAAQ;CACZ,IAAI,MAAM;CACV,IAAI,WAAW;CACf,IAAI,OAAO;CACX,IAAI,OAAO;CACX,IAAI,QAAQ;CACZ,IAAI,OAAO;CACX,IAAI,OAAO;CACX,IAAI,YAAY;CAChB,IAAI,SAAS;CACb,IAAI,IAAI;CACR,IAAI,IAAI;CACR,IAAI,IAAI;CACR,IAAI,IAAI;CACR,IAAI,MAAM;CACV,IAAI,MAAM;CACV,IAAI,OAAO;CACX,GAAG,CAAC;CACJ,EAAE,MAAM,KAAK,GAAG;CAChB,IAAI,MAAM;CACV,IAAI,MAAM;CACV,IAAI,MAAM;CACV,IAAI,OAAO;CACX,IAAI,OAAO;CACX,IAAI,OAAO;CACX,IAAI,OAAO;CACX,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,IAAI,SAAS;CACb,IAAI,SAAS;CACb,IAAI,MAAM;CACV,IAAI,MAAM;CACV,IAAI,YAAY;CAChB,IAAI,WAAW;CACf,IAAI,YAAY;CAChB,IAAI,MAAM;CACV,GAAG,CAAC;CACJ,EAAE,MAAM,QAAQ,GAAG;CACnB,IAAI,MAAM;CACV,IAAI,OAAO;CACX,GAAG,CAAC;CACJ,EAAE,MAAM,gBAAgB,GAAG;CAC3B,IAAI,QAAQ,EAAE;CACd,MAAM,EAAE,KAAK,EAAE;CACf,QAAQ,yBAAyB;CACjC,QAAQ,KAAK;CACb,QAAQ,IAAI,CAAC,QAAQ;CACrB,OAAO,EAAE;CACT,MAAM,EAAE,KAAK,EAAE;CACf,QAAQ,SAAS;CACjB,QAAQ,OAAO;CACf,QAAQ,IAAI,CAAC,QAAQ;CACrB,QAAQ,OAAO;CACf,OAAO,EAAE;CACT,KAAK;CACL,IAAI,KAAK,EAAE;CACX,MAAM,CAAC,EAAE,SAAS;CAClB,MAAM,CAAC,EAAE,aAAa;CACtB,KAAK;CACL,GAAG,CAAC;CACJ,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,aAAa;CACvB,IAAI,OAAO,EAAE,EAAE,OAAO,EAAE;CACxB,IAAI,QAAQ,EAAE;CACd,MAAM,OAAO,EAAE,QAAQ;CACvB,MAAM,IAAI,EAAE,KAAK;CACjB,MAAM,OAAO,EAAE,QAAQ;CACvB,KAAK;CACL,IAAI,QAAQ,EAAE;CACd,MAAM,IAAI,CAAC,iBAAiB;CAC5B,MAAM,IAAI,CAAC,WAAW;CACtB,MAAM,IAAI,CAAC,iBAAiB;CAC5B,MAAM;CACN,QAAQ,SAAS,EAAE,MAAM;CACzB,QAAQ,KAAK,EAAE,gBAAgB;CAC/B,QAAQ,OAAO,EAAE,IAAI;CACrB,OAAO;CACP,MAAM;CACN,QAAQ,SAAS,EAAE,QAAQ;CAC3B,QAAQ,KAAK,EAAE,QAAQ;CACvB,OAAO;CACP,MAAM,gBAAgB;CACtB,KAAK;CACL,GAAG,CAAC;CACJ,CAAC;AACD;AACA,YAAc,GAAG,SAAS"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500734,
+      "end": 1699633500734,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500734,
+      "end": 1699633500734,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500734,
+      "end": 1699633500734,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500734,
+      "end": 1699633500734,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500734,
+      "end": 1699633500734,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500734,
+      "end": 1699633500734,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500734,
+      "end": 1699633500734,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500734,
+      "end": 1699633500734,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500734,
+      "end": 1699633500734,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500734,
+      "end": 1699633500734,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500734,
+      "end": 1699633500734,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500734,
+      "end": 1699633500734,
+      "order": "normal"
+    }
+  ]
+}

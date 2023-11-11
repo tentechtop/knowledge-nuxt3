@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/nestedtext.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: NestedText\nDescription: NestedText is a file format for holding data that is to be entered, edited, or viewed by people.\nWebsite: https://nestedtext.org/\nCategory: config\n*/\n\n/** @type LanguageFn */\nfunction nestedtext(hljs) {\n  const NESTED = {\n    match: [\n      /^\\s*(?=\\S)/, // have to look forward here to avoid polynomial backtracking\n      /[^:]+/,\n      /:\\s*/,\n      /$/\n    ],\n    className: {\n      2: \"attribute\",\n      3: \"punctuation\"\n    }\n  };\n  const DICTIONARY_ITEM = {\n    match: [\n      /^\\s*(?=\\S)/, // have to look forward here to avoid polynomial backtracking\n      /[^:]*[^: ]/,\n      /[ ]*:/,\n      /[ ]/,\n      /.*$/\n    ],\n    className: {\n      2: \"attribute\",\n      3: \"punctuation\",\n      5: \"string\"\n    }\n  };\n  const STRING = {\n    match: [\n      /^\\s*/,\n      />/,\n      /[ ]/,\n      /.*$/\n    ],\n    className: {\n      2: \"punctuation\",\n      4: \"string\"\n    }\n  };\n  const LIST_ITEM = {\n    variants: [\n      { match: [\n        /^\\s*/,\n        /-/,\n        /[ ]/,\n        /.*$/\n      ] },\n      { match: [\n        /^\\s*/,\n        /-$/\n      ] }\n    ],\n    className: {\n      2: \"bullet\",\n      4: \"string\"\n    }\n  };\n\n  return {\n    name: 'Nested Text',\n    aliases: [ 'nt' ],\n    contains: [\n      hljs.inherit(hljs.HASH_COMMENT_MODE, {\n        begin: /^\\s*(?=#)/,\n        excludeBegin: true\n      }),\n      LIST_ITEM,\n      STRING,\n      NESTED,\n      DICTIONARY_ITEM\n    ]\n  };\n}\n\nmodule.exports = nestedtext;\n",
+      "start": 1699633501121,
+      "end": 1699633501241,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501241,
+      "end": 1699633501241,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501241,
+      "end": 1699633501241,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501241,
+      "end": 1699633501241,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501241,
+      "end": 1699633501241,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501241,
+      "end": 1699633501241,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501241,
+      "end": 1699633501241,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501242,
+      "end": 1699633501242,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: NestedText\nDescription: NestedText is a file format for holding data that is to be entered, edited, or viewed by people.\nWebsite: https://nestedtext.org/\nCategory: config\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar nestedtext_1;\nvar hasRequiredNestedtext;\n\nfunction requireNestedtext () {\n\tif (hasRequiredNestedtext) return nestedtext_1;\n\thasRequiredNestedtext = 1;\n\t/** @type LanguageFn */\n\tfunction nestedtext(hljs) {\n\t  const NESTED = {\n\t    match: [\n\t      /^\\s*(?=\\S)/, // have to look forward here to avoid polynomial backtracking\n\t      /[^:]+/,\n\t      /:\\s*/,\n\t      /$/\n\t    ],\n\t    className: {\n\t      2: \"attribute\",\n\t      3: \"punctuation\"\n\t    }\n\t  };\n\t  const DICTIONARY_ITEM = {\n\t    match: [\n\t      /^\\s*(?=\\S)/, // have to look forward here to avoid polynomial backtracking\n\t      /[^:]*[^: ]/,\n\t      /[ ]*:/,\n\t      /[ ]/,\n\t      /.*$/\n\t    ],\n\t    className: {\n\t      2: \"attribute\",\n\t      3: \"punctuation\",\n\t      5: \"string\"\n\t    }\n\t  };\n\t  const STRING = {\n\t    match: [\n\t      /^\\s*/,\n\t      />/,\n\t      /[ ]/,\n\t      /.*$/\n\t    ],\n\t    className: {\n\t      2: \"punctuation\",\n\t      4: \"string\"\n\t    }\n\t  };\n\t  const LIST_ITEM = {\n\t    variants: [\n\t      { match: [\n\t        /^\\s*/,\n\t        /-/,\n\t        /[ ]/,\n\t        /.*$/\n\t      ] },\n\t      { match: [\n\t        /^\\s*/,\n\t        /-$/\n\t      ] }\n\t    ],\n\t    className: {\n\t      2: \"bullet\",\n\t      4: \"string\"\n\t    }\n\t  };\n\n\t  return {\n\t    name: 'Nested Text',\n\t    aliases: [ 'nt' ],\n\t    contains: [\n\t      hljs.inherit(hljs.HASH_COMMENT_MODE, {\n\t        begin: /^\\s*(?=#)/,\n\t        excludeBegin: true\n\t      }),\n\t      LIST_ITEM,\n\t      STRING,\n\t      NESTED,\n\t      DICTIONARY_ITEM\n\t    ]\n\t  };\n\t}\n\n\tnestedtext_1 = nestedtext;\n\treturn nestedtext_1;\n}\n\nexport { requireNestedtext as __require };",
+      "start": 1699633501242,
+      "end": 1699633501243,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;CAOA;CACA,SAAS,UAAU,CAAC,IAAI,EAAE;CAC1B,EAAE,MAAM,MAAM,GAAG;CACjB,IAAI,KAAK,EAAE;CACX,MAAM,YAAY;CAClB,MAAM,OAAO;CACb,MAAM,MAAM;CACZ,MAAM,GAAG;CACT,KAAK;CACL,IAAI,SAAS,EAAE;CACf,MAAM,CAAC,EAAE,WAAW;CACpB,MAAM,CAAC,EAAE,aAAa;CACtB,KAAK;CACL,GAAG,CAAC;CACJ,EAAE,MAAM,eAAe,GAAG;CAC1B,IAAI,KAAK,EAAE;CACX,MAAM,YAAY;CAClB,MAAM,YAAY;CAClB,MAAM,OAAO;CACb,MAAM,KAAK;CACX,MAAM,KAAK;CACX,KAAK;CACL,IAAI,SAAS,EAAE;CACf,MAAM,CAAC,EAAE,WAAW;CACpB,MAAM,CAAC,EAAE,aAAa;CACtB,MAAM,CAAC,EAAE,QAAQ;CACjB,KAAK;CACL,GAAG,CAAC;CACJ,EAAE,MAAM,MAAM,GAAG;CACjB,IAAI,KAAK,EAAE;CACX,MAAM,MAAM;CACZ,MAAM,GAAG;CACT,MAAM,KAAK;CACX,MAAM,KAAK;CACX,KAAK;CACL,IAAI,SAAS,EAAE;CACf,MAAM,CAAC,EAAE,aAAa;CACtB,MAAM,CAAC,EAAE,QAAQ;CACjB,KAAK;CACL,GAAG,CAAC;CACJ,EAAE,MAAM,SAAS,GAAG;CACpB,IAAI,QAAQ,EAAE;CACd,MAAM,EAAE,KAAK,EAAE;CACf,QAAQ,MAAM;CACd,QAAQ,GAAG;CACX,QAAQ,KAAK;CACb,QAAQ,KAAK;CACb,OAAO,EAAE;CACT,MAAM,EAAE,KAAK,EAAE;CACf,QAAQ,MAAM;CACd,QAAQ,IAAI;CACZ,OAAO,EAAE;CACT,KAAK;CACL,IAAI,SAAS,EAAE;CACf,MAAM,CAAC,EAAE,QAAQ;CACjB,MAAM,CAAC,EAAE,QAAQ;CACjB,KAAK;CACL,GAAG,CAAC;AACJ;CACA,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,aAAa;CACvB,IAAI,OAAO,EAAE,EAAE,IAAI,EAAE;CACrB,IAAI,QAAQ,EAAE;CACd,MAAM,IAAI,CAAC,OAAO,CAAC,IAAI,CAAC,iBAAiB,EAAE;CAC3C,QAAQ,KAAK,EAAE,WAAW;CAC1B,QAAQ,YAAY,EAAE,IAAI;CAC1B,OAAO,CAAC;CACR,MAAM,SAAS;CACf,MAAM,MAAM;CACZ,MAAM,MAAM;CACZ,MAAM,eAAe;CACrB,KAAK;CACL,GAAG,CAAC;CACJ,CAAC;AACD;AACA,aAAc,GAAG,UAAU"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501243,
+      "end": 1699633501243,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501243,
+      "end": 1699633501243,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501243,
+      "end": 1699633501243,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501243,
+      "end": 1699633501243,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501243,
+      "end": 1699633501243,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501243,
+      "end": 1699633501243,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501243,
+      "end": 1699633501243,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501243,
+      "end": 1699633501243,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501243,
+      "end": 1699633501243,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501243,
+      "end": 1699633501243,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501243,
+      "end": 1699633501243,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501243,
+      "end": 1699633501243,
+      "order": "normal"
+    }
+  ]
+}

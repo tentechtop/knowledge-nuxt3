@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/scala.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Scala\nCategory: functional\nAuthor: Jan Berkel <jan.berkel@gmail.com>\nContributors: Erik Osheim <d_m@plastic-idolatry.com>\nWebsite: https://www.scala-lang.org\n*/\n\nfunction scala(hljs) {\n  const regex = hljs.regex;\n  const ANNOTATION = {\n    className: 'meta',\n    begin: '@[A-Za-z]+'\n  };\n\n  // used in strings for escaping/interpolation/substitution\n  const SUBST = {\n    className: 'subst',\n    variants: [\n      { begin: '\\\\$[A-Za-z0-9_]+' },\n      {\n        begin: /\\$\\{/,\n        end: /\\}/\n      }\n    ]\n  };\n\n  const STRING = {\n    className: 'string',\n    variants: [\n      {\n        begin: '\"\"\"',\n        end: '\"\"\"'\n      },\n      {\n        begin: '\"',\n        end: '\"',\n        illegal: '\\\\n',\n        contains: [ hljs.BACKSLASH_ESCAPE ]\n      },\n      {\n        begin: '[a-z]+\"',\n        end: '\"',\n        illegal: '\\\\n',\n        contains: [\n          hljs.BACKSLASH_ESCAPE,\n          SUBST\n        ]\n      },\n      {\n        className: 'string',\n        begin: '[a-z]+\"\"\"',\n        end: '\"\"\"',\n        contains: [ SUBST ],\n        relevance: 10\n      }\n    ]\n\n  };\n\n  const TYPE = {\n    className: 'type',\n    begin: '\\\\b[A-Z][A-Za-z0-9_]*',\n    relevance: 0\n  };\n\n  const NAME = {\n    className: 'title',\n    begin: /[^0-9\\n\\t \"'(),.`{}\\[\\]:;][^\\n\\t \"'(),.`{}\\[\\]:;]+|[^0-9\\n\\t \"'(),.`{}\\[\\]:;=]/,\n    relevance: 0\n  };\n\n  const CLASS = {\n    className: 'class',\n    beginKeywords: 'class object trait type',\n    end: /[:={\\[\\n;]/,\n    excludeEnd: true,\n    contains: [\n      hljs.C_LINE_COMMENT_MODE,\n      hljs.C_BLOCK_COMMENT_MODE,\n      {\n        beginKeywords: 'extends with',\n        relevance: 10\n      },\n      {\n        begin: /\\[/,\n        end: /\\]/,\n        excludeBegin: true,\n        excludeEnd: true,\n        relevance: 0,\n        contains: [ \n          TYPE, \n          hljs.C_LINE_COMMENT_MODE, \n          hljs.C_BLOCK_COMMENT_MODE, \n        ]\n      },\n      {\n        className: 'params',\n        begin: /\\(/,\n        end: /\\)/,\n        excludeBegin: true,\n        excludeEnd: true,\n        relevance: 0,\n        contains: [ \n          TYPE, \n          hljs.C_LINE_COMMENT_MODE, \n          hljs.C_BLOCK_COMMENT_MODE, \n        ]\n      },\n      NAME\n    ]\n  };\n\n  const METHOD = {\n    className: 'function',\n    beginKeywords: 'def',\n    end: regex.lookahead(/[:={\\[(\\n;]/),\n    contains: [ NAME ]\n  };\n\n  const EXTENSION = {\n    begin: [\n      /^\\s*/, // Is first token on the line\n      'extension',\n      /\\s+(?=[[(])/, // followed by at least one space and `[` or `(`\n    ],\n    beginScope: { 2: \"keyword\", }\n  };\n\n  const END = {\n    begin: [\n      /^\\s*/, // Is first token on the line\n      /end/,\n      /\\s+/,\n      /(extension\\b)?/, // `extension` is the only marker that follows an `end` that cannot be captured by another rule.\n    ],\n    beginScope: {\n      2: \"keyword\",\n      4: \"keyword\",\n    }\n  };\n\n  // TODO: use negative look-behind in future\n  //       /(?<!\\.)\\binline(?=\\s)/\n  const INLINE_MODES = [\n    { match: /\\.inline\\b/ },\n    {\n      begin: /\\binline(?=\\s)/,\n      keywords: 'inline'\n    }\n  ];\n\n  const USING_PARAM_CLAUSE = {\n    begin: [\n      /\\(\\s*/, // Opening `(` of a parameter or argument list\n      /using/,\n      /\\s+(?!\\))/, // Spaces not followed by `)`\n    ],\n    beginScope: { 2: \"keyword\", }\n  };\n\n  // glob all non-whitespace characters as a \"string\"\n  // sourced from https://github.com/scala/docs.scala-lang/pull/2845\n  const DIRECTIVE_VALUE = {\n    className: 'string',\n    begin: /\\S+/,\n  };\n\n  // directives\n  // sourced from https://github.com/scala/docs.scala-lang/pull/2845\n  const USING_DIRECTIVE = {\n    begin: [\n      '//>',\n      /\\s+/,\n      /using/,\n      /\\s+/,\n      /\\S+/\n    ],\n    beginScope: {\n      1: \"comment\",\n      3: \"keyword\",\n      5: \"type\"\n    },\n    end: /$/,\n    contains: [\n      DIRECTIVE_VALUE,\n    ]\n  };\n\n  return {\n    name: 'Scala',\n    keywords: {\n      literal: 'true false null',\n      keyword: 'type yield lazy override def with val var sealed abstract private trait object if then forSome for while do throw finally protected extends import final return else break new catch super class case package default try this match continue throws implicit export enum given transparent'\n    },\n    contains: [\n      USING_DIRECTIVE,\n      hljs.C_LINE_COMMENT_MODE,\n      hljs.C_BLOCK_COMMENT_MODE,\n      STRING,\n      TYPE,\n      METHOD,\n      CLASS,\n      hljs.C_NUMBER_MODE,\n      EXTENSION,\n      END,\n      ...INLINE_MODES,\n      USING_PARAM_CLAUSE,\n      ANNOTATION\n    ]\n  };\n}\n\nmodule.exports = scala;\n",
+      "start": 1699633501321,
+      "end": 1699633501408,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501408,
+      "end": 1699633501408,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501409,
+      "end": 1699633501409,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501409,
+      "end": 1699633501409,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501409,
+      "end": 1699633501409,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501409,
+      "end": 1699633501409,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501409,
+      "end": 1699633501409,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501409,
+      "end": 1699633501409,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501409,
+      "end": 1699633501409,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501409,
+      "end": 1699633501409,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501409,
+      "end": 1699633501409,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501409,
+      "end": 1699633501409,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501409,
+      "end": 1699633501410,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501410,
+      "end": 1699633501410,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501410,
+      "end": 1699633501410,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501410,
+      "end": 1699633501410,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501410,
+      "end": 1699633501410,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501410,
+      "end": 1699633501410,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501410,
+      "end": 1699633501410,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501410,
+      "end": 1699633501410,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501410,
+      "end": 1699633501410,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Scala\nCategory: functional\nAuthor: Jan Berkel <jan.berkel@gmail.com>\nContributors: Erik Osheim <d_m@plastic-idolatry.com>\nWebsite: https://www.scala-lang.org\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar scala_1;\nvar hasRequiredScala;\n\nfunction requireScala () {\n\tif (hasRequiredScala) return scala_1;\n\thasRequiredScala = 1;\n\tfunction scala(hljs) {\n\t  const regex = hljs.regex;\n\t  const ANNOTATION = {\n\t    className: 'meta',\n\t    begin: '@[A-Za-z]+'\n\t  };\n\n\t  // used in strings for escaping/interpolation/substitution\n\t  const SUBST = {\n\t    className: 'subst',\n\t    variants: [\n\t      { begin: '\\\\$[A-Za-z0-9_]+' },\n\t      {\n\t        begin: /\\$\\{/,\n\t        end: /\\}/\n\t      }\n\t    ]\n\t  };\n\n\t  const STRING = {\n\t    className: 'string',\n\t    variants: [\n\t      {\n\t        begin: '\"\"\"',\n\t        end: '\"\"\"'\n\t      },\n\t      {\n\t        begin: '\"',\n\t        end: '\"',\n\t        illegal: '\\\\n',\n\t        contains: [ hljs.BACKSLASH_ESCAPE ]\n\t      },\n\t      {\n\t        begin: '[a-z]+\"',\n\t        end: '\"',\n\t        illegal: '\\\\n',\n\t        contains: [\n\t          hljs.BACKSLASH_ESCAPE,\n\t          SUBST\n\t        ]\n\t      },\n\t      {\n\t        className: 'string',\n\t        begin: '[a-z]+\"\"\"',\n\t        end: '\"\"\"',\n\t        contains: [ SUBST ],\n\t        relevance: 10\n\t      }\n\t    ]\n\n\t  };\n\n\t  const TYPE = {\n\t    className: 'type',\n\t    begin: '\\\\b[A-Z][A-Za-z0-9_]*',\n\t    relevance: 0\n\t  };\n\n\t  const NAME = {\n\t    className: 'title',\n\t    begin: /[^0-9\\n\\t \"'(),.`{}\\[\\]:;][^\\n\\t \"'(),.`{}\\[\\]:;]+|[^0-9\\n\\t \"'(),.`{}\\[\\]:;=]/,\n\t    relevance: 0\n\t  };\n\n\t  const CLASS = {\n\t    className: 'class',\n\t    beginKeywords: 'class object trait type',\n\t    end: /[:={\\[\\n;]/,\n\t    excludeEnd: true,\n\t    contains: [\n\t      hljs.C_LINE_COMMENT_MODE,\n\t      hljs.C_BLOCK_COMMENT_MODE,\n\t      {\n\t        beginKeywords: 'extends with',\n\t        relevance: 10\n\t      },\n\t      {\n\t        begin: /\\[/,\n\t        end: /\\]/,\n\t        excludeBegin: true,\n\t        excludeEnd: true,\n\t        relevance: 0,\n\t        contains: [ \n\t          TYPE, \n\t          hljs.C_LINE_COMMENT_MODE, \n\t          hljs.C_BLOCK_COMMENT_MODE, \n\t        ]\n\t      },\n\t      {\n\t        className: 'params',\n\t        begin: /\\(/,\n\t        end: /\\)/,\n\t        excludeBegin: true,\n\t        excludeEnd: true,\n\t        relevance: 0,\n\t        contains: [ \n\t          TYPE, \n\t          hljs.C_LINE_COMMENT_MODE, \n\t          hljs.C_BLOCK_COMMENT_MODE, \n\t        ]\n\t      },\n\t      NAME\n\t    ]\n\t  };\n\n\t  const METHOD = {\n\t    className: 'function',\n\t    beginKeywords: 'def',\n\t    end: regex.lookahead(/[:={\\[(\\n;]/),\n\t    contains: [ NAME ]\n\t  };\n\n\t  const EXTENSION = {\n\t    begin: [\n\t      /^\\s*/, // Is first token on the line\n\t      'extension',\n\t      /\\s+(?=[[(])/, // followed by at least one space and `[` or `(`\n\t    ],\n\t    beginScope: { 2: \"keyword\", }\n\t  };\n\n\t  const END = {\n\t    begin: [\n\t      /^\\s*/, // Is first token on the line\n\t      /end/,\n\t      /\\s+/,\n\t      /(extension\\b)?/, // `extension` is the only marker that follows an `end` that cannot be captured by another rule.\n\t    ],\n\t    beginScope: {\n\t      2: \"keyword\",\n\t      4: \"keyword\",\n\t    }\n\t  };\n\n\t  // TODO: use negative look-behind in future\n\t  //       /(?<!\\.)\\binline(?=\\s)/\n\t  const INLINE_MODES = [\n\t    { match: /\\.inline\\b/ },\n\t    {\n\t      begin: /\\binline(?=\\s)/,\n\t      keywords: 'inline'\n\t    }\n\t  ];\n\n\t  const USING_PARAM_CLAUSE = {\n\t    begin: [\n\t      /\\(\\s*/, // Opening `(` of a parameter or argument list\n\t      /using/,\n\t      /\\s+(?!\\))/, // Spaces not followed by `)`\n\t    ],\n\t    beginScope: { 2: \"keyword\", }\n\t  };\n\n\t  // glob all non-whitespace characters as a \"string\"\n\t  // sourced from https://github.com/scala/docs.scala-lang/pull/2845\n\t  const DIRECTIVE_VALUE = {\n\t    className: 'string',\n\t    begin: /\\S+/,\n\t  };\n\n\t  // directives\n\t  // sourced from https://github.com/scala/docs.scala-lang/pull/2845\n\t  const USING_DIRECTIVE = {\n\t    begin: [\n\t      '//>',\n\t      /\\s+/,\n\t      /using/,\n\t      /\\s+/,\n\t      /\\S+/\n\t    ],\n\t    beginScope: {\n\t      1: \"comment\",\n\t      3: \"keyword\",\n\t      5: \"type\"\n\t    },\n\t    end: /$/,\n\t    contains: [\n\t      DIRECTIVE_VALUE,\n\t    ]\n\t  };\n\n\t  return {\n\t    name: 'Scala',\n\t    keywords: {\n\t      literal: 'true false null',\n\t      keyword: 'type yield lazy override def with val var sealed abstract private trait object if then forSome for while do throw finally protected extends import final return else break new catch super class case package default try this match continue throws implicit export enum given transparent'\n\t    },\n\t    contains: [\n\t      USING_DIRECTIVE,\n\t      hljs.C_LINE_COMMENT_MODE,\n\t      hljs.C_BLOCK_COMMENT_MODE,\n\t      STRING,\n\t      TYPE,\n\t      METHOD,\n\t      CLASS,\n\t      hljs.C_NUMBER_MODE,\n\t      EXTENSION,\n\t      END,\n\t      ...INLINE_MODES,\n\t      USING_PARAM_CLAUSE,\n\t      ANNOTATION\n\t    ]\n\t  };\n\t}\n\n\tscala_1 = scala;\n\treturn scala_1;\n}\n\nexport { requireScala as __require };",
+      "start": 1699633501410,
+      "end": 1699633501411,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501411,
+      "end": 1699633501411,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501411,
+      "end": 1699633501411,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501411,
+      "end": 1699633501411,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501411,
+      "end": 1699633501411,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501411,
+      "end": 1699633501411,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501411,
+      "end": 1699633501411,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501411,
+      "end": 1699633501411,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501411,
+      "end": 1699633501411,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501411,
+      "end": 1699633501411,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501411,
+      "end": 1699633501411,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501411,
+      "end": 1699633501411,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501411,
+      "end": 1699633501411,
+      "order": "normal"
+    }
+  ]
+}

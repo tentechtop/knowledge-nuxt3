@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/mercury.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Mercury\nAuthor: mucaho <mkucko@gmail.com>\nDescription: Mercury is a logic/functional programming language which combines the clarity and expressiveness of declarative programming with advanced static analysis and error detection features.\nWebsite: https://www.mercurylang.org\n*/\n\nfunction mercury(hljs) {\n  const KEYWORDS = {\n    keyword:\n      'module use_module import_module include_module end_module initialise '\n      + 'mutable initialize finalize finalise interface implementation pred '\n      + 'mode func type inst solver any_pred any_func is semidet det nondet '\n      + 'multi erroneous failure cc_nondet cc_multi typeclass instance where '\n      + 'pragma promise external trace atomic or_else require_complete_switch '\n      + 'require_det require_semidet require_multi require_nondet '\n      + 'require_cc_multi require_cc_nondet require_erroneous require_failure',\n    meta:\n      // pragma\n      'inline no_inline type_spec source_file fact_table obsolete memo '\n      + 'loop_check minimal_model terminates does_not_terminate '\n      + 'check_termination promise_equivalent_clauses '\n      // preprocessor\n      + 'foreign_proc foreign_decl foreign_code foreign_type '\n      + 'foreign_import_module foreign_export_enum foreign_export '\n      + 'foreign_enum may_call_mercury will_not_call_mercury thread_safe '\n      + 'not_thread_safe maybe_thread_safe promise_pure promise_semipure '\n      + 'tabled_for_io local untrailed trailed attach_to_io_state '\n      + 'can_pass_as_mercury_type stable will_not_throw_exception '\n      + 'may_modify_trail will_not_modify_trail may_duplicate '\n      + 'may_not_duplicate affects_liveness does_not_affect_liveness '\n      + 'doesnt_affect_liveness no_sharing unknown_sharing sharing',\n    built_in:\n      'some all not if then else true fail false try catch catch_any '\n      + 'semidet_true semidet_false semidet_fail impure_true impure semipure'\n  };\n\n  const COMMENT = hljs.COMMENT('%', '$');\n\n  const NUMCODE = {\n    className: 'number',\n    begin: \"0'.\\\\|0[box][0-9a-fA-F]*\"\n  };\n\n  const ATOM = hljs.inherit(hljs.APOS_STRING_MODE, { relevance: 0 });\n  const STRING = hljs.inherit(hljs.QUOTE_STRING_MODE, { relevance: 0 });\n  const STRING_FMT = {\n    className: 'subst',\n    begin: '\\\\\\\\[abfnrtv]\\\\|\\\\\\\\x[0-9a-fA-F]*\\\\\\\\\\\\|%[-+# *.0-9]*[dioxXucsfeEgGp]',\n    relevance: 0\n  };\n  STRING.contains = STRING.contains.slice(); // we need our own copy of contains\n  STRING.contains.push(STRING_FMT);\n\n  const IMPLICATION = {\n    className: 'built_in',\n    variants: [\n      { begin: '<=>' },\n      {\n        begin: '<=',\n        relevance: 0\n      },\n      {\n        begin: '=>',\n        relevance: 0\n      },\n      { begin: '/\\\\\\\\' },\n      { begin: '\\\\\\\\/' }\n    ]\n  };\n\n  const HEAD_BODY_CONJUNCTION = {\n    className: 'built_in',\n    variants: [\n      { begin: ':-\\\\|-->' },\n      {\n        begin: '=',\n        relevance: 0\n      }\n    ]\n  };\n\n  return {\n    name: 'Mercury',\n    aliases: [\n      'm',\n      'moo'\n    ],\n    keywords: KEYWORDS,\n    contains: [\n      IMPLICATION,\n      HEAD_BODY_CONJUNCTION,\n      COMMENT,\n      hljs.C_BLOCK_COMMENT_MODE,\n      NUMCODE,\n      hljs.NUMBER_MODE,\n      ATOM,\n      STRING,\n      { // relevance booster\n        begin: /:-/ },\n      { // relevance booster\n        begin: /\\.$/ }\n    ]\n  };\n}\n\nmodule.exports = mercury;\n",
+      "start": 1699633501053,
+      "end": 1699633501203,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501203,
+      "end": 1699633501203,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501203,
+      "end": 1699633501203,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501203,
+      "end": 1699633501203,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501203,
+      "end": 1699633501203,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501203,
+      "end": 1699633501203,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501203,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501204,
+      "end": 1699633501204,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501204,
+      "end": 1699633501205,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Mercury\nAuthor: mucaho <mkucko@gmail.com>\nDescription: Mercury is a logic/functional programming language which combines the clarity and expressiveness of declarative programming with advanced static analysis and error detection features.\nWebsite: https://www.mercurylang.org\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar mercury_1;\nvar hasRequiredMercury;\n\nfunction requireMercury () {\n\tif (hasRequiredMercury) return mercury_1;\n\thasRequiredMercury = 1;\n\tfunction mercury(hljs) {\n\t  const KEYWORDS = {\n\t    keyword:\n\t      'module use_module import_module include_module end_module initialise '\n\t      + 'mutable initialize finalize finalise interface implementation pred '\n\t      + 'mode func type inst solver any_pred any_func is semidet det nondet '\n\t      + 'multi erroneous failure cc_nondet cc_multi typeclass instance where '\n\t      + 'pragma promise external trace atomic or_else require_complete_switch '\n\t      + 'require_det require_semidet require_multi require_nondet '\n\t      + 'require_cc_multi require_cc_nondet require_erroneous require_failure',\n\t    meta:\n\t      // pragma\n\t      'inline no_inline type_spec source_file fact_table obsolete memo '\n\t      + 'loop_check minimal_model terminates does_not_terminate '\n\t      + 'check_termination promise_equivalent_clauses '\n\t      // preprocessor\n\t      + 'foreign_proc foreign_decl foreign_code foreign_type '\n\t      + 'foreign_import_module foreign_export_enum foreign_export '\n\t      + 'foreign_enum may_call_mercury will_not_call_mercury thread_safe '\n\t      + 'not_thread_safe maybe_thread_safe promise_pure promise_semipure '\n\t      + 'tabled_for_io local untrailed trailed attach_to_io_state '\n\t      + 'can_pass_as_mercury_type stable will_not_throw_exception '\n\t      + 'may_modify_trail will_not_modify_trail may_duplicate '\n\t      + 'may_not_duplicate affects_liveness does_not_affect_liveness '\n\t      + 'doesnt_affect_liveness no_sharing unknown_sharing sharing',\n\t    built_in:\n\t      'some all not if then else true fail false try catch catch_any '\n\t      + 'semidet_true semidet_false semidet_fail impure_true impure semipure'\n\t  };\n\n\t  const COMMENT = hljs.COMMENT('%', '$');\n\n\t  const NUMCODE = {\n\t    className: 'number',\n\t    begin: \"0'.\\\\|0[box][0-9a-fA-F]*\"\n\t  };\n\n\t  const ATOM = hljs.inherit(hljs.APOS_STRING_MODE, { relevance: 0 });\n\t  const STRING = hljs.inherit(hljs.QUOTE_STRING_MODE, { relevance: 0 });\n\t  const STRING_FMT = {\n\t    className: 'subst',\n\t    begin: '\\\\\\\\[abfnrtv]\\\\|\\\\\\\\x[0-9a-fA-F]*\\\\\\\\\\\\|%[-+# *.0-9]*[dioxXucsfeEgGp]',\n\t    relevance: 0\n\t  };\n\t  STRING.contains = STRING.contains.slice(); // we need our own copy of contains\n\t  STRING.contains.push(STRING_FMT);\n\n\t  const IMPLICATION = {\n\t    className: 'built_in',\n\t    variants: [\n\t      { begin: '<=>' },\n\t      {\n\t        begin: '<=',\n\t        relevance: 0\n\t      },\n\t      {\n\t        begin: '=>',\n\t        relevance: 0\n\t      },\n\t      { begin: '/\\\\\\\\' },\n\t      { begin: '\\\\\\\\/' }\n\t    ]\n\t  };\n\n\t  const HEAD_BODY_CONJUNCTION = {\n\t    className: 'built_in',\n\t    variants: [\n\t      { begin: ':-\\\\|-->' },\n\t      {\n\t        begin: '=',\n\t        relevance: 0\n\t      }\n\t    ]\n\t  };\n\n\t  return {\n\t    name: 'Mercury',\n\t    aliases: [\n\t      'm',\n\t      'moo'\n\t    ],\n\t    keywords: KEYWORDS,\n\t    contains: [\n\t      IMPLICATION,\n\t      HEAD_BODY_CONJUNCTION,\n\t      COMMENT,\n\t      hljs.C_BLOCK_COMMENT_MODE,\n\t      NUMCODE,\n\t      hljs.NUMBER_MODE,\n\t      ATOM,\n\t      STRING,\n\t      { // relevance booster\n\t        begin: /:-/ },\n\t      { // relevance booster\n\t        begin: /\\.$/ }\n\t    ]\n\t  };\n\t}\n\n\tmercury_1 = mercury;\n\treturn mercury_1;\n}\n\nexport { requireMercury as __require };",
+      "start": 1699633501205,
+      "end": 1699633501205,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501205,
+      "end": 1699633501205,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501205,
+      "end": 1699633501205,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501205,
+      "end": 1699633501205,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501205,
+      "end": 1699633501205,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501205,
+      "end": 1699633501205,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501205,
+      "end": 1699633501205,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501205,
+      "end": 1699633501205,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501205,
+      "end": 1699633501205,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501205,
+      "end": 1699633501205,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501205,
+      "end": 1699633501206,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501206,
+      "end": 1699633501206,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501206,
+      "end": 1699633501206,
+      "order": "normal"
+    }
+  ]
+}

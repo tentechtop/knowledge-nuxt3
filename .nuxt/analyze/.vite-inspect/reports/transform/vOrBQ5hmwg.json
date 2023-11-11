@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/oxygene.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Oxygene\nAuthor: Carlo Kok <ck@remobjects.com>\nDescription: Oxygene is built on the foundation of Object Pascal, revamped and extended to be a modern language for the twenty-first century.\nWebsite: https://www.elementscompiler.com/elements/default.aspx\n*/\n\nfunction oxygene(hljs) {\n  const OXYGENE_KEYWORDS = {\n    $pattern: /\\.?\\w+/,\n    keyword:\n      'abstract add and array as asc aspect assembly async begin break block by case class concat const copy constructor continue '\n      + 'create default delegate desc distinct div do downto dynamic each else empty end ensure enum equals event except exit extension external false '\n      + 'final finalize finalizer finally flags for forward from function future global group has if implementation implements implies in index inherited '\n      + 'inline interface into invariants is iterator join locked locking loop matching method mod module namespace nested new nil not notify nullable of '\n      + 'old on operator or order out override parallel params partial pinned private procedure property protected public queryable raise read readonly '\n      + 'record reintroduce remove repeat require result reverse sealed select self sequence set shl shr skip static step soft take then to true try tuple '\n      + 'type union unit unsafe until uses using var virtual raises volatile where while with write xor yield await mapped deprecated stdcall cdecl pascal '\n      + 'register safecall overload library platform reference packed strict published autoreleasepool selector strong weak unretained'\n  };\n  const CURLY_COMMENT = hljs.COMMENT(\n    /\\{/,\n    /\\}/,\n    { relevance: 0 }\n  );\n  const PAREN_COMMENT = hljs.COMMENT(\n    '\\\\(\\\\*',\n    '\\\\*\\\\)',\n    { relevance: 10 }\n  );\n  const STRING = {\n    className: 'string',\n    begin: '\\'',\n    end: '\\'',\n    contains: [ { begin: '\\'\\'' } ]\n  };\n  const CHAR_STRING = {\n    className: 'string',\n    begin: '(#\\\\d+)+'\n  };\n  const FUNCTION = {\n    beginKeywords: 'function constructor destructor procedure method',\n    end: '[:;]',\n    keywords: 'function constructor|10 destructor|10 procedure|10 method|10',\n    contains: [\n      hljs.inherit(hljs.TITLE_MODE, { scope: \"title.function\" }),\n      {\n        className: 'params',\n        begin: '\\\\(',\n        end: '\\\\)',\n        keywords: OXYGENE_KEYWORDS,\n        contains: [\n          STRING,\n          CHAR_STRING\n        ]\n      },\n      CURLY_COMMENT,\n      PAREN_COMMENT\n    ]\n  };\n\n  const SEMICOLON = {\n    scope: \"punctuation\",\n    match: /;/,\n    relevance: 0\n  };\n\n  return {\n    name: 'Oxygene',\n    case_insensitive: true,\n    keywords: OXYGENE_KEYWORDS,\n    illegal: '(\"|\\\\$[G-Zg-z]|\\\\/\\\\*|</|=>|->)',\n    contains: [\n      CURLY_COMMENT,\n      PAREN_COMMENT,\n      hljs.C_LINE_COMMENT_MODE,\n      STRING,\n      CHAR_STRING,\n      hljs.NUMBER_MODE,\n      FUNCTION,\n      SEMICOLON\n    ]\n  };\n}\n\nmodule.exports = oxygene;\n",
+      "start": 1699633501187,
+      "end": 1699633501278,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501278,
+      "end": 1699633501278,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501278,
+      "end": 1699633501278,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501278,
+      "end": 1699633501278,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501278,
+      "end": 1699633501278,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501279,
+      "end": 1699633501279,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501279,
+      "end": 1699633501279,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501279,
+      "end": 1699633501279,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501279,
+      "end": 1699633501282,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501282,
+      "end": 1699633501282,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501282,
+      "end": 1699633501282,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501282,
+      "end": 1699633501282,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501282,
+      "end": 1699633501282,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501282,
+      "end": 1699633501282,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501282,
+      "end": 1699633501282,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501282,
+      "end": 1699633501282,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501283,
+      "end": 1699633501283,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501283,
+      "end": 1699633501283,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501283,
+      "end": 1699633501283,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501283,
+      "end": 1699633501283,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501283,
+      "end": 1699633501283,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Oxygene\nAuthor: Carlo Kok <ck@remobjects.com>\nDescription: Oxygene is built on the foundation of Object Pascal, revamped and extended to be a modern language for the twenty-first century.\nWebsite: https://www.elementscompiler.com/elements/default.aspx\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar oxygene_1;\nvar hasRequiredOxygene;\n\nfunction requireOxygene () {\n\tif (hasRequiredOxygene) return oxygene_1;\n\thasRequiredOxygene = 1;\n\tfunction oxygene(hljs) {\n\t  const OXYGENE_KEYWORDS = {\n\t    $pattern: /\\.?\\w+/,\n\t    keyword:\n\t      'abstract add and array as asc aspect assembly async begin break block by case class concat const copy constructor continue '\n\t      + 'create default delegate desc distinct div do downto dynamic each else empty end ensure enum equals event except exit extension external false '\n\t      + 'final finalize finalizer finally flags for forward from function future global group has if implementation implements implies in index inherited '\n\t      + 'inline interface into invariants is iterator join locked locking loop matching method mod module namespace nested new nil not notify nullable of '\n\t      + 'old on operator or order out override parallel params partial pinned private procedure property protected public queryable raise read readonly '\n\t      + 'record reintroduce remove repeat require result reverse sealed select self sequence set shl shr skip static step soft take then to true try tuple '\n\t      + 'type union unit unsafe until uses using var virtual raises volatile where while with write xor yield await mapped deprecated stdcall cdecl pascal '\n\t      + 'register safecall overload library platform reference packed strict published autoreleasepool selector strong weak unretained'\n\t  };\n\t  const CURLY_COMMENT = hljs.COMMENT(\n\t    /\\{/,\n\t    /\\}/,\n\t    { relevance: 0 }\n\t  );\n\t  const PAREN_COMMENT = hljs.COMMENT(\n\t    '\\\\(\\\\*',\n\t    '\\\\*\\\\)',\n\t    { relevance: 10 }\n\t  );\n\t  const STRING = {\n\t    className: 'string',\n\t    begin: '\\'',\n\t    end: '\\'',\n\t    contains: [ { begin: '\\'\\'' } ]\n\t  };\n\t  const CHAR_STRING = {\n\t    className: 'string',\n\t    begin: '(#\\\\d+)+'\n\t  };\n\t  const FUNCTION = {\n\t    beginKeywords: 'function constructor destructor procedure method',\n\t    end: '[:;]',\n\t    keywords: 'function constructor|10 destructor|10 procedure|10 method|10',\n\t    contains: [\n\t      hljs.inherit(hljs.TITLE_MODE, { scope: \"title.function\" }),\n\t      {\n\t        className: 'params',\n\t        begin: '\\\\(',\n\t        end: '\\\\)',\n\t        keywords: OXYGENE_KEYWORDS,\n\t        contains: [\n\t          STRING,\n\t          CHAR_STRING\n\t        ]\n\t      },\n\t      CURLY_COMMENT,\n\t      PAREN_COMMENT\n\t    ]\n\t  };\n\n\t  const SEMICOLON = {\n\t    scope: \"punctuation\",\n\t    match: /;/,\n\t    relevance: 0\n\t  };\n\n\t  return {\n\t    name: 'Oxygene',\n\t    case_insensitive: true,\n\t    keywords: OXYGENE_KEYWORDS,\n\t    illegal: '(\"|\\\\$[G-Zg-z]|\\\\/\\\\*|</|=>|->)',\n\t    contains: [\n\t      CURLY_COMMENT,\n\t      PAREN_COMMENT,\n\t      hljs.C_LINE_COMMENT_MODE,\n\t      STRING,\n\t      CHAR_STRING,\n\t      hljs.NUMBER_MODE,\n\t      FUNCTION,\n\t      SEMICOLON\n\t    ]\n\t  };\n\t}\n\n\toxygene_1 = oxygene;\n\treturn oxygene_1;\n}\n\nexport { requireOxygene as __require };",
+      "start": 1699633501283,
+      "end": 1699633501283,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;CAOA,SAAS,OAAO,CAAC,IAAI,EAAE;CACvB,EAAE,MAAM,gBAAgB,GAAG;CAC3B,IAAI,QAAQ,EAAE,QAAQ;CACtB,IAAI,OAAO;CACX,MAAM,6HAA6H;CACnI,QAAQ,gJAAgJ;CACxJ,QAAQ,mJAAmJ;CAC3J,QAAQ,mJAAmJ;CAC3J,QAAQ,iJAAiJ;CACzJ,QAAQ,oJAAoJ;CAC5J,QAAQ,oJAAoJ;CAC5J,QAAQ,+HAA+H;CACvI,GAAG,CAAC;CACJ,EAAE,MAAM,aAAa,GAAG,IAAI,CAAC,OAAO;CACpC,IAAI,IAAI;CACR,IAAI,IAAI;CACR,IAAI,EAAE,SAAS,EAAE,CAAC,EAAE;CACpB,GAAG,CAAC;CACJ,EAAE,MAAM,aAAa,GAAG,IAAI,CAAC,OAAO;CACpC,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,IAAI,EAAE,SAAS,EAAE,EAAE,EAAE;CACrB,GAAG,CAAC;CACJ,EAAE,MAAM,MAAM,GAAG;CACjB,IAAI,SAAS,EAAE,QAAQ;CACvB,IAAI,KAAK,EAAE,IAAI;CACf,IAAI,GAAG,EAAE,IAAI;CACb,IAAI,QAAQ,EAAE,EAAE,EAAE,KAAK,EAAE,MAAM,EAAE,EAAE;CACnC,GAAG,CAAC;CACJ,EAAE,MAAM,WAAW,GAAG;CACtB,IAAI,SAAS,EAAE,QAAQ;CACvB,IAAI,KAAK,EAAE,UAAU;CACrB,GAAG,CAAC;CACJ,EAAE,MAAM,QAAQ,GAAG;CACnB,IAAI,aAAa,EAAE,kDAAkD;CACrE,IAAI,GAAG,EAAE,MAAM;CACf,IAAI,QAAQ,EAAE,8DAA8D;CAC5E,IAAI,QAAQ,EAAE;CACd,MAAM,IAAI,CAAC,OAAO,CAAC,IAAI,CAAC,UAAU,EAAE,EAAE,KAAK,EAAE,gBAAgB,EAAE,CAAC;CAChE,MAAM;CACN,QAAQ,SAAS,EAAE,QAAQ;CAC3B,QAAQ,KAAK,EAAE,KAAK;CACpB,QAAQ,GAAG,EAAE,KAAK;CAClB,QAAQ,QAAQ,EAAE,gBAAgB;CAClC,QAAQ,QAAQ,EAAE;CAClB,UAAU,MAAM;CAChB,UAAU,WAAW;CACrB,SAAS;CACT,OAAO;CACP,MAAM,aAAa;CACnB,MAAM,aAAa;CACnB,KAAK;CACL,GAAG,CAAC;AACJ;CACA,EAAE,MAAM,SAAS,GAAG;CACpB,IAAI,KAAK,EAAE,aAAa;CACxB,IAAI,KAAK,EAAE,GAAG;CACd,IAAI,SAAS,EAAE,CAAC;CAChB,GAAG,CAAC;AACJ;CACA,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,SAAS;CACnB,IAAI,gBAAgB,EAAE,IAAI;CAC1B,IAAI,QAAQ,EAAE,gBAAgB;CAC9B,IAAI,OAAO,EAAE,iCAAiC;CAC9C,IAAI,QAAQ,EAAE;CACd,MAAM,aAAa;CACnB,MAAM,aAAa;CACnB,MAAM,IAAI,CAAC,mBAAmB;CAC9B,MAAM,MAAM;CACZ,MAAM,WAAW;CACjB,MAAM,IAAI,CAAC,WAAW;CACtB,MAAM,QAAQ;CACd,MAAM,SAAS;CACf,KAAK;CACL,GAAG,CAAC;CACJ,CAAC;AACD;AACA,UAAc,GAAG,OAAO"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501283,
+      "end": 1699633501283,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501283,
+      "end": 1699633501283,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501283,
+      "end": 1699633501283,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501284,
+      "end": 1699633501284,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501284,
+      "end": 1699633501284,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501284,
+      "end": 1699633501284,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501284,
+      "end": 1699633501284,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501284,
+      "end": 1699633501284,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501284,
+      "end": 1699633501284,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501284,
+      "end": 1699633501284,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501284,
+      "end": 1699633501284,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501284,
+      "end": 1699633501284,
+      "order": "normal"
+    }
+  ]
+}

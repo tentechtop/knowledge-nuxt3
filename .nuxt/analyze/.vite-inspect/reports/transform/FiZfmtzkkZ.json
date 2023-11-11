@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/lisp.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Lisp\nDescription: Generic lisp syntax\nAuthor: Vasily Polovnyov <vast@whiteants.net>\nCategory: lisp\n*/\n\nfunction lisp(hljs) {\n  const LISP_IDENT_RE = '[a-zA-Z_\\\\-+\\\\*\\\\/<=>&#][a-zA-Z0-9_\\\\-+*\\\\/<=>&#!]*';\n  const MEC_RE = '\\\\|[^]*?\\\\|';\n  const LISP_SIMPLE_NUMBER_RE = '(-|\\\\+)?\\\\d+(\\\\.\\\\d+|\\\\/\\\\d+)?((d|e|f|l|s|D|E|F|L|S)(\\\\+|-)?\\\\d+)?';\n  const LITERAL = {\n    className: 'literal',\n    begin: '\\\\b(t{1}|nil)\\\\b'\n  };\n  const NUMBER = {\n    className: 'number',\n    variants: [\n      {\n        begin: LISP_SIMPLE_NUMBER_RE,\n        relevance: 0\n      },\n      { begin: '#(b|B)[0-1]+(/[0-1]+)?' },\n      { begin: '#(o|O)[0-7]+(/[0-7]+)?' },\n      { begin: '#(x|X)[0-9a-fA-F]+(/[0-9a-fA-F]+)?' },\n      {\n        begin: '#(c|C)\\\\(' + LISP_SIMPLE_NUMBER_RE + ' +' + LISP_SIMPLE_NUMBER_RE,\n        end: '\\\\)'\n      }\n    ]\n  };\n  const STRING = hljs.inherit(hljs.QUOTE_STRING_MODE, { illegal: null });\n  const COMMENT = hljs.COMMENT(\n    ';', '$',\n    { relevance: 0 }\n  );\n  const VARIABLE = {\n    begin: '\\\\*',\n    end: '\\\\*'\n  };\n  const KEYWORD = {\n    className: 'symbol',\n    begin: '[:&]' + LISP_IDENT_RE\n  };\n  const IDENT = {\n    begin: LISP_IDENT_RE,\n    relevance: 0\n  };\n  const MEC = { begin: MEC_RE };\n  const QUOTED_LIST = {\n    begin: '\\\\(',\n    end: '\\\\)',\n    contains: [\n      'self',\n      LITERAL,\n      STRING,\n      NUMBER,\n      IDENT\n    ]\n  };\n  const QUOTED = {\n    contains: [\n      NUMBER,\n      STRING,\n      VARIABLE,\n      KEYWORD,\n      QUOTED_LIST,\n      IDENT\n    ],\n    variants: [\n      {\n        begin: '[\\'`]\\\\(',\n        end: '\\\\)'\n      },\n      {\n        begin: '\\\\(quote ',\n        end: '\\\\)',\n        keywords: { name: 'quote' }\n      },\n      { begin: '\\'' + MEC_RE }\n    ]\n  };\n  const QUOTED_ATOM = { variants: [\n    { begin: '\\'' + LISP_IDENT_RE },\n    { begin: '#\\'' + LISP_IDENT_RE + '(::' + LISP_IDENT_RE + ')*' }\n  ] };\n  const LIST = {\n    begin: '\\\\(\\\\s*',\n    end: '\\\\)'\n  };\n  const BODY = {\n    endsWithParent: true,\n    relevance: 0\n  };\n  LIST.contains = [\n    {\n      className: 'name',\n      variants: [\n        {\n          begin: LISP_IDENT_RE,\n          relevance: 0,\n        },\n        { begin: MEC_RE }\n      ]\n    },\n    BODY\n  ];\n  BODY.contains = [\n    QUOTED,\n    QUOTED_ATOM,\n    LIST,\n    LITERAL,\n    NUMBER,\n    STRING,\n    COMMENT,\n    VARIABLE,\n    KEYWORD,\n    MEC,\n    IDENT\n  ];\n\n  return {\n    name: 'Lisp',\n    illegal: /\\S/,\n    contains: [\n      NUMBER,\n      hljs.SHEBANG(),\n      LITERAL,\n      STRING,\n      COMMENT,\n      QUOTED,\n      QUOTED_ATOM,\n      LIST,\n      IDENT\n    ]\n  };\n}\n\nmodule.exports = lisp;\n",
+      "start": 1699633500986,
+      "end": 1699633501126,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501127,
+      "end": 1699633501127,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501127,
+      "end": 1699633501127,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501127,
+      "end": 1699633501127,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501127,
+      "end": 1699633501127,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501127,
+      "end": 1699633501127,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501127,
+      "end": 1699633501127,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501127,
+      "end": 1699633501127,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501127,
+      "end": 1699633501127,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501127,
+      "end": 1699633501127,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501127,
+      "end": 1699633501127,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501127,
+      "end": 1699633501127,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501128,
+      "end": 1699633501128,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501128,
+      "end": 1699633501128,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501128,
+      "end": 1699633501128,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501128,
+      "end": 1699633501128,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501128,
+      "end": 1699633501128,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501128,
+      "end": 1699633501128,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501128,
+      "end": 1699633501128,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501128,
+      "end": 1699633501128,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501128,
+      "end": 1699633501128,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Lisp\nDescription: Generic lisp syntax\nAuthor: Vasily Polovnyov <vast@whiteants.net>\nCategory: lisp\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar lisp_1;\nvar hasRequiredLisp;\n\nfunction requireLisp () {\n\tif (hasRequiredLisp) return lisp_1;\n\thasRequiredLisp = 1;\n\tfunction lisp(hljs) {\n\t  const LISP_IDENT_RE = '[a-zA-Z_\\\\-+\\\\*\\\\/<=>&#][a-zA-Z0-9_\\\\-+*\\\\/<=>&#!]*';\n\t  const MEC_RE = '\\\\|[^]*?\\\\|';\n\t  const LISP_SIMPLE_NUMBER_RE = '(-|\\\\+)?\\\\d+(\\\\.\\\\d+|\\\\/\\\\d+)?((d|e|f|l|s|D|E|F|L|S)(\\\\+|-)?\\\\d+)?';\n\t  const LITERAL = {\n\t    className: 'literal',\n\t    begin: '\\\\b(t{1}|nil)\\\\b'\n\t  };\n\t  const NUMBER = {\n\t    className: 'number',\n\t    variants: [\n\t      {\n\t        begin: LISP_SIMPLE_NUMBER_RE,\n\t        relevance: 0\n\t      },\n\t      { begin: '#(b|B)[0-1]+(/[0-1]+)?' },\n\t      { begin: '#(o|O)[0-7]+(/[0-7]+)?' },\n\t      { begin: '#(x|X)[0-9a-fA-F]+(/[0-9a-fA-F]+)?' },\n\t      {\n\t        begin: '#(c|C)\\\\(' + LISP_SIMPLE_NUMBER_RE + ' +' + LISP_SIMPLE_NUMBER_RE,\n\t        end: '\\\\)'\n\t      }\n\t    ]\n\t  };\n\t  const STRING = hljs.inherit(hljs.QUOTE_STRING_MODE, { illegal: null });\n\t  const COMMENT = hljs.COMMENT(\n\t    ';', '$',\n\t    { relevance: 0 }\n\t  );\n\t  const VARIABLE = {\n\t    begin: '\\\\*',\n\t    end: '\\\\*'\n\t  };\n\t  const KEYWORD = {\n\t    className: 'symbol',\n\t    begin: '[:&]' + LISP_IDENT_RE\n\t  };\n\t  const IDENT = {\n\t    begin: LISP_IDENT_RE,\n\t    relevance: 0\n\t  };\n\t  const MEC = { begin: MEC_RE };\n\t  const QUOTED_LIST = {\n\t    begin: '\\\\(',\n\t    end: '\\\\)',\n\t    contains: [\n\t      'self',\n\t      LITERAL,\n\t      STRING,\n\t      NUMBER,\n\t      IDENT\n\t    ]\n\t  };\n\t  const QUOTED = {\n\t    contains: [\n\t      NUMBER,\n\t      STRING,\n\t      VARIABLE,\n\t      KEYWORD,\n\t      QUOTED_LIST,\n\t      IDENT\n\t    ],\n\t    variants: [\n\t      {\n\t        begin: '[\\'`]\\\\(',\n\t        end: '\\\\)'\n\t      },\n\t      {\n\t        begin: '\\\\(quote ',\n\t        end: '\\\\)',\n\t        keywords: { name: 'quote' }\n\t      },\n\t      { begin: '\\'' + MEC_RE }\n\t    ]\n\t  };\n\t  const QUOTED_ATOM = { variants: [\n\t    { begin: '\\'' + LISP_IDENT_RE },\n\t    { begin: '#\\'' + LISP_IDENT_RE + '(::' + LISP_IDENT_RE + ')*' }\n\t  ] };\n\t  const LIST = {\n\t    begin: '\\\\(\\\\s*',\n\t    end: '\\\\)'\n\t  };\n\t  const BODY = {\n\t    endsWithParent: true,\n\t    relevance: 0\n\t  };\n\t  LIST.contains = [\n\t    {\n\t      className: 'name',\n\t      variants: [\n\t        {\n\t          begin: LISP_IDENT_RE,\n\t          relevance: 0,\n\t        },\n\t        { begin: MEC_RE }\n\t      ]\n\t    },\n\t    BODY\n\t  ];\n\t  BODY.contains = [\n\t    QUOTED,\n\t    QUOTED_ATOM,\n\t    LIST,\n\t    LITERAL,\n\t    NUMBER,\n\t    STRING,\n\t    COMMENT,\n\t    VARIABLE,\n\t    KEYWORD,\n\t    MEC,\n\t    IDENT\n\t  ];\n\n\t  return {\n\t    name: 'Lisp',\n\t    illegal: /\\S/,\n\t    contains: [\n\t      NUMBER,\n\t      hljs.SHEBANG(),\n\t      LITERAL,\n\t      STRING,\n\t      COMMENT,\n\t      QUOTED,\n\t      QUOTED_ATOM,\n\t      LIST,\n\t      IDENT\n\t    ]\n\t  };\n\t}\n\n\tlisp_1 = lisp;\n\treturn lisp_1;\n}\n\nexport { requireLisp as __require };",
+      "start": 1699633501128,
+      "end": 1699633501129,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501129,
+      "end": 1699633501129,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501129,
+      "end": 1699633501129,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501129,
+      "end": 1699633501129,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501129,
+      "end": 1699633501129,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501129,
+      "end": 1699633501129,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501129,
+      "end": 1699633501129,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501129,
+      "end": 1699633501129,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501129,
+      "end": 1699633501129,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501129,
+      "end": 1699633501129,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501129,
+      "end": 1699633501129,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501129,
+      "end": 1699633501129,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501129,
+      "end": 1699633501129,
+      "order": "normal"
+    }
+  ]
+}

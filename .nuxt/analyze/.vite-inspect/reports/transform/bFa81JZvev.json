@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/coq.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Coq\nAuthor: Stephan Boyer <stephan@stephanboyer.com>\nCategory: functional\nWebsite: https://coq.inria.fr\n*/\n\n/** @type LanguageFn */\nfunction coq(hljs) {\n  const KEYWORDS = [\n    \"_|0\",\n    \"as\",\n    \"at\",\n    \"cofix\",\n    \"else\",\n    \"end\",\n    \"exists\",\n    \"exists2\",\n    \"fix\",\n    \"for\",\n    \"forall\",\n    \"fun\",\n    \"if\",\n    \"IF\",\n    \"in\",\n    \"let\",\n    \"match\",\n    \"mod\",\n    \"Prop\",\n    \"return\",\n    \"Set\",\n    \"then\",\n    \"Type\",\n    \"using\",\n    \"where\",\n    \"with\",\n    \"Abort\",\n    \"About\",\n    \"Add\",\n    \"Admit\",\n    \"Admitted\",\n    \"All\",\n    \"Arguments\",\n    \"Assumptions\",\n    \"Axiom\",\n    \"Back\",\n    \"BackTo\",\n    \"Backtrack\",\n    \"Bind\",\n    \"Blacklist\",\n    \"Canonical\",\n    \"Cd\",\n    \"Check\",\n    \"Class\",\n    \"Classes\",\n    \"Close\",\n    \"Coercion\",\n    \"Coercions\",\n    \"CoFixpoint\",\n    \"CoInductive\",\n    \"Collection\",\n    \"Combined\",\n    \"Compute\",\n    \"Conjecture\",\n    \"Conjectures\",\n    \"Constant\",\n    \"constr\",\n    \"Constraint\",\n    \"Constructors\",\n    \"Context\",\n    \"Corollary\",\n    \"CreateHintDb\",\n    \"Cut\",\n    \"Declare\",\n    \"Defined\",\n    \"Definition\",\n    \"Delimit\",\n    \"Dependencies\",\n    \"Dependent\",\n    \"Derive\",\n    \"Drop\",\n    \"eauto\",\n    \"End\",\n    \"Equality\",\n    \"Eval\",\n    \"Example\",\n    \"Existential\",\n    \"Existentials\",\n    \"Existing\",\n    \"Export\",\n    \"exporting\",\n    \"Extern\",\n    \"Extract\",\n    \"Extraction\",\n    \"Fact\",\n    \"Field\",\n    \"Fields\",\n    \"File\",\n    \"Fixpoint\",\n    \"Focus\",\n    \"for\",\n    \"From\",\n    \"Function\",\n    \"Functional\",\n    \"Generalizable\",\n    \"Global\",\n    \"Goal\",\n    \"Grab\",\n    \"Grammar\",\n    \"Graph\",\n    \"Guarded\",\n    \"Heap\",\n    \"Hint\",\n    \"HintDb\",\n    \"Hints\",\n    \"Hypotheses\",\n    \"Hypothesis\",\n    \"ident\",\n    \"Identity\",\n    \"If\",\n    \"Immediate\",\n    \"Implicit\",\n    \"Import\",\n    \"Include\",\n    \"Inductive\",\n    \"Infix\",\n    \"Info\",\n    \"Initial\",\n    \"Inline\",\n    \"Inspect\",\n    \"Instance\",\n    \"Instances\",\n    \"Intro\",\n    \"Intros\",\n    \"Inversion\",\n    \"Inversion_clear\",\n    \"Language\",\n    \"Left\",\n    \"Lemma\",\n    \"Let\",\n    \"Libraries\",\n    \"Library\",\n    \"Load\",\n    \"LoadPath\",\n    \"Local\",\n    \"Locate\",\n    \"Ltac\",\n    \"ML\",\n    \"Mode\",\n    \"Module\",\n    \"Modules\",\n    \"Monomorphic\",\n    \"Morphism\",\n    \"Next\",\n    \"NoInline\",\n    \"Notation\",\n    \"Obligation\",\n    \"Obligations\",\n    \"Opaque\",\n    \"Open\",\n    \"Optimize\",\n    \"Options\",\n    \"Parameter\",\n    \"Parameters\",\n    \"Parametric\",\n    \"Path\",\n    \"Paths\",\n    \"pattern\",\n    \"Polymorphic\",\n    \"Preterm\",\n    \"Print\",\n    \"Printing\",\n    \"Program\",\n    \"Projections\",\n    \"Proof\",\n    \"Proposition\",\n    \"Pwd\",\n    \"Qed\",\n    \"Quit\",\n    \"Rec\",\n    \"Record\",\n    \"Recursive\",\n    \"Redirect\",\n    \"Relation\",\n    \"Remark\",\n    \"Remove\",\n    \"Require\",\n    \"Reserved\",\n    \"Reset\",\n    \"Resolve\",\n    \"Restart\",\n    \"Rewrite\",\n    \"Right\",\n    \"Ring\",\n    \"Rings\",\n    \"Save\",\n    \"Scheme\",\n    \"Scope\",\n    \"Scopes\",\n    \"Script\",\n    \"Search\",\n    \"SearchAbout\",\n    \"SearchHead\",\n    \"SearchPattern\",\n    \"SearchRewrite\",\n    \"Section\",\n    \"Separate\",\n    \"Set\",\n    \"Setoid\",\n    \"Show\",\n    \"Solve\",\n    \"Sorted\",\n    \"Step\",\n    \"Strategies\",\n    \"Strategy\",\n    \"Structure\",\n    \"SubClass\",\n    \"Table\",\n    \"Tables\",\n    \"Tactic\",\n    \"Term\",\n    \"Test\",\n    \"Theorem\",\n    \"Time\",\n    \"Timeout\",\n    \"Transparent\",\n    \"Type\",\n    \"Typeclasses\",\n    \"Types\",\n    \"Undelimit\",\n    \"Undo\",\n    \"Unfocus\",\n    \"Unfocused\",\n    \"Unfold\",\n    \"Universe\",\n    \"Universes\",\n    \"Unset\",\n    \"Unshelve\",\n    \"using\",\n    \"Variable\",\n    \"Variables\",\n    \"Variant\",\n    \"Verbose\",\n    \"Visibility\",\n    \"where\",\n    \"with\"\n  ];\n  const BUILT_INS = [\n    \"abstract\",\n    \"absurd\",\n    \"admit\",\n    \"after\",\n    \"apply\",\n    \"as\",\n    \"assert\",\n    \"assumption\",\n    \"at\",\n    \"auto\",\n    \"autorewrite\",\n    \"autounfold\",\n    \"before\",\n    \"bottom\",\n    \"btauto\",\n    \"by\",\n    \"case\",\n    \"case_eq\",\n    \"cbn\",\n    \"cbv\",\n    \"change\",\n    \"classical_left\",\n    \"classical_right\",\n    \"clear\",\n    \"clearbody\",\n    \"cofix\",\n    \"compare\",\n    \"compute\",\n    \"congruence\",\n    \"constr_eq\",\n    \"constructor\",\n    \"contradict\",\n    \"contradiction\",\n    \"cut\",\n    \"cutrewrite\",\n    \"cycle\",\n    \"decide\",\n    \"decompose\",\n    \"dependent\",\n    \"destruct\",\n    \"destruction\",\n    \"dintuition\",\n    \"discriminate\",\n    \"discrR\",\n    \"do\",\n    \"double\",\n    \"dtauto\",\n    \"eapply\",\n    \"eassumption\",\n    \"eauto\",\n    \"ecase\",\n    \"econstructor\",\n    \"edestruct\",\n    \"ediscriminate\",\n    \"eelim\",\n    \"eexact\",\n    \"eexists\",\n    \"einduction\",\n    \"einjection\",\n    \"eleft\",\n    \"elim\",\n    \"elimtype\",\n    \"enough\",\n    \"equality\",\n    \"erewrite\",\n    \"eright\",\n    \"esimplify_eq\",\n    \"esplit\",\n    \"evar\",\n    \"exact\",\n    \"exactly_once\",\n    \"exfalso\",\n    \"exists\",\n    \"f_equal\",\n    \"fail\",\n    \"field\",\n    \"field_simplify\",\n    \"field_simplify_eq\",\n    \"first\",\n    \"firstorder\",\n    \"fix\",\n    \"fold\",\n    \"fourier\",\n    \"functional\",\n    \"generalize\",\n    \"generalizing\",\n    \"gfail\",\n    \"give_up\",\n    \"has_evar\",\n    \"hnf\",\n    \"idtac\",\n    \"in\",\n    \"induction\",\n    \"injection\",\n    \"instantiate\",\n    \"intro\",\n    \"intro_pattern\",\n    \"intros\",\n    \"intuition\",\n    \"inversion\",\n    \"inversion_clear\",\n    \"is_evar\",\n    \"is_var\",\n    \"lapply\",\n    \"lazy\",\n    \"left\",\n    \"lia\",\n    \"lra\",\n    \"move\",\n    \"native_compute\",\n    \"nia\",\n    \"nsatz\",\n    \"omega\",\n    \"once\",\n    \"pattern\",\n    \"pose\",\n    \"progress\",\n    \"proof\",\n    \"psatz\",\n    \"quote\",\n    \"record\",\n    \"red\",\n    \"refine\",\n    \"reflexivity\",\n    \"remember\",\n    \"rename\",\n    \"repeat\",\n    \"replace\",\n    \"revert\",\n    \"revgoals\",\n    \"rewrite\",\n    \"rewrite_strat\",\n    \"right\",\n    \"ring\",\n    \"ring_simplify\",\n    \"rtauto\",\n    \"set\",\n    \"setoid_reflexivity\",\n    \"setoid_replace\",\n    \"setoid_rewrite\",\n    \"setoid_symmetry\",\n    \"setoid_transitivity\",\n    \"shelve\",\n    \"shelve_unifiable\",\n    \"simpl\",\n    \"simple\",\n    \"simplify_eq\",\n    \"solve\",\n    \"specialize\",\n    \"split\",\n    \"split_Rabs\",\n    \"split_Rmult\",\n    \"stepl\",\n    \"stepr\",\n    \"subst\",\n    \"sum\",\n    \"swap\",\n    \"symmetry\",\n    \"tactic\",\n    \"tauto\",\n    \"time\",\n    \"timeout\",\n    \"top\",\n    \"transitivity\",\n    \"trivial\",\n    \"try\",\n    \"tryif\",\n    \"unfold\",\n    \"unify\",\n    \"until\",\n    \"using\",\n    \"vm_compute\",\n    \"with\"\n  ];\n  return {\n    name: 'Coq',\n    keywords: {\n      keyword: KEYWORDS,\n      built_in: BUILT_INS\n    },\n    contains: [\n      hljs.QUOTE_STRING_MODE,\n      hljs.COMMENT('\\\\(\\\\*', '\\\\*\\\\)'),\n      hljs.C_NUMBER_MODE,\n      {\n        className: 'type',\n        excludeBegin: true,\n        begin: '\\\\|\\\\s*',\n        end: '\\\\w+'\n      },\n      { // relevance booster\n        begin: /[-=]>/ }\n    ]\n  };\n}\n\nmodule.exports = coq;\n",
+      "start": 1699633500665,
+      "end": 1699633500758,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500758,
+      "end": 1699633500758,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500759,
+      "end": 1699633500759,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500759,
+      "end": 1699633500759,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500759,
+      "end": 1699633500759,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500759,
+      "end": 1699633500759,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500759,
+      "end": 1699633500759,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500759,
+      "end": 1699633500759,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500759,
+      "end": 1699633500759,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500759,
+      "end": 1699633500759,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500759,
+      "end": 1699633500759,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500759,
+      "end": 1699633500759,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500759,
+      "end": 1699633500759,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500760,
+      "end": 1699633500760,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500760,
+      "end": 1699633500760,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500760,
+      "end": 1699633500760,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500760,
+      "end": 1699633500760,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500760,
+      "end": 1699633500760,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500760,
+      "end": 1699633500760,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500760,
+      "end": 1699633500760,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500760,
+      "end": 1699633500760,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Coq\nAuthor: Stephan Boyer <stephan@stephanboyer.com>\nCategory: functional\nWebsite: https://coq.inria.fr\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar coq_1;\nvar hasRequiredCoq;\n\nfunction requireCoq () {\n\tif (hasRequiredCoq) return coq_1;\n\thasRequiredCoq = 1;\n\t/** @type LanguageFn */\n\tfunction coq(hljs) {\n\t  const KEYWORDS = [\n\t    \"_|0\",\n\t    \"as\",\n\t    \"at\",\n\t    \"cofix\",\n\t    \"else\",\n\t    \"end\",\n\t    \"exists\",\n\t    \"exists2\",\n\t    \"fix\",\n\t    \"for\",\n\t    \"forall\",\n\t    \"fun\",\n\t    \"if\",\n\t    \"IF\",\n\t    \"in\",\n\t    \"let\",\n\t    \"match\",\n\t    \"mod\",\n\t    \"Prop\",\n\t    \"return\",\n\t    \"Set\",\n\t    \"then\",\n\t    \"Type\",\n\t    \"using\",\n\t    \"where\",\n\t    \"with\",\n\t    \"Abort\",\n\t    \"About\",\n\t    \"Add\",\n\t    \"Admit\",\n\t    \"Admitted\",\n\t    \"All\",\n\t    \"Arguments\",\n\t    \"Assumptions\",\n\t    \"Axiom\",\n\t    \"Back\",\n\t    \"BackTo\",\n\t    \"Backtrack\",\n\t    \"Bind\",\n\t    \"Blacklist\",\n\t    \"Canonical\",\n\t    \"Cd\",\n\t    \"Check\",\n\t    \"Class\",\n\t    \"Classes\",\n\t    \"Close\",\n\t    \"Coercion\",\n\t    \"Coercions\",\n\t    \"CoFixpoint\",\n\t    \"CoInductive\",\n\t    \"Collection\",\n\t    \"Combined\",\n\t    \"Compute\",\n\t    \"Conjecture\",\n\t    \"Conjectures\",\n\t    \"Constant\",\n\t    \"constr\",\n\t    \"Constraint\",\n\t    \"Constructors\",\n\t    \"Context\",\n\t    \"Corollary\",\n\t    \"CreateHintDb\",\n\t    \"Cut\",\n\t    \"Declare\",\n\t    \"Defined\",\n\t    \"Definition\",\n\t    \"Delimit\",\n\t    \"Dependencies\",\n\t    \"Dependent\",\n\t    \"Derive\",\n\t    \"Drop\",\n\t    \"eauto\",\n\t    \"End\",\n\t    \"Equality\",\n\t    \"Eval\",\n\t    \"Example\",\n\t    \"Existential\",\n\t    \"Existentials\",\n\t    \"Existing\",\n\t    \"Export\",\n\t    \"exporting\",\n\t    \"Extern\",\n\t    \"Extract\",\n\t    \"Extraction\",\n\t    \"Fact\",\n\t    \"Field\",\n\t    \"Fields\",\n\t    \"File\",\n\t    \"Fixpoint\",\n\t    \"Focus\",\n\t    \"for\",\n\t    \"From\",\n\t    \"Function\",\n\t    \"Functional\",\n\t    \"Generalizable\",\n\t    \"Global\",\n\t    \"Goal\",\n\t    \"Grab\",\n\t    \"Grammar\",\n\t    \"Graph\",\n\t    \"Guarded\",\n\t    \"Heap\",\n\t    \"Hint\",\n\t    \"HintDb\",\n\t    \"Hints\",\n\t    \"Hypotheses\",\n\t    \"Hypothesis\",\n\t    \"ident\",\n\t    \"Identity\",\n\t    \"If\",\n\t    \"Immediate\",\n\t    \"Implicit\",\n\t    \"Import\",\n\t    \"Include\",\n\t    \"Inductive\",\n\t    \"Infix\",\n\t    \"Info\",\n\t    \"Initial\",\n\t    \"Inline\",\n\t    \"Inspect\",\n\t    \"Instance\",\n\t    \"Instances\",\n\t    \"Intro\",\n\t    \"Intros\",\n\t    \"Inversion\",\n\t    \"Inversion_clear\",\n\t    \"Language\",\n\t    \"Left\",\n\t    \"Lemma\",\n\t    \"Let\",\n\t    \"Libraries\",\n\t    \"Library\",\n\t    \"Load\",\n\t    \"LoadPath\",\n\t    \"Local\",\n\t    \"Locate\",\n\t    \"Ltac\",\n\t    \"ML\",\n\t    \"Mode\",\n\t    \"Module\",\n\t    \"Modules\",\n\t    \"Monomorphic\",\n\t    \"Morphism\",\n\t    \"Next\",\n\t    \"NoInline\",\n\t    \"Notation\",\n\t    \"Obligation\",\n\t    \"Obligations\",\n\t    \"Opaque\",\n\t    \"Open\",\n\t    \"Optimize\",\n\t    \"Options\",\n\t    \"Parameter\",\n\t    \"Parameters\",\n\t    \"Parametric\",\n\t    \"Path\",\n\t    \"Paths\",\n\t    \"pattern\",\n\t    \"Polymorphic\",\n\t    \"Preterm\",\n\t    \"Print\",\n\t    \"Printing\",\n\t    \"Program\",\n\t    \"Projections\",\n\t    \"Proof\",\n\t    \"Proposition\",\n\t    \"Pwd\",\n\t    \"Qed\",\n\t    \"Quit\",\n\t    \"Rec\",\n\t    \"Record\",\n\t    \"Recursive\",\n\t    \"Redirect\",\n\t    \"Relation\",\n\t    \"Remark\",\n\t    \"Remove\",\n\t    \"Require\",\n\t    \"Reserved\",\n\t    \"Reset\",\n\t    \"Resolve\",\n\t    \"Restart\",\n\t    \"Rewrite\",\n\t    \"Right\",\n\t    \"Ring\",\n\t    \"Rings\",\n\t    \"Save\",\n\t    \"Scheme\",\n\t    \"Scope\",\n\t    \"Scopes\",\n\t    \"Script\",\n\t    \"Search\",\n\t    \"SearchAbout\",\n\t    \"SearchHead\",\n\t    \"SearchPattern\",\n\t    \"SearchRewrite\",\n\t    \"Section\",\n\t    \"Separate\",\n\t    \"Set\",\n\t    \"Setoid\",\n\t    \"Show\",\n\t    \"Solve\",\n\t    \"Sorted\",\n\t    \"Step\",\n\t    \"Strategies\",\n\t    \"Strategy\",\n\t    \"Structure\",\n\t    \"SubClass\",\n\t    \"Table\",\n\t    \"Tables\",\n\t    \"Tactic\",\n\t    \"Term\",\n\t    \"Test\",\n\t    \"Theorem\",\n\t    \"Time\",\n\t    \"Timeout\",\n\t    \"Transparent\",\n\t    \"Type\",\n\t    \"Typeclasses\",\n\t    \"Types\",\n\t    \"Undelimit\",\n\t    \"Undo\",\n\t    \"Unfocus\",\n\t    \"Unfocused\",\n\t    \"Unfold\",\n\t    \"Universe\",\n\t    \"Universes\",\n\t    \"Unset\",\n\t    \"Unshelve\",\n\t    \"using\",\n\t    \"Variable\",\n\t    \"Variables\",\n\t    \"Variant\",\n\t    \"Verbose\",\n\t    \"Visibility\",\n\t    \"where\",\n\t    \"with\"\n\t  ];\n\t  const BUILT_INS = [\n\t    \"abstract\",\n\t    \"absurd\",\n\t    \"admit\",\n\t    \"after\",\n\t    \"apply\",\n\t    \"as\",\n\t    \"assert\",\n\t    \"assumption\",\n\t    \"at\",\n\t    \"auto\",\n\t    \"autorewrite\",\n\t    \"autounfold\",\n\t    \"before\",\n\t    \"bottom\",\n\t    \"btauto\",\n\t    \"by\",\n\t    \"case\",\n\t    \"case_eq\",\n\t    \"cbn\",\n\t    \"cbv\",\n\t    \"change\",\n\t    \"classical_left\",\n\t    \"classical_right\",\n\t    \"clear\",\n\t    \"clearbody\",\n\t    \"cofix\",\n\t    \"compare\",\n\t    \"compute\",\n\t    \"congruence\",\n\t    \"constr_eq\",\n\t    \"constructor\",\n\t    \"contradict\",\n\t    \"contradiction\",\n\t    \"cut\",\n\t    \"cutrewrite\",\n\t    \"cycle\",\n\t    \"decide\",\n\t    \"decompose\",\n\t    \"dependent\",\n\t    \"destruct\",\n\t    \"destruction\",\n\t    \"dintuition\",\n\t    \"discriminate\",\n\t    \"discrR\",\n\t    \"do\",\n\t    \"double\",\n\t    \"dtauto\",\n\t    \"eapply\",\n\t    \"eassumption\",\n\t    \"eauto\",\n\t    \"ecase\",\n\t    \"econstructor\",\n\t    \"edestruct\",\n\t    \"ediscriminate\",\n\t    \"eelim\",\n\t    \"eexact\",\n\t    \"eexists\",\n\t    \"einduction\",\n\t    \"einjection\",\n\t    \"eleft\",\n\t    \"elim\",\n\t    \"elimtype\",\n\t    \"enough\",\n\t    \"equality\",\n\t    \"erewrite\",\n\t    \"eright\",\n\t    \"esimplify_eq\",\n\t    \"esplit\",\n\t    \"evar\",\n\t    \"exact\",\n\t    \"exactly_once\",\n\t    \"exfalso\",\n\t    \"exists\",\n\t    \"f_equal\",\n\t    \"fail\",\n\t    \"field\",\n\t    \"field_simplify\",\n\t    \"field_simplify_eq\",\n\t    \"first\",\n\t    \"firstorder\",\n\t    \"fix\",\n\t    \"fold\",\n\t    \"fourier\",\n\t    \"functional\",\n\t    \"generalize\",\n\t    \"generalizing\",\n\t    \"gfail\",\n\t    \"give_up\",\n\t    \"has_evar\",\n\t    \"hnf\",\n\t    \"idtac\",\n\t    \"in\",\n\t    \"induction\",\n\t    \"injection\",\n\t    \"instantiate\",\n\t    \"intro\",\n\t    \"intro_pattern\",\n\t    \"intros\",\n\t    \"intuition\",\n\t    \"inversion\",\n\t    \"inversion_clear\",\n\t    \"is_evar\",\n\t    \"is_var\",\n\t    \"lapply\",\n\t    \"lazy\",\n\t    \"left\",\n\t    \"lia\",\n\t    \"lra\",\n\t    \"move\",\n\t    \"native_compute\",\n\t    \"nia\",\n\t    \"nsatz\",\n\t    \"omega\",\n\t    \"once\",\n\t    \"pattern\",\n\t    \"pose\",\n\t    \"progress\",\n\t    \"proof\",\n\t    \"psatz\",\n\t    \"quote\",\n\t    \"record\",\n\t    \"red\",\n\t    \"refine\",\n\t    \"reflexivity\",\n\t    \"remember\",\n\t    \"rename\",\n\t    \"repeat\",\n\t    \"replace\",\n\t    \"revert\",\n\t    \"revgoals\",\n\t    \"rewrite\",\n\t    \"rewrite_strat\",\n\t    \"right\",\n\t    \"ring\",\n\t    \"ring_simplify\",\n\t    \"rtauto\",\n\t    \"set\",\n\t    \"setoid_reflexivity\",\n\t    \"setoid_replace\",\n\t    \"setoid_rewrite\",\n\t    \"setoid_symmetry\",\n\t    \"setoid_transitivity\",\n\t    \"shelve\",\n\t    \"shelve_unifiable\",\n\t    \"simpl\",\n\t    \"simple\",\n\t    \"simplify_eq\",\n\t    \"solve\",\n\t    \"specialize\",\n\t    \"split\",\n\t    \"split_Rabs\",\n\t    \"split_Rmult\",\n\t    \"stepl\",\n\t    \"stepr\",\n\t    \"subst\",\n\t    \"sum\",\n\t    \"swap\",\n\t    \"symmetry\",\n\t    \"tactic\",\n\t    \"tauto\",\n\t    \"time\",\n\t    \"timeout\",\n\t    \"top\",\n\t    \"transitivity\",\n\t    \"trivial\",\n\t    \"try\",\n\t    \"tryif\",\n\t    \"unfold\",\n\t    \"unify\",\n\t    \"until\",\n\t    \"using\",\n\t    \"vm_compute\",\n\t    \"with\"\n\t  ];\n\t  return {\n\t    name: 'Coq',\n\t    keywords: {\n\t      keyword: KEYWORDS,\n\t      built_in: BUILT_INS\n\t    },\n\t    contains: [\n\t      hljs.QUOTE_STRING_MODE,\n\t      hljs.COMMENT('\\\\(\\\\*', '\\\\*\\\\)'),\n\t      hljs.C_NUMBER_MODE,\n\t      {\n\t        className: 'type',\n\t        excludeBegin: true,\n\t        begin: '\\\\|\\\\s*',\n\t        end: '\\\\w+'\n\t      },\n\t      { // relevance booster\n\t        begin: /[-=]>/ }\n\t    ]\n\t  };\n\t}\n\n\tcoq_1 = coq;\n\treturn coq_1;\n}\n\nexport { requireCoq as __require };",
+      "start": 1699633500760,
+      "end": 1699633500761,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500761,
+      "end": 1699633500761,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500761,
+      "end": 1699633500761,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500761,
+      "end": 1699633500761,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500761,
+      "end": 1699633500761,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500761,
+      "end": 1699633500761,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500761,
+      "end": 1699633500761,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500761,
+      "end": 1699633500761,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500761,
+      "end": 1699633500761,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500761,
+      "end": 1699633500761,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500761,
+      "end": 1699633500761,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500761,
+      "end": 1699633500761,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500761,
+      "end": 1699633500761,
+      "order": "normal"
+    }
+  ]
+}

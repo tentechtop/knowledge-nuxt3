@@ -1,0 +1,221 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/components/customer.vue?vue&type=style&index=0&scoped=874f0d2b&lang.css",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "\r\n.root-page{\r\n  outline: 2px solid rgba(255,255,255,0.55);\r\n  padding: 8px 0;\r\n  z-index: 9999;\r\n  cursor: pointer;\r\n  right: 7px;\r\n  bottom: 65px;\r\n  border-radius: 100px;\r\n  width: 40px;\r\n  height: 40px;\r\n  max-width: 50px;\r\n  position: fixed;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: flex-start;\r\n  background-color: #0d7ae1;\r\n  animation: breathing 1s ease 0s infinite alternate;\r\n  overflow: hidden;\r\n}\r\n\r\n@keyframes breathing {\r\n  0% {\r\n    box-shadow: 0 0 5px 2px rgba(2, 70, 255, 0.2);\r\n  }\r\n\r\n  100% {\r\n    box-shadow: 0 0 7px 3px rgba(2, 70, 255, 0.8);\r\n  }\r\n}\r\n\r\n@keyframes breathing-deep {\r\n  0% {\r\n    box-shadow: 0 0 5px 2px rgba(2, 70, 255, 0.3);\r\n  }\r\n\r\n  100% {\r\n    box-shadow: 0 0 10px 6px rgba(2, 70, 255, 0.8);\r\n  }\r\n}\r\n.root-page>img{\r\n  width: 25px;\r\n  object-fit: cover;\r\n}\r\n.root-page>p{\r\n  width: 30%;\r\n  text-align: center;\r\n  font-size: 11px;\r\n  color: white;\r\n}\r\n.customer{\r\n  width: 50px;\r\n  height: 50px;\r\n  overflow: hidden;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n.customer>img{\r\n  width: 42px;\r\n  object-fit: cover;\r\n  border-radius: 100px;\r\n}\r\n.card-container{\r\n  overflow: hidden;\r\n  z-index: 9999;\r\n  cursor: pointer;\r\n  height: 221px;\r\n  width: 240px;\r\n  transform: translateX(320px);\r\n  opacity: 0;\r\n  right: 15px;\r\n  bottom: 35px;\r\n  position: fixed;\r\n  transition: height 0.2s ease,width 0.5s ease,transform 0s ease,opacity 0.6s ease;\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: flex-start;\r\n  justify-content: space-between;\r\n  background-color: transparent;\r\n  border-radius: 10px;\r\n}\r\n.hoverCard{\r\n  transition: transform 0.5s ease;\r\n  transform: translateX(-25px);\r\n  opacity: 1;\r\n}\r\n.card{\r\n  z-index: 9999;\r\n  border-radius: 10px;\r\n  background-color: white;\r\n  box-shadow: 0px 0px  5px 2px rgba(0, 0, 0, 0.2);\r\n  height: 220px;\r\n  width: 220px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n.noshow-card{\r\n  height: 100px;\r\n  width: 10px;\r\n  opacity: 0;\r\n}\r\n.card >h1{\r\n  color: rgba(0,0,0,0.65);\r\n  font-size: 13px;\r\n}\r\n.chat-windows{\r\n  transition: all 0.3s ease;\r\n  opacity: 0;\r\n  height: 0;\r\n  z-index: 9999;\r\n  position: fixed;\r\n  right: 45px;\r\n  bottom: 20px;\r\n  width: 400px;\r\n  background-color: #fff;\r\n  border-radius: 5px;\r\n  overflow: hidden;\r\n  box-shadow: 0 8px 8px rgba(100, 100, 100, 0.5);\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n.windows-header{\r\n  background-image: url(\"https://tentech.oss-cn-shenzhen.aliyuncs.com/custom/20231019162909.png\");\r\n  background-size: cover;\r\n  z-index: 3;\r\n  top: 0;\r\n  position: sticky;\r\n  width: 100%;\r\n  height: 70px;\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n\r\n}\r\n.chat-logo-container{\r\n  padding-left: 20px;\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  justify-content: flex-start;\r\n}\r\n.chat-logo-container>img{\r\n  width: 50px;\r\n  object-fit: cover;\r\n  border-radius: 1000px;\r\n  margin-right: 6px;\r\n}\r\n.chat-logo-container>p{\r\n  color: #fff;\r\n}\r\n.welcome{\r\n  padding-top: 10px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: flex-start;\r\n  justify-content: flex-start;\r\n}\r\n.welcome>h1{\r\n  font-size: 16px;\r\n  color: #fff;\r\n}\r\n.welcome>p{\r\n  font-weight: 100;\r\n  font-size: 12px;\r\n  color: #fff;\r\n}\r\n.show-chat-windows{\r\n  opacity: 1;\r\n  height: 560px;\r\n}\r\n\r\n.close-line{\r\n\r\n  width: 20px;\r\n  height: 3px;\r\n  background-color: #fff;\r\n}\r\n.close-button{\r\n  margin-right: 20px;\r\n  cursor: pointer;\r\n  width: 40px;\r\n  height: 40px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n.chat-message-container{\r\n  z-index: 2;\r\n  width: 100%;\r\n  height: 60%;\r\n  background-color: #f3f3f3;\r\n  overflow: hidden;\r\n  overflow-y: auto;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n.message-send-container{\r\n  border-top: 1px solid rgba(0,0,0,0.15);\r\n  width: 100%;\r\n  height: calc(40% - 60px);\r\n  background-color: #fff;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n}\r\n.service-level-container{\r\n  width: 100%;\r\n  height: 40px;\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  justify-content: flex-end;\r\n}\r\n.human-service{\r\n  cursor: pointer;\r\n  margin-right: 20px;\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  justify-content: flex-start;\r\n}\r\n.human-service>img{\r\n  margin-right: 6px;\r\n  width: 20px;\r\n}\r\n.human-service>a{\r\n  font-size: 12px;\r\n  color: #005ABC;\r\n}\r\n.message-container{\r\n  width: 100%;\r\n  min-height: 50px;\r\n}\r\n.message-input{\r\n  padding: 0 10px;\r\n  width: 100%;\r\n  border: none;\r\n  outline: none;\r\n  font-size: 16px;\r\n  font-weight: 700;\r\n  white-space: pre-wrap;\r\n  resize: none; /* 禁止用户手动调整大小 */\r\n  color: black; /* 设置字体颜色为黑色 */\r\n  font-style:normal;\r\n}\r\n.message-input:focus{\r\n  border: none;\r\n  outline: none;\r\n}\r\n.send-message-button-container{\r\n  padding: 0px 20px ;\r\n  width: 100%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  justify-content: flex-end;\r\n}\r\n.send-message-button{\r\n  border-radius: 5px;\r\n  cursor: pointer;\r\n  font-size: 14px;\r\n  border: 1px solid rgba(0,0,0,0.25);\r\n  padding: 4px 18px;\r\n  background-color: #fff;\r\n  color: rgba(0,0,0,0.55);\r\n}\r\n.message-item{\r\n  padding: 8px 8px;\r\n  width: 100%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: flex-start;\r\n\r\n}\r\n.user-message-content{\r\n  overflow: hidden;\r\n  width: 100%;\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: flex-start;\r\n}\r\n.user-message{\r\n  justify-content: flex-end;\r\n}\r\n.user-message>img{\r\n  width: 30px;\r\n  height: 30px;\r\n  object-fit: cover;\r\n  border-radius: 5000px;\r\n}\r\n.service-message{\r\n\r\n  justify-content: flex-start;\r\n}\r\n.service-message>img{\r\n  width: 30px;\r\n  object-fit: cover;\r\n  border-radius: 5000px;\r\n}\r\n.no-user-message-item{\r\n  overflow: hidden;\r\n  color: #000;\r\n  font-size: 14px;\r\n  border-radius: 5px;\r\n  background-color: #fff;\r\n  padding:  5px;\r\n  margin-left: 5px;\r\n\r\n}\r\n.no-user-message-item >p >img{\r\n  max-width: 200px;\r\n  max-height: 200px;\r\n}\r\n\r\n.user-message-item{\r\n  color: #fff;\r\n  border-radius: 5px;\r\n  background-color: #38A1DF;\r\n  padding: 5px;\r\n  margin-right: 5px;\r\n  font-size: 14px;\r\n}\r\n.card-item{\r\n  width: 100%;\r\n  height: 32%;\r\n}\r\n.card-line{\r\n  width: 90%;\r\n  height: 2px;\r\n  background-color: rgba(0,0,0,0.2);\r\n}\r\n.call-phone{\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: flex-start;\r\n  justify-content: flex-start;\r\n}\r\n.call-phone>img{\r\n  width: 20px;\r\n  margin-right: 8px;\r\n}\r\n.phone-number{\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n.phone-number>p{\r\n  color: black;\r\n  font-size: 16px;\r\n}\r\n.phone-number>h1{\r\n  color: #0d7ae1;\r\n  font-size: 18px;\r\n}\r\n.contact{\r\n  padding: 10px;\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  justify-content: flex-start;\r\n}\r\n.contact>img{\r\n  width: 20px;\r\n  margin-right: 8px;\r\n}\r\n.contact>p{\r\n  font-size: 16px;\r\n  color: #000;\r\n  margin-right: 8px;\r\n}\r\n.contact-button{\r\n  padding: 6px 12px;\r\n  background-color: #004e98;\r\n  color: #fff;\r\n  font-size: 14px;\r\n}\r\n.more-contact{\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n.more-contact>img{\r\n  width: 14px;\r\n}\r\n.more-contact>p{\r\n  margin-right: 8px;\r\n  font-size: 16px;\r\n}\r\n.hot-question{\r\n  width: 100%;\r\n  min-height: 100px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n.hot-question-container{\r\n  padding: 10px 20px;\r\n  border-radius: 10px;\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: #fff;\r\n}\r\n.available{\r\n  background-color: #0060E7;\r\n  color: #fff;\r\n  border: 1px solid rgba(0,0,0,0);\r\n}\r\n@media screen and (max-width: 1023px){\r\n  .chat-windows{\r\n    right: 16px;\r\n\r\n  }\r\n\r\n}\r\n@media screen  and (max-width: 480px){\r\n  .customer>img{\r\n    width: 40px;\r\n  }\r\n  .customer{\r\n    width: 40px;\r\n    height: 40px;\r\n  }\r\n  .root-page{\r\n    width: 40px;\r\n    height: 40px;\r\n  }\r\n  .hoverCard{\r\n    height:52px;\r\n    width:240px;\r\n    transform: translateX(-40px);\r\n    opacity: 1;\r\n  }\r\n  .card >h1{\r\n    font-size: 12px;\r\n  }\r\n  .chat-windows{\r\n    right: 0px;\r\n    width: 100%;\r\n    margin: 0 16px;\r\n  }\r\n\r\n}\r\n",
+      "start": 1699633499565,
+      "end": 1699633499565
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633499566,
+      "end": 1699633499566,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633499566,
+      "end": 1699633499567,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633499567,
+      "end": 1699633499567,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": ".root-page{align-items:center;animation:breathing 1s ease 0s infinite alternate;background-color:#0d7ae1;border-radius:100px;bottom:65px;cursor:pointer;display:flex;flex-direction:column;height:40px;justify-content:flex-start;max-width:50px;outline:2px solid hsla(0,0%,100%,.55);overflow:hidden;padding:8px 0;position:fixed;right:7px;width:40px;z-index:9999}@keyframes breathing{0%{box-shadow:0 0 5px 2px rgba(2,70,255,.2)}to{box-shadow:0 0 7px 3px rgba(2,70,255,.8)}}@keyframes breathing-deep{0%{box-shadow:0 0 5px 2px rgba(2,70,255,.3)}to{box-shadow:0 0 10px 6px rgba(2,70,255,.8)}}.root-page>img{-o-object-fit:cover;object-fit:cover;width:25px}.root-page>p{color:#fff;font-size:11px;text-align:center;width:30%}.customer{align-items:center;display:flex;flex-direction:column;height:50px;justify-content:center;overflow:hidden;width:50px}.customer>img{border-radius:100px;-o-object-fit:cover;object-fit:cover;width:42px}.card-container{align-items:flex-start;background-color:transparent;border-radius:10px;bottom:35px;cursor:pointer;display:flex;flex-direction:row;height:221px;justify-content:space-between;opacity:0;overflow:hidden;position:fixed;right:15px;transform:translateX(320px);transition:height .2s ease,width .5s ease,transform 0s ease,opacity .6s ease;width:240px;z-index:9999}.hoverCard{opacity:1;transform:translateX(-25px);transition:transform .5s ease}.card{align-items:center;background-color:#fff;border-radius:10px;box-shadow:0 0 5px 2px rgba(0,0,0,.2);display:flex;flex-direction:column;height:220px;justify-content:center;width:220px;z-index:9999}.noshow-card{height:100px;opacity:0;width:10px}.card>h1{color:rgba(0,0,0,.65);font-size:13px}.chat-windows{align-items:center;background-color:#fff;border-radius:5px;bottom:20px;box-shadow:0 8px 8px hsla(0,0%,39%,.5);display:flex;flex-direction:column;height:0;opacity:0;overflow:hidden;position:fixed;right:45px;transition:all .3s ease;width:400px;z-index:9999}.windows-header{background-image:url(https://tentech.oss-cn-shenzhen.aliyuncs.com/custom/20231019162909.png);background-size:cover;height:70px;justify-content:space-between;position:sticky;top:0;width:100%;z-index:3}.chat-logo-container,.windows-header{align-items:center;display:flex;flex-direction:row}.chat-logo-container{justify-content:flex-start;padding-left:20px}.chat-logo-container>img{border-radius:1000px;margin-right:6px;-o-object-fit:cover;object-fit:cover;width:50px}.chat-logo-container>p{color:#fff}.welcome{align-items:flex-start;display:flex;flex-direction:column;justify-content:flex-start;padding-top:10px}.welcome>h1{color:#fff;font-size:16px}.welcome>p{color:#fff;font-size:12px;font-weight:100}.show-chat-windows{height:560px;opacity:1}.close-line{background-color:#fff;height:3px;width:20px}.close-button{align-items:center;cursor:pointer;display:flex;flex-direction:column;height:40px;justify-content:center;margin-right:20px;width:40px}.chat-message-container{background-color:#f3f3f3;height:60%;overflow:hidden;overflow-y:auto;z-index:2}.chat-message-container,.message-send-container{align-items:center;display:flex;flex-direction:column;width:100%}.message-send-container{background-color:#fff;border-top:1px solid rgba(0,0,0,.15);height:calc(40% - 60px)}.service-level-container{height:40px;justify-content:flex-end;width:100%}.human-service,.service-level-container{align-items:center;display:flex;flex-direction:row}.human-service{cursor:pointer;justify-content:flex-start;margin-right:20px}.human-service>img{margin-right:6px;width:20px}.human-service>a{color:#005abc;font-size:12px}.message-container{min-height:50px;width:100%}.message-input{color:#000;font-size:16px;font-style:normal;font-weight:700;padding:0 10px;resize:none;white-space:pre-wrap;width:100%}.message-input,.message-input:focus{border:none;outline:none}.send-message-button-container{align-items:center;display:flex;flex-direction:row;justify-content:flex-end;padding:0 20px;width:100%}.send-message-button{background-color:#fff;border:1px solid rgba(0,0,0,.25);border-radius:5px;color:rgba(0,0,0,.55);cursor:pointer;font-size:14px;padding:4px 18px}.message-item{justify-content:flex-start;padding:8px}.message-item,.user-message-content{display:flex;flex-direction:row;width:100%}.user-message-content{align-items:flex-start;overflow:hidden}.user-message{justify-content:flex-end}.user-message>img{border-radius:5000px;height:30px;-o-object-fit:cover;object-fit:cover;width:30px}.service-message{justify-content:flex-start}.service-message>img{border-radius:5000px;-o-object-fit:cover;object-fit:cover;width:30px}.no-user-message-item{background-color:#fff;border-radius:5px;color:#000;font-size:14px;margin-left:5px;overflow:hidden;padding:5px}.no-user-message-item>p>img{max-height:200px;max-width:200px}.user-message-item{background-color:#38a1df;border-radius:5px;color:#fff;font-size:14px;margin-right:5px;padding:5px}.card-item{height:32%;width:100%}.card-line{background-color:rgba(0,0,0,.2);height:2px;width:90%}.call-phone{align-items:flex-start;display:flex;flex-direction:row;justify-content:flex-start;padding:10px}.call-phone>img{margin-right:8px;width:20px}.phone-number{display:flex;flex-direction:column}.phone-number>p{color:#000;font-size:16px}.phone-number>h1{color:#0d7ae1;font-size:18px}.contact{align-items:center;display:flex;flex-direction:row;justify-content:flex-start;padding:10px}.contact>img{margin-right:8px;width:20px}.contact>p{color:#000;font-size:16px;margin-right:8px}.contact-button{background-color:#004e98;color:#fff;font-size:14px;padding:6px 12px}.more-contact{align-items:center;display:flex;flex-direction:row;justify-content:center}.more-contact>img{width:14px}.more-contact>p{font-size:16px;margin-right:8px}.hot-question{align-items:center;display:flex;flex-direction:column;justify-content:center;min-height:100px;width:100%}.hot-question-container{background-color:#fff;border-radius:10px;height:100%;padding:10px 20px;width:100%}.available{background-color:#0060e7;border:1px solid transparent;color:#fff}@media screen and (max-width:1023px){.chat-windows{right:16px}}@media screen and (max-width:480px){.customer>img{width:40px}.customer,.root-page{height:40px;width:40px}.hoverCard{height:52px;opacity:1;transform:translateX(-40px);width:240px}.card>h1{font-size:12px}.chat-windows{margin:0 16px;right:0;width:100%}}",
+      "start": 1699633499567,
+      "end": 1699633499602,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633499602,
+      "end": 1699633499602,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633499602,
+      "end": 1699633499602,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633499602,
+      "end": 1699633499602,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": ".root-page[data-v-874f0d2b]{align-items:center;animation:breathing-874f0d2b 1s ease 0s infinite alternate;background-color:#0d7ae1;border-radius:100px;bottom:65px;cursor:pointer;display:flex;flex-direction:column;height:40px;justify-content:flex-start;max-width:50px;outline:2px solid hsla(0,0%,100%,.55);overflow:hidden;padding:8px 0;position:fixed;right:7px;width:40px;z-index:9999}@keyframes breathing-874f0d2b{0%{box-shadow:0 0 5px 2px rgba(2,70,255,.2)}to{box-shadow:0 0 7px 3px rgba(2,70,255,.8)}}@keyframes breathing-deep-874f0d2b{0%{box-shadow:0 0 5px 2px rgba(2,70,255,.3)}to{box-shadow:0 0 10px 6px rgba(2,70,255,.8)}}.root-page>img[data-v-874f0d2b]{-o-object-fit:cover;object-fit:cover;width:25px}.root-page>p[data-v-874f0d2b]{color:#fff;font-size:11px;text-align:center;width:30%}.customer[data-v-874f0d2b]{align-items:center;display:flex;flex-direction:column;height:50px;justify-content:center;overflow:hidden;width:50px}.customer>img[data-v-874f0d2b]{border-radius:100px;-o-object-fit:cover;object-fit:cover;width:42px}.card-container[data-v-874f0d2b]{align-items:flex-start;background-color:transparent;border-radius:10px;bottom:35px;cursor:pointer;display:flex;flex-direction:row;height:221px;justify-content:space-between;opacity:0;overflow:hidden;position:fixed;right:15px;transform:translateX(320px);transition:height .2s ease,width .5s ease,transform 0s ease,opacity .6s ease;width:240px;z-index:9999}.hoverCard[data-v-874f0d2b]{opacity:1;transform:translateX(-25px);transition:transform .5s ease}.card[data-v-874f0d2b]{align-items:center;background-color:#fff;border-radius:10px;box-shadow:0 0 5px 2px rgba(0,0,0,.2);display:flex;flex-direction:column;height:220px;justify-content:center;width:220px;z-index:9999}.noshow-card[data-v-874f0d2b]{height:100px;opacity:0;width:10px}.card>h1[data-v-874f0d2b]{color:rgba(0,0,0,.65);font-size:13px}.chat-windows[data-v-874f0d2b]{align-items:center;background-color:#fff;border-radius:5px;bottom:20px;box-shadow:0 8px 8px hsla(0,0%,39%,.5);display:flex;flex-direction:column;height:0;opacity:0;overflow:hidden;position:fixed;right:45px;transition:all .3s ease;width:400px;z-index:9999}.windows-header[data-v-874f0d2b]{background-image:url(https://tentech.oss-cn-shenzhen.aliyuncs.com/custom/20231019162909.png);background-size:cover;height:70px;justify-content:space-between;position:sticky;top:0;width:100%;z-index:3}.chat-logo-container[data-v-874f0d2b],.windows-header[data-v-874f0d2b]{align-items:center;display:flex;flex-direction:row}.chat-logo-container[data-v-874f0d2b]{justify-content:flex-start;padding-left:20px}.chat-logo-container>img[data-v-874f0d2b]{border-radius:1000px;margin-right:6px;-o-object-fit:cover;object-fit:cover;width:50px}.chat-logo-container>p[data-v-874f0d2b]{color:#fff}.welcome[data-v-874f0d2b]{align-items:flex-start;display:flex;flex-direction:column;justify-content:flex-start;padding-top:10px}.welcome>h1[data-v-874f0d2b]{color:#fff;font-size:16px}.welcome>p[data-v-874f0d2b]{color:#fff;font-size:12px;font-weight:100}.show-chat-windows[data-v-874f0d2b]{height:560px;opacity:1}.close-line[data-v-874f0d2b]{background-color:#fff;height:3px;width:20px}.close-button[data-v-874f0d2b]{align-items:center;cursor:pointer;display:flex;flex-direction:column;height:40px;justify-content:center;margin-right:20px;width:40px}.chat-message-container[data-v-874f0d2b]{background-color:#f3f3f3;height:60%;overflow:hidden;overflow-y:auto;z-index:2}.chat-message-container[data-v-874f0d2b],.message-send-container[data-v-874f0d2b]{align-items:center;display:flex;flex-direction:column;width:100%}.message-send-container[data-v-874f0d2b]{background-color:#fff;border-top:1px solid rgba(0,0,0,.15);height:calc(40% - 60px)}.service-level-container[data-v-874f0d2b]{height:40px;justify-content:flex-end;width:100%}.human-service[data-v-874f0d2b],.service-level-container[data-v-874f0d2b]{align-items:center;display:flex;flex-direction:row}.human-service[data-v-874f0d2b]{cursor:pointer;justify-content:flex-start;margin-right:20px}.human-service>img[data-v-874f0d2b]{margin-right:6px;width:20px}.human-service>a[data-v-874f0d2b]{color:#005abc;font-size:12px}.message-container[data-v-874f0d2b]{min-height:50px;width:100%}.message-input[data-v-874f0d2b]{color:#000;font-size:16px;font-style:normal;font-weight:700;padding:0 10px;resize:none;white-space:pre-wrap;width:100%}.message-input[data-v-874f0d2b],.message-input[data-v-874f0d2b]:focus{border:none;outline:none}.send-message-button-container[data-v-874f0d2b]{align-items:center;display:flex;flex-direction:row;justify-content:flex-end;padding:0 20px;width:100%}.send-message-button[data-v-874f0d2b]{background-color:#fff;border:1px solid rgba(0,0,0,.25);border-radius:5px;color:rgba(0,0,0,.55);cursor:pointer;font-size:14px;padding:4px 18px}.message-item[data-v-874f0d2b]{justify-content:flex-start;padding:8px}.message-item[data-v-874f0d2b],.user-message-content[data-v-874f0d2b]{display:flex;flex-direction:row;width:100%}.user-message-content[data-v-874f0d2b]{align-items:flex-start;overflow:hidden}.user-message[data-v-874f0d2b]{justify-content:flex-end}.user-message>img[data-v-874f0d2b]{border-radius:5000px;height:30px;-o-object-fit:cover;object-fit:cover;width:30px}.service-message[data-v-874f0d2b]{justify-content:flex-start}.service-message>img[data-v-874f0d2b]{border-radius:5000px;-o-object-fit:cover;object-fit:cover;width:30px}.no-user-message-item[data-v-874f0d2b]{background-color:#fff;border-radius:5px;color:#000;font-size:14px;margin-left:5px;overflow:hidden;padding:5px}.no-user-message-item>p>img[data-v-874f0d2b]{max-height:200px;max-width:200px}.user-message-item[data-v-874f0d2b]{background-color:#38a1df;border-radius:5px;color:#fff;font-size:14px;margin-right:5px;padding:5px}.card-item[data-v-874f0d2b]{height:32%;width:100%}.card-line[data-v-874f0d2b]{background-color:rgba(0,0,0,.2);height:2px;width:90%}.call-phone[data-v-874f0d2b]{align-items:flex-start;display:flex;flex-direction:row;justify-content:flex-start;padding:10px}.call-phone>img[data-v-874f0d2b]{margin-right:8px;width:20px}.phone-number[data-v-874f0d2b]{display:flex;flex-direction:column}.phone-number>p[data-v-874f0d2b]{color:#000;font-size:16px}.phone-number>h1[data-v-874f0d2b]{color:#0d7ae1;font-size:18px}.contact[data-v-874f0d2b]{align-items:center;display:flex;flex-direction:row;justify-content:flex-start;padding:10px}.contact>img[data-v-874f0d2b]{margin-right:8px;width:20px}.contact>p[data-v-874f0d2b]{color:#000;font-size:16px;margin-right:8px}.contact-button[data-v-874f0d2b]{background-color:#004e98;color:#fff;font-size:14px;padding:6px 12px}.more-contact[data-v-874f0d2b]{align-items:center;display:flex;flex-direction:row;justify-content:center}.more-contact>img[data-v-874f0d2b]{width:14px}.more-contact>p[data-v-874f0d2b]{font-size:16px;margin-right:8px}.hot-question[data-v-874f0d2b]{align-items:center;display:flex;flex-direction:column;justify-content:center;min-height:100px;width:100%}.hot-question-container[data-v-874f0d2b]{background-color:#fff;border-radius:10px;height:100%;padding:10px 20px;width:100%}.available[data-v-874f0d2b]{background-color:#0060e7;border:1px solid transparent;color:#fff}@media screen and (max-width:1023px){.chat-windows[data-v-874f0d2b]{right:16px}}@media screen and (max-width:480px){.customer>img[data-v-874f0d2b]{width:40px}.customer[data-v-874f0d2b],.root-page[data-v-874f0d2b]{height:40px;width:40px}.hoverCard[data-v-874f0d2b]{height:52px;opacity:1;transform:translateX(-40px);width:240px}.card>h1[data-v-874f0d2b]{font-size:12px}.chat-windows[data-v-874f0d2b]{margin:0 16px;right:0;width:100%}}",
+      "start": 1699633499602,
+      "end": 1699633499610,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633499610,
+      "end": 1699633499610,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633499610,
+      "end": 1699633499610,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633499610,
+      "end": 1699633499610,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633499612,
+      "end": 1699633499612,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633499612,
+      "end": 1699633499612,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633499612,
+      "end": 1699633499612,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633499612,
+      "end": 1699633499612,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633499612,
+      "end": 1699633499612,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default ''",
+      "start": 1699633499612,
+      "end": 1699633499612,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633499612,
+      "end": 1699633499612,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633499612,
+      "end": 1699633499612,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633499612,
+      "end": 1699633499612,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699633499612,
+      "end": 1699633499612,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633499612,
+      "end": 1699633499612,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633499613,
+      "end": 1699633499613,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633499613,
+      "end": 1699633499613,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633499613,
+      "end": 1699633499613,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633499613,
+      "end": 1699633499613,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633499613,
+      "end": 1699633499613,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633499613,
+      "end": 1699633499613,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633499613,
+      "end": 1699633499613,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633499613,
+      "end": 1699633499613,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633499613,
+      "end": 1699633499613,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633499613,
+      "end": 1699633499613,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633499613,
+      "end": 1699633499613,
+      "order": "normal"
+    }
+  ]
+}

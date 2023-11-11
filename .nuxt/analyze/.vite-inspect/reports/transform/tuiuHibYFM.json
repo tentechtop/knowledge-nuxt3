@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/rules_inline/escape.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Process escaped chars and hardbreaks\n\n'use strict';\n\nvar isSpace = require('../common/utils').isSpace;\n\nvar ESCAPED = [];\n\nfor (var i = 0; i < 256; i++) { ESCAPED.push(0); }\n\n'\\\\!\"#$%&\\'()*+,./:;<=>?@[]^_`{|}~-'\n  .split('').forEach(function (ch) { ESCAPED[ch.charCodeAt(0)] = 1; });\n\n\nmodule.exports = function escape(state, silent) {\n  var ch1, ch2, origStr, escapedStr, token, pos = state.pos, max = state.posMax;\n\n  if (state.src.charCodeAt(pos) !== 0x5C/* \\ */) return false;\n  pos++;\n\n  // '\\' at the end of the inline block\n  if (pos >= max) return false;\n\n  ch1 = state.src.charCodeAt(pos);\n\n  if (ch1 === 0x0A) {\n    if (!silent) {\n      state.push('hardbreak', 'br', 0);\n    }\n\n    pos++;\n    // skip leading whitespaces from next line\n    while (pos < max) {\n      ch1 = state.src.charCodeAt(pos);\n      if (!isSpace(ch1)) break;\n      pos++;\n    }\n\n    state.pos = pos;\n    return true;\n  }\n\n  escapedStr = state.src[pos];\n\n  if (ch1 >= 0xD800 && ch1 <= 0xDBFF && pos + 1 < max) {\n    ch2 = state.src.charCodeAt(pos + 1);\n\n    if (ch2 >= 0xDC00 && ch2 <= 0xDFFF) {\n      escapedStr += state.src[pos + 1];\n      pos++;\n    }\n  }\n\n  origStr = '\\\\' + escapedStr;\n\n  if (!silent) {\n    token = state.push('text_special', '', 0);\n\n    if (ch1 < 256 && ESCAPED[ch1] !== 0) {\n      token.content = escapedStr;\n    } else {\n      token.content = origStr;\n    }\n\n    token.markup = origStr;\n    token.info   = 'escape';\n  }\n\n  state.pos = pos + 1;\n  return true;\n};\n",
+      "start": 1699633501794,
+      "end": 1699633501871,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501871,
+      "end": 1699633501871,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501871,
+      "end": 1699633501871,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501871,
+      "end": 1699633501871,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501871,
+      "end": 1699633501871,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501871,
+      "end": 1699633501872,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501872,
+      "end": 1699633501872,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501872,
+      "end": 1699633501872,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501872,
+      "end": 1699633501872,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501872,
+      "end": 1699633501872,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501872,
+      "end": 1699633501872,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501872,
+      "end": 1699633501872,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501872,
+      "end": 1699633501873,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501873,
+      "end": 1699633501873,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501873,
+      "end": 1699633501873,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501873,
+      "end": 1699633501873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501873,
+      "end": 1699633501873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501873,
+      "end": 1699633501873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501873,
+      "end": 1699633501873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501873,
+      "end": 1699633501873,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501873,
+      "end": 1699633501873,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\nimport require$$0 from \"\\u0000F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/common/utils.js?commonjs-proxy\";\n\n// Process escaped chars and hardbreaks\n\n'use strict';\n\nvar isSpace = require$$0.isSpace;\n\nvar ESCAPED = [];\n\nfor (var i = 0; i < 256; i++) { ESCAPED.push(0); }\n\n'\\\\!\"#$%&\\'()*+,./:;<=>?@[]^_`{|}~-'\n  .split('').forEach(function (ch) { ESCAPED[ch.charCodeAt(0)] = 1; });\n\n\nvar _escape = function escape(state, silent) {\n  var ch1, ch2, origStr, escapedStr, token, pos = state.pos, max = state.posMax;\n\n  if (state.src.charCodeAt(pos) !== 0x5C/* \\ */) return false;\n  pos++;\n\n  // '\\' at the end of the inline block\n  if (pos >= max) return false;\n\n  ch1 = state.src.charCodeAt(pos);\n\n  if (ch1 === 0x0A) {\n    if (!silent) {\n      state.push('hardbreak', 'br', 0);\n    }\n\n    pos++;\n    // skip leading whitespaces from next line\n    while (pos < max) {\n      ch1 = state.src.charCodeAt(pos);\n      if (!isSpace(ch1)) break;\n      pos++;\n    }\n\n    state.pos = pos;\n    return true;\n  }\n\n  escapedStr = state.src[pos];\n\n  if (ch1 >= 0xD800 && ch1 <= 0xDBFF && pos + 1 < max) {\n    ch2 = state.src.charCodeAt(pos + 1);\n\n    if (ch2 >= 0xDC00 && ch2 <= 0xDFFF) {\n      escapedStr += state.src[pos + 1];\n      pos++;\n    }\n  }\n\n  origStr = '\\\\' + escapedStr;\n\n  if (!silent) {\n    token = state.push('text_special', '', 0);\n\n    if (ch1 < 256 && ESCAPED[ch1] !== 0) {\n      token.content = escapedStr;\n    } else {\n      token.content = origStr;\n    }\n\n    token.markup = origStr;\n    token.info   = 'escape';\n  }\n\n  state.pos = pos + 1;\n  return true;\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(_escape);\nexport { _escape as __moduleExports };",
+      "start": 1699633501873,
+      "end": 1699633502024,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;AAAA;AACA;AACA,YAAY,CAAC;AACb;AACA,IAAI,OAAO,GAAG,UAA0B,CAAC,OAAO,CAAC;AACjD;AACA,IAAI,OAAO,GAAG,EAAE,CAAC;AACjB;AACA,KAAK,IAAI,CAAC,GAAG,CAAC,EAAE,CAAC,GAAG,GAAG,EAAE,CAAC,EAAE,EAAE,EAAE,OAAO,CAAC,IAAI,CAAC,CAAC,CAAC,CAAC,EAAE;AAClD;AACA,oCAAoC;AACpC,GAAG,KAAK,CAAC,EAAE,CAAC,CAAC,OAAO,CAAC,UAAU,EAAE,EAAE,EAAE,OAAO,CAAC,EAAE,CAAC,UAAU,CAAC,CAAC,CAAC,CAAC,GAAG,CAAC,CAAC,EAAE,CAAC,CAAC;AACvE;AACA;IACA,OAAc,GAAG,SAAS,MAAM,CAAC,KAAK,EAAE,MAAM,EAAE;AAChD,EAAE,IAAI,GAAG,EAAE,GAAG,EAAE,OAAO,EAAE,UAAU,EAAE,KAAK,EAAE,GAAG,GAAG,KAAK,CAAC,GAAG,EAAE,GAAG,GAAG,KAAK,CAAC,MAAM,CAAC;AAChF;AACA,EAAE,IAAI,KAAK,CAAC,GAAG,CAAC,UAAU,CAAC,GAAG,CAAC,KAAK,IAAI,SAAS,OAAO,KAAK,CAAC;AAC9D,EAAE,GAAG,EAAE,CAAC;AACR;AACA;AACA,EAAE,IAAI,GAAG,IAAI,GAAG,EAAE,OAAO,KAAK,CAAC;AAC/B;AACA,EAAE,GAAG,GAAG,KAAK,CAAC,GAAG,CAAC,UAAU,CAAC,GAAG,CAAC,CAAC;AAClC;AACA,EAAE,IAAI,GAAG,KAAK,IAAI,EAAE;AACpB,IAAI,IAAI,CAAC,MAAM,EAAE;AACjB,MAAM,KAAK,CAAC,IAAI,CAAC,WAAW,EAAE,IAAI,EAAE,CAAC,CAAC,CAAC;AACvC,KAAK;AACL;AACA,IAAI,GAAG,EAAE,CAAC;AACV;AACA,IAAI,OAAO,GAAG,GAAG,GAAG,EAAE;AACtB,MAAM,GAAG,GAAG,KAAK,CAAC,GAAG,CAAC,UAAU,CAAC,GAAG,CAAC,CAAC;AACtC,MAAM,IAAI,CAAC,OAAO,CAAC,GAAG,CAAC,EAAE,MAAM;AAC/B,MAAM,GAAG,EAAE,CAAC;AACZ,KAAK;AACL;AACA,IAAI,KAAK,CAAC,GAAG,GAAG,GAAG,CAAC;AACpB,IAAI,OAAO,IAAI,CAAC;AAChB,GAAG;AACH;AACA,EAAE,UAAU,GAAG,KAAK,CAAC,GAAG,CAAC,GAAG,CAAC,CAAC;AAC9B;AACA,EAAE,IAAI,GAAG,IAAI,MAAM,IAAI,GAAG,IAAI,MAAM,IAAI,GAAG,GAAG,CAAC,GAAG,GAAG,EAAE;AACvD,IAAI,GAAG,GAAG,KAAK,CAAC,GAAG,CAAC,UAAU,CAAC,GAAG,GAAG,CAAC,CAAC,CAAC;AACxC;AACA,IAAI,IAAI,GAAG,IAAI,MAAM,IAAI,GAAG,IAAI,MAAM,EAAE;AACxC,MAAM,UAAU,IAAI,KAAK,CAAC,GAAG,CAAC,GAAG,GAAG,CAAC,CAAC,CAAC;AACvC,MAAM,GAAG,EAAE,CAAC;AACZ,KAAK;AACL,GAAG;AACH;AACA,EAAE,OAAO,GAAG,IAAI,GAAG,UAAU,CAAC;AAC9B;AACA,EAAE,IAAI,CAAC,MAAM,EAAE;AACf,IAAI,KAAK,GAAG,KAAK,CAAC,IAAI,CAAC,cAAc,EAAE,EAAE,EAAE,CAAC,CAAC,CAAC;AAC9C;AACA,IAAI,IAAI,GAAG,GAAG,GAAG,IAAI,OAAO,CAAC,GAAG,CAAC,KAAK,CAAC,EAAE;AACzC,MAAM,KAAK,CAAC,OAAO,GAAG,UAAU,CAAC;AACjC,KAAK,MAAM;AACX,MAAM,KAAK,CAAC,OAAO,GAAG,OAAO,CAAC;AAC9B,KAAK;AACL;AACA,IAAI,KAAK,CAAC,MAAM,GAAG,OAAO,CAAC;AAC3B,IAAI,KAAK,CAAC,IAAI,KAAK,QAAQ,CAAC;AAC5B,GAAG;AACH;AACA,EAAE,KAAK,CAAC,GAAG,GAAG,GAAG,GAAG,CAAC,CAAC;AACtB,EAAE,OAAO,IAAI,CAAC;AACd,CAAC"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633502025,
+      "end": 1699633502025,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633502026,
+      "end": 1699633502026,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633502026,
+      "end": 1699633502027,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633502027,
+      "end": 1699633502027,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633502028,
+      "end": 1699633502028,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633502029,
+      "end": 1699633502029,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633502031,
+      "end": 1699633502031,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633502032,
+      "end": 1699633502032,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633502032,
+      "end": 1699633502032,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633502033,
+      "end": 1699633502033,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633502034,
+      "end": 1699633502034,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633502034,
+      "end": 1699633502034,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/clojure-repl.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Clojure REPL\nDescription: Clojure REPL sessions\nAuthor: Ivan Sagalaev <maniac@softwaremaniacs.org>\nRequires: clojure.js\nWebsite: https://clojure.org\nCategory: lisp\n*/\n\n/** @type LanguageFn */\nfunction clojureRepl(hljs) {\n  return {\n    name: 'Clojure REPL',\n    contains: [\n      {\n        className: 'meta.prompt',\n        begin: /^([\\w.-]+|\\s*#_)?=>/,\n        starts: {\n          end: /$/,\n          subLanguage: 'clojure'\n        }\n      }\n    ]\n  };\n}\n\nmodule.exports = clojureRepl;\n",
+      "start": 1699633500647,
+      "end": 1699633500735,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500735,
+      "end": 1699633500735,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500736,
+      "end": 1699633500736,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500736,
+      "end": 1699633500736,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500736,
+      "end": 1699633500736,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500736,
+      "end": 1699633500736,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500736,
+      "end": 1699633500736,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500736,
+      "end": 1699633500736,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500736,
+      "end": 1699633500736,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500736,
+      "end": 1699633500736,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500736,
+      "end": 1699633500736,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500736,
+      "end": 1699633500736,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500736,
+      "end": 1699633500736,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500736,
+      "end": 1699633500741,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500741,
+      "end": 1699633500741,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500741,
+      "end": 1699633500741,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500741,
+      "end": 1699633500741,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500741,
+      "end": 1699633500741,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500741,
+      "end": 1699633500741,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500741,
+      "end": 1699633500741,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500741,
+      "end": 1699633500741,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Clojure REPL\nDescription: Clojure REPL sessions\nAuthor: Ivan Sagalaev <maniac@softwaremaniacs.org>\nRequires: clojure.js\nWebsite: https://clojure.org\nCategory: lisp\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar clojureRepl_1;\nvar hasRequiredClojureRepl;\n\nfunction requireClojureRepl () {\n\tif (hasRequiredClojureRepl) return clojureRepl_1;\n\thasRequiredClojureRepl = 1;\n\t/** @type LanguageFn */\n\tfunction clojureRepl(hljs) {\n\t  return {\n\t    name: 'Clojure REPL',\n\t    contains: [\n\t      {\n\t        className: 'meta.prompt',\n\t        begin: /^([\\w.-]+|\\s*#_)?=>/,\n\t        starts: {\n\t          end: /$/,\n\t          subLanguage: 'clojure'\n\t        }\n\t      }\n\t    ]\n\t  };\n\t}\n\n\tclojureRepl_1 = clojureRepl;\n\treturn clojureRepl_1;\n}\n\nexport { requireClojureRepl as __require };",
+      "start": 1699633500741,
+      "end": 1699633500742,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;;;CASA;CACA,SAAS,WAAW,CAAC,IAAI,EAAE;CAC3B,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,cAAc;CACxB,IAAI,QAAQ,EAAE;CACd,MAAM;CACN,QAAQ,SAAS,EAAE,aAAa;CAChC,QAAQ,KAAK,EAAE,qBAAqB;CACpC,QAAQ,MAAM,EAAE;CAChB,UAAU,GAAG,EAAE,GAAG;CAClB,UAAU,WAAW,EAAE,SAAS;CAChC,SAAS;CACT,OAAO;CACP,KAAK;CACL,GAAG,CAAC;CACJ,CAAC;AACD;AACA,cAAc,GAAG,WAAW"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500742,
+      "end": 1699633500742,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500742,
+      "end": 1699633500742,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500742,
+      "end": 1699633500742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500742,
+      "end": 1699633500742,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500742,
+      "end": 1699633500742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500742,
+      "end": 1699633500742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500742,
+      "end": 1699633500742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500742,
+      "end": 1699633500742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500742,
+      "end": 1699633500742,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500742,
+      "end": 1699633500742,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500742,
+      "end": 1699633500742,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500742,
+      "end": 1699633500742,
+      "order": "normal"
+    }
+  ]
+}

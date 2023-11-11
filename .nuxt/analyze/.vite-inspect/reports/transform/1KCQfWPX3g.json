@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/leaf.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Leaf\nDescription: A Swift-based templating language created for the Vapor project.\nWebsite: https://docs.vapor.codes/leaf/overview\nCategory: template\n*/\n\nfunction leaf(hljs) {\n  const IDENT = /([A-Za-z_][A-Za-z_0-9]*)?/;\n  const LITERALS = [\n    'true',\n    'false',\n    'in'\n  ];\n  const PARAMS = {\n    scope: 'params',\n    begin: /\\(/,\n    end: /\\)(?=\\:?)/,\n    endsParent: true,\n    relevance: 7,\n    contains: [\n      {\n        scope: 'string',\n        begin: '\"',\n        end: '\"'\n      },\n      {\n        scope: 'keyword',\n        match: LITERALS.join(\"|\"),\n      },\n      {\n        scope: 'variable',\n        match: /[A-Za-z_][A-Za-z_0-9]*/\n      },\n      {\n        scope: 'operator',\n        match: /\\+|\\-|\\*|\\/|\\%|\\=\\=|\\=|\\!|\\>|\\<|\\&\\&|\\|\\|/\n      }\n    ]\n  };\n  const INSIDE_DISPATCH = {\n    match: [\n      IDENT,\n      /(?=\\()/,\n    ],\n    scope: {\n      1: \"keyword\"\n    },\n    contains: [ PARAMS ]\n  };\n  PARAMS.contains.unshift(INSIDE_DISPATCH);\n  return {\n    name: 'Leaf',\n    contains: [\n      // #ident():\n      {\n        match: [\n          /#+/,\n          IDENT,\n          /(?=\\()/,\n        ],\n        scope: {\n          1: \"punctuation\",\n          2: \"keyword\"\n        },\n        // will start up after the ending `)` match from line ~44\n        // just to grab the trailing `:` if we can match it\n        starts: {\n          contains: [\n            {\n              match: /\\:/,\n              scope: \"punctuation\"\n            }\n          ]\n        },\n        contains: [\n          PARAMS\n        ],\n      },\n      // #ident or #ident:\n      {\n        match: [\n          /#+/,\n          IDENT,\n          /:?/,\n        ],\n        scope: {\n          1: \"punctuation\",\n          2: \"keyword\",\n          3: \"punctuation\"\n        }\n      },\n    ]\n  };\n}\n\nmodule.exports = leaf;\n",
+      "start": 1699633500977,
+      "end": 1699633501120,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501120,
+      "end": 1699633501120,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501121,
+      "end": 1699633501121,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501121,
+      "end": 1699633501121,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501121,
+      "end": 1699633501121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501121,
+      "end": 1699633501121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501121,
+      "end": 1699633501121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501121,
+      "end": 1699633501121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501121,
+      "end": 1699633501121,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501121,
+      "end": 1699633501121,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501121,
+      "end": 1699633501121,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501121,
+      "end": 1699633501121,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501121,
+      "end": 1699633501121,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501121,
+      "end": 1699633501122,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501122,
+      "end": 1699633501122,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501122,
+      "end": 1699633501122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501122,
+      "end": 1699633501122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501122,
+      "end": 1699633501122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501122,
+      "end": 1699633501122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501122,
+      "end": 1699633501122,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501125,
+      "end": 1699633501125,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Leaf\nDescription: A Swift-based templating language created for the Vapor project.\nWebsite: https://docs.vapor.codes/leaf/overview\nCategory: template\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar leaf_1;\nvar hasRequiredLeaf;\n\nfunction requireLeaf () {\n\tif (hasRequiredLeaf) return leaf_1;\n\thasRequiredLeaf = 1;\n\tfunction leaf(hljs) {\n\t  const IDENT = /([A-Za-z_][A-Za-z_0-9]*)?/;\n\t  const LITERALS = [\n\t    'true',\n\t    'false',\n\t    'in'\n\t  ];\n\t  const PARAMS = {\n\t    scope: 'params',\n\t    begin: /\\(/,\n\t    end: /\\)(?=\\:?)/,\n\t    endsParent: true,\n\t    relevance: 7,\n\t    contains: [\n\t      {\n\t        scope: 'string',\n\t        begin: '\"',\n\t        end: '\"'\n\t      },\n\t      {\n\t        scope: 'keyword',\n\t        match: LITERALS.join(\"|\"),\n\t      },\n\t      {\n\t        scope: 'variable',\n\t        match: /[A-Za-z_][A-Za-z_0-9]*/\n\t      },\n\t      {\n\t        scope: 'operator',\n\t        match: /\\+|\\-|\\*|\\/|\\%|\\=\\=|\\=|\\!|\\>|\\<|\\&\\&|\\|\\|/\n\t      }\n\t    ]\n\t  };\n\t  const INSIDE_DISPATCH = {\n\t    match: [\n\t      IDENT,\n\t      /(?=\\()/,\n\t    ],\n\t    scope: {\n\t      1: \"keyword\"\n\t    },\n\t    contains: [ PARAMS ]\n\t  };\n\t  PARAMS.contains.unshift(INSIDE_DISPATCH);\n\t  return {\n\t    name: 'Leaf',\n\t    contains: [\n\t      // #ident():\n\t      {\n\t        match: [\n\t          /#+/,\n\t          IDENT,\n\t          /(?=\\()/,\n\t        ],\n\t        scope: {\n\t          1: \"punctuation\",\n\t          2: \"keyword\"\n\t        },\n\t        // will start up after the ending `)` match from line ~44\n\t        // just to grab the trailing `:` if we can match it\n\t        starts: {\n\t          contains: [\n\t            {\n\t              match: /\\:/,\n\t              scope: \"punctuation\"\n\t            }\n\t          ]\n\t        },\n\t        contains: [\n\t          PARAMS\n\t        ],\n\t      },\n\t      // #ident or #ident:\n\t      {\n\t        match: [\n\t          /#+/,\n\t          IDENT,\n\t          /:?/,\n\t        ],\n\t        scope: {\n\t          1: \"punctuation\",\n\t          2: \"keyword\",\n\t          3: \"punctuation\"\n\t        }\n\t      },\n\t    ]\n\t  };\n\t}\n\n\tleaf_1 = leaf;\n\treturn leaf_1;\n}\n\nexport { requireLeaf as __require };",
+      "start": 1699633501125,
+      "end": 1699633501125,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;CAOA,SAAS,IAAI,CAAC,IAAI,EAAE;CACpB,EAAE,MAAM,KAAK,GAAG,2BAA2B,CAAC;CAC5C,EAAE,MAAM,QAAQ,GAAG;CACnB,IAAI,MAAM;CACV,IAAI,OAAO;CACX,IAAI,IAAI;CACR,GAAG,CAAC;CACJ,EAAE,MAAM,MAAM,GAAG;CACjB,IAAI,KAAK,EAAE,QAAQ;CACnB,IAAI,KAAK,EAAE,IAAI;CACf,IAAI,GAAG,EAAE,WAAW;CACpB,IAAI,UAAU,EAAE,IAAI;CACpB,IAAI,SAAS,EAAE,CAAC;CAChB,IAAI,QAAQ,EAAE;CACd,MAAM;CACN,QAAQ,KAAK,EAAE,QAAQ;CACvB,QAAQ,KAAK,EAAE,GAAG;CAClB,QAAQ,GAAG,EAAE,GAAG;CAChB,OAAO;CACP,MAAM;CACN,QAAQ,KAAK,EAAE,SAAS;CACxB,QAAQ,KAAK,EAAE,QAAQ,CAAC,IAAI,CAAC,GAAG,CAAC;CACjC,OAAO;CACP,MAAM;CACN,QAAQ,KAAK,EAAE,UAAU;CACzB,QAAQ,KAAK,EAAE,wBAAwB;CACvC,OAAO;CACP,MAAM;CACN,QAAQ,KAAK,EAAE,UAAU;CACzB,QAAQ,KAAK,EAAE,2CAA2C;CAC1D,OAAO;CACP,KAAK;CACL,GAAG,CAAC;CACJ,EAAE,MAAM,eAAe,GAAG;CAC1B,IAAI,KAAK,EAAE;CACX,MAAM,KAAK;CACX,MAAM,QAAQ;CACd,KAAK;CACL,IAAI,KAAK,EAAE;CACX,MAAM,CAAC,EAAE,SAAS;CAClB,KAAK;CACL,IAAI,QAAQ,EAAE,EAAE,MAAM,EAAE;CACxB,GAAG,CAAC;CACJ,EAAE,MAAM,CAAC,QAAQ,CAAC,OAAO,CAAC,eAAe,CAAC,CAAC;CAC3C,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,MAAM;CAChB,IAAI,QAAQ,EAAE;CACd;CACA,MAAM;CACN,QAAQ,KAAK,EAAE;CACf,UAAU,IAAI;CACd,UAAU,KAAK;CACf,UAAU,QAAQ;CAClB,SAAS;CACT,QAAQ,KAAK,EAAE;CACf,UAAU,CAAC,EAAE,aAAa;CAC1B,UAAU,CAAC,EAAE,SAAS;CACtB,SAAS;CACT;CACA;CACA,QAAQ,MAAM,EAAE;CAChB,UAAU,QAAQ,EAAE;CACpB,YAAY;CACZ,cAAc,KAAK,EAAE,IAAI;CACzB,cAAc,KAAK,EAAE,aAAa;CAClC,aAAa;CACb,WAAW;CACX,SAAS;CACT,QAAQ,QAAQ,EAAE;CAClB,UAAU,MAAM;CAChB,SAAS;CACT,OAAO;CACP;CACA,MAAM;CACN,QAAQ,KAAK,EAAE;CACf,UAAU,IAAI;CACd,UAAU,KAAK;CACf,UAAU,IAAI;CACd,SAAS;CACT,QAAQ,KAAK,EAAE;CACf,UAAU,CAAC,EAAE,aAAa;CAC1B,UAAU,CAAC,EAAE,SAAS;CACtB,UAAU,CAAC,EAAE,aAAa;CAC1B,SAAS;CACT,OAAO;CACP,KAAK;CACL,GAAG,CAAC;CACJ,CAAC;AACD;AACA,OAAc,GAAG,IAAI"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501125,
+      "end": 1699633501125,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501125,
+      "end": 1699633501125,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501125,
+      "end": 1699633501125,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501125,
+      "end": 1699633501125,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501125,
+      "end": 1699633501125,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501125,
+      "end": 1699633501125,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501125,
+      "end": 1699633501125,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501125,
+      "end": 1699633501126,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501126,
+      "end": 1699633501126,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501126,
+      "end": 1699633501126,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501126,
+      "end": 1699633501126,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501126,
+      "end": 1699633501126,
+      "order": "normal"
+    }
+  ]
+}

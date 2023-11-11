@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/vala.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Vala\nAuthor: Antono Vasiljev <antono.vasiljev@gmail.com>\nDescription: Vala is a new programming language that aims to bring modern programming language features to GNOME developers without imposing any additional runtime requirements and without using a different ABI compared to applications and libraries written in C.\nWebsite: https://wiki.gnome.org/Projects/Vala\n*/\n\nfunction vala(hljs) {\n  return {\n    name: 'Vala',\n    keywords: {\n      keyword:\n        // Value types\n        'char uchar unichar int uint long ulong short ushort int8 int16 int32 int64 uint8 '\n        + 'uint16 uint32 uint64 float double bool struct enum string void '\n        // Reference types\n        + 'weak unowned owned '\n        // Modifiers\n        + 'async signal static abstract interface override virtual delegate '\n        // Control Structures\n        + 'if while do for foreach else switch case break default return try catch '\n        // Visibility\n        + 'public private protected internal '\n        // Other\n        + 'using new this get set const stdout stdin stderr var',\n      built_in:\n        'DBus GLib CCode Gee Object Gtk Posix',\n      literal:\n        'false true null'\n    },\n    contains: [\n      {\n        className: 'class',\n        beginKeywords: 'class interface namespace',\n        end: /\\{/,\n        excludeEnd: true,\n        illegal: '[^,:\\\\n\\\\s\\\\.]',\n        contains: [ hljs.UNDERSCORE_TITLE_MODE ]\n      },\n      hljs.C_LINE_COMMENT_MODE,\n      hljs.C_BLOCK_COMMENT_MODE,\n      {\n        className: 'string',\n        begin: '\"\"\"',\n        end: '\"\"\"',\n        relevance: 5\n      },\n      hljs.APOS_STRING_MODE,\n      hljs.QUOTE_STRING_MODE,\n      hljs.C_NUMBER_MODE,\n      {\n        className: 'meta',\n        begin: '^#',\n        end: '$',\n      }\n    ]\n  };\n}\n\nmodule.exports = vala;\n",
+      "start": 1699633501431,
+      "end": 1699633501539,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501540,
+      "end": 1699633501540,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501540,
+      "end": 1699633501540,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501540,
+      "end": 1699633501540,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501540,
+      "end": 1699633501540,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501540,
+      "end": 1699633501540,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501540,
+      "end": 1699633501540,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501540,
+      "end": 1699633501540,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501540,
+      "end": 1699633501540,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501541,
+      "end": 1699633501541,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501541,
+      "end": 1699633501541,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501541,
+      "end": 1699633501541,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501541,
+      "end": 1699633501541,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501541,
+      "end": 1699633501541,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501541,
+      "end": 1699633501541,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501541,
+      "end": 1699633501541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501541,
+      "end": 1699633501541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501541,
+      "end": 1699633501541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501541,
+      "end": 1699633501541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501541,
+      "end": 1699633501541,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501541,
+      "end": 1699633501541,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Vala\nAuthor: Antono Vasiljev <antono.vasiljev@gmail.com>\nDescription: Vala is a new programming language that aims to bring modern programming language features to GNOME developers without imposing any additional runtime requirements and without using a different ABI compared to applications and libraries written in C.\nWebsite: https://wiki.gnome.org/Projects/Vala\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar vala_1;\nvar hasRequiredVala;\n\nfunction requireVala () {\n\tif (hasRequiredVala) return vala_1;\n\thasRequiredVala = 1;\n\tfunction vala(hljs) {\n\t  return {\n\t    name: 'Vala',\n\t    keywords: {\n\t      keyword:\n\t        // Value types\n\t        'char uchar unichar int uint long ulong short ushort int8 int16 int32 int64 uint8 '\n\t        + 'uint16 uint32 uint64 float double bool struct enum string void '\n\t        // Reference types\n\t        + 'weak unowned owned '\n\t        // Modifiers\n\t        + 'async signal static abstract interface override virtual delegate '\n\t        // Control Structures\n\t        + 'if while do for foreach else switch case break default return try catch '\n\t        // Visibility\n\t        + 'public private protected internal '\n\t        // Other\n\t        + 'using new this get set const stdout stdin stderr var',\n\t      built_in:\n\t        'DBus GLib CCode Gee Object Gtk Posix',\n\t      literal:\n\t        'false true null'\n\t    },\n\t    contains: [\n\t      {\n\t        className: 'class',\n\t        beginKeywords: 'class interface namespace',\n\t        end: /\\{/,\n\t        excludeEnd: true,\n\t        illegal: '[^,:\\\\n\\\\s\\\\.]',\n\t        contains: [ hljs.UNDERSCORE_TITLE_MODE ]\n\t      },\n\t      hljs.C_LINE_COMMENT_MODE,\n\t      hljs.C_BLOCK_COMMENT_MODE,\n\t      {\n\t        className: 'string',\n\t        begin: '\"\"\"',\n\t        end: '\"\"\"',\n\t        relevance: 5\n\t      },\n\t      hljs.APOS_STRING_MODE,\n\t      hljs.QUOTE_STRING_MODE,\n\t      hljs.C_NUMBER_MODE,\n\t      {\n\t        className: 'meta',\n\t        begin: '^#',\n\t        end: '$',\n\t      }\n\t    ]\n\t  };\n\t}\n\n\tvala_1 = vala;\n\treturn vala_1;\n}\n\nexport { requireVala as __require };",
+      "start": 1699633501541,
+      "end": 1699633501542,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;CAOA,SAAS,IAAI,CAAC,IAAI,EAAE;CACpB,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,MAAM;CAChB,IAAI,QAAQ,EAAE;CACd,MAAM,OAAO;CACb;CACA,QAAQ,mFAAmF;CAC3F,UAAU,iEAAiE;CAC3E;CACA,UAAU,qBAAqB;CAC/B;CACA,UAAU,mEAAmE;CAC7E;CACA,UAAU,0EAA0E;CACpF;CACA,UAAU,oCAAoC;CAC9C;CACA,UAAU,sDAAsD;CAChE,MAAM,QAAQ;CACd,QAAQ,sCAAsC;CAC9C,MAAM,OAAO;CACb,QAAQ,iBAAiB;CACzB,KAAK;CACL,IAAI,QAAQ,EAAE;CACd,MAAM;CACN,QAAQ,SAAS,EAAE,OAAO;CAC1B,QAAQ,aAAa,EAAE,2BAA2B;CAClD,QAAQ,GAAG,EAAE,IAAI;CACjB,QAAQ,UAAU,EAAE,IAAI;CACxB,QAAQ,OAAO,EAAE,gBAAgB;CACjC,QAAQ,QAAQ,EAAE,EAAE,IAAI,CAAC,qBAAqB,EAAE;CAChD,OAAO;CACP,MAAM,IAAI,CAAC,mBAAmB;CAC9B,MAAM,IAAI,CAAC,oBAAoB;CAC/B,MAAM;CACN,QAAQ,SAAS,EAAE,QAAQ;CAC3B,QAAQ,KAAK,EAAE,KAAK;CACpB,QAAQ,GAAG,EAAE,KAAK;CAClB,QAAQ,SAAS,EAAE,CAAC;CACpB,OAAO;CACP,MAAM,IAAI,CAAC,gBAAgB;CAC3B,MAAM,IAAI,CAAC,iBAAiB;CAC5B,MAAM,IAAI,CAAC,aAAa;CACxB,MAAM;CACN,QAAQ,SAAS,EAAE,MAAM;CACzB,QAAQ,KAAK,EAAE,IAAI;CACnB,QAAQ,GAAG,EAAE,GAAG;CAChB,OAAO;CACP,KAAK;CACL,GAAG,CAAC;CACJ,CAAC;AACD;AACA,OAAc,GAAG,IAAI"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501542,
+      "end": 1699633501542,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501542,
+      "end": 1699633501542,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501542,
+      "end": 1699633501542,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501542,
+      "end": 1699633501542,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501542,
+      "end": 1699633501542,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501542,
+      "end": 1699633501542,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501542,
+      "end": 1699633501542,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501542,
+      "end": 1699633501542,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501542,
+      "end": 1699633501542,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501542,
+      "end": 1699633501542,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501542,
+      "end": 1699633501542,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501542,
+      "end": 1699633501542,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/julia-repl.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Julia REPL\nDescription: Julia REPL sessions\nAuthor: Morten Piibeleht <morten.piibeleht@gmail.com>\nWebsite: https://julialang.org\nRequires: julia.js\n\nThe Julia REPL code blocks look something like the following:\n\n  julia> function foo(x)\n             x + 1\n         end\n  foo (generic function with 1 method)\n\nThey start on a new line with \"julia>\". Usually there should also be a space after this, but\nwe also allow the code to start right after the > character. The code may run over multiple\nlines, but the additional lines must start with six spaces (i.e. be indented to match\n\"julia>\"). The rest of the code is assumed to be output from the executed code and will be\nleft un-highlighted.\n\nUsing simply spaces to identify line continuations may get a false-positive if the output\nalso prints out six spaces, but such cases should be rare.\n*/\n\nfunction juliaRepl(hljs) {\n  return {\n    name: 'Julia REPL',\n    contains: [\n      {\n        className: 'meta.prompt',\n        begin: /^julia>/,\n        relevance: 10,\n        starts: {\n          // end the highlighting if we are on a new line and the line does not have at\n          // least six spaces in the beginning\n          end: /^(?![ ]{6})/,\n          subLanguage: 'julia'\n        },\n      },\n    ],\n    // jldoctest Markdown blocks are used in the Julia manual and package docs indicate\n    // code snippets that should be verified when the documentation is built. They can be\n    // either REPL-like or script-like, but are usually REPL-like and therefore we apply\n    // julia-repl highlighting to them. More information can be found in Documenter's\n    // manual: https://juliadocs.github.io/Documenter.jl/latest/man/doctests.html\n    aliases: [ 'jldoctest' ],\n  };\n}\n\nmodule.exports = juliaRepl;\n",
+      "start": 1699633500956,
+      "end": 1699633501094,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501094,
+      "end": 1699633501094,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501094,
+      "end": 1699633501094,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501094,
+      "end": 1699633501094,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501094,
+      "end": 1699633501094,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501095,
+      "end": 1699633501095,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Julia REPL\nDescription: Julia REPL sessions\nAuthor: Morten Piibeleht <morten.piibeleht@gmail.com>\nWebsite: https://julialang.org\nRequires: julia.js\n\nThe Julia REPL code blocks look something like the following:\n\n  julia> function foo(x)\n             x + 1\n         end\n  foo (generic function with 1 method)\n\nThey start on a new line with \"julia>\". Usually there should also be a space after this, but\nwe also allow the code to start right after the > character. The code may run over multiple\nlines, but the additional lines must start with six spaces (i.e. be indented to match\n\"julia>\"). The rest of the code is assumed to be output from the executed code and will be\nleft un-highlighted.\n\nUsing simply spaces to identify line continuations may get a false-positive if the output\nalso prints out six spaces, but such cases should be rare.\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar juliaRepl_1;\nvar hasRequiredJuliaRepl;\n\nfunction requireJuliaRepl () {\n\tif (hasRequiredJuliaRepl) return juliaRepl_1;\n\thasRequiredJuliaRepl = 1;\n\tfunction juliaRepl(hljs) {\n\t  return {\n\t    name: 'Julia REPL',\n\t    contains: [\n\t      {\n\t        className: 'meta.prompt',\n\t        begin: /^julia>/,\n\t        relevance: 10,\n\t        starts: {\n\t          // end the highlighting if we are on a new line and the line does not have at\n\t          // least six spaces in the beginning\n\t          end: /^(?![ ]{6})/,\n\t          subLanguage: 'julia'\n\t        },\n\t      },\n\t    ],\n\t    // jldoctest Markdown blocks are used in the Julia manual and package docs indicate\n\t    // code snippets that should be verified when the documentation is built. They can be\n\t    // either REPL-like or script-like, but are usually REPL-like and therefore we apply\n\t    // julia-repl highlighting to them. More information can be found in Documenter's\n\t    // manual: https://juliadocs.github.io/Documenter.jl/latest/man/doctests.html\n\t    aliases: [ 'jldoctest' ],\n\t  };\n\t}\n\n\tjuliaRepl_1 = juliaRepl;\n\treturn juliaRepl_1;\n}\n\nexport { requireJuliaRepl as __require };",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CAwBA,SAAS,SAAS,CAAC,IAAI,EAAE;CACzB,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,YAAY;CACtB,IAAI,QAAQ,EAAE;CACd,MAAM;CACN,QAAQ,SAAS,EAAE,aAAa;CAChC,QAAQ,KAAK,EAAE,SAAS;CACxB,QAAQ,SAAS,EAAE,EAAE;CACrB,QAAQ,MAAM,EAAE;CAChB;CACA;CACA,UAAU,GAAG,EAAE,aAAa;CAC5B,UAAU,WAAW,EAAE,OAAO;CAC9B,SAAS;CACT,OAAO;CACP,KAAK;CACL;CACA;CACA;CACA;CACA;CACA,IAAI,OAAO,EAAE,EAAE,WAAW,EAAE;CAC5B,GAAG,CAAC;CACJ,CAAC;AACD;AACA,YAAc,GAAG,SAAS"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501096,
+      "end": 1699633501096,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501097,
+      "end": 1699633501097,
+      "order": "normal"
+    }
+  ]
+}

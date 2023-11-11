@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/nix.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Nix\nAuthor: Domen Kožar <domen@dev.si>\nDescription: Nix functional language\nWebsite: http://nixos.org/nix\n*/\n\nfunction nix(hljs) {\n  const KEYWORDS = {\n    keyword: [\n      \"rec\",\n      \"with\",\n      \"let\",\n      \"in\",\n      \"inherit\",\n      \"assert\",\n      \"if\",\n      \"else\",\n      \"then\"\n    ],\n    literal: [\n      \"true\",\n      \"false\",\n      \"or\",\n      \"and\",\n      \"null\"\n    ],\n    built_in: [\n      \"import\",\n      \"abort\",\n      \"baseNameOf\",\n      \"dirOf\",\n      \"isNull\",\n      \"builtins\",\n      \"map\",\n      \"removeAttrs\",\n      \"throw\",\n      \"toString\",\n      \"derivation\"\n    ]\n  };\n  const ANTIQUOTE = {\n    className: 'subst',\n    begin: /\\$\\{/,\n    end: /\\}/,\n    keywords: KEYWORDS\n  };\n  const ESCAPED_DOLLAR = {\n    className: 'char.escape',\n    begin: /''\\$/,\n  };\n  const ATTRS = {\n    begin: /[a-zA-Z0-9-_]+(\\s*=)/,\n    returnBegin: true,\n    relevance: 0,\n    contains: [\n      {\n        className: 'attr',\n        begin: /\\S+/,\n        relevance: 0.2\n      }\n    ]\n  };\n  const STRING = {\n    className: 'string',\n    contains: [ ESCAPED_DOLLAR, ANTIQUOTE ],\n    variants: [\n      {\n        begin: \"''\",\n        end: \"''\"\n      },\n      {\n        begin: '\"',\n        end: '\"'\n      }\n    ]\n  };\n  const EXPRESSIONS = [\n    hljs.NUMBER_MODE,\n    hljs.HASH_COMMENT_MODE,\n    hljs.C_BLOCK_COMMENT_MODE,\n    STRING,\n    ATTRS\n  ];\n  ANTIQUOTE.contains = EXPRESSIONS;\n  return {\n    name: 'Nix',\n    aliases: [ \"nixos\" ],\n    keywords: KEYWORDS,\n    contains: EXPRESSIONS\n  };\n}\n\nmodule.exports = nix;\n",
+      "start": 1699633501139,
+      "end": 1699633501260,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501261,
+      "end": 1699633501261,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501261,
+      "end": 1699633501261,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501261,
+      "end": 1699633501261,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501261,
+      "end": 1699633501261,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501261,
+      "end": 1699633501261,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501261,
+      "end": 1699633501261,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501261,
+      "end": 1699633501261,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501261,
+      "end": 1699633501261,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501261,
+      "end": 1699633501261,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501262,
+      "end": 1699633501262,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501262,
+      "end": 1699633501262,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501262,
+      "end": 1699633501262,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501262,
+      "end": 1699633501262,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501262,
+      "end": 1699633501262,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501262,
+      "end": 1699633501262,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501262,
+      "end": 1699633501262,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501262,
+      "end": 1699633501262,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501262,
+      "end": 1699633501262,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501262,
+      "end": 1699633501262,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501262,
+      "end": 1699633501262,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Nix\nAuthor: Domen Kožar <domen@dev.si>\nDescription: Nix functional language\nWebsite: http://nixos.org/nix\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar nix_1;\nvar hasRequiredNix;\n\nfunction requireNix () {\n\tif (hasRequiredNix) return nix_1;\n\thasRequiredNix = 1;\n\tfunction nix(hljs) {\n\t  const KEYWORDS = {\n\t    keyword: [\n\t      \"rec\",\n\t      \"with\",\n\t      \"let\",\n\t      \"in\",\n\t      \"inherit\",\n\t      \"assert\",\n\t      \"if\",\n\t      \"else\",\n\t      \"then\"\n\t    ],\n\t    literal: [\n\t      \"true\",\n\t      \"false\",\n\t      \"or\",\n\t      \"and\",\n\t      \"null\"\n\t    ],\n\t    built_in: [\n\t      \"import\",\n\t      \"abort\",\n\t      \"baseNameOf\",\n\t      \"dirOf\",\n\t      \"isNull\",\n\t      \"builtins\",\n\t      \"map\",\n\t      \"removeAttrs\",\n\t      \"throw\",\n\t      \"toString\",\n\t      \"derivation\"\n\t    ]\n\t  };\n\t  const ANTIQUOTE = {\n\t    className: 'subst',\n\t    begin: /\\$\\{/,\n\t    end: /\\}/,\n\t    keywords: KEYWORDS\n\t  };\n\t  const ESCAPED_DOLLAR = {\n\t    className: 'char.escape',\n\t    begin: /''\\$/,\n\t  };\n\t  const ATTRS = {\n\t    begin: /[a-zA-Z0-9-_]+(\\s*=)/,\n\t    returnBegin: true,\n\t    relevance: 0,\n\t    contains: [\n\t      {\n\t        className: 'attr',\n\t        begin: /\\S+/,\n\t        relevance: 0.2\n\t      }\n\t    ]\n\t  };\n\t  const STRING = {\n\t    className: 'string',\n\t    contains: [ ESCAPED_DOLLAR, ANTIQUOTE ],\n\t    variants: [\n\t      {\n\t        begin: \"''\",\n\t        end: \"''\"\n\t      },\n\t      {\n\t        begin: '\"',\n\t        end: '\"'\n\t      }\n\t    ]\n\t  };\n\t  const EXPRESSIONS = [\n\t    hljs.NUMBER_MODE,\n\t    hljs.HASH_COMMENT_MODE,\n\t    hljs.C_BLOCK_COMMENT_MODE,\n\t    STRING,\n\t    ATTRS\n\t  ];\n\t  ANTIQUOTE.contains = EXPRESSIONS;\n\t  return {\n\t    name: 'Nix',\n\t    aliases: [ \"nixos\" ],\n\t    keywords: KEYWORDS,\n\t    contains: EXPRESSIONS\n\t  };\n\t}\n\n\tnix_1 = nix;\n\treturn nix_1;\n}\n\nexport { requireNix as __require };",
+      "start": 1699633501262,
+      "end": 1699633501263,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;CAOA,SAAS,GAAG,CAAC,IAAI,EAAE;CACnB,EAAE,MAAM,QAAQ,GAAG;CACnB,IAAI,OAAO,EAAE;CACb,MAAM,KAAK;CACX,MAAM,MAAM;CACZ,MAAM,KAAK;CACX,MAAM,IAAI;CACV,MAAM,SAAS;CACf,MAAM,QAAQ;CACd,MAAM,IAAI;CACV,MAAM,MAAM;CACZ,MAAM,MAAM;CACZ,KAAK;CACL,IAAI,OAAO,EAAE;CACb,MAAM,MAAM;CACZ,MAAM,OAAO;CACb,MAAM,IAAI;CACV,MAAM,KAAK;CACX,MAAM,MAAM;CACZ,KAAK;CACL,IAAI,QAAQ,EAAE;CACd,MAAM,QAAQ;CACd,MAAM,OAAO;CACb,MAAM,YAAY;CAClB,MAAM,OAAO;CACb,MAAM,QAAQ;CACd,MAAM,UAAU;CAChB,MAAM,KAAK;CACX,MAAM,aAAa;CACnB,MAAM,OAAO;CACb,MAAM,UAAU;CAChB,MAAM,YAAY;CAClB,KAAK;CACL,GAAG,CAAC;CACJ,EAAE,MAAM,SAAS,GAAG;CACpB,IAAI,SAAS,EAAE,OAAO;CACtB,IAAI,KAAK,EAAE,MAAM;CACjB,IAAI,GAAG,EAAE,IAAI;CACb,IAAI,QAAQ,EAAE,QAAQ;CACtB,GAAG,CAAC;CACJ,EAAE,MAAM,cAAc,GAAG;CACzB,IAAI,SAAS,EAAE,aAAa;CAC5B,IAAI,KAAK,EAAE,MAAM;CACjB,GAAG,CAAC;CACJ,EAAE,MAAM,KAAK,GAAG;CAChB,IAAI,KAAK,EAAE,sBAAsB;CACjC,IAAI,WAAW,EAAE,IAAI;CACrB,IAAI,SAAS,EAAE,CAAC;CAChB,IAAI,QAAQ,EAAE;CACd,MAAM;CACN,QAAQ,SAAS,EAAE,MAAM;CACzB,QAAQ,KAAK,EAAE,KAAK;CACpB,QAAQ,SAAS,EAAE,GAAG;CACtB,OAAO;CACP,KAAK;CACL,GAAG,CAAC;CACJ,EAAE,MAAM,MAAM,GAAG;CACjB,IAAI,SAAS,EAAE,QAAQ;CACvB,IAAI,QAAQ,EAAE,EAAE,cAAc,EAAE,SAAS,EAAE;CAC3C,IAAI,QAAQ,EAAE;CACd,MAAM;CACN,QAAQ,KAAK,EAAE,IAAI;CACnB,QAAQ,GAAG,EAAE,IAAI;CACjB,OAAO;CACP,MAAM;CACN,QAAQ,KAAK,EAAE,GAAG;CAClB,QAAQ,GAAG,EAAE,GAAG;CAChB,OAAO;CACP,KAAK;CACL,GAAG,CAAC;CACJ,EAAE,MAAM,WAAW,GAAG;CACtB,IAAI,IAAI,CAAC,WAAW;CACpB,IAAI,IAAI,CAAC,iBAAiB;CAC1B,IAAI,IAAI,CAAC,oBAAoB;CAC7B,IAAI,MAAM;CACV,IAAI,KAAK;CACT,GAAG,CAAC;CACJ,EAAE,SAAS,CAAC,QAAQ,GAAG,WAAW,CAAC;CACnC,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,KAAK;CACf,IAAI,OAAO,EAAE,EAAE,OAAO,EAAE;CACxB,IAAI,QAAQ,EAAE,QAAQ;CACtB,IAAI,QAAQ,EAAE,WAAW;CACzB,GAAG,CAAC;CACJ,CAAC;AACD;AACA,MAAc,GAAG,GAAG"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501263,
+      "end": 1699633501263,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501263,
+      "end": 1699633501263,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501263,
+      "end": 1699633501263,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501263,
+      "end": 1699633501263,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501263,
+      "end": 1699633501263,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501263,
+      "end": 1699633501263,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501263,
+      "end": 1699633501263,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501263,
+      "end": 1699633501263,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501263,
+      "end": 1699633501263,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501263,
+      "end": 1699633501263,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501263,
+      "end": 1699633501263,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501263,
+      "end": 1699633501263,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/verilog.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Verilog\nAuthor: Jon Evans <jon@craftyjon.com>\nContributors: Boone Severson <boone.severson@gmail.com>\nDescription: Verilog is a hardware description language used in electronic design automation to describe digital and mixed-signal systems. This highlighter supports Verilog and SystemVerilog through IEEE 1800-2012.\nWebsite: http://www.verilog.com\n*/\n\nfunction verilog(hljs) {\n  const regex = hljs.regex;\n  const KEYWORDS = {\n    $pattern: /\\$?[\\w]+(\\$[\\w]+)*/,\n    keyword: [\n      \"accept_on\",\n      \"alias\",\n      \"always\",\n      \"always_comb\",\n      \"always_ff\",\n      \"always_latch\",\n      \"and\",\n      \"assert\",\n      \"assign\",\n      \"assume\",\n      \"automatic\",\n      \"before\",\n      \"begin\",\n      \"bind\",\n      \"bins\",\n      \"binsof\",\n      \"bit\",\n      \"break\",\n      \"buf|0\",\n      \"bufif0\",\n      \"bufif1\",\n      \"byte\",\n      \"case\",\n      \"casex\",\n      \"casez\",\n      \"cell\",\n      \"chandle\",\n      \"checker\",\n      \"class\",\n      \"clocking\",\n      \"cmos\",\n      \"config\",\n      \"const\",\n      \"constraint\",\n      \"context\",\n      \"continue\",\n      \"cover\",\n      \"covergroup\",\n      \"coverpoint\",\n      \"cross\",\n      \"deassign\",\n      \"default\",\n      \"defparam\",\n      \"design\",\n      \"disable\",\n      \"dist\",\n      \"do\",\n      \"edge\",\n      \"else\",\n      \"end\",\n      \"endcase\",\n      \"endchecker\",\n      \"endclass\",\n      \"endclocking\",\n      \"endconfig\",\n      \"endfunction\",\n      \"endgenerate\",\n      \"endgroup\",\n      \"endinterface\",\n      \"endmodule\",\n      \"endpackage\",\n      \"endprimitive\",\n      \"endprogram\",\n      \"endproperty\",\n      \"endspecify\",\n      \"endsequence\",\n      \"endtable\",\n      \"endtask\",\n      \"enum\",\n      \"event\",\n      \"eventually\",\n      \"expect\",\n      \"export\",\n      \"extends\",\n      \"extern\",\n      \"final\",\n      \"first_match\",\n      \"for\",\n      \"force\",\n      \"foreach\",\n      \"forever\",\n      \"fork\",\n      \"forkjoin\",\n      \"function\",\n      \"generate|5\",\n      \"genvar\",\n      \"global\",\n      \"highz0\",\n      \"highz1\",\n      \"if\",\n      \"iff\",\n      \"ifnone\",\n      \"ignore_bins\",\n      \"illegal_bins\",\n      \"implements\",\n      \"implies\",\n      \"import\",\n      \"incdir\",\n      \"include\",\n      \"initial\",\n      \"inout\",\n      \"input\",\n      \"inside\",\n      \"instance\",\n      \"int\",\n      \"integer\",\n      \"interconnect\",\n      \"interface\",\n      \"intersect\",\n      \"join\",\n      \"join_any\",\n      \"join_none\",\n      \"large\",\n      \"let\",\n      \"liblist\",\n      \"library\",\n      \"local\",\n      \"localparam\",\n      \"logic\",\n      \"longint\",\n      \"macromodule\",\n      \"matches\",\n      \"medium\",\n      \"modport\",\n      \"module\",\n      \"nand\",\n      \"negedge\",\n      \"nettype\",\n      \"new\",\n      \"nexttime\",\n      \"nmos\",\n      \"nor\",\n      \"noshowcancelled\",\n      \"not\",\n      \"notif0\",\n      \"notif1\",\n      \"or\",\n      \"output\",\n      \"package\",\n      \"packed\",\n      \"parameter\",\n      \"pmos\",\n      \"posedge\",\n      \"primitive\",\n      \"priority\",\n      \"program\",\n      \"property\",\n      \"protected\",\n      \"pull0\",\n      \"pull1\",\n      \"pulldown\",\n      \"pullup\",\n      \"pulsestyle_ondetect\",\n      \"pulsestyle_onevent\",\n      \"pure\",\n      \"rand\",\n      \"randc\",\n      \"randcase\",\n      \"randsequence\",\n      \"rcmos\",\n      \"real\",\n      \"realtime\",\n      \"ref\",\n      \"reg\",\n      \"reject_on\",\n      \"release\",\n      \"repeat\",\n      \"restrict\",\n      \"return\",\n      \"rnmos\",\n      \"rpmos\",\n      \"rtran\",\n      \"rtranif0\",\n      \"rtranif1\",\n      \"s_always\",\n      \"s_eventually\",\n      \"s_nexttime\",\n      \"s_until\",\n      \"s_until_with\",\n      \"scalared\",\n      \"sequence\",\n      \"shortint\",\n      \"shortreal\",\n      \"showcancelled\",\n      \"signed\",\n      \"small\",\n      \"soft\",\n      \"solve\",\n      \"specify\",\n      \"specparam\",\n      \"static\",\n      \"string\",\n      \"strong\",\n      \"strong0\",\n      \"strong1\",\n      \"struct\",\n      \"super\",\n      \"supply0\",\n      \"supply1\",\n      \"sync_accept_on\",\n      \"sync_reject_on\",\n      \"table\",\n      \"tagged\",\n      \"task\",\n      \"this\",\n      \"throughout\",\n      \"time\",\n      \"timeprecision\",\n      \"timeunit\",\n      \"tran\",\n      \"tranif0\",\n      \"tranif1\",\n      \"tri\",\n      \"tri0\",\n      \"tri1\",\n      \"triand\",\n      \"trior\",\n      \"trireg\",\n      \"type\",\n      \"typedef\",\n      \"union\",\n      \"unique\",\n      \"unique0\",\n      \"unsigned\",\n      \"until\",\n      \"until_with\",\n      \"untyped\",\n      \"use\",\n      \"uwire\",\n      \"var\",\n      \"vectored\",\n      \"virtual\",\n      \"void\",\n      \"wait\",\n      \"wait_order\",\n      \"wand\",\n      \"weak\",\n      \"weak0\",\n      \"weak1\",\n      \"while\",\n      \"wildcard\",\n      \"wire\",\n      \"with\",\n      \"within\",\n      \"wor\",\n      \"xnor\",\n      \"xor\"\n    ],\n    literal: [ 'null' ],\n    built_in: [\n      \"$finish\",\n      \"$stop\",\n      \"$exit\",\n      \"$fatal\",\n      \"$error\",\n      \"$warning\",\n      \"$info\",\n      \"$realtime\",\n      \"$time\",\n      \"$printtimescale\",\n      \"$bitstoreal\",\n      \"$bitstoshortreal\",\n      \"$itor\",\n      \"$signed\",\n      \"$cast\",\n      \"$bits\",\n      \"$stime\",\n      \"$timeformat\",\n      \"$realtobits\",\n      \"$shortrealtobits\",\n      \"$rtoi\",\n      \"$unsigned\",\n      \"$asserton\",\n      \"$assertkill\",\n      \"$assertpasson\",\n      \"$assertfailon\",\n      \"$assertnonvacuouson\",\n      \"$assertoff\",\n      \"$assertcontrol\",\n      \"$assertpassoff\",\n      \"$assertfailoff\",\n      \"$assertvacuousoff\",\n      \"$isunbounded\",\n      \"$sampled\",\n      \"$fell\",\n      \"$changed\",\n      \"$past_gclk\",\n      \"$fell_gclk\",\n      \"$changed_gclk\",\n      \"$rising_gclk\",\n      \"$steady_gclk\",\n      \"$coverage_control\",\n      \"$coverage_get\",\n      \"$coverage_save\",\n      \"$set_coverage_db_name\",\n      \"$rose\",\n      \"$stable\",\n      \"$past\",\n      \"$rose_gclk\",\n      \"$stable_gclk\",\n      \"$future_gclk\",\n      \"$falling_gclk\",\n      \"$changing_gclk\",\n      \"$display\",\n      \"$coverage_get_max\",\n      \"$coverage_merge\",\n      \"$get_coverage\",\n      \"$load_coverage_db\",\n      \"$typename\",\n      \"$unpacked_dimensions\",\n      \"$left\",\n      \"$low\",\n      \"$increment\",\n      \"$clog2\",\n      \"$ln\",\n      \"$log10\",\n      \"$exp\",\n      \"$sqrt\",\n      \"$pow\",\n      \"$floor\",\n      \"$ceil\",\n      \"$sin\",\n      \"$cos\",\n      \"$tan\",\n      \"$countbits\",\n      \"$onehot\",\n      \"$isunknown\",\n      \"$fatal\",\n      \"$warning\",\n      \"$dimensions\",\n      \"$right\",\n      \"$high\",\n      \"$size\",\n      \"$asin\",\n      \"$acos\",\n      \"$atan\",\n      \"$atan2\",\n      \"$hypot\",\n      \"$sinh\",\n      \"$cosh\",\n      \"$tanh\",\n      \"$asinh\",\n      \"$acosh\",\n      \"$atanh\",\n      \"$countones\",\n      \"$onehot0\",\n      \"$error\",\n      \"$info\",\n      \"$random\",\n      \"$dist_chi_square\",\n      \"$dist_erlang\",\n      \"$dist_exponential\",\n      \"$dist_normal\",\n      \"$dist_poisson\",\n      \"$dist_t\",\n      \"$dist_uniform\",\n      \"$q_initialize\",\n      \"$q_remove\",\n      \"$q_exam\",\n      \"$async$and$array\",\n      \"$async$nand$array\",\n      \"$async$or$array\",\n      \"$async$nor$array\",\n      \"$sync$and$array\",\n      \"$sync$nand$array\",\n      \"$sync$or$array\",\n      \"$sync$nor$array\",\n      \"$q_add\",\n      \"$q_full\",\n      \"$psprintf\",\n      \"$async$and$plane\",\n      \"$async$nand$plane\",\n      \"$async$or$plane\",\n      \"$async$nor$plane\",\n      \"$sync$and$plane\",\n      \"$sync$nand$plane\",\n      \"$sync$or$plane\",\n      \"$sync$nor$plane\",\n      \"$system\",\n      \"$display\",\n      \"$displayb\",\n      \"$displayh\",\n      \"$displayo\",\n      \"$strobe\",\n      \"$strobeb\",\n      \"$strobeh\",\n      \"$strobeo\",\n      \"$write\",\n      \"$readmemb\",\n      \"$readmemh\",\n      \"$writememh\",\n      \"$value$plusargs\",\n      \"$dumpvars\",\n      \"$dumpon\",\n      \"$dumplimit\",\n      \"$dumpports\",\n      \"$dumpportson\",\n      \"$dumpportslimit\",\n      \"$writeb\",\n      \"$writeh\",\n      \"$writeo\",\n      \"$monitor\",\n      \"$monitorb\",\n      \"$monitorh\",\n      \"$monitoro\",\n      \"$writememb\",\n      \"$dumpfile\",\n      \"$dumpoff\",\n      \"$dumpall\",\n      \"$dumpflush\",\n      \"$dumpportsoff\",\n      \"$dumpportsall\",\n      \"$dumpportsflush\",\n      \"$fclose\",\n      \"$fdisplay\",\n      \"$fdisplayb\",\n      \"$fdisplayh\",\n      \"$fdisplayo\",\n      \"$fstrobe\",\n      \"$fstrobeb\",\n      \"$fstrobeh\",\n      \"$fstrobeo\",\n      \"$swrite\",\n      \"$swriteb\",\n      \"$swriteh\",\n      \"$swriteo\",\n      \"$fscanf\",\n      \"$fread\",\n      \"$fseek\",\n      \"$fflush\",\n      \"$feof\",\n      \"$fopen\",\n      \"$fwrite\",\n      \"$fwriteb\",\n      \"$fwriteh\",\n      \"$fwriteo\",\n      \"$fmonitor\",\n      \"$fmonitorb\",\n      \"$fmonitorh\",\n      \"$fmonitoro\",\n      \"$sformat\",\n      \"$sformatf\",\n      \"$fgetc\",\n      \"$ungetc\",\n      \"$fgets\",\n      \"$sscanf\",\n      \"$rewind\",\n      \"$ftell\",\n      \"$ferror\"\n    ]\n  };\n  const BUILT_IN_CONSTANTS = [\n    \"__FILE__\",\n    \"__LINE__\"\n  ];\n  const DIRECTIVES = [\n    \"begin_keywords\",\n    \"celldefine\",\n    \"default_nettype\",\n    \"default_decay_time\",\n    \"default_trireg_strength\",\n    \"define\",\n    \"delay_mode_distributed\",\n    \"delay_mode_path\",\n    \"delay_mode_unit\",\n    \"delay_mode_zero\",\n    \"else\",\n    \"elsif\",\n    \"end_keywords\",\n    \"endcelldefine\",\n    \"endif\",\n    \"ifdef\",\n    \"ifndef\",\n    \"include\",\n    \"line\",\n    \"nounconnected_drive\",\n    \"pragma\",\n    \"resetall\",\n    \"timescale\",\n    \"unconnected_drive\",\n    \"undef\",\n    \"undefineall\"\n  ];\n\n  return {\n    name: 'Verilog',\n    aliases: [\n      'v',\n      'sv',\n      'svh'\n    ],\n    case_insensitive: false,\n    keywords: KEYWORDS,\n    contains: [\n      hljs.C_BLOCK_COMMENT_MODE,\n      hljs.C_LINE_COMMENT_MODE,\n      hljs.QUOTE_STRING_MODE,\n      {\n        scope: 'number',\n        contains: [ hljs.BACKSLASH_ESCAPE ],\n        variants: [\n          { begin: /\\b((\\d+'([bhodBHOD]))[0-9xzXZa-fA-F_]+)/ },\n          { begin: /\\B(('([bhodBHOD]))[0-9xzXZa-fA-F_]+)/ },\n          { // decimal\n            begin: /\\b[0-9][0-9_]*/,\n            relevance: 0\n          }\n        ]\n      },\n      /* parameters to instances */\n      {\n        scope: 'variable',\n        variants: [\n          { begin: '#\\\\((?!parameter).+\\\\)' },\n          {\n            begin: '\\\\.\\\\w+',\n            relevance: 0\n          }\n        ]\n      },\n      {\n        scope: 'variable.constant',\n        match: regex.concat(/`/, regex.either(...BUILT_IN_CONSTANTS)),\n      },\n      {\n        scope: 'meta',\n        begin: regex.concat(/`/, regex.either(...DIRECTIVES)),\n        end: /$|\\/\\/|\\/\\*/,\n        returnEnd: true,\n        keywords: DIRECTIVES\n      }\n    ]\n  };\n}\n\nmodule.exports = verilog;\n",
+      "start": 1699633501444,
+      "end": 1699633501531,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501531,
+      "end": 1699633501531,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501531,
+      "end": 1699633501531,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501531,
+      "end": 1699633501531,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501532,
+      "end": 1699633501532,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501532,
+      "end": 1699633501532,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501532,
+      "end": 1699633501532,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501532,
+      "end": 1699633501532,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501532,
+      "end": 1699633501532,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501532,
+      "end": 1699633501532,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501532,
+      "end": 1699633501532,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501532,
+      "end": 1699633501532,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501532,
+      "end": 1699633501532,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501532,
+      "end": 1699633501532,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501532,
+      "end": 1699633501532,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501532,
+      "end": 1699633501532,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501532,
+      "end": 1699633501533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501533,
+      "end": 1699633501533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501533,
+      "end": 1699633501533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501533,
+      "end": 1699633501533,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501533,
+      "end": 1699633501533,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Verilog\nAuthor: Jon Evans <jon@craftyjon.com>\nContributors: Boone Severson <boone.severson@gmail.com>\nDescription: Verilog is a hardware description language used in electronic design automation to describe digital and mixed-signal systems. This highlighter supports Verilog and SystemVerilog through IEEE 1800-2012.\nWebsite: http://www.verilog.com\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar verilog_1;\nvar hasRequiredVerilog;\n\nfunction requireVerilog () {\n\tif (hasRequiredVerilog) return verilog_1;\n\thasRequiredVerilog = 1;\n\tfunction verilog(hljs) {\n\t  const regex = hljs.regex;\n\t  const KEYWORDS = {\n\t    $pattern: /\\$?[\\w]+(\\$[\\w]+)*/,\n\t    keyword: [\n\t      \"accept_on\",\n\t      \"alias\",\n\t      \"always\",\n\t      \"always_comb\",\n\t      \"always_ff\",\n\t      \"always_latch\",\n\t      \"and\",\n\t      \"assert\",\n\t      \"assign\",\n\t      \"assume\",\n\t      \"automatic\",\n\t      \"before\",\n\t      \"begin\",\n\t      \"bind\",\n\t      \"bins\",\n\t      \"binsof\",\n\t      \"bit\",\n\t      \"break\",\n\t      \"buf|0\",\n\t      \"bufif0\",\n\t      \"bufif1\",\n\t      \"byte\",\n\t      \"case\",\n\t      \"casex\",\n\t      \"casez\",\n\t      \"cell\",\n\t      \"chandle\",\n\t      \"checker\",\n\t      \"class\",\n\t      \"clocking\",\n\t      \"cmos\",\n\t      \"config\",\n\t      \"const\",\n\t      \"constraint\",\n\t      \"context\",\n\t      \"continue\",\n\t      \"cover\",\n\t      \"covergroup\",\n\t      \"coverpoint\",\n\t      \"cross\",\n\t      \"deassign\",\n\t      \"default\",\n\t      \"defparam\",\n\t      \"design\",\n\t      \"disable\",\n\t      \"dist\",\n\t      \"do\",\n\t      \"edge\",\n\t      \"else\",\n\t      \"end\",\n\t      \"endcase\",\n\t      \"endchecker\",\n\t      \"endclass\",\n\t      \"endclocking\",\n\t      \"endconfig\",\n\t      \"endfunction\",\n\t      \"endgenerate\",\n\t      \"endgroup\",\n\t      \"endinterface\",\n\t      \"endmodule\",\n\t      \"endpackage\",\n\t      \"endprimitive\",\n\t      \"endprogram\",\n\t      \"endproperty\",\n\t      \"endspecify\",\n\t      \"endsequence\",\n\t      \"endtable\",\n\t      \"endtask\",\n\t      \"enum\",\n\t      \"event\",\n\t      \"eventually\",\n\t      \"expect\",\n\t      \"export\",\n\t      \"extends\",\n\t      \"extern\",\n\t      \"final\",\n\t      \"first_match\",\n\t      \"for\",\n\t      \"force\",\n\t      \"foreach\",\n\t      \"forever\",\n\t      \"fork\",\n\t      \"forkjoin\",\n\t      \"function\",\n\t      \"generate|5\",\n\t      \"genvar\",\n\t      \"global\",\n\t      \"highz0\",\n\t      \"highz1\",\n\t      \"if\",\n\t      \"iff\",\n\t      \"ifnone\",\n\t      \"ignore_bins\",\n\t      \"illegal_bins\",\n\t      \"implements\",\n\t      \"implies\",\n\t      \"import\",\n\t      \"incdir\",\n\t      \"include\",\n\t      \"initial\",\n\t      \"inout\",\n\t      \"input\",\n\t      \"inside\",\n\t      \"instance\",\n\t      \"int\",\n\t      \"integer\",\n\t      \"interconnect\",\n\t      \"interface\",\n\t      \"intersect\",\n\t      \"join\",\n\t      \"join_any\",\n\t      \"join_none\",\n\t      \"large\",\n\t      \"let\",\n\t      \"liblist\",\n\t      \"library\",\n\t      \"local\",\n\t      \"localparam\",\n\t      \"logic\",\n\t      \"longint\",\n\t      \"macromodule\",\n\t      \"matches\",\n\t      \"medium\",\n\t      \"modport\",\n\t      \"module\",\n\t      \"nand\",\n\t      \"negedge\",\n\t      \"nettype\",\n\t      \"new\",\n\t      \"nexttime\",\n\t      \"nmos\",\n\t      \"nor\",\n\t      \"noshowcancelled\",\n\t      \"not\",\n\t      \"notif0\",\n\t      \"notif1\",\n\t      \"or\",\n\t      \"output\",\n\t      \"package\",\n\t      \"packed\",\n\t      \"parameter\",\n\t      \"pmos\",\n\t      \"posedge\",\n\t      \"primitive\",\n\t      \"priority\",\n\t      \"program\",\n\t      \"property\",\n\t      \"protected\",\n\t      \"pull0\",\n\t      \"pull1\",\n\t      \"pulldown\",\n\t      \"pullup\",\n\t      \"pulsestyle_ondetect\",\n\t      \"pulsestyle_onevent\",\n\t      \"pure\",\n\t      \"rand\",\n\t      \"randc\",\n\t      \"randcase\",\n\t      \"randsequence\",\n\t      \"rcmos\",\n\t      \"real\",\n\t      \"realtime\",\n\t      \"ref\",\n\t      \"reg\",\n\t      \"reject_on\",\n\t      \"release\",\n\t      \"repeat\",\n\t      \"restrict\",\n\t      \"return\",\n\t      \"rnmos\",\n\t      \"rpmos\",\n\t      \"rtran\",\n\t      \"rtranif0\",\n\t      \"rtranif1\",\n\t      \"s_always\",\n\t      \"s_eventually\",\n\t      \"s_nexttime\",\n\t      \"s_until\",\n\t      \"s_until_with\",\n\t      \"scalared\",\n\t      \"sequence\",\n\t      \"shortint\",\n\t      \"shortreal\",\n\t      \"showcancelled\",\n\t      \"signed\",\n\t      \"small\",\n\t      \"soft\",\n\t      \"solve\",\n\t      \"specify\",\n\t      \"specparam\",\n\t      \"static\",\n\t      \"string\",\n\t      \"strong\",\n\t      \"strong0\",\n\t      \"strong1\",\n\t      \"struct\",\n\t      \"super\",\n\t      \"supply0\",\n\t      \"supply1\",\n\t      \"sync_accept_on\",\n\t      \"sync_reject_on\",\n\t      \"table\",\n\t      \"tagged\",\n\t      \"task\",\n\t      \"this\",\n\t      \"throughout\",\n\t      \"time\",\n\t      \"timeprecision\",\n\t      \"timeunit\",\n\t      \"tran\",\n\t      \"tranif0\",\n\t      \"tranif1\",\n\t      \"tri\",\n\t      \"tri0\",\n\t      \"tri1\",\n\t      \"triand\",\n\t      \"trior\",\n\t      \"trireg\",\n\t      \"type\",\n\t      \"typedef\",\n\t      \"union\",\n\t      \"unique\",\n\t      \"unique0\",\n\t      \"unsigned\",\n\t      \"until\",\n\t      \"until_with\",\n\t      \"untyped\",\n\t      \"use\",\n\t      \"uwire\",\n\t      \"var\",\n\t      \"vectored\",\n\t      \"virtual\",\n\t      \"void\",\n\t      \"wait\",\n\t      \"wait_order\",\n\t      \"wand\",\n\t      \"weak\",\n\t      \"weak0\",\n\t      \"weak1\",\n\t      \"while\",\n\t      \"wildcard\",\n\t      \"wire\",\n\t      \"with\",\n\t      \"within\",\n\t      \"wor\",\n\t      \"xnor\",\n\t      \"xor\"\n\t    ],\n\t    literal: [ 'null' ],\n\t    built_in: [\n\t      \"$finish\",\n\t      \"$stop\",\n\t      \"$exit\",\n\t      \"$fatal\",\n\t      \"$error\",\n\t      \"$warning\",\n\t      \"$info\",\n\t      \"$realtime\",\n\t      \"$time\",\n\t      \"$printtimescale\",\n\t      \"$bitstoreal\",\n\t      \"$bitstoshortreal\",\n\t      \"$itor\",\n\t      \"$signed\",\n\t      \"$cast\",\n\t      \"$bits\",\n\t      \"$stime\",\n\t      \"$timeformat\",\n\t      \"$realtobits\",\n\t      \"$shortrealtobits\",\n\t      \"$rtoi\",\n\t      \"$unsigned\",\n\t      \"$asserton\",\n\t      \"$assertkill\",\n\t      \"$assertpasson\",\n\t      \"$assertfailon\",\n\t      \"$assertnonvacuouson\",\n\t      \"$assertoff\",\n\t      \"$assertcontrol\",\n\t      \"$assertpassoff\",\n\t      \"$assertfailoff\",\n\t      \"$assertvacuousoff\",\n\t      \"$isunbounded\",\n\t      \"$sampled\",\n\t      \"$fell\",\n\t      \"$changed\",\n\t      \"$past_gclk\",\n\t      \"$fell_gclk\",\n\t      \"$changed_gclk\",\n\t      \"$rising_gclk\",\n\t      \"$steady_gclk\",\n\t      \"$coverage_control\",\n\t      \"$coverage_get\",\n\t      \"$coverage_save\",\n\t      \"$set_coverage_db_name\",\n\t      \"$rose\",\n\t      \"$stable\",\n\t      \"$past\",\n\t      \"$rose_gclk\",\n\t      \"$stable_gclk\",\n\t      \"$future_gclk\",\n\t      \"$falling_gclk\",\n\t      \"$changing_gclk\",\n\t      \"$display\",\n\t      \"$coverage_get_max\",\n\t      \"$coverage_merge\",\n\t      \"$get_coverage\",\n\t      \"$load_coverage_db\",\n\t      \"$typename\",\n\t      \"$unpacked_dimensions\",\n\t      \"$left\",\n\t      \"$low\",\n\t      \"$increment\",\n\t      \"$clog2\",\n\t      \"$ln\",\n\t      \"$log10\",\n\t      \"$exp\",\n\t      \"$sqrt\",\n\t      \"$pow\",\n\t      \"$floor\",\n\t      \"$ceil\",\n\t      \"$sin\",\n\t      \"$cos\",\n\t      \"$tan\",\n\t      \"$countbits\",\n\t      \"$onehot\",\n\t      \"$isunknown\",\n\t      \"$fatal\",\n\t      \"$warning\",\n\t      \"$dimensions\",\n\t      \"$right\",\n\t      \"$high\",\n\t      \"$size\",\n\t      \"$asin\",\n\t      \"$acos\",\n\t      \"$atan\",\n\t      \"$atan2\",\n\t      \"$hypot\",\n\t      \"$sinh\",\n\t      \"$cosh\",\n\t      \"$tanh\",\n\t      \"$asinh\",\n\t      \"$acosh\",\n\t      \"$atanh\",\n\t      \"$countones\",\n\t      \"$onehot0\",\n\t      \"$error\",\n\t      \"$info\",\n\t      \"$random\",\n\t      \"$dist_chi_square\",\n\t      \"$dist_erlang\",\n\t      \"$dist_exponential\",\n\t      \"$dist_normal\",\n\t      \"$dist_poisson\",\n\t      \"$dist_t\",\n\t      \"$dist_uniform\",\n\t      \"$q_initialize\",\n\t      \"$q_remove\",\n\t      \"$q_exam\",\n\t      \"$async$and$array\",\n\t      \"$async$nand$array\",\n\t      \"$async$or$array\",\n\t      \"$async$nor$array\",\n\t      \"$sync$and$array\",\n\t      \"$sync$nand$array\",\n\t      \"$sync$or$array\",\n\t      \"$sync$nor$array\",\n\t      \"$q_add\",\n\t      \"$q_full\",\n\t      \"$psprintf\",\n\t      \"$async$and$plane\",\n\t      \"$async$nand$plane\",\n\t      \"$async$or$plane\",\n\t      \"$async$nor$plane\",\n\t      \"$sync$and$plane\",\n\t      \"$sync$nand$plane\",\n\t      \"$sync$or$plane\",\n\t      \"$sync$nor$plane\",\n\t      \"$system\",\n\t      \"$display\",\n\t      \"$displayb\",\n\t      \"$displayh\",\n\t      \"$displayo\",\n\t      \"$strobe\",\n\t      \"$strobeb\",\n\t      \"$strobeh\",\n\t      \"$strobeo\",\n\t      \"$write\",\n\t      \"$readmemb\",\n\t      \"$readmemh\",\n\t      \"$writememh\",\n\t      \"$value$plusargs\",\n\t      \"$dumpvars\",\n\t      \"$dumpon\",\n\t      \"$dumplimit\",\n\t      \"$dumpports\",\n\t      \"$dumpportson\",\n\t      \"$dumpportslimit\",\n\t      \"$writeb\",\n\t      \"$writeh\",\n\t      \"$writeo\",\n\t      \"$monitor\",\n\t      \"$monitorb\",\n\t      \"$monitorh\",\n\t      \"$monitoro\",\n\t      \"$writememb\",\n\t      \"$dumpfile\",\n\t      \"$dumpoff\",\n\t      \"$dumpall\",\n\t      \"$dumpflush\",\n\t      \"$dumpportsoff\",\n\t      \"$dumpportsall\",\n\t      \"$dumpportsflush\",\n\t      \"$fclose\",\n\t      \"$fdisplay\",\n\t      \"$fdisplayb\",\n\t      \"$fdisplayh\",\n\t      \"$fdisplayo\",\n\t      \"$fstrobe\",\n\t      \"$fstrobeb\",\n\t      \"$fstrobeh\",\n\t      \"$fstrobeo\",\n\t      \"$swrite\",\n\t      \"$swriteb\",\n\t      \"$swriteh\",\n\t      \"$swriteo\",\n\t      \"$fscanf\",\n\t      \"$fread\",\n\t      \"$fseek\",\n\t      \"$fflush\",\n\t      \"$feof\",\n\t      \"$fopen\",\n\t      \"$fwrite\",\n\t      \"$fwriteb\",\n\t      \"$fwriteh\",\n\t      \"$fwriteo\",\n\t      \"$fmonitor\",\n\t      \"$fmonitorb\",\n\t      \"$fmonitorh\",\n\t      \"$fmonitoro\",\n\t      \"$sformat\",\n\t      \"$sformatf\",\n\t      \"$fgetc\",\n\t      \"$ungetc\",\n\t      \"$fgets\",\n\t      \"$sscanf\",\n\t      \"$rewind\",\n\t      \"$ftell\",\n\t      \"$ferror\"\n\t    ]\n\t  };\n\t  const BUILT_IN_CONSTANTS = [\n\t    \"__FILE__\",\n\t    \"__LINE__\"\n\t  ];\n\t  const DIRECTIVES = [\n\t    \"begin_keywords\",\n\t    \"celldefine\",\n\t    \"default_nettype\",\n\t    \"default_decay_time\",\n\t    \"default_trireg_strength\",\n\t    \"define\",\n\t    \"delay_mode_distributed\",\n\t    \"delay_mode_path\",\n\t    \"delay_mode_unit\",\n\t    \"delay_mode_zero\",\n\t    \"else\",\n\t    \"elsif\",\n\t    \"end_keywords\",\n\t    \"endcelldefine\",\n\t    \"endif\",\n\t    \"ifdef\",\n\t    \"ifndef\",\n\t    \"include\",\n\t    \"line\",\n\t    \"nounconnected_drive\",\n\t    \"pragma\",\n\t    \"resetall\",\n\t    \"timescale\",\n\t    \"unconnected_drive\",\n\t    \"undef\",\n\t    \"undefineall\"\n\t  ];\n\n\t  return {\n\t    name: 'Verilog',\n\t    aliases: [\n\t      'v',\n\t      'sv',\n\t      'svh'\n\t    ],\n\t    case_insensitive: false,\n\t    keywords: KEYWORDS,\n\t    contains: [\n\t      hljs.C_BLOCK_COMMENT_MODE,\n\t      hljs.C_LINE_COMMENT_MODE,\n\t      hljs.QUOTE_STRING_MODE,\n\t      {\n\t        scope: 'number',\n\t        contains: [ hljs.BACKSLASH_ESCAPE ],\n\t        variants: [\n\t          { begin: /\\b((\\d+'([bhodBHOD]))[0-9xzXZa-fA-F_]+)/ },\n\t          { begin: /\\B(('([bhodBHOD]))[0-9xzXZa-fA-F_]+)/ },\n\t          { // decimal\n\t            begin: /\\b[0-9][0-9_]*/,\n\t            relevance: 0\n\t          }\n\t        ]\n\t      },\n\t      /* parameters to instances */\n\t      {\n\t        scope: 'variable',\n\t        variants: [\n\t          { begin: '#\\\\((?!parameter).+\\\\)' },\n\t          {\n\t            begin: '\\\\.\\\\w+',\n\t            relevance: 0\n\t          }\n\t        ]\n\t      },\n\t      {\n\t        scope: 'variable.constant',\n\t        match: regex.concat(/`/, regex.either(...BUILT_IN_CONSTANTS)),\n\t      },\n\t      {\n\t        scope: 'meta',\n\t        begin: regex.concat(/`/, regex.either(...DIRECTIVES)),\n\t        end: /$|\\/\\/|\\/\\*/,\n\t        returnEnd: true,\n\t        keywords: DIRECTIVES\n\t      }\n\t    ]\n\t  };\n\t}\n\n\tverilog_1 = verilog;\n\treturn verilog_1;\n}\n\nexport { requireVerilog as __require };",
+      "start": 1699633501533,
+      "end": 1699633501534,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501534,
+      "end": 1699633501534,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501534,
+      "end": 1699633501534,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501534,
+      "end": 1699633501534,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501534,
+      "end": 1699633501534,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501534,
+      "end": 1699633501534,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501534,
+      "end": 1699633501534,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501534,
+      "end": 1699633501534,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501534,
+      "end": 1699633501534,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501534,
+      "end": 1699633501534,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501534,
+      "end": 1699633501534,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501534,
+      "end": 1699633501534,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501534,
+      "end": 1699633501534,
+      "order": "normal"
+    }
+  ]
+}

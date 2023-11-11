@@ -1,0 +1,218 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/assets/main.css",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "@import './css/base.css';\n\n@font-face {\n    font-family: AliPuHui;\n    src: url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-35-Thin.woff2') format('woff2'),\n    url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-35-Thin.woff') format('woff'),\n        url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-35-Thin.ttf') format('truetype');\n    font-weight: 100;\n}\n\n@font-face {\n    font-family: AliPuHui;\n    src: url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-45-Light.woff2') format('woff2'),\n    url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-45-Light.woff') format('woff'),\n        url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-45-Light.ttf') format('truetype');\n    font-weight: 300;\n}\n\n@font-face {\n    font-family: AliPuHui;\n    src: url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-55-Regular.woff2') format('woff2'),\n    url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-55-Regular.woff') format('woff'),\n        url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-55-Regular.ttf') format('truetype');\n    font-weight: 400;\n}\n\n@font-face {\n    font-family: AliPuHui;\n    src: url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-65-Medium.woff2') format('woff2'),\n    url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-65-Medium.woff') format('woff'),\n        url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-65-Medium.ttf') format('truetype');\n    font-weight: 500;\n\n}\n\n@font-face {\n    font-family: AliPuHui;\n    src: url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-75-SemiBold.woff2') format('woff2'),\n    url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-75-SemiBold.woff') format('woff'),\n        url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-75-SemiBold.ttf') format('truetype');\n    font-weight: 600;\n}\n\n@font-face {\n    font-family: AliPuHui;\n    src: url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-85-Bold.woff2') format('woff2'),\n    url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-85-Bold.woff') format('woff'),\n        url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-85-Bold.ttf') format('truetype');\n    font-weight: 700;\n}\n\n/* @font-face {\n    font-family: AliPuHui;\n    src: url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-95-ExtraBold.woff2') format('woff2'),\n    url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-95-ExtraBold.woff') format('woff'),\n        url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-95-ExtraBold.ttf') format('truetype');\n    font-weight: 800;\n} */\n\n@font-face {\n    font-family: AliPuHui;\n    src: url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-105-Heavy.woff2') format('woff2'),\n    url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-105-Heavy.woff') format('woff'),\n        url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-105-Heavy.ttf') format('truetype');\n    font-weight: 800;\n}\n\n@font-face {\n    font-family: AliPuHui;\n    src: url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-115-Black.woff2') format('woff2'),\n    url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-115-Black.woff') format('woff'),\n        url('https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-115-Black.ttf') format('truetype');\n    font-weight: 900;\n}\n\nhtml {\n    font-family: \"AliPuHui\", \"阿里巴巴普惠体 3.0\", \"阿里巴巴普惠体 2.0\", \"Open Sans\", \"PingFang SC\",\"Microsoft YaHei\", \"Helvetica Neue\", \"Hiragino Sans GB\", \"WenQuanYi Micro Hei\", \"Arial\", \"sans-serif\";\n}\n",
+      "start": 1699633498583,
+      "end": 1699633498824,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633498825,
+      "end": 1699633498825,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633498825,
+      "end": 1699633498825,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633498825,
+      "end": 1699633498825,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "result": "*,:after,:before{box-sizing:border-box;font-weight:400;margin:0;padding:0}ul{list-style:none}a{text-decoration:none}@font-face{font-family:AliPuHui;font-weight:100;src:url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-35-Thin.woff2) format(\"woff2\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-35-Thin.woff) format(\"woff\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-35-Thin.ttf) format(\"truetype\")}@font-face{font-family:AliPuHui;font-weight:300;src:url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-45-Light.woff2) format(\"woff2\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-45-Light.woff) format(\"woff\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-45-Light.ttf) format(\"truetype\")}@font-face{font-family:AliPuHui;font-weight:400;src:url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-55-Regular.woff2) format(\"woff2\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-55-Regular.woff) format(\"woff\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-55-Regular.ttf) format(\"truetype\")}@font-face{font-family:AliPuHui;font-weight:500;src:url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-65-Medium.woff2) format(\"woff2\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-65-Medium.woff) format(\"woff\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-65-Medium.ttf) format(\"truetype\")}@font-face{font-family:AliPuHui;font-weight:600;src:url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-75-SemiBold.woff2) format(\"woff2\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-75-SemiBold.woff) format(\"woff\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-75-SemiBold.ttf) format(\"truetype\")}@font-face{font-family:AliPuHui;font-weight:700;src:url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-85-Bold.woff2) format(\"woff2\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-85-Bold.woff) format(\"woff\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-85-Bold.ttf) format(\"truetype\")}@font-face{font-family:AliPuHui;font-weight:800;src:url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-105-Heavy.woff2) format(\"woff2\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-105-Heavy.woff) format(\"woff\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-105-Heavy.ttf) format(\"truetype\")}@font-face{font-family:AliPuHui;font-weight:900;src:url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-115-Black.woff2) format(\"woff2\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-115-Black.woff) format(\"woff\"),url(https://file.kwunphi.com/kwunphi4/fonts/puhui3/AlibabaPuHuiTi-3-115-Black.ttf) format(\"truetype\")}html{font-family:AliPuHui,\"阿里巴巴普惠体 3.0\",\"阿里巴巴普惠体 2.0\",Open Sans,PingFang SC,Microsoft YaHei,Helvetica Neue,Hiragino Sans GB,WenQuanYi Micro Hei,Arial,\"sans-serif\"}",
+      "start": 1699633498825,
+      "end": 1699633499545,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633499545,
+      "end": 1699633499545,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633499545,
+      "end": 1699633499545,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633499545,
+      "end": 1699633499545,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633499545,
+      "end": 1699633499545,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633499545,
+      "end": 1699633499545,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633499545,
+      "end": 1699633499545,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633499545,
+      "end": 1699633499545,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633499545,
+      "end": 1699633499545,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633499545,
+      "end": 1699633499545,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633499545,
+      "end": 1699633499545,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633499545,
+      "end": 1699633499545,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633499545,
+      "end": 1699633499545,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "result": "export default ''",
+      "start": 1699633499545,
+      "end": 1699633499546,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633499546,
+      "end": 1699633499546,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633499546,
+      "end": 1699633499547,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633499547,
+      "end": 1699633499547,
+      "order": "normal"
+    }
+  ]
+}

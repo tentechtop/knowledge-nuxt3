@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/clean.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Clean\nAuthor: Camil Staps <info@camilstaps.nl>\nCategory: functional\nWebsite: http://clean.cs.ru.nl\n*/\n\n/** @type LanguageFn */\nfunction clean(hljs) {\n  const KEYWORDS = [\n    \"if\",\n    \"let\",\n    \"in\",\n    \"with\",\n    \"where\",\n    \"case\",\n    \"of\",\n    \"class\",\n    \"instance\",\n    \"otherwise\",\n    \"implementation\",\n    \"definition\",\n    \"system\",\n    \"module\",\n    \"from\",\n    \"import\",\n    \"qualified\",\n    \"as\",\n    \"special\",\n    \"code\",\n    \"inline\",\n    \"foreign\",\n    \"export\",\n    \"ccall\",\n    \"stdcall\",\n    \"generic\",\n    \"derive\",\n    \"infix\",\n    \"infixl\",\n    \"infixr\"\n  ];\n  return {\n    name: 'Clean',\n    aliases: [\n      'icl',\n      'dcl'\n    ],\n    keywords: {\n      keyword: KEYWORDS,\n      built_in:\n        'Int Real Char Bool',\n      literal:\n        'True False'\n    },\n    contains: [\n      hljs.C_LINE_COMMENT_MODE,\n      hljs.C_BLOCK_COMMENT_MODE,\n      hljs.APOS_STRING_MODE,\n      hljs.QUOTE_STRING_MODE,\n      hljs.C_NUMBER_MODE,\n      { // relevance booster\n        begin: '->|<-[|:]?|#!?|>>=|\\\\{\\\\||\\\\|\\\\}|:==|=:|<>' }\n    ]\n  };\n}\n\nmodule.exports = clean;\n",
+      "start": 1699633500638,
+      "end": 1699633500725,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500726,
+      "end": 1699633500726,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500726,
+      "end": 1699633500726,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500726,
+      "end": 1699633500726,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500726,
+      "end": 1699633500726,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500726,
+      "end": 1699633500726,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500726,
+      "end": 1699633500726,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500726,
+      "end": 1699633500726,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500726,
+      "end": 1699633500726,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500726,
+      "end": 1699633500726,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500726,
+      "end": 1699633500726,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500726,
+      "end": 1699633500726,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500726,
+      "end": 1699633500727,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500727,
+      "end": 1699633500727,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500727,
+      "end": 1699633500727,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500727,
+      "end": 1699633500727,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500727,
+      "end": 1699633500727,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500727,
+      "end": 1699633500727,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500727,
+      "end": 1699633500727,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500727,
+      "end": 1699633500727,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500727,
+      "end": 1699633500727,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Clean\nAuthor: Camil Staps <info@camilstaps.nl>\nCategory: functional\nWebsite: http://clean.cs.ru.nl\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar clean_1;\nvar hasRequiredClean;\n\nfunction requireClean () {\n\tif (hasRequiredClean) return clean_1;\n\thasRequiredClean = 1;\n\t/** @type LanguageFn */\n\tfunction clean(hljs) {\n\t  const KEYWORDS = [\n\t    \"if\",\n\t    \"let\",\n\t    \"in\",\n\t    \"with\",\n\t    \"where\",\n\t    \"case\",\n\t    \"of\",\n\t    \"class\",\n\t    \"instance\",\n\t    \"otherwise\",\n\t    \"implementation\",\n\t    \"definition\",\n\t    \"system\",\n\t    \"module\",\n\t    \"from\",\n\t    \"import\",\n\t    \"qualified\",\n\t    \"as\",\n\t    \"special\",\n\t    \"code\",\n\t    \"inline\",\n\t    \"foreign\",\n\t    \"export\",\n\t    \"ccall\",\n\t    \"stdcall\",\n\t    \"generic\",\n\t    \"derive\",\n\t    \"infix\",\n\t    \"infixl\",\n\t    \"infixr\"\n\t  ];\n\t  return {\n\t    name: 'Clean',\n\t    aliases: [\n\t      'icl',\n\t      'dcl'\n\t    ],\n\t    keywords: {\n\t      keyword: KEYWORDS,\n\t      built_in:\n\t        'Int Real Char Bool',\n\t      literal:\n\t        'True False'\n\t    },\n\t    contains: [\n\t      hljs.C_LINE_COMMENT_MODE,\n\t      hljs.C_BLOCK_COMMENT_MODE,\n\t      hljs.APOS_STRING_MODE,\n\t      hljs.QUOTE_STRING_MODE,\n\t      hljs.C_NUMBER_MODE,\n\t      { // relevance booster\n\t        begin: '->|<-[|:]?|#!?|>>=|\\\\{\\\\||\\\\|\\\\}|:==|=:|<>' }\n\t    ]\n\t  };\n\t}\n\n\tclean_1 = clean;\n\treturn clean_1;\n}\n\nexport { requireClean as __require };",
+      "start": 1699633500727,
+      "end": 1699633500727,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": ";;;;;;;;;;;;;;CAOA;CACA,SAAS,KAAK,CAAC,IAAI,EAAE;CACrB,EAAE,MAAM,QAAQ,GAAG;CACnB,IAAI,IAAI;CACR,IAAI,KAAK;CACT,IAAI,IAAI;CACR,IAAI,MAAM;CACV,IAAI,OAAO;CACX,IAAI,MAAM;CACV,IAAI,IAAI;CACR,IAAI,OAAO;CACX,IAAI,UAAU;CACd,IAAI,WAAW;CACf,IAAI,gBAAgB;CACpB,IAAI,YAAY;CAChB,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,IAAI,MAAM;CACV,IAAI,QAAQ;CACZ,IAAI,WAAW;CACf,IAAI,IAAI;CACR,IAAI,SAAS;CACb,IAAI,MAAM;CACV,IAAI,QAAQ;CACZ,IAAI,SAAS;CACb,IAAI,QAAQ;CACZ,IAAI,OAAO;CACX,IAAI,SAAS;CACb,IAAI,SAAS;CACb,IAAI,QAAQ;CACZ,IAAI,OAAO;CACX,IAAI,QAAQ;CACZ,IAAI,QAAQ;CACZ,GAAG,CAAC;CACJ,EAAE,OAAO;CACT,IAAI,IAAI,EAAE,OAAO;CACjB,IAAI,OAAO,EAAE;CACb,MAAM,KAAK;CACX,MAAM,KAAK;CACX,KAAK;CACL,IAAI,QAAQ,EAAE;CACd,MAAM,OAAO,EAAE,QAAQ;CACvB,MAAM,QAAQ;CACd,QAAQ,oBAAoB;CAC5B,MAAM,OAAO;CACb,QAAQ,YAAY;CACpB,KAAK;CACL,IAAI,QAAQ,EAAE;CACd,MAAM,IAAI,CAAC,mBAAmB;CAC9B,MAAM,IAAI,CAAC,oBAAoB;CAC/B,MAAM,IAAI,CAAC,gBAAgB;CAC3B,MAAM,IAAI,CAAC,iBAAiB;CAC5B,MAAM,IAAI,CAAC,aAAa;CACxB,MAAM;CACN,QAAQ,KAAK,EAAE,4CAA4C,EAAE;CAC7D,KAAK;CACL,GAAG,CAAC;CACJ,CAAC;AACD;AACA,QAAc,GAAG,KAAK"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500727,
+      "end": 1699633500727,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500727,
+      "end": 1699633500727,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500727,
+      "end": 1699633500727,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500727,
+      "end": 1699633500728,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500728,
+      "end": 1699633500728,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500728,
+      "end": 1699633500728,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500728,
+      "end": 1699633500728,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500728,
+      "end": 1699633500728,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500728,
+      "end": 1699633500728,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500728,
+      "end": 1699633500728,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500728,
+      "end": 1699633500728,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500728,
+      "end": 1699633500728,
+      "order": "normal"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/markdown-it/lib/rules_inline/backticks.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "// Parse backticks\n\n'use strict';\n\n\nmodule.exports = function backtick(state, silent) {\n  var start, max, marker, token, matchStart, matchEnd, openerLength, closerLength,\n      pos = state.pos,\n      ch = state.src.charCodeAt(pos);\n\n  if (ch !== 0x60/* ` */) { return false; }\n\n  start = pos;\n  pos++;\n  max = state.posMax;\n\n  // scan marker length\n  while (pos < max && state.src.charCodeAt(pos) === 0x60/* ` */) { pos++; }\n\n  marker = state.src.slice(start, pos);\n  openerLength = marker.length;\n\n  if (state.backticksScanned && (state.backticks[openerLength] || 0) <= start) {\n    if (!silent) state.pending += marker;\n    state.pos += openerLength;\n    return true;\n  }\n\n  matchEnd = pos;\n\n  // Nothing found in the cache, scan until the end of the line (or until marker is found)\n  while ((matchStart = state.src.indexOf('`', matchEnd)) !== -1) {\n    matchEnd = matchStart + 1;\n\n    // scan marker length\n    while (matchEnd < max && state.src.charCodeAt(matchEnd) === 0x60/* ` */) { matchEnd++; }\n\n    closerLength = matchEnd - matchStart;\n\n    if (closerLength === openerLength) {\n      // Found matching closer length.\n      if (!silent) {\n        token     = state.push('code_inline', 'code', 0);\n        token.markup  = marker;\n        token.content = state.src.slice(pos, matchStart)\n          .replace(/\\n/g, ' ')\n          .replace(/^ (.+) $/, '$1');\n      }\n      state.pos = matchEnd;\n      return true;\n    }\n\n    // Some different length found, put it in cache as upper limit of where closer can be found\n    state.backticks[closerLength] = matchStart;\n  }\n\n  // Scanned through the end, didn't find anything\n  state.backticksScanned = true;\n\n  if (!silent) state.pending += marker;\n  state.pos += openerLength;\n  return true;\n};\n",
+      "start": 1699633501797,
+      "end": 1699633501890,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633501890,
+      "end": 1699633501890,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633501890,
+      "end": 1699633501890,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633501890,
+      "end": 1699633501890,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633501890,
+      "end": 1699633501890,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633501890,
+      "end": 1699633501890,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633501890,
+      "end": 1699633501890,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633501890,
+      "end": 1699633501890,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633501891,
+      "end": 1699633501891,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "import * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\n// Parse backticks\n\n'use strict';\n\n\nvar backticks = function backtick(state, silent) {\n  var start, max, marker, token, matchStart, matchEnd, openerLength, closerLength,\n      pos = state.pos,\n      ch = state.src.charCodeAt(pos);\n\n  if (ch !== 0x60/* ` */) { return false; }\n\n  start = pos;\n  pos++;\n  max = state.posMax;\n\n  // scan marker length\n  while (pos < max && state.src.charCodeAt(pos) === 0x60/* ` */) { pos++; }\n\n  marker = state.src.slice(start, pos);\n  openerLength = marker.length;\n\n  if (state.backticksScanned && (state.backticks[openerLength] || 0) <= start) {\n    if (!silent) state.pending += marker;\n    state.pos += openerLength;\n    return true;\n  }\n\n  matchEnd = pos;\n\n  // Nothing found in the cache, scan until the end of the line (or until marker is found)\n  while ((matchStart = state.src.indexOf('`', matchEnd)) !== -1) {\n    matchEnd = matchStart + 1;\n\n    // scan marker length\n    while (matchEnd < max && state.src.charCodeAt(matchEnd) === 0x60/* ` */) { matchEnd++; }\n\n    closerLength = matchEnd - matchStart;\n\n    if (closerLength === openerLength) {\n      // Found matching closer length.\n      if (!silent) {\n        token     = state.push('code_inline', 'code', 0);\n        token.markup  = marker;\n        token.content = state.src.slice(pos, matchStart)\n          .replace(/\\n/g, ' ')\n          .replace(/^ (.+) $/, '$1');\n      }\n      state.pos = matchEnd;\n      return true;\n    }\n\n    // Some different length found, put it in cache as upper limit of where closer can be found\n    state.backticks[closerLength] = matchStart;\n  }\n\n  // Scanned through the end, didn't find anything\n  state.backticksScanned = true;\n\n  if (!silent) state.pending += marker;\n  state.pos += openerLength;\n  return true;\n};\n\nexport default /*@__PURE__*/commonjsHelpers.getDefaultExportFromCjs(backticks);\nexport { backticks as __moduleExports };",
+      "start": 1699633501891,
+      "end": 1699633501892,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633501892,
+      "end": 1699633501892,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633501892,
+      "end": 1699633501892,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633501892,
+      "end": 1699633501892,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633501892,
+      "end": 1699633501892,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633501892,
+      "end": 1699633501892,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633501892,
+      "end": 1699633501892,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633501892,
+      "end": 1699633501892,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633501892,
+      "end": 1699633501892,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633501892,
+      "end": 1699633501892,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633501892,
+      "end": 1699633501892,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633501892,
+      "end": 1699633501892,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633501892,
+      "end": 1699633501892,
+      "order": "normal"
+    }
+  ]
+}

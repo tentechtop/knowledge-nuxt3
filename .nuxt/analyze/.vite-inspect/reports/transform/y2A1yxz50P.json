@@ -1,0 +1,223 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/highlight.js/lib/languages/ceylon.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/*\nLanguage: Ceylon\nAuthor: Lucas Werkmeister <mail@lucaswerkmeister.de>\nWebsite: https://ceylon-lang.org\n*/\n\n/** @type LanguageFn */\nfunction ceylon(hljs) {\n  // 2.3. Identifiers and keywords\n  const KEYWORDS = [\n    \"assembly\",\n    \"module\",\n    \"package\",\n    \"import\",\n    \"alias\",\n    \"class\",\n    \"interface\",\n    \"object\",\n    \"given\",\n    \"value\",\n    \"assign\",\n    \"void\",\n    \"function\",\n    \"new\",\n    \"of\",\n    \"extends\",\n    \"satisfies\",\n    \"abstracts\",\n    \"in\",\n    \"out\",\n    \"return\",\n    \"break\",\n    \"continue\",\n    \"throw\",\n    \"assert\",\n    \"dynamic\",\n    \"if\",\n    \"else\",\n    \"switch\",\n    \"case\",\n    \"for\",\n    \"while\",\n    \"try\",\n    \"catch\",\n    \"finally\",\n    \"then\",\n    \"let\",\n    \"this\",\n    \"outer\",\n    \"super\",\n    \"is\",\n    \"exists\",\n    \"nonempty\"\n  ];\n  // 7.4.1 Declaration Modifiers\n  const DECLARATION_MODIFIERS = [\n    \"shared\",\n    \"abstract\",\n    \"formal\",\n    \"default\",\n    \"actual\",\n    \"variable\",\n    \"late\",\n    \"native\",\n    \"deprecated\",\n    \"final\",\n    \"sealed\",\n    \"annotation\",\n    \"suppressWarnings\",\n    \"small\"\n  ];\n  // 7.4.2 Documentation\n  const DOCUMENTATION = [\n    \"doc\",\n    \"by\",\n    \"license\",\n    \"see\",\n    \"throws\",\n    \"tagged\"\n  ];\n  const SUBST = {\n    className: 'subst',\n    excludeBegin: true,\n    excludeEnd: true,\n    begin: /``/,\n    end: /``/,\n    keywords: KEYWORDS,\n    relevance: 10\n  };\n  const EXPRESSIONS = [\n    {\n      // verbatim string\n      className: 'string',\n      begin: '\"\"\"',\n      end: '\"\"\"',\n      relevance: 10\n    },\n    {\n      // string literal or template\n      className: 'string',\n      begin: '\"',\n      end: '\"',\n      contains: [ SUBST ]\n    },\n    {\n      // character literal\n      className: 'string',\n      begin: \"'\",\n      end: \"'\"\n    },\n    {\n      // numeric literal\n      className: 'number',\n      begin: '#[0-9a-fA-F_]+|\\\\$[01_]+|[0-9_]+(?:\\\\.[0-9_](?:[eE][+-]?\\\\d+)?)?[kMGTPmunpf]?',\n      relevance: 0\n    }\n  ];\n  SUBST.contains = EXPRESSIONS;\n\n  return {\n    name: 'Ceylon',\n    keywords: {\n      keyword: KEYWORDS.concat(DECLARATION_MODIFIERS),\n      meta: DOCUMENTATION\n    },\n    illegal: '\\\\$[^01]|#[^0-9a-fA-F]',\n    contains: [\n      hljs.C_LINE_COMMENT_MODE,\n      hljs.COMMENT('/\\\\*', '\\\\*/', { contains: [ 'self' ] }),\n      {\n        // compiler annotation\n        className: 'meta',\n        begin: '@[a-z]\\\\w*(?::\"[^\"]*\")?'\n      }\n    ].concat(EXPRESSIONS)\n  };\n}\n\nmodule.exports = ceylon;\n",
+      "start": 1699633500629,
+      "end": 1699633500743,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699633500743,
+      "end": 1699633500743,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699633500743,
+      "end": 1699633500743,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699633500743,
+      "end": 1699633500743,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699633500743,
+      "end": 1699633500743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699633500743,
+      "end": 1699633500743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699633500743,
+      "end": 1699633500743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699633500743,
+      "end": 1699633500743,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699633500744,
+      "end": 1699633500744,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "result": "/*\nLanguage: Ceylon\nAuthor: Lucas Werkmeister <mail@lucaswerkmeister.de>\nWebsite: https://ceylon-lang.org\n*/\nimport * as commonjsHelpers from \"\u0000commonjsHelpers.js\";\n\nvar ceylon_1;\nvar hasRequiredCeylon;\n\nfunction requireCeylon () {\n\tif (hasRequiredCeylon) return ceylon_1;\n\thasRequiredCeylon = 1;\n\t/** @type LanguageFn */\n\tfunction ceylon(hljs) {\n\t  // 2.3. Identifiers and keywords\n\t  const KEYWORDS = [\n\t    \"assembly\",\n\t    \"module\",\n\t    \"package\",\n\t    \"import\",\n\t    \"alias\",\n\t    \"class\",\n\t    \"interface\",\n\t    \"object\",\n\t    \"given\",\n\t    \"value\",\n\t    \"assign\",\n\t    \"void\",\n\t    \"function\",\n\t    \"new\",\n\t    \"of\",\n\t    \"extends\",\n\t    \"satisfies\",\n\t    \"abstracts\",\n\t    \"in\",\n\t    \"out\",\n\t    \"return\",\n\t    \"break\",\n\t    \"continue\",\n\t    \"throw\",\n\t    \"assert\",\n\t    \"dynamic\",\n\t    \"if\",\n\t    \"else\",\n\t    \"switch\",\n\t    \"case\",\n\t    \"for\",\n\t    \"while\",\n\t    \"try\",\n\t    \"catch\",\n\t    \"finally\",\n\t    \"then\",\n\t    \"let\",\n\t    \"this\",\n\t    \"outer\",\n\t    \"super\",\n\t    \"is\",\n\t    \"exists\",\n\t    \"nonempty\"\n\t  ];\n\t  // 7.4.1 Declaration Modifiers\n\t  const DECLARATION_MODIFIERS = [\n\t    \"shared\",\n\t    \"abstract\",\n\t    \"formal\",\n\t    \"default\",\n\t    \"actual\",\n\t    \"variable\",\n\t    \"late\",\n\t    \"native\",\n\t    \"deprecated\",\n\t    \"final\",\n\t    \"sealed\",\n\t    \"annotation\",\n\t    \"suppressWarnings\",\n\t    \"small\"\n\t  ];\n\t  // 7.4.2 Documentation\n\t  const DOCUMENTATION = [\n\t    \"doc\",\n\t    \"by\",\n\t    \"license\",\n\t    \"see\",\n\t    \"throws\",\n\t    \"tagged\"\n\t  ];\n\t  const SUBST = {\n\t    className: 'subst',\n\t    excludeBegin: true,\n\t    excludeEnd: true,\n\t    begin: /``/,\n\t    end: /``/,\n\t    keywords: KEYWORDS,\n\t    relevance: 10\n\t  };\n\t  const EXPRESSIONS = [\n\t    {\n\t      // verbatim string\n\t      className: 'string',\n\t      begin: '\"\"\"',\n\t      end: '\"\"\"',\n\t      relevance: 10\n\t    },\n\t    {\n\t      // string literal or template\n\t      className: 'string',\n\t      begin: '\"',\n\t      end: '\"',\n\t      contains: [ SUBST ]\n\t    },\n\t    {\n\t      // character literal\n\t      className: 'string',\n\t      begin: \"'\",\n\t      end: \"'\"\n\t    },\n\t    {\n\t      // numeric literal\n\t      className: 'number',\n\t      begin: '#[0-9a-fA-F_]+|\\\\$[01_]+|[0-9_]+(?:\\\\.[0-9_](?:[eE][+-]?\\\\d+)?)?[kMGTPmunpf]?',\n\t      relevance: 0\n\t    }\n\t  ];\n\t  SUBST.contains = EXPRESSIONS;\n\n\t  return {\n\t    name: 'Ceylon',\n\t    keywords: {\n\t      keyword: KEYWORDS.concat(DECLARATION_MODIFIERS),\n\t      meta: DOCUMENTATION\n\t    },\n\t    illegal: '\\\\$[^01]|#[^0-9a-fA-F]',\n\t    contains: [\n\t      hljs.C_LINE_COMMENT_MODE,\n\t      hljs.COMMENT('/\\\\*', '\\\\*/', { contains: [ 'self' ] }),\n\t      {\n\t        // compiler annotation\n\t        className: 'meta',\n\t        begin: '@[a-z]\\\\w*(?::\"[^\"]*\")?'\n\t      }\n\t    ].concat(EXPRESSIONS)\n\t  };\n\t}\n\n\tceylon_1 = ceylon;\n\treturn ceylon_1;\n}\n\nexport { requireCeylon as __require };",
+      "start": 1699633500744,
+      "end": 1699633500745,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "file": null,
+        "sources": [
+          null
+        ],
+        "sourcesContent": [
+          null
+        ],
+        "names": [],
+        "mappings": "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"
+      }
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699633500745,
+      "end": 1699633500745,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699633500745,
+      "end": 1699633500745,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699633500745,
+      "end": 1699633500745,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699633500745,
+      "end": 1699633500745,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699633500745,
+      "end": 1699633500745,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699633500745,
+      "end": 1699633500745,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699633500745,
+      "end": 1699633500745,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699633500745,
+      "end": 1699633500745,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699633500745,
+      "end": 1699633500745,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699633500745,
+      "end": 1699633500745,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699633500745,
+      "end": 1699633500745,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699633500745,
+      "end": 1699633500745,
+      "order": "normal"
+    }
+  ]
+}
