@@ -1,2 +1,2 @@
 export const TITLE = 'aecode'
-export const COMPANY = '奥恩毕设'
+export const COMPANY = '卓越毕设'

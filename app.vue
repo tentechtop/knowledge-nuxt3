@@ -1,24 +1,15 @@
-<script setup lang="ts">
-import { COMPANY } from '~~/enums/appEnum'
-
-const { cssVar } = useCss()
-useHead({
-  title: COMPANY,
-  link: [
-    {
-      rel: 'icon', type: 'image/png', href: '/logo.png',
-    },
-  ],
-})
-</script>
-
 <template>
   <div :style="cssVar">
-    <NuxtLayout>
+ 
       <NuxtPage />
-    </NuxtLayout>
+
   </div>
 </template>
+
+<script setup lang="ts">
+import { COMPANY } from '~~/enums/appEnum'
+const { cssVar } = useCss()
+</script>
 
 <style setup>
 html, body , #__nuxt{

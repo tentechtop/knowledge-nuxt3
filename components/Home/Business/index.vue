@@ -39,7 +39,7 @@ const cardList = [
 </script>
 
 <template>
-  <Mask :event-key="MITT_KEY_ENUM.CHANGE_TO_BUSINESS" />
+<!--  <Mask :event-key="MITT_KEY_ENUM.CHANGE_TO_BUSINESS" />-->
   <div ref="rootRef" class="business full grid grid-cols-12 items-center justify-center ">
     <div class="col-span-10 col-start-2 md:(col-span-8 col-start-3) grid grid-cols-12 gap-x-6">
       <Card

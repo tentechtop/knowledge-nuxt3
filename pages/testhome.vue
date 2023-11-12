@@ -1,6 +1,16 @@
 <template>
-  <div></div>
-
+  <div class="h-screen overflow-hidden">
+    <SwiperCpn
+        class="swiper !h-screen" :modules="modules"
+        direction="vertical" :slides-per-view="1" :space-between="0"
+        :mousewheel="true" :pagination="{ clickable: true }"
+        @swiper="onSwiper" @active-index-change="activeIndexChange"
+    >
+      <SwiperSlide v-for="item in headerList" :key="item.href">
+        <component :is="item.component" />
+      </SwiperSlide>
+    </SwiperCpn>
+  </div>
 </template>
 
 

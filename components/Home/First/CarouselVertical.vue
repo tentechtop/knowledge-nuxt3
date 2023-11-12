@@ -26,7 +26,7 @@ defineExpose({ restart })
 </script>
 
 <template>
-  <Mask v-if="props.mask" />
+<!--  <Mask v-if="props.mask" />-->
   <div class="full CarouselOne relative grid grid-cols-12" :style="{ backgroundImage: `url(${props.backgroundUrl})` }">
     <div col-span-1 md:col-span-3 />
     <div text-center col-span-10 md:col-span-6 flex flex-col items-center justify-center text-white z-3>

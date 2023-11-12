@@ -5,12 +5,15 @@ export default defineNuxtConfig({
     imports: {
         autoImport: true
     },
+    // @ts-ignore
+
     css: [
         "@/assets/main.css",
         "@/assets/iconfont/iconfont.css",
         '@unocss/reset/tailwind.css',
         '@/styles/index.scss',
         '@/styles/anime.css',
+        'animate.css/animate.css',
     ],
     // @ts-ignore
     colorMode: {
@@ -22,7 +25,7 @@ export default defineNuxtConfig({
     },
     app: {
         head: {
-            title: '奥恩毕设 aecode-官方网站',
+            title: '卓越毕设 AEcode-官方网站',
             htmlAttrs: {},
             meta: [
                 {charset: 'utf-8'},
