@@ -1,12 +1,15 @@
 <template>
   <div :style="cssVar">
- 
+
+    <NuxtLayout>
       <NuxtPage />
+    </NuxtLayout>
 
   </div>
 </template>
 
 <script setup lang="ts">
+import '@/styles/index.less'
 import { COMPANY } from '~~/enums/appEnum'
 const { cssVar } = useCss()
 </script>

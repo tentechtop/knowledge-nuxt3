@@ -11,7 +11,7 @@ export default defineNuxtConfig({
         "@/assets/main.css",
         "@/assets/iconfont/iconfont.css",
         '@unocss/reset/tailwind.css',
-        '@/styles/index.scss',
+        '@/styles/index.less',
         '@/styles/anime.css',
         'animate.css/animate.css',
     ],
@@ -42,7 +42,11 @@ export default defineNuxtConfig({
             script: []
         },
         // automatic transition，转场动画
-        pageTransition: { name: 'page', mode: 'out-in' }
+        pageTransition: {
+            name: 'scale',
+            appear: true,
+            mode: 'out-in'
+        }
     },
     build: {},
     nitro: {

@@ -1,0 +1,249 @@
+{
+  "resolvedId": "virtual:nuxt:F:/workSpace2024/knowledge-nuxt3/.nuxt/unocss.mjs",
+  "transforms": [
+    {
+      "name": "virtual",
+      "result": "import 'uno.css'\nimport { defineNuxtPlugin } from '#imports'; export default defineNuxtPlugin(() => {})",
+      "start": 1699961608086,
+      "end": 1699961608086,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699961608087,
+      "end": 1699961608087,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699961608088,
+      "end": 1699961608088,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699961608088,
+      "end": 1699961608089,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699961608090,
+      "end": 1699961608090,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699961608090,
+      "end": 1699961608090,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699961608090,
+      "end": 1699961608091,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699961608091,
+      "end": 1699961608091,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699961608091,
+      "end": 1699961608091,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699961608092,
+      "end": 1699961608092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699961608092,
+      "end": 1699961608092,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699961608093,
+      "end": 1699961608093,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699961608093,
+      "end": 1699961608093,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699961608095,
+      "end": 1699961608095,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699961608095,
+      "end": 1699961608095,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699961608095,
+      "end": 1699961608095,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699961608095,
+      "end": 1699961608095,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699961608096,
+      "end": 1699961608096,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699961608096,
+      "end": 1699961608096,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699961608096,
+      "end": 1699961608096,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699961608096,
+      "end": 1699961608096,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699961608097,
+      "end": 1699961608097,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699961608099,
+      "end": 1699961608099,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699961608099,
+      "end": 1699961608099,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699961608099,
+      "end": 1699961608099,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699961608099,
+      "end": 1699961608099,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699961608100,
+      "end": 1699961608100,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699961608100,
+      "end": 1699961608100,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699961608100,
+      "end": 1699961608100,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "result": "import { defineNuxtPlugin } from '#app/nuxt';\nimport 'uno.css'\nexport default defineNuxtPlugin(() => {})",
+      "start": 1699961608100,
+      "end": 1699961608102,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";AAAA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC6B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC"
+      }
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699961608103,
+      "end": 1699961608103,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699961608104,
+      "end": 1699961608104,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699961608104,
+      "end": 1699961608104,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699961608104,
+      "end": 1699961608104,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699961608104,
+      "end": 1699961608104,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699961608104,
+      "end": 1699961608104,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699961608105,
+      "end": 1699961608105,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699961608111,
+      "end": 1699961608111,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699961608112,
+      "end": 1699961608112,
+      "order": "normal"
+    }
+  ]
+}

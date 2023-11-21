@@ -1,62 +1,41 @@
 <template>
-  <div></div>
+  <div class="container">
 
+    <h1>111</h1>
+
+
+    <h1>111</h1>
+
+    <h1>中</h1>
+
+  </div>
 </template>
 
 
 <script lang="ts" setup>
-import type Swiper from 'swiper'
-import { Mousewheel, Pagination } from 'swiper'
-import { Swiper as SwiperCpn, SwiperSlide } from 'swiper/vue'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import {COMPANY} from "~/enums/appEnum";
-const modules = ref([Pagination, Mousewheel])
-const swiperInstance = ref<Swiper | null>(null)
-const { $on, MITT_KEY } = useMitt()
-const { findIndexByHref, changeCurrentIndexBySwiper, headerList } = useHeader()
-
-useHead({
-  title: "卓越毕设 AECode - 官方网站",
-  link: [
-    {
-      rel: 'icon', type: 'image/png', href: '/logo.png',
-    },
-  ],
-  meta: [
-    {name: 'keywords', content: '卓越毕设' },
-    {name: 'description', content: '卓越毕设' }
-  ],
-})
-
-
-const onSwiper = (swiper: Swiper) => {
-  swiperInstance.value = swiper
-}
-const activeIndexChange = (swiper: Swiper) => {
-  changeCurrentIndexBySwiper(swiper.activeIndex)
-}
-$on(MITT_KEY.HEADER_SELECT_EVENT, (e: any) => {
-  const index: number = findIndexByHref(e)
-  if (index !== -1)
-    swiperInstance.value?.slideTo(index, 0)
-})
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+const show = ref(true)
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/swiper/variables.scss';
-@import '@/styles/swiper/mixins.scss';
-@import '@/styles/swiper/index.scss';
-
-.swiper {
-  @include swiper-wrapper();
+.container{
+  height: 300vh;
+  width: 100vw;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100px;
+}
+.container {
+  overflow-y: hidden;
+  scrollbar-width: none; /* firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.slide {
-  @include swiper-slide();
-}
-
-:deep(.swiper-wrapper){
-  transition: all .5s !important;
+.container::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
 }
 </style>

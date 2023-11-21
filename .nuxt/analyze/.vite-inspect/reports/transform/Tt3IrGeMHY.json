@@ -1,0 +1,240 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/swiper/modules/navigation/navigation.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import createElementIfNotDefined from '../../shared/create-element-if-not-defined.js';\nexport default function Navigation({\n  swiper,\n  extendParams,\n  on,\n  emit\n}) {\n  extendParams({\n    navigation: {\n      nextEl: null,\n      prevEl: null,\n      hideOnClick: false,\n      disabledClass: 'swiper-button-disabled',\n      hiddenClass: 'swiper-button-hidden',\n      lockClass: 'swiper-button-lock',\n      navigationDisabledClass: 'swiper-navigation-disabled'\n    }\n  });\n  swiper.navigation = {\n    nextEl: null,\n    prevEl: null\n  };\n  const makeElementsArray = el => {\n    if (!Array.isArray(el)) el = [el].filter(e => !!e);\n    return el;\n  };\n  function getEl(el) {\n    let res;\n    if (el && typeof el === 'string' && swiper.isElement) {\n      res = swiper.el.shadowRoot.querySelector(el);\n      if (res) return res;\n    }\n    if (el) {\n      if (typeof el === 'string') res = [...document.querySelectorAll(el)];\n      if (swiper.params.uniqueNavElements && typeof el === 'string' && res.length > 1 && swiper.el.querySelectorAll(el).length === 1) {\n        res = swiper.el.querySelector(el);\n      }\n    }\n    if (el && !res) return el;\n    // if (Array.isArray(res) && res.length === 1) res = res[0];\n    return res;\n  }\n  function toggleEl(el, disabled) {\n    const params = swiper.params.navigation;\n    el = makeElementsArray(el);\n    el.forEach(subEl => {\n      if (subEl) {\n        subEl.classList[disabled ? 'add' : 'remove'](...params.disabledClass.split(' '));\n        if (subEl.tagName === 'BUTTON') subEl.disabled = disabled;\n        if (swiper.params.watchOverflow && swiper.enabled) {\n          subEl.classList[swiper.isLocked ? 'add' : 'remove'](params.lockClass);\n        }\n      }\n    });\n  }\n  function update() {\n    // Update Navigation Buttons\n    const {\n      nextEl,\n      prevEl\n    } = swiper.navigation;\n    if (swiper.params.loop) {\n      toggleEl(prevEl, false);\n      toggleEl(nextEl, false);\n      return;\n    }\n    toggleEl(prevEl, swiper.isBeginning && !swiper.params.rewind);\n    toggleEl(nextEl, swiper.isEnd && !swiper.params.rewind);\n  }\n  function onPrevClick(e) {\n    e.preventDefault();\n    if (swiper.isBeginning && !swiper.params.loop && !swiper.params.rewind) return;\n    swiper.slidePrev();\n    emit('navigationPrev');\n  }\n  function onNextClick(e) {\n    e.preventDefault();\n    if (swiper.isEnd && !swiper.params.loop && !swiper.params.rewind) return;\n    swiper.slideNext();\n    emit('navigationNext');\n  }\n  function init() {\n    const params = swiper.params.navigation;\n    swiper.params.navigation = createElementIfNotDefined(swiper, swiper.originalParams.navigation, swiper.params.navigation, {\n      nextEl: 'swiper-button-next',\n      prevEl: 'swiper-button-prev'\n    });\n    if (!(params.nextEl || params.prevEl)) return;\n    let nextEl = getEl(params.nextEl);\n    let prevEl = getEl(params.prevEl);\n    Object.assign(swiper.navigation, {\n      nextEl,\n      prevEl\n    });\n    nextEl = makeElementsArray(nextEl);\n    prevEl = makeElementsArray(prevEl);\n    const initButton = (el, dir) => {\n      if (el) {\n        el.addEventListener('click', dir === 'next' ? onNextClick : onPrevClick);\n      }\n      if (!swiper.enabled && el) {\n        el.classList.add(...params.lockClass.split(' '));\n      }\n    };\n    nextEl.forEach(el => initButton(el, 'next'));\n    prevEl.forEach(el => initButton(el, 'prev'));\n  }\n  function destroy() {\n    let {\n      nextEl,\n      prevEl\n    } = swiper.navigation;\n    nextEl = makeElementsArray(nextEl);\n    prevEl = makeElementsArray(prevEl);\n    const destroyButton = (el, dir) => {\n      el.removeEventListener('click', dir === 'next' ? onNextClick : onPrevClick);\n      el.classList.remove(...swiper.params.navigation.disabledClass.split(' '));\n    };\n    nextEl.forEach(el => destroyButton(el, 'next'));\n    prevEl.forEach(el => destroyButton(el, 'prev'));\n  }\n  on('init', () => {\n    if (swiper.params.navigation.enabled === false) {\n      // eslint-disable-next-line\n      disable();\n    } else {\n      init();\n      update();\n    }\n  });\n  on('toEdge fromEdge lock unlock', () => {\n    update();\n  });\n  on('destroy', () => {\n    destroy();\n  });\n  on('enable disable', () => {\n    let {\n      nextEl,\n      prevEl\n    } = swiper.navigation;\n    nextEl = makeElementsArray(nextEl);\n    prevEl = makeElementsArray(prevEl);\n    [...nextEl, ...prevEl].filter(el => !!el).forEach(el => el.classList[swiper.enabled ? 'remove' : 'add'](swiper.params.navigation.lockClass));\n  });\n  on('click', (_s, e) => {\n    let {\n      nextEl,\n      prevEl\n    } = swiper.navigation;\n    nextEl = makeElementsArray(nextEl);\n    prevEl = makeElementsArray(prevEl);\n    const targetEl = e.target;\n    if (swiper.params.navigation.hideOnClick && !prevEl.includes(targetEl) && !nextEl.includes(targetEl)) {\n      if (swiper.pagination && swiper.params.pagination && swiper.params.pagination.clickable && (swiper.pagination.el === targetEl || swiper.pagination.el.contains(targetEl))) return;\n      let isHidden;\n      if (nextEl.length) {\n        isHidden = nextEl[0].classList.contains(swiper.params.navigation.hiddenClass);\n      } else if (prevEl.length) {\n        isHidden = prevEl[0].classList.contains(swiper.params.navigation.hiddenClass);\n      }\n      if (isHidden === true) {\n        emit('navigationShow');\n      } else {\n        emit('navigationHide');\n      }\n      [...nextEl, ...prevEl].filter(el => !!el).forEach(el => el.classList.toggle(swiper.params.navigation.hiddenClass));\n    }\n  });\n  const enable = () => {\n    swiper.el.classList.remove(...swiper.params.navigation.navigationDisabledClass.split(' '));\n    init();\n    update();\n  };\n  const disable = () => {\n    swiper.el.classList.add(...swiper.params.navigation.navigationDisabledClass.split(' '));\n    destroy();\n  };\n  Object.assign(swiper.navigation, {\n    enable,\n    disable,\n    update,\n    init,\n    destroy\n  });\n}",
+      "start": 1699961617271,
+      "end": 1699961617438,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699961617438,
+      "end": 1699961617438,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699961617439,
+      "end": 1699961617439,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699961617439,
+      "end": 1699961617439,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699961617439,
+      "end": 1699961617439,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699961617439,
+      "end": 1699961617439,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699961617439,
+      "end": 1699961617439,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699961617439,
+      "end": 1699961617439,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699961617439,
+      "end": 1699961617439,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699961617439,
+      "end": 1699961617439,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699961617439,
+      "end": 1699961617439,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699961617439,
+      "end": 1699961617439,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699961617439,
+      "end": 1699961617439,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699961617439,
+      "end": 1699961617439,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699961617440,
+      "end": 1699961617440,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699961617441,
+      "end": 1699961617441,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699961617441,
+      "end": 1699961617441,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699961617441,
+      "end": 1699961617441,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699961617441,
+      "end": 1699961617441,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699961617441,
+      "end": 1699961617441,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699961617441,
+      "end": 1699961617441,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699961617441,
+      "end": 1699961617441,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699961617441,
+      "end": 1699961617441,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699961617441,
+      "end": 1699961617441,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699961617441,
+      "end": 1699961617441,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699961617441,
+      "end": 1699961617441,
+      "order": "normal"
+    }
+  ]
+}

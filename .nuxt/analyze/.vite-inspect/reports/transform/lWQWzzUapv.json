@@ -1,0 +1,240 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/node_modules/swiper/core/core.js",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "/* eslint no-param-reassign: \"off\" */\nimport { getDocument } from 'ssr-window';\nimport { extend, deleteProps, createElement, elementChildren, elementStyle, elementIndex } from '../shared/utils.js';\nimport { getSupport } from '../shared/get-support.js';\nimport { getDevice } from '../shared/get-device.js';\nimport { getBrowser } from '../shared/get-browser.js';\nimport Resize from './modules/resize/resize.js';\nimport Observer from './modules/observer/observer.js';\nimport eventsEmitter from './events-emitter.js';\nimport update from './update/index.js';\nimport translate from './translate/index.js';\nimport transition from './transition/index.js';\nimport slide from './slide/index.js';\nimport loop from './loop/index.js';\nimport grabCursor from './grab-cursor/index.js';\nimport events from './events/index.js';\nimport breakpoints from './breakpoints/index.js';\nimport classes from './classes/index.js';\nimport checkOverflow from './check-overflow/index.js';\nimport defaults from './defaults.js';\nimport moduleExtendParams from './moduleExtendParams.js';\nimport { processLazyPreloader, preload } from '../shared/process-lazy-preloader.js';\nconst prototypes = {\n  eventsEmitter,\n  update,\n  translate,\n  transition,\n  slide,\n  loop,\n  grabCursor,\n  events,\n  breakpoints,\n  checkOverflow,\n  classes\n};\nconst extendedDefaults = {};\nclass Swiper {\n  constructor(...args) {\n    let el;\n    let params;\n    if (args.length === 1 && args[0].constructor && Object.prototype.toString.call(args[0]).slice(8, -1) === 'Object') {\n      params = args[0];\n    } else {\n      [el, params] = args;\n    }\n    if (!params) params = {};\n    params = extend({}, params);\n    if (el && !params.el) params.el = el;\n    const document = getDocument();\n    if (params.el && typeof params.el === 'string' && document.querySelectorAll(params.el).length > 1) {\n      const swipers = [];\n      document.querySelectorAll(params.el).forEach(containerEl => {\n        const newParams = extend({}, params, {\n          el: containerEl\n        });\n        swipers.push(new Swiper(newParams));\n      });\n      // eslint-disable-next-line no-constructor-return\n      return swipers;\n    }\n\n    // Swiper Instance\n    const swiper = this;\n    swiper.__swiper__ = true;\n    swiper.support = getSupport();\n    swiper.device = getDevice({\n      userAgent: params.userAgent\n    });\n    swiper.browser = getBrowser();\n    swiper.eventsListeners = {};\n    swiper.eventsAnyListeners = [];\n    swiper.modules = [...swiper.__modules__];\n    if (params.modules && Array.isArray(params.modules)) {\n      swiper.modules.push(...params.modules);\n    }\n    const allModulesParams = {};\n    swiper.modules.forEach(mod => {\n      mod({\n        params,\n        swiper,\n        extendParams: moduleExtendParams(params, allModulesParams),\n        on: swiper.on.bind(swiper),\n        once: swiper.once.bind(swiper),\n        off: swiper.off.bind(swiper),\n        emit: swiper.emit.bind(swiper)\n      });\n    });\n\n    // Extend defaults with modules params\n    const swiperParams = extend({}, defaults, allModulesParams);\n\n    // Extend defaults with passed params\n    swiper.params = extend({}, swiperParams, extendedDefaults, params);\n    swiper.originalParams = extend({}, swiper.params);\n    swiper.passedParams = extend({}, params);\n\n    // add event listeners\n    if (swiper.params && swiper.params.on) {\n      Object.keys(swiper.params.on).forEach(eventName => {\n        swiper.on(eventName, swiper.params.on[eventName]);\n      });\n    }\n    if (swiper.params && swiper.params.onAny) {\n      swiper.onAny(swiper.params.onAny);\n    }\n\n    // Extend Swiper\n    Object.assign(swiper, {\n      enabled: swiper.params.enabled,\n      el,\n      // Classes\n      classNames: [],\n      // Slides\n      slides: [],\n      slidesGrid: [],\n      snapGrid: [],\n      slidesSizesGrid: [],\n      // isDirection\n      isHorizontal() {\n        return swiper.params.direction === 'horizontal';\n      },\n      isVertical() {\n        return swiper.params.direction === 'vertical';\n      },\n      // Indexes\n      activeIndex: 0,\n      realIndex: 0,\n      //\n      isBeginning: true,\n      isEnd: false,\n      // Props\n      translate: 0,\n      previousTranslate: 0,\n      progress: 0,\n      velocity: 0,\n      animating: false,\n      cssOverflowAdjustment() {\n        // Returns 0 unless `translate` is > 2**23\n        // Should be subtracted from css values to prevent overflow\n        return Math.trunc(this.translate / 2 ** 23) * 2 ** 23;\n      },\n      // Locks\n      allowSlideNext: swiper.params.allowSlideNext,\n      allowSlidePrev: swiper.params.allowSlidePrev,\n      // Touch Events\n      touchEventsData: {\n        isTouched: undefined,\n        isMoved: undefined,\n        allowTouchCallbacks: undefined,\n        touchStartTime: undefined,\n        isScrolling: undefined,\n        currentTranslate: undefined,\n        startTranslate: undefined,\n        allowThresholdMove: undefined,\n        // Form elements to match\n        focusableElements: swiper.params.focusableElements,\n        // Last click time\n        lastClickTime: 0,\n        clickTimeout: undefined,\n        // Velocities\n        velocities: [],\n        allowMomentumBounce: undefined,\n        startMoving: undefined,\n        evCache: []\n      },\n      // Clicks\n      allowClick: true,\n      // Touches\n      allowTouchMove: swiper.params.allowTouchMove,\n      touches: {\n        startX: 0,\n        startY: 0,\n        currentX: 0,\n        currentY: 0,\n        diff: 0\n      },\n      // Images\n      imagesToLoad: [],\n      imagesLoaded: 0\n    });\n    swiper.emit('_swiper');\n\n    // Init\n    if (swiper.params.init) {\n      swiper.init();\n    }\n\n    // Return app instance\n    // eslint-disable-next-line no-constructor-return\n    return swiper;\n  }\n  getSlideIndex(slideEl) {\n    const {\n      slidesEl,\n      params\n    } = this;\n    const slides = elementChildren(slidesEl, `.${params.slideClass}, swiper-slide`);\n    const firstSlideIndex = elementIndex(slides[0]);\n    return elementIndex(slideEl) - firstSlideIndex;\n  }\n  getSlideIndexByData(index) {\n    return this.getSlideIndex(this.slides.filter(slideEl => slideEl.getAttribute('data-swiper-slide-index') * 1 === index)[0]);\n  }\n  recalcSlides() {\n    const swiper = this;\n    const {\n      slidesEl,\n      params\n    } = swiper;\n    swiper.slides = elementChildren(slidesEl, `.${params.slideClass}, swiper-slide`);\n  }\n  enable() {\n    const swiper = this;\n    if (swiper.enabled) return;\n    swiper.enabled = true;\n    if (swiper.params.grabCursor) {\n      swiper.setGrabCursor();\n    }\n    swiper.emit('enable');\n  }\n  disable() {\n    const swiper = this;\n    if (!swiper.enabled) return;\n    swiper.enabled = false;\n    if (swiper.params.grabCursor) {\n      swiper.unsetGrabCursor();\n    }\n    swiper.emit('disable');\n  }\n  setProgress(progress, speed) {\n    const swiper = this;\n    progress = Math.min(Math.max(progress, 0), 1);\n    const min = swiper.minTranslate();\n    const max = swiper.maxTranslate();\n    const current = (max - min) * progress + min;\n    swiper.translateTo(current, typeof speed === 'undefined' ? 0 : speed);\n    swiper.updateActiveIndex();\n    swiper.updateSlidesClasses();\n  }\n  emitContainerClasses() {\n    const swiper = this;\n    if (!swiper.params._emitClasses || !swiper.el) return;\n    const cls = swiper.el.className.split(' ').filter(className => {\n      return className.indexOf('swiper') === 0 || className.indexOf(swiper.params.containerModifierClass) === 0;\n    });\n    swiper.emit('_containerClasses', cls.join(' '));\n  }\n  getSlideClasses(slideEl) {\n    const swiper = this;\n    if (swiper.destroyed) return '';\n    return slideEl.className.split(' ').filter(className => {\n      return className.indexOf('swiper-slide') === 0 || className.indexOf(swiper.params.slideClass) === 0;\n    }).join(' ');\n  }\n  emitSlidesClasses() {\n    const swiper = this;\n    if (!swiper.params._emitClasses || !swiper.el) return;\n    const updates = [];\n    swiper.slides.forEach(slideEl => {\n      const classNames = swiper.getSlideClasses(slideEl);\n      updates.push({\n        slideEl,\n        classNames\n      });\n      swiper.emit('_slideClass', slideEl, classNames);\n    });\n    swiper.emit('_slideClasses', updates);\n  }\n  slidesPerViewDynamic(view = 'current', exact = false) {\n    const swiper = this;\n    const {\n      params,\n      slides,\n      slidesGrid,\n      slidesSizesGrid,\n      size: swiperSize,\n      activeIndex\n    } = swiper;\n    let spv = 1;\n    if (params.centeredSlides) {\n      let slideSize = slides[activeIndex] ? slides[activeIndex].swiperSlideSize : 0;\n      let breakLoop;\n      for (let i = activeIndex + 1; i < slides.length; i += 1) {\n        if (slides[i] && !breakLoop) {\n          slideSize += slides[i].swiperSlideSize;\n          spv += 1;\n          if (slideSize > swiperSize) breakLoop = true;\n        }\n      }\n      for (let i = activeIndex - 1; i >= 0; i -= 1) {\n        if (slides[i] && !breakLoop) {\n          slideSize += slides[i].swiperSlideSize;\n          spv += 1;\n          if (slideSize > swiperSize) breakLoop = true;\n        }\n      }\n    } else {\n      // eslint-disable-next-line\n      if (view === 'current') {\n        for (let i = activeIndex + 1; i < slides.length; i += 1) {\n          const slideInView = exact ? slidesGrid[i] + slidesSizesGrid[i] - slidesGrid[activeIndex] < swiperSize : slidesGrid[i] - slidesGrid[activeIndex] < swiperSize;\n          if (slideInView) {\n            spv += 1;\n          }\n        }\n      } else {\n        // previous\n        for (let i = activeIndex - 1; i >= 0; i -= 1) {\n          const slideInView = slidesGrid[activeIndex] - slidesGrid[i] < swiperSize;\n          if (slideInView) {\n            spv += 1;\n          }\n        }\n      }\n    }\n    return spv;\n  }\n  update() {\n    const swiper = this;\n    if (!swiper || swiper.destroyed) return;\n    const {\n      snapGrid,\n      params\n    } = swiper;\n    // Breakpoints\n    if (params.breakpoints) {\n      swiper.setBreakpoint();\n    }\n    [...swiper.el.querySelectorAll('[loading=\"lazy\"]')].forEach(imageEl => {\n      if (imageEl.complete) {\n        processLazyPreloader(swiper, imageEl);\n      }\n    });\n    swiper.updateSize();\n    swiper.updateSlides();\n    swiper.updateProgress();\n    swiper.updateSlidesClasses();\n    function setTranslate() {\n      const translateValue = swiper.rtlTranslate ? swiper.translate * -1 : swiper.translate;\n      const newTranslate = Math.min(Math.max(translateValue, swiper.maxTranslate()), swiper.minTranslate());\n      swiper.setTranslate(newTranslate);\n      swiper.updateActiveIndex();\n      swiper.updateSlidesClasses();\n    }\n    let translated;\n    if (params.freeMode && params.freeMode.enabled && !params.cssMode) {\n      setTranslate();\n      if (params.autoHeight) {\n        swiper.updateAutoHeight();\n      }\n    } else {\n      if ((params.slidesPerView === 'auto' || params.slidesPerView > 1) && swiper.isEnd && !params.centeredSlides) {\n        const slides = swiper.virtual && params.virtual.enabled ? swiper.virtual.slides : swiper.slides;\n        translated = swiper.slideTo(slides.length - 1, 0, false, true);\n      } else {\n        translated = swiper.slideTo(swiper.activeIndex, 0, false, true);\n      }\n      if (!translated) {\n        setTranslate();\n      }\n    }\n    if (params.watchOverflow && snapGrid !== swiper.snapGrid) {\n      swiper.checkOverflow();\n    }\n    swiper.emit('update');\n  }\n  changeDirection(newDirection, needUpdate = true) {\n    const swiper = this;\n    const currentDirection = swiper.params.direction;\n    if (!newDirection) {\n      // eslint-disable-next-line\n      newDirection = currentDirection === 'horizontal' ? 'vertical' : 'horizontal';\n    }\n    if (newDirection === currentDirection || newDirection !== 'horizontal' && newDirection !== 'vertical') {\n      return swiper;\n    }\n    swiper.el.classList.remove(`${swiper.params.containerModifierClass}${currentDirection}`);\n    swiper.el.classList.add(`${swiper.params.containerModifierClass}${newDirection}`);\n    swiper.emitContainerClasses();\n    swiper.params.direction = newDirection;\n    swiper.slides.forEach(slideEl => {\n      if (newDirection === 'vertical') {\n        slideEl.style.width = '';\n      } else {\n        slideEl.style.height = '';\n      }\n    });\n    swiper.emit('changeDirection');\n    if (needUpdate) swiper.update();\n    return swiper;\n  }\n  changeLanguageDirection(direction) {\n    const swiper = this;\n    if (swiper.rtl && direction === 'rtl' || !swiper.rtl && direction === 'ltr') return;\n    swiper.rtl = direction === 'rtl';\n    swiper.rtlTranslate = swiper.params.direction === 'horizontal' && swiper.rtl;\n    if (swiper.rtl) {\n      swiper.el.classList.add(`${swiper.params.containerModifierClass}rtl`);\n      swiper.el.dir = 'rtl';\n    } else {\n      swiper.el.classList.remove(`${swiper.params.containerModifierClass}rtl`);\n      swiper.el.dir = 'ltr';\n    }\n    swiper.update();\n  }\n  mount(element) {\n    const swiper = this;\n    if (swiper.mounted) return true;\n\n    // Find el\n    let el = element || swiper.params.el;\n    if (typeof el === 'string') {\n      el = document.querySelector(el);\n    }\n    if (!el) {\n      return false;\n    }\n    el.swiper = swiper;\n    if (el.shadowEl) {\n      swiper.isElement = true;\n    }\n    const getWrapperSelector = () => {\n      return `.${(swiper.params.wrapperClass || '').trim().split(' ').join('.')}`;\n    };\n    const getWrapper = () => {\n      if (el && el.shadowRoot && el.shadowRoot.querySelector) {\n        const res = el.shadowRoot.querySelector(getWrapperSelector());\n        // Children needs to return slot items\n        return res;\n      }\n      return elementChildren(el, getWrapperSelector())[0];\n    };\n    // Find Wrapper\n    let wrapperEl = getWrapper();\n    if (!wrapperEl && swiper.params.createElements) {\n      wrapperEl = createElement('div', swiper.params.wrapperClass);\n      el.append(wrapperEl);\n      elementChildren(el, `.${swiper.params.slideClass}`).forEach(slideEl => {\n        wrapperEl.append(slideEl);\n      });\n    }\n    Object.assign(swiper, {\n      el,\n      wrapperEl,\n      slidesEl: swiper.isElement ? el : wrapperEl,\n      mounted: true,\n      // RTL\n      rtl: el.dir.toLowerCase() === 'rtl' || elementStyle(el, 'direction') === 'rtl',\n      rtlTranslate: swiper.params.direction === 'horizontal' && (el.dir.toLowerCase() === 'rtl' || elementStyle(el, 'direction') === 'rtl'),\n      wrongRTL: elementStyle(wrapperEl, 'display') === '-webkit-box'\n    });\n    return true;\n  }\n  init(el) {\n    const swiper = this;\n    if (swiper.initialized) return swiper;\n    const mounted = swiper.mount(el);\n    if (mounted === false) return swiper;\n    swiper.emit('beforeInit');\n\n    // Set breakpoint\n    if (swiper.params.breakpoints) {\n      swiper.setBreakpoint();\n    }\n\n    // Add Classes\n    swiper.addClasses();\n\n    // Update size\n    swiper.updateSize();\n\n    // Update slides\n    swiper.updateSlides();\n    if (swiper.params.watchOverflow) {\n      swiper.checkOverflow();\n    }\n\n    // Set Grab Cursor\n    if (swiper.params.grabCursor && swiper.enabled) {\n      swiper.setGrabCursor();\n    }\n\n    // Slide To Initial Slide\n    if (swiper.params.loop && swiper.virtual && swiper.params.virtual.enabled) {\n      swiper.slideTo(swiper.params.initialSlide + swiper.virtual.slidesBefore, 0, swiper.params.runCallbacksOnInit, false, true);\n    } else {\n      swiper.slideTo(swiper.params.initialSlide, 0, swiper.params.runCallbacksOnInit, false, true);\n    }\n\n    // Create loop\n    if (swiper.params.loop) {\n      swiper.loopCreate();\n    }\n\n    // Attach events\n    swiper.attachEvents();\n    [...swiper.el.querySelectorAll('[loading=\"lazy\"]')].forEach(imageEl => {\n      if (imageEl.complete) {\n        processLazyPreloader(swiper, imageEl);\n      } else {\n        imageEl.addEventListener('load', e => {\n          processLazyPreloader(swiper, e.target);\n        });\n      }\n    });\n    preload(swiper);\n\n    // Init Flag\n    swiper.initialized = true;\n    preload(swiper);\n\n    // Emit\n    swiper.emit('init');\n    swiper.emit('afterInit');\n    return swiper;\n  }\n  destroy(deleteInstance = true, cleanStyles = true) {\n    const swiper = this;\n    const {\n      params,\n      el,\n      wrapperEl,\n      slides\n    } = swiper;\n    if (typeof swiper.params === 'undefined' || swiper.destroyed) {\n      return null;\n    }\n    swiper.emit('beforeDestroy');\n\n    // Init Flag\n    swiper.initialized = false;\n\n    // Detach events\n    swiper.detachEvents();\n\n    // Destroy loop\n    if (params.loop) {\n      swiper.loopDestroy();\n    }\n\n    // Cleanup styles\n    if (cleanStyles) {\n      swiper.removeClasses();\n      el.removeAttribute('style');\n      wrapperEl.removeAttribute('style');\n      if (slides && slides.length) {\n        slides.forEach(slideEl => {\n          slideEl.classList.remove(params.slideVisibleClass, params.slideActiveClass, params.slideNextClass, params.slidePrevClass);\n          slideEl.removeAttribute('style');\n          slideEl.removeAttribute('data-swiper-slide-index');\n        });\n      }\n    }\n    swiper.emit('destroy');\n\n    // Detach emitter events\n    Object.keys(swiper.eventsListeners).forEach(eventName => {\n      swiper.off(eventName);\n    });\n    if (deleteInstance !== false) {\n      swiper.el.swiper = null;\n      deleteProps(swiper);\n    }\n    swiper.destroyed = true;\n    return null;\n  }\n  static extendDefaults(newDefaults) {\n    extend(extendedDefaults, newDefaults);\n  }\n  static get extendedDefaults() {\n    return extendedDefaults;\n  }\n  static get defaults() {\n    return defaults;\n  }\n  static installModule(mod) {\n    if (!Swiper.prototype.__modules__) Swiper.prototype.__modules__ = [];\n    const modules = Swiper.prototype.__modules__;\n    if (typeof mod === 'function' && modules.indexOf(mod) < 0) {\n      modules.push(mod);\n    }\n  }\n  static use(module) {\n    if (Array.isArray(module)) {\n      module.forEach(m => Swiper.installModule(m));\n      return Swiper;\n    }\n    Swiper.installModule(module);\n    return Swiper;\n  }\n}\nObject.keys(prototypes).forEach(prototypeGroup => {\n  Object.keys(prototypes[prototypeGroup]).forEach(protoMethod => {\n    Swiper.prototype[protoMethod] = prototypes[prototypeGroup][protoMethod];\n  });\n});\nSwiper.use([Resize, Observer]);\nexport default Swiper;",
+      "start": 1699961617239,
+      "end": 1699961617385,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699961617386,
+      "end": 1699961617386,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699961617386,
+      "end": 1699961617386,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699961617386,
+      "end": 1699961617386,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699961617386,
+      "end": 1699961617386,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699961617386,
+      "end": 1699961617386,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699961617386,
+      "end": 1699961617386,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699961617386,
+      "end": 1699961617386,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699961617386,
+      "end": 1699961617386,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699961617387,
+      "end": 1699961617387,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699961617388,
+      "end": 1699961617389,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699961617389,
+      "end": 1699961617389,
+      "order": "normal"
+    }
+  ]
+}

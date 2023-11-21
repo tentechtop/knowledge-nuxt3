@@ -1,0 +1,261 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/composables/useAnime.ts",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "import anime from 'animejs/lib/anime.es.js'\r\nimport type { AnimeParams } from '@/types/anime'\r\n\r\nconst EASING = 'easeInOutQuad'\r\nexport function useTranslateX(el: Ref<HTMLElement | null>, from = 0, to = 0, delay = 0, duration = 200, opotion?: AnimeParams) {\r\n  const instance = ref<anime.AnimeInstance>()\r\n  onMounted(() => {\r\n    instance.value = anime({\r\n      targets: el.value,\r\n      translateX: [from, to],\r\n      scale: [1.2, 1],\r\n      opacity: [0, 1],\r\n      duration,\r\n      delay,\r\n      easing: EASING,\r\n      ...opotion,\r\n    })\r\n  })\r\n  return { instance }\r\n}\r\nexport function useTranslateY(el: Ref<HTMLElement | null>, from = 0, to = 0, delay = 0, duration = 200, opotion?: AnimeParams) {\r\n  const instance = ref<anime.AnimeInstance>()\r\n  onMounted(() => {\r\n    instance.value = anime({\r\n      targets: el.value,\r\n      translateY: [from, to],\r\n      scale: [1.2, 1],\r\n      opacity: [0, 1],\r\n      duration,\r\n      delay,\r\n      easing: EASING,\r\n      ...opotion,\r\n    })\r\n  })\r\n  return { instance }\r\n}\r\n\r\nexport function useAnime(opotion: AnimeParams) {\r\n  const instance = ref<anime.AnimeInstance>()\r\n  onMounted(() => {\r\n    instance.value = anime({\r\n      ...opotion,\r\n      targets: opotion.targets.value,\r\n    })\r\n  })\r\n  return { instance }\r\n}\r\n",
+      "start": 1699961621948,
+      "end": 1699961622118,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699961622118,
+      "end": 1699961622119,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699961622119,
+      "end": 1699961622119,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699961622119,
+      "end": 1699961622119,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699961622119,
+      "end": 1699961622119,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699961622119,
+      "end": 1699961622119,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699961622120,
+      "end": 1699961622120,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import anime from \"animejs/lib/anime.es.js\";\nconst EASING = \"easeInOutQuad\";\nexport function useTranslateX(el, from = 0, to = 0, delay = 0, duration = 200, opotion) {\n  const instance = ref();\n  onMounted(() => {\n    instance.value = anime({\n      targets: el.value,\n      translateX: [from, to],\n      scale: [1.2, 1],\n      opacity: [0, 1],\n      duration,\n      delay,\n      easing: EASING,\n      ...opotion\n    });\n  });\n  return { instance };\n}\nexport function useTranslateY(el, from = 0, to = 0, delay = 0, duration = 200, opotion) {\n  const instance = ref();\n  onMounted(() => {\n    instance.value = anime({\n      targets: el.value,\n      translateY: [from, to],\n      scale: [1.2, 1],\n      opacity: [0, 1],\n      duration,\n      delay,\n      easing: EASING,\n      ...opotion\n    });\n  });\n  return { instance };\n}\nexport function useAnime(opotion) {\n  const instance = ref();\n  onMounted(() => {\n    instance.value = anime({\n      ...opotion,\n      targets: opotion.targets.value\n    });\n  });\n  return { instance };\n}\n",
+      "start": 1699961622120,
+      "end": 1699961622225,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "F:/workSpace2024/knowledge-nuxt3/composables/useAnime.ts"
+        ],
+        "sourcesContent": [
+          "import anime from 'animejs/lib/anime.es.js'\r\nimport type { AnimeParams } from '@/types/anime'\r\n\r\nconst EASING = 'easeInOutQuad'\r\nexport function useTranslateX(el: Ref<HTMLElement | null>, from = 0, to = 0, delay = 0, duration = 200, opotion?: AnimeParams) {\r\n  const instance = ref<anime.AnimeInstance>()\r\n  onMounted(() => {\r\n    instance.value = anime({\r\n      targets: el.value,\r\n      translateX: [from, to],\r\n      scale: [1.2, 1],\r\n      opacity: [0, 1],\r\n      duration,\r\n      delay,\r\n      easing: EASING,\r\n      ...opotion,\r\n    })\r\n  })\r\n  return { instance }\r\n}\r\nexport function useTranslateY(el: Ref<HTMLElement | null>, from = 0, to = 0, delay = 0, duration = 200, opotion?: AnimeParams) {\r\n  const instance = ref<anime.AnimeInstance>()\r\n  onMounted(() => {\r\n    instance.value = anime({\r\n      targets: el.value,\r\n      translateY: [from, to],\r\n      scale: [1.2, 1],\r\n      opacity: [0, 1],\r\n      duration,\r\n      delay,\r\n      easing: EASING,\r\n      ...opotion,\r\n    })\r\n  })\r\n  return { instance }\r\n}\r\n\r\nexport function useAnime(opotion: AnimeParams) {\r\n  const instance = ref<anime.AnimeInstance>()\r\n  onMounted(() => {\r\n    instance.value = anime({\r\n      ...opotion,\r\n      targets: opotion.targets.value,\r\n    })\r\n  })\r\n  return { instance }\r\n}\r\n"
+        ],
+        "mappings": "AAAA,OAAO,WAAW;AAGlB,MAAM,SAAS;AACR,gBAAS,cAAc,IAA6B,OAAO,GAAG,KAAK,GAAG,QAAQ,GAAG,WAAW,KAAK,SAAuB;AAC7H,QAAM,WAAW,IAAyB;AAC1C,YAAU,MAAM;AACd,aAAS,QAAQ,MAAM;AAAA,MACrB,SAAS,GAAG;AAAA,MACZ,YAAY,CAAC,MAAM,EAAE;AAAA,MACrB,OAAO,CAAC,KAAK,CAAC;AAAA,MACd,SAAS,CAAC,GAAG,CAAC;AAAA,MACd;AAAA,MACA;AAAA,MACA,QAAQ;AAAA,MACR,GAAG;AAAA,IACL,CAAC;AAAA,EACH,CAAC;AACD,SAAO,EAAE,SAAS;AACpB;AACO,gBAAS,cAAc,IAA6B,OAAO,GAAG,KAAK,GAAG,QAAQ,GAAG,WAAW,KAAK,SAAuB;AAC7H,QAAM,WAAW,IAAyB;AAC1C,YAAU,MAAM;AACd,aAAS,QAAQ,MAAM;AAAA,MACrB,SAAS,GAAG;AAAA,MACZ,YAAY,CAAC,MAAM,EAAE;AAAA,MACrB,OAAO,CAAC,KAAK,CAAC;AAAA,MACd,SAAS,CAAC,GAAG,CAAC;AAAA,MACd;AAAA,MACA;AAAA,MACA,QAAQ;AAAA,MACR,GAAG;AAAA,IACL,CAAC;AAAA,EACH,CAAC;AACD,SAAO,EAAE,SAAS;AACpB;AAEO,gBAAS,SAAS,SAAsB;AAC7C,QAAM,WAAW,IAAyB;AAC1C,YAAU,MAAM;AACd,aAAS,QAAQ,MAAM;AAAA,MACrB,GAAG;AAAA,MACH,SAAS,QAAQ,QAAQ;AAAA,IAC3B,CAAC;AAAA,EACH,CAAC;AACD,SAAO,EAAE,SAAS;AACpB;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1699961622226,
+      "end": 1699961622226,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699961622226,
+      "end": 1699961622226,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1699961622226,
+      "end": 1699961622226,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699961622226,
+      "end": 1699961622227,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699961622227,
+      "end": 1699961622227,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699961622227,
+      "end": 1699961622227,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699961622227,
+      "end": 1699961622227,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699961622227,
+      "end": 1699961622227,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699961622228,
+      "end": 1699961622228,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699961622228,
+      "end": 1699961622228,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699961622228,
+      "end": 1699961622228,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699961622228,
+      "end": 1699961622228,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699961622229,
+      "end": 1699961622229,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699961622229,
+      "end": 1699961622229,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699961622229,
+      "end": 1699961622229,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699961622229,
+      "end": 1699961622229,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699961622230,
+      "end": 1699961622230,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699961622230,
+      "end": 1699961622230,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699961622230,
+      "end": 1699961622230,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699961622231,
+      "end": 1699961622231,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699961622231,
+      "end": 1699961622231,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "result": "import { ref, onMounted } from 'vue';\nimport anime from \"animejs/lib/anime.es.js\";\nconst EASING = \"easeInOutQuad\";\nexport function useTranslateX(el, from = 0, to = 0, delay = 0, duration = 200, opotion) {\n  const instance = ref();\n  onMounted(() => {\n    instance.value = anime({\n      targets: el.value,\n      translateX: [from, to],\n      scale: [1.2, 1],\n      opacity: [0, 1],\n      duration,\n      delay,\n      easing: EASING,\n      ...opotion\n    });\n  });\n  return { instance };\n}\nexport function useTranslateY(el, from = 0, to = 0, delay = 0, duration = 200, opotion) {\n  const instance = ref();\n  onMounted(() => {\n    instance.value = anime({\n      targets: el.value,\n      translateY: [from, to],\n      scale: [1.2, 1],\n      opacity: [0, 1],\n      duration,\n      delay,\n      easing: EASING,\n      ...opotion\n    });\n  });\n  return { instance };\n}\nexport function useAnime(opotion) {\n  const instance = ref();\n  onMounted(() => {\n    instance.value = anime({\n      ...opotion,\n      targets: opotion.targets.value\n    });\n  });\n  return { instance };\n}\n",
+      "start": 1699961622231,
+      "end": 1699961622232,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";AAAA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC5C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC5B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACf,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACP,CAAC,CAAC,CAAC,CAAC,CAAC;AACL,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtB,CAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzF,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC5B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACf,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACZ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACP,CAAC,CAAC,CAAC,CAAC,CAAC;AACL,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtB,CAAC;AACD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACzB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACnB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC5B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACjB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACP,CAAC,CAAC,CAAC,CAAC,CAAC;AACL,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtB,CAAC;"
+      }
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699961622232,
+      "end": 1699961622232,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1699961622232,
+      "end": 1699961622232,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699961622233,
+      "end": 1699961622233,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699961622233,
+      "end": 1699961622233,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699961622234,
+      "end": 1699961622234,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699961622234,
+      "end": 1699961622234,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699961622235,
+      "end": 1699961622236,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699961622236,
+      "end": 1699961622237,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699961622239,
+      "end": 1699961622239,
+      "order": "normal"
+    }
+  ]
+}

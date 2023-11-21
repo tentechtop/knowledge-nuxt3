@@ -1,0 +1,253 @@
+{
+  "resolvedId": "F:/workSpace2024/knowledge-nuxt3/pages/index.vue?macro=true",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\r\n  <div></div>\r\n\r\n</template>\r\n\r\n\r\n<script lang=\"ts\" setup>\r\nimport type Swiper from 'swiper'\r\nimport { Mousewheel, Pagination } from 'swiper'\r\nimport { Swiper as SwiperCpn, SwiperSlide } from 'swiper/vue'\r\nimport 'swiper/css'\r\nimport 'swiper/css/pagination'\r\nimport {COMPANY} from \"~/enums/appEnum\";\r\nconst modules = ref([Pagination, Mousewheel])\r\nconst swiperInstance = ref<Swiper | null>(null)\r\nconst { $on, MITT_KEY } = useMitt()\r\nconst { findIndexByHref, changeCurrentIndexBySwiper, headerList } = useHeader()\r\n\r\nuseHead({\r\n  title: \"卓越毕设 AECode - 官方网站\",\r\n  link: [\r\n    {\r\n      rel: 'icon', type: 'image/png', href: '/logo.png',\r\n    },\r\n  ],\r\n  meta: [\r\n    {name: 'keywords', content: '卓越毕设' },\r\n    {name: 'description', content: '卓越毕设' }\r\n  ],\r\n})\r\n\r\n\r\nconst onSwiper = (swiper: Swiper) => {\r\n  swiperInstance.value = swiper\r\n}\r\nconst activeIndexChange = (swiper: Swiper) => {\r\n  changeCurrentIndexBySwiper(swiper.activeIndex)\r\n}\r\n$on(MITT_KEY.HEADER_SELECT_EVENT, (e: any) => {\r\n  const index: number = findIndexByHref(e)\r\n  if (index !== -1)\r\n    swiperInstance.value?.slideTo(index, 0)\r\n})\r\n</script>\r\n\r\n<style lang=\"scss\" scoped>\r\n@import '@/styles/swiper/variables.scss';\r\n@import '@/styles/swiper/mixins.scss';\r\n@import '@/styles/swiper/index.scss';\r\n\r\n.swiper {\r\n  @include swiper-wrapper();\r\n}\r\n\r\n.slide {\r\n  @include swiper-slide();\r\n}\r\n\r\n:deep(.swiper-wrapper){\r\n  transition: all .5s !important;\r\n}\r\n</style>\r\n",
+      "start": 1699961608607,
+      "end": 1699961609302,
+      "sourcemaps": null
+    },
+    {
+      "name": "unocss:transformers:pre",
+      "start": 1699961609303,
+      "end": 1699961609303,
+      "order": "pre"
+    },
+    {
+      "name": "unocss:global:build:scan",
+      "start": 1699961609303,
+      "end": 1699961609303,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1699961609304,
+      "end": 1699961609304,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1699961609304,
+      "end": 1699961609304,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1699961609304,
+      "end": 1699961609304,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1699961609304,
+      "end": 1699961609304,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1699961609304,
+      "end": 1699961609304,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1699961609304,
+      "end": 1699961609304,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1699961609304,
+      "end": 1699961609304,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"F:/workSpace2024/knowledge-nuxt3/pages/index.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"F:/workSpace2024/knowledge-nuxt3/pages/index.vue?vue&type=script&setup=true&lang.ts\";\nimport \"F:/workSpace2024/knowledge-nuxt3/pages/index.vue?vue&type=style&index=0&scoped=94d5386e&lang.scss\";\nimport _export_sfc from \"\\0plugin-vue:export-helper\";\nexport default /* @__PURE__ */ _export_sfc(_sfc_main, [[\"__scopeId\", \"data-v-94d5386e\"]]);\n",
+      "start": 1699961609304,
+      "end": 1699961610005,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:default",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1699961610005,
+      "end": 1699961610005,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1699961610006,
+      "end": 1699961610006,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1699961610006,
+      "end": 1699961610006,
+      "order": "normal"
+    },
+    {
+      "name": "unocss:transformers:post",
+      "start": 1699961610006,
+      "end": 1699961610006,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1699961610006,
+      "end": 1699961610006,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1699961610006,
+      "end": 1699961610006,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1699961610006,
+      "end": 1699961610006,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "result": "export { default } from \"F:/workSpace2024/knowledge-nuxt3/pages/index.vue?macro=true&vue&type=script&setup=true&lang.ts\"",
+      "start": 1699961610006,
+      "end": 1699961610006,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": "AAAA"
+      }
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1699961610006,
+      "end": 1699961610006,
+      "order": "post"
+    },
+    {
+      "name": "element-plus:transform",
+      "start": 1699961610006,
+      "end": 1699961610006,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1699961610006,
+      "end": 1699961610006,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1699961610006,
+      "end": 1699961610007,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1699961610007,
+      "end": 1699961610007,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1699961610007,
+      "end": 1699961610007,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1699961610007,
+      "end": 1699961610007,
+      "order": "normal"
+    }
+  ]
+}
