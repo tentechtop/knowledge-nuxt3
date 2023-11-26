@@ -1,20 +1,44 @@
 <template>
   <div class="container">
 
-    <h1>111</h1>
 
 
-    <h1>111</h1>
 
-    <h1>中</h1>
+
+
+
+
+
 
   </div>
 </template>
 
 
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount,onBeforeMount } from 'vue';
 const show = ref(true)
+import { baseUrl } from '~~/config'
+import request from "~/api/request";
+import {getProject} from "~/api/project";
+
+const showData = ref(false)
+const dateTest = ref({})
+
+/*async function getTestDate(){
+  const resp = await useFetch('http://localhost:8000/',{
+    method:"GET"
+  }).then((response) => {
+    console.log("baseUrl"+JSON.stringify(response.data.value))
+    dateTest.value=response.data.value
+    showData.value = true
+  })
+}
+const { data: archivesList, } = await useAsyncData('archives_GetList', () => getProject())
+
+dateTest.value = archivesList.value*/
+
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -27,15 +51,7 @@ const show = ref(true)
   align-items: center;
   min-height: 100px;
 }
-.container {
-  overflow-y: hidden;
-  scrollbar-width: none; /* firefox */
-  -ms-overflow-style: none; /* IE 10+ */
-  overflow-x: hidden;
-  overflow-y: auto;
-}
 
-.container::-webkit-scrollbar {
-  display: none; /* Chrome Safari */
-}
+
+
 </style>

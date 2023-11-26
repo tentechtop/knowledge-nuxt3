@@ -35,29 +35,36 @@ body {
 
 ::-webkit-scrollbar {
   width: 6px;
-  height: 6px;
+  height: 0px;
   background: transparent;
+  overflow-x: auto;
 }
 
 /* 滚动槽 */
 ::-webkit-scrollbar-track {
-  border-radius: 0;
+  width: 0px;
+  border-radius: 0px;
   background: transparent;
 }
 /* 滚动条滑块 */
 ::-webkit-scrollbar-thumb {
-  border-radius: 0;
-  border-radius: 0.5rem;
-  background: transparent;
+  width: 6px;
+  border-radius: 10000px;
+  background: var(--scrollbar-bgc);//这里可以设置透明
   transition: all 0.2s;
+
 }
 
 /* 滚动条滑块 hover */
 :hover::-webkit-scrollbar-thumb {
   background: var(--scrollbar-bgc);
 }
+
+
 ::-webkit-scrollbar-button,
 ::-webkit-scrollbar-corner {
+  //滑块按钮
+  height: 0;
   background: transparent;
 }
 
